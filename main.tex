@@ -1,0 +1,104 @@
+\documentclass[%
+	enabledeprecatedfontcommands,
+	pdftex,
+	oneside,
+	12pt,
+	parskip=half,
+	headsepline,
+	footsepline,
+	abstracton,
+	ngerman,
+]{scrreprt}
+\input{ads/header}
+
+
+\newcommand{\titel}{\pdftitel}
+% \newcommand{\titel}{zweite Zeile des Titels} % Wenn der Titel von dem PDF Titel abweicht.
+
+% ---- Angaben fuers Deckblatt: bitte die Platzhalter [ ... ] ausfuellen ----
+\newcommand{\martrikelnr}{[Matrikelnummer]}
+\newcommand{\kurs}{[Kurskuerzel]}
+\newcommand{\datumAbgabe}{[TT.MM.JJJJ]}
+\newcommand{\firma}{[Name des dualen Partners]}
+\newcommand{\firmenort}{[Ort des dualen Partners]}
+\newcommand{\abgabeort}{[Ort]}
+\newcommand{\abschluss}{Bachelor of Engineering}
+\newcommand{\studiengang}{[Studiengang]}
+\newcommand{\dhbw}{[Stuttgart / Bad Mergentheim]}
+\newcommand{\betreuer}{[Betreuer des dualen Partners]}
+\newcommand{\gutachter}{[Wissenschaftlicher Betreuer der DHBW]}
+\newcommand{\zeitraum}{[TT.MM.JJJJ -- TT.MM.JJJJ]}
+\newcommand{\arbeitsart}{\arbeit}
+
+
+\makeglossaries
+\input{ads/glossary}
+    
+\begin{document}
+
+	\begin{spacing}{1}
+        \input{ads/deckblatt}
+    \end{spacing}
+	\newpage
+    
+
+	\renewcommand{\thepage}{\Roman{page}}
+	\setcounter{page}{1}
+
+        \input{ads/genderdisclaimer}
+        \newpage
+
+	\input{ads/sperrvermerk}
+	\newpage
+
+	\input{ads/erklaerung}
+	\newpage
+
+	\input{ads/abstract}
+	\newpage
+
+	\cleardoublepage 
+	\pagestyle{fancy}
+    
+	\begin{spacing}{1.1}
+		\setcounter{tocdepth}{2}
+		\tableofcontents
+	\end{spacing}
+	\cleardoublepage 
+	\newpage
+
+    \input{ads/Verzeichnisse}
+
+	\pagestyle{plain}
+	
+
+	\input{content/01_Einleitung}
+	\input{content/02_Theoretische Grundlagen}
+    \input{content/03_Methodik}
+    \input{content/04_Analyse}
+    \input{content/05_Ableitung von Empfehlungen}
+    \input{content/06_Fazit}
+
+% =============================================================== !!!!!!!!!!!!!!!!!!!!!!!!!!!! =============================================================== %
+    % WICHTIG: Hier muss die Seitenzahl individuell angepasst werden.
+    % Es muss direkt an die letzte Seitenzahl aus den Verzeichnissen angeknüpft werden. Z.B. wenn die Verzeichnisse auf Seite 8 Enden muss es hier mit 9 weitergehen
+	\clearpage
+	\pagenumbering{Roman}
+    \setcounter{page}{9}
+% =============================================================== !!!!!!!!!!!!!!!!!!!!!!!!!!!! =============================================================== %
+
+	\cleardoublepage
+	\phantomsection \label{listoflit}
+	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+	\printbibliography
+
+    \appendix
+    \renewcommand{\thechapter}{\arabic{chapter}}
+
+    \chapter*{Anhang}
+    \addcontentsline{toc}{chapter}{Anhang}
+    \listofanhangverzeichnis
+    \newpage
+    \input{ads/Anhang/All}
+\end{document}

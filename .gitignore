@@ -1,0 +1,46 @@
+# ==== LaTeX Build-Artefakte (werden beim Kompilieren neu erzeugt) ====
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.lol
+*.loa
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.synctex(busy)
+*.fot
+*.for
+*.dvi
+*.xdv
+
+# Glossar / Akronyme / Nomenklatur
+*.glo
+*.gls
+*.glg
+*.glsdefs
+*.acn
+*.acr
+*.alg
+*.ist
+*.nlo
+*.nls
+*.apc
+
+# Editor-/Tool-Reste
+*.bak
+*.tmp
+*~
+build.log
+_minted*/
+.vscode/
+
+# Kompiliertes PDF (wird neu gebaut). Zeile loeschen/auskommentieren,
+# falls du das fertige main.pdf doch mit im Repo haben willst.
+main.pdf

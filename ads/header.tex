@@ -1,0 +1,244 @@
+%!TEX root = ../main.tex
+
+%%**************************************************************
+%% Vorlage fuer Bachelorarbeiten (o.ä.) der Fakultät Technik an der DHBW Stuttgart/Bad Mergentheim
+%%
+%% Autor: Tobias Dreher, Yves Fischer
+%% Datum: 06.07.2011
+%%
+%% Autor: Michael Gruben
+%% Datum: 15.05.2013
+%%
+%% Autor: Ioanna Theofilou
+%% Datum: 10.02.2026
+%%**************************************************************
+
+\usepackage{fullpage}
+
+\usepackage[activate]{microtype}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage[onehalfspacing]{setspace}
+
+\usepackage[
+  left=4cm,
+  right=2cm,
+  top=3cm,
+  bottom=3.5cm
+]{geometry}
+
+\usepackage{makeidx}
+
+\usepackage[ngerman]{babel}
+
+\usepackage[babel,german=quotes]{csquotes}
+
+% Deckblatt
+\usepackage{longtable}
+\setlength{\tabcolsep}{10pt}
+\renewcommand{\arraystretch}{1.5} 
+
+% Grafiken
+\usepackage{graphicx}
+
+% Mathe
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+
+% Seite drehen
+%\usepackage{rotating}
+%\usepackage{lscape}
+
+\usepackage{color}
+\definecolor{LinkColor}{rgb}{0,0,0.2}
+\definecolor{ListingBackground}{rgb}{0.92,0.92,0.92}
+
+% Arbeitstitel (6-12 Worte, praezise, ohne Firmennamen/Abkuerzungen) - mit Betreuer final abstimmen
+\newcommand{\pdftitel}{Vergleich verschiedener Lebensdauerversuche von Elektro-Aktuatoren}
+\newcommand{\autor}{[Vorname Nachname]}
+\newcommand{\arbeit}{Bachelorarbeit}
+
+% Für das Deckblatt + Autor auf den Seiten
+\title{\titel}
+\author{\autor}
+\date{\datum}
+
+% PDF Einstellungen
+\usepackage[%
+	pdftitle={\pdftitel},
+	pdfauthor={\autor},
+	pdfsubject={\arbeit},
+	pdfcreator={pdflatex, LaTeX with KOMA-Script},
+	pdfpagemode=UseOutlines, 
+	pdfdisplaydoctitle=true, 
+	pdflang=de 
+]{hyperref} 
+
+% HTML Links
+\hypersetup{
+	colorlinks=true,
+	linkcolor=LinkColor, 
+	citecolor=LinkColor,
+	filecolor=LinkColor,
+	menucolor=LinkColor,
+	urlcolor=LinkColor,
+	bookmarksnumbered=true
+}
+
+% % Literaturverweise nach Harvard
+% \usepackage[dcucite]{harvard}
+% \renewcommand{\harvardand}{und}
+
+% Literaturverweise Biblatex
+\usepackage[style=authoryear, maxcitenames=1, maxbibnames=99]{biblatex}
+\addbibresource{ArbeitBib.bib}
+
+\DefineBibliographyStrings{ngerman}{
+  andothers = {\textit{et al.}}
+}
+
+% Schriftart
+%\usepackage{goudysans}
+%\usepackage{lmodern}
+%\usepackage{libertine}
+\usepackage{palatino} 
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+% Listings (Quellcode) hier muss für jede Programmiersprache ein eigenes \lstloadlanguages und \lsset gemacht werden. Siehe unten Beispiel.
+\usepackage{listings}
+\lstloadlanguages{Java}
+\lstloadlanguages{python}
+\lstset{%
+	language=PHP,		 	 % Sprache des Quellcodes
+	%numbers=left,           % Zelennummern links
+	stepnumber=1,            % Jede Zeile nummerieren.
+	numbersep=5pt,           % 5pt Abstand zum Quellcode
+	numberstyle=\tiny,       % Zeichengrösse 'tiny' für die Nummern.
+	breaklines=true,         % Zeilen umbrechen wenn notwendig.
+	breakautoindent=true,    % Nach dem Zeilenumbruch Zeile einrücken.
+	postbreak=\space,        % Bei Leerzeichen umbrechen.
+	tabsize=2,               % Tabulatorgrösse 2
+	basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
+	showspaces=false,        % Leerzeichen nicht anzeigen.
+	showstringspaces=false,  % Leerzeichen auch in Strings ('') nicht anzeigen.
+	extendedchars=true,      % Alle Zeichen vom Latin1 Zeichensatz anzeigen.
+	captionpos=b,            % sets the caption-position to bottom
+	backgroundcolor=\color{ListingBackground} % Hintergrundfarbe des Quellcodes setzen.
+}
+
+% Glossar
+\usepackage[
+	nonumberlist, %keine Seitenzahlen anzeigen
+	%section,     %im Inhaltsverzeichnis auf section-Ebene erscheinen
+	toc,          %Einträge im Inhaltsverzeichnis
+]{glossaries}
+
+\usepackage{tocloft}
+
+%Akronyme
+\usepackage[printonlyused]{acronym}
+
+% Symbolverzeichnis
+\usepackage{nomencl}
+\renewcommand{\nomname}{Symbolverzeichnis}
+\makenomenclature
+
+% Formelverzeichnis
+\usepackage{tocloft}
+\newlistof{formulas}{for}{Formelverzeichnis}
+
+% Algorithmusverzeichnis
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\floatname{algorithm}{Algorithmus}
+\renewcommand{\listalgorithmname}{Algorithmusverzeichnis}
+
+% Quellcodeverzeichnis
+\usepackage{listings}
+\renewcommand\lstlistingname{Quellcode}
+\renewcommand\lstlistlistingname{Quellcodeverzeichnis}
+
+
+% Fussnoten
+\usepackage[perpage, hang, multiple, stable]{footmisc}
+
+%Bildpfad
+\graphicspath{{images/}}
+
+%nur ein latex-Durchlauf für die Aktualisierung von Verzeichnissen nötig
+\usepackage{bookmark}
+
+%Bilder, Tabellen, usw\ldots lassen sich mit H an genau der definierten Stelle platzieren
+\usepackage{float}
+
+% für die vertikale Platzierung von Text in Tabellen
+\usepackage{array}
+
+% für die Darstellung des Euro-Symbols
+\usepackage[right]{eurosym}
+
+% für textumflossene Grafiken
+\usepackage{wrapfig}
+
+% eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
+% Kommentare werden rot gedruckt). Wird \% vor excludecomment{k} entfernt,
+% werden keine Kommentare mehr gedruckt.
+\usepackage{comment}
+\specialcomment{k}{\begingroup\color{red}}{\endgroup}
+%\excludecomment{k}
+
+% individuelle Befehle um auf Kapitel, Sections, Abbildungen und Referenzen allgemein zu verweisen.
+\newcommand{\refKap}[1]{Kapitel \ref{#1} auf Seite \pageref{#1} (\nameref{#1})}
+\newcommand{\refSec}[1]{Punkt \ref{#1}}
+\newcommand{\refAbb}[1]{Abbildung \ref{#1}}
+\newcommand{\fullref}[1]{\ref{#1} auf Seite \pageref{#1} (\nameref{#1})}
+
+%moves numbers to the right
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{\autor}
+\fancyfoot[R]{\thepage} 
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.6pt}
+
+% Ensure page number appears bottom right even on plain pages
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[L]{\autor}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+    \renewcommand{\footrulewidth}{0.6pt}
+}
+
+% ============= Einstellung für die Größen der verschiedenen Überschriften =============
+\setkomafont{chapter}{\LARGE}
+\setkomafont{section}{\Large}
+\setkomafont{subsection}{\large}
+\setkomafont{subsubsection}{\normalsize}
+\setkomafont{paragraph}{\normalsize}
+\setkomafont{subparagraph}{\small}
+
+
+% Fragebogen
+\usepackage{amssymb}     % Für Kästchen (\square)
+\usepackage{enumitem}    % Für flexible Aufzählungen
+
+
+% PDF einbinden
+\usepackage{graphicx} 
+\usepackage{subcaption}
+
+
+% Neues Anhangsverzeichnis definieren
+\newlistof{anhangverzeichnis}{apc}{}
+\newcommand{\anhang}[1]{
+  \refstepcounter{chapter}
+  \chapter*{Anhang \thechapter: #1}
+  \addcontentsline{apc}{chapter}{Anhang \thechapter: #1}
+}

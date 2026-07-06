@@ -1,0 +1,39 @@
+    \pagestyle{fancy}
+	
+	\cleardoublepage
+	\phantomsection \label{listofacs}
+	\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+	\input{ads/acronyms}
+
+    \printglossary[style=altlist,title=Glossar]
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+	\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+	\listoffigures
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+    \addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+    \listoftables
+
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+    \addcontentsline{toc}{chapter}{Symbolverzeichnis}
+    \printnomenclature
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+    \addcontentsline{toc}{chapter}{Formelverzeichnis}
+    \listofformulas
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+    \addcontentsline{toc}{chapter}{Algorithmusverzeichnis}
+    \listofalgorithms
+
+    \cleardoublepage
+	\phantomsection \label{listoffig}
+    \addcontentsline{toc}{chapter}{Quellcodeverzeichnis}
+    \lstlistoflistings

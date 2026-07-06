@@ -1,0 +1,71 @@
+%!TEX root = ../main.tex
+%
+% ============================================================================
+%  NACHSCHLAGE-DATEI - NICHT Teil der Arbeit!
+%  Diese Datei wird in main.tex bewusst NICHT eingebunden.
+%  Sie sammelt Beispiele, wie man die wichtigsten Elemente einfuegt.
+%  Zum Ausprobieren einfach den gewuenschten Block kopieren und in ein
+%  Kapitel einfuegen.
+% ============================================================================
+
+% ---------- Tabelle ----------
+\begin{table}[H]
+    \centering
+    \caption{Beispieltabelle}
+    \label{tab:beispiel}
+    \begin{tabular}{l c}
+        Groesse & Wert \\
+        A & 10 \\
+        B & 20
+    \end{tabular}
+\end{table}
+
+% ---------- Abbildung ----------
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{dhbw.png}
+    \caption{Beispielabbildung}
+    \label{fig:beispiel}
+\end{figure}
+
+% ---------- Formel (erscheint zusaetzlich im Formelverzeichnis) ----------
+\begin{equation}
+    E = m c^2
+    \addcontentsline{for}{formulas}{Energie-Masse-Aequivalenz}
+\end{equation}
+
+% ---------- Symbol fuers Symbolverzeichnis ----------
+% \nomenclature{$F$}{Kraft in N}
+% \nomenclature{$t$}{Zeit in s}
+
+% ---------- Abkuerzung (in ads/acronyms.tex definieren) ----------
+% Erste Nennung als Fussnote, danach nur noch verlinkt:  \ac{DUT}
+
+% ---------- Glossareintrag (in ads/glossary.tex definieren) ----------
+% Referenz im Text:  \gls{Lebensdauerversuch}
+
+% ---------- Quelle zitieren (Eintraege in ArbeitBib.bib) ----------
+% Sinngemaess:  \cite{schluessel}
+% Nur zitierte Quellen erscheinen im Literaturverzeichnis.
+
+% ---------- Querverweise (eigene Befehle aus header.tex) ----------
+% \refKap{kap:Einleitung}   -> Kapitel X auf Seite Y (Name)
+% \refSec{sec:...}          -> Punkt X
+% \refAbb{fig:...}          -> Abbildung X
+
+% ---------- Fussnote ----------
+% Text\footnote{Ich bin eine Fussnote}
+
+% ---------- Quellcode ----------
+\begin{lstlisting}[caption={Beispiel in Python}, label={lst:beispiel}]
+print("Hello World")
+\end{lstlisting}
+
+% ---------- Algorithmus ----------
+\begin{algorithm}[H]
+\caption{Beispiel}
+\begin{algorithmic}
+\State Initialisiere Variablen
+\State Berechne Ergebnis
+\end{algorithmic}
+\end{algorithm}
