@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Actuator Lifetime Dashboard — D32 / Versuch1</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root{
+  --bg:#f5f7fa; --panel:#ffffff; --text:#1b2430; --muted:#5b6b7c;
+  --border:#dde3ea; --accent:#0b6e99; --accent-2:#0b6e9922;
+  --card-shadow: 0 1px 3px rgba(20,30,40,.08), 0 1px 2px rgba(20,30,40,.06);
+  --radius:10px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#12181f; --panel:#1a222c; --text:#e6edf3; --muted:#9aabb9;
+  --border:#2b3542; --accent:#5fb8e0; --accent-2:#5fb8e022;
+  --card-shadow: 0 1px 3px rgba(0,0,0,.5), 0 1px 2px rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; font-family:var(--font); background:var(--bg); color:var(--text);
+  font-size:14px; line-height:1.45;
+}
+header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 22px; background:var(--panel); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:50;
+}
+header h1{font-size:17px; margin:0; font-weight:650; letter-spacing:.2px;}
+header .sub{color:var(--muted); font-size:12.5px; margin-top:2px;}
+header .right{display:flex; align-items:center; gap:14px;}
+.meta-pill{
+  background:var(--accent-2); color:var(--accent); border-radius:20px;
+  padding:4px 12px; font-size:12px; font-weight:600; white-space:nowrap;
+}
+.theme-toggle{
+  border:1px solid var(--border); background:var(--panel); color:var(--text);
+  border-radius:8px; padding:6px 10px; cursor:pointer; font-size:12.5px;
+}
+.tabs{display:flex; gap:4px; padding:0 22px; background:var(--panel); border-bottom:1px solid var(--border);}
+.tab-btn{
+  border:none; background:transparent; color:var(--muted); padding:12px 16px;
+  font-size:13.5px; font-weight:600; cursor:pointer; border-bottom:2px solid transparent;
+}
+.tab-btn.active{color:var(--accent); border-bottom-color:var(--accent);}
+main{padding:20px 22px 60px; max-width:1600px; margin:0 auto;}
+.view{display:none;}
+.view.active{display:block;}
+
+.card{
+  background:var(--panel); border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--card-shadow); padding:16px 18px;
+}
+.card + .card{margin-top:16px;}
+.card h2{font-size:14px; margin:0 0 12px; font-weight:650;}
+.card h3{font-size:12.5px; margin:0 0 8px; color:var(--muted); font-weight:650; text-transform:uppercase; letter-spacing:.04em;}
+
+.stat-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:10px;
+  margin-bottom:16px;
+}
+.stat-card{
+  border:1px solid var(--border); border-radius:8px; padding:10px 12px; background:var(--bg);
+}
+.stat-card .label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em;}
+.stat-card .value{font-size:19px; font-weight:700; margin-top:3px;}
+.stat-card .range{font-size:11px; color:var(--muted); margin-top:2px;}
+
+.metric-picker{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;}
+.chip{
+  border:1px solid var(--border); background:var(--bg); color:var(--text);
+  border-radius:20px; padding:5px 12px; font-size:12px; cursor:pointer; user-select:none;
+}
+.chip.active{background:var(--accent); border-color:var(--accent); color:#fff;}
+
+.layout{display:grid; grid-template-columns:300px 1fr; gap:16px; align-items:start;}
+@media (max-width:1100px){.layout{grid-template-columns:1fr;}}
+
+.control-group{margin-bottom:18px;}
+.control-group label{display:block; font-size:12px; font-weight:650; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:.03em;}
+input[type=text], input[type=number]{
+  width:100%; padding:7px 9px; border:1px solid var(--border); border-radius:7px;
+  background:var(--bg); color:var(--text); font-size:13px;
+}
+button.btn{
+  background:var(--accent); color:#fff; border:none; border-radius:7px; padding:8px 12px;
+  font-size:12.5px; font-weight:600; cursor:pointer; width:100%;
+}
+button.btn.secondary{background:transparent; color:var(--accent); border:1px solid var(--accent);}
+.row-inline{display:flex; gap:8px;}
+.row-inline > *{flex:1;}
+.hint{font-size:11.5px; color:var(--muted); margin-top:5px;}
+input[type=range]{width:100%;}
+.slider-row{display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted);}
+
+.toggle-list{max-height:170px; overflow:auto; border:1px solid var(--border); border-radius:7px; padding:6px;}
+.toggle-item{display:flex; align-items:center; gap:6px; padding:3px 4px; font-size:12.5px; border-radius:5px; cursor:pointer;}
+.toggle-item:hover{background:var(--bg);}
+.toggle-item .swatch{width:10px; height:10px; border-radius:50%; flex:none;}
+.toggle-item.dim{opacity:.4;}
+.toggle-item .cid{font-variant-numeric:tabular-nums;}
+
+table.metrics-table{width:100%; border-collapse:collapse; font-size:12.5px;}
+table.metrics-table th, table.metrics-table td{
+  text-align:right; padding:6px 8px; border-bottom:1px solid var(--border); white-space:nowrap;
+}
+table.metrics-table th:first-child, table.metrics-table td:first-child{text-align:left;}
+table.metrics-table th{color:var(--muted); font-weight:650; font-size:11px; text-transform:uppercase;}
+table.metrics-table tbody tr:hover{background:var(--bg);}
+.table-wrap{overflow:auto; max-height:340px;}
+
+.channel-plot{margin-bottom:14px;}
+.footer-note{color:var(--muted); font-size:11.5px; margin-top:18px; text-align:center;}
+.badge-active{color:#1b7a43; font-weight:700;}
+.badge-mut{color:var(--muted);}
+code{background:var(--bg); border-radius:4px; padding:1px 5px; font-size:12px;}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Actuator Lifetime Dashboard</h1>
+    <div class="sub">D32 / Versuch1 · Drive (velocity, position, current), Messrack pressure, Wago temperatures</div>
+  </div>
+  <div class="right">
+    <span class="meta-pill" id="metaPill">loading…</span>
+    <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+  </div>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-view="overview">Overview</button>
+  <button class="tab-btn" data-view="compare">Cycle Comparison</button>
+</div>
+
+<main>
+
+<!-- ===================== OVERVIEW ===================== -->
+<section class="view active" id="view-overview">
+  <div class="card">
+    <h2>Lifetime summary (active cycles only, pauses excluded)</h2>
+    <div class="stat-grid" id="statGrid"></div>
+    <p class="hint">Computed across all active cycles of the ~6-month run (paused/idle periods excluded via the
+      Magnetschalter_Counter pause-distance filter, buffer ≥10 cycles).</p>
+  </div>
+
+  <div class="card">
+    <h2>Trend across the actuator's lifetime</h2>
+    <div class="metric-picker" id="trendMetricPicker"></div>
+    <div id="trendChart" style="height:420px;"></div>
+    <p class="hint">Each point aggregates ~2,560 consecutive active cycles (3,000 buckets total). Shaded band =
+      10th–90th percentile within the bucket, line = bucket mean. X-axis = chronological cycle index.</p>
+  </div>
+</section>
+
+<!-- ===================== COMPARISON ===================== -->
+<section class="view" id="view-compare">
+  <div class="layout">
+    <div class="card" id="controlPanel">
+      <h3>Select cycles</h3>
+      <div class="control-group">
+        <label for="cycleIdsInput">Cycle IDs (comma-separated)</label>
+        <input type="text" id="cycleIdsInput" placeholder="e.g. 15234, 892011, 4500000" />
+        <div class="row-inline" style="margin-top:8px;">
+          <button class="btn" id="addIdsBtn">Add</button>
+          <button class="btn secondary" id="clearSelBtn">Clear</button>
+        </div>
+        <p class="hint">Matched against the nearest available cycle in the sampled pool (see below).</p>
+      </div>
+
+      <div class="control-group">
+        <label for="randomNInput">Random sample</label>
+        <div class="row-inline">
+          <input type="number" id="randomNInput" min="1" max="200" value="8" />
+          <button class="btn" id="randomBtn">Pick N random</button>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Reference cycle</label>
+        <div class="row-inline">
+          <button class="btn secondary" id="pickFirstBtn">Use first pool cycle</button>
+        </div>
+        <p class="hint" id="refHint"></p>
+      </div>
+
+      <div class="control-group">
+        <label for="opacitySlider">Overlay opacity</label>
+        <div class="slider-row">
+          <input type="range" id="opacitySlider" min="0.05" max="1" step="0.05" value="0.55" />
+          <span id="opacityVal">0.55</span>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <label>Channels</label>
+        <div class="metric-picker" id="channelPicker"></div>
+      </div>
+
+      <div class="control-group">
+        <label>Selected cycles (<span id="selCount">0</span>) — click to highlight, toggle to hide</label>
+        <div class="toggle-list" id="legendList"></div>
+      </div>
+
+      <button class="btn secondary" id="resetViewBtn">Reset zoom / pan</button>
+      <p class="hint" style="margin-top:12px;">Cycle pool: <b id="poolSizeHint"></b> cycles evenly sampled across the
+        full test life (representative subset — embedding all cycles individually isn't feasible in one file).</p>
+    </div>
+
+    <div>
+      <div class="card">
+        <h2>Overlaid cycles</h2>
+        <div id="channelPlots"></div>
+      </div>
+      <div class="card">
+        <h2>Derived metrics</h2>
+        <div class="table-wrap">
+          <table class="metrics-table" id="metricsTable">
+            <thead><tr>
+              <th>Cycle</th><th>Date</th><th>Duration (s)</th><th>Peak vel.</th><th>Stroke</th>
+              <th>Peak current</th><th>Loop area</th><th>Δ stroke vs ref</th><th>Δ peak vel vs ref</th>
+              <th>Δ peak current vs ref</th>
+            </tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="footer-note">Units follow the source metadata (units.parquet) as recorded; no additional physical
+  rescaling applied. Generated from D32/Versuch1 Magnetschalter_Counter cycle boundaries.</p>
+</main>
+
+<script>
+/* ============================================================
+   Embedded data (generated by build_dashboard_data.py + build_html.py)
+   ============================================================ */
+const META = __META_JSON__;
+const TREND = __TREND_JSON__;
+const POOL = __POOL_JSON__;
+
+/* ============================================================
+   Config
+   ============================================================ */
+const CHANNELS = [
+  {key:"vel",   label:"Velocity",     unit:"m/s"},
+  {key:"pos",   label:"Position",     unit:"m"},
+  {key:"cur",   label:"Current",     unit:"A"},
+  {key:"prs",   label:"Pressure",     unit:"Pa"},
+  {key:"stemp", label:"Spindle temp", unit:"°C"},
+];
+const TREND_METRICS = [
+  {key:"vel_vpeak",  label:"Peak velocity"},
+  {key:"vel_vavg",   label:"Mean velocity"},
+  {key:"pos_vmax",   label:"Max position"},
+  {key:"pos_vmin",   label:"Min position"},
+  {key:"cur_vpeak",  label:"Peak current"},
+  {key:"cur_vavg",   label:"Mean current"},
+  {key:"prs_vavg",   label:"Mean pressure"},
+  {key:"mtemp_vavg", label:"Motor temp"},
+  {key:"stemp_vavg", label:"Spindle temp"},
+  {key:"btemp_vavg", label:"Bearing temp"},
+  {key:"duration_s", label:"Cycle duration"},
+];
+// Okabe-Ito colorblind-safe qualitative palette
+const PALETTE = ["#0072B2","#D55E00","#009E73","#CC79A7","#E69F00","#56B4E9","#F0E442","#999999"];
+function colorFor(i){
+  const base = PALETTE[i % PALETTE.length];
+  const shade = Math.floor(i / PALETTE.length);
+  if(shade === 0) return base;
+  // vary lightness slightly for repeats beyond 8 series
+  return shadeColor(base, shade % 2 === 0 ? 18 * shade : -18*shade);
+}
+function shadeColor(hex, percent){
+  const f = parseInt(hex.slice(1),16), t = percent<0?0:255, p = Math.abs(percent)/100;
+  const R = f>>16, G = f>>8&0x00FF, B = f&0x0000FF;
+  const nr = Math.round((t-R)*p)+R, ng = Math.round((t-G)*p)+G, nb = Math.round((t-B)*p)+B;
+  return "#" + (0x1000000 + nr*0x10000 + ng*0x100 + nb).toString(16).slice(1);
+}
+
+const poolByCycle = new Map(POOL.map(r => [r.cycle_index, r]));
+const poolIndices = POOL.map(r => r.cycle_index);
+
+/* ============================================================
+   Tabs + theme
+   ============================================================ */
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("view-" + btn.dataset.view).classList.add("active");
+    if(btn.dataset.view === "compare") Plotly.Plots.resize(document.getElementById("channelPlots"));
+  });
+});
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("click", () => {
+  const html = document.documentElement;
+  const dark = html.getAttribute("data-theme") === "dark";
+  html.setAttribute("data-theme", dark ? "light" : "dark");
+  themeToggle.textContent = dark ? "🌙 Dark" : "☀️ Light";
+  renderTrendChart();
+  renderChannelPlots();
+});
+
+/* ============================================================
+   Overview: stat cards
+   ============================================================ */
+function fmt(n, d=2){ return (n===null||n===undefined||Number.isNaN(n)) ? "–" : Number(n).toFixed(d); }
+
+function buildStatCards(){
+  document.getElementById("metaPill").textContent =
+    `${META.active_cycles.toLocaleString()} active / ${META.total_cycles.toLocaleString()} total cycles`;
+  const start = new Date(META.start_time), end = new Date(META.end_time);
+  const days = ((end-start)/86400000).toFixed(0);
+
+  const overallStats = {};
+  for(const m of TREND_METRICS){
+    let mean=[], p10=[], p90=[];
+    for(const row of TREND){
+      if(row[m.key]){ mean.push(row[m.key].mean); p10.push(row[m.key].p10); p90.push(row[m.key].p90); }
+    }
+    overallStats[m.key] = {
+      mean: mean.reduce((a,b)=>a+b,0)/mean.length,
+      min: Math.min(...p10), max: Math.max(...p90),
+    };
+  }
+
+  const grid = document.getElementById("statGrid");
+  grid.innerHTML = "";
+  const addCard = (label, value, range) => {
+    const el = document.createElement("div");
+    el.className = "stat-card";
+    el.innerHTML = `<div class="label">${label}</div><div class="value">${value}</div><div class="range">${range}</div>`;
+    grid.appendChild(el);
+  };
+  addCard("Test duration", `${days} days`, `${start.toISOString().slice(0,10)} → ${end.toISOString().slice(0,10)}`);
+  addCard("Active cycles", META.active_cycles.toLocaleString(), `of ${META.total_cycles.toLocaleString()} total`);
+  addCard("Peak velocity", fmt(overallStats.vel_vpeak.mean,0), `range ${fmt(overallStats.vel_vpeak.min,0)} – ${fmt(overallStats.vel_vpeak.max,0)} m/s`);
+  addCard("Stroke (max pos.)", fmt(overallStats.pos_vmax.mean,2), `range ${fmt(overallStats.pos_vmax.min,2)} – ${fmt(overallStats.pos_vmax.max,2)} m`);
+  addCard("Peak current", fmt(overallStats.cur_vpeak.mean,2), `range ${fmt(overallStats.cur_vpeak.min,2)} – ${fmt(overallStats.cur_vpeak.max,2)} A`);
+  addCard("Mean pressure", fmt(overallStats.prs_vavg.mean,0), `range ${fmt(overallStats.prs_vavg.min,0)} – ${fmt(overallStats.prs_vavg.max,0)} Pa`);
+  addCard("Motor temp.", fmt(overallStats.mtemp_vavg.mean,1)+" °C", `range ${fmt(overallStats.mtemp_vavg.min,1)} – ${fmt(overallStats.mtemp_vavg.max,1)} °C`);
+  addCard("Cycle duration", fmt(overallStats.duration_s.mean,2)+" s", `range ${fmt(overallStats.duration_s.min,2)} – ${fmt(overallStats.duration_s.max,2)} s`);
+}
+
+/* ============================================================
+   Overview: trend chart
+   ============================================================ */
+let activeTrendMetrics = new Set(["vel_vpeak", "pos_vmax"]);
+function buildTrendPicker(){
+  const el = document.getElementById("trendMetricPicker");
+  el.innerHTML = "";
+  TREND_METRICS.forEach(m => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (activeTrendMetrics.has(m.key) ? " active" : "");
+    chip.textContent = m.label;
+    chip.addEventListener("click", () => {
+      if(activeTrendMetrics.has(m.key)) activeTrendMetrics.delete(m.key);
+      else activeTrendMetrics.add(m.key);
+      buildTrendPicker();
+      renderTrendChart();
+    });
+    el.appendChild(chip);
+  });
+}
+
+function renderTrendChart(){
+  const x = TREND.map(r => r.cycle_index);
+  const traces = [];
+  const activeList = TREND_METRICS.filter(m => activeTrendMetrics.has(m.key));
+  const singleMetric = activeList.length === 1;
+
+  // Different metrics live on wildly different scales (e.g. velocity ~1e4
+  // vs position ~1e2), so with >1 metric selected we min-max normalize
+  // each to 0-100% of its own observed range for a readable combined
+  // chart; hover always shows the true raw value + unit.
+  activeList.forEach((m, i) => {
+    const color = colorFor(i);
+    const mean = TREND.map(r => r[m.key] ? r[m.key].mean : null);
+    const p10 = TREND.map(r => r[m.key] ? r[m.key].p10 : null);
+    const p90 = TREND.map(r => r[m.key] ? r[m.key].p90 : null);
+
+    let yMean = mean, yP10 = p10, yP90 = p90, yTitle = m.label;
+    if(!singleMetric){
+      const all = p10.concat(p90).filter(v => v !== null && !Number.isNaN(v));
+      const lo = Math.min(...all), hi = Math.max(...all);
+      const scale = v => (v===null||Number.isNaN(v)) ? null : (hi===lo ? 50 : (v-lo)/(hi-lo)*100);
+      yMean = mean.map(scale); yP10 = p10.map(scale); yP90 = p90.map(scale);
+    }
+    traces.push({x, y:yP90, mode:"lines", line:{width:0}, showlegend:false, hoverinfo:"skip",
+      legendgroup:m.key});
+    traces.push({x, y:yP10, mode:"lines", line:{width:0}, fill:"tonexty",
+      fillcolor:color+"22", showlegend:false, hoverinfo:"skip", legendgroup:m.key});
+    traces.push({x, y:yMean, customdata:mean, mode:"lines", line:{width:2, color}, name:m.label,
+      legendgroup:m.key,
+      hovertemplate:`cycle %{x}<br>${m.label}: %{customdata:.3f}<extra></extra>`});
+  });
+
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  Plotly.react("trendChart", traces, {
+    margin:{t:10,r:20,l:55,b:40},
+    xaxis:{title:"Cycle index (chronological, active cycles only)", gridcolor: dark?"#2b3542":"#eef1f4"},
+    yaxis:{title: singleMetric ? activeList[0].label : "Normalized (% of each metric's own min–max range)",
+           gridcolor: dark?"#2b3542":"#eef1f4"},
+    legend:{orientation:"h", y:-0.25},
+    paper_bgcolor:"rgba(0,0,0,0)", plot_bgcolor:"rgba(0,0,0,0)",
+    font:{color: dark? "#e6edf3":"#1b2430"},
+  }, {responsive:true, displaylogo:false});
+}
+
+/* ============================================================
+   Comparison view
+   ============================================================ */
+let selected = [];       // array of cycle_index, in selection order
+let hidden = new Set();  // cycle_index hidden via legend
+let highlighted = null;  // cycle_index highlighted
+let activeChannels = new Set(["vel","pos","cur"]);
+let refCycle = poolIndices[0];
+
+function nearestPoolCycle(target){
+  let best = poolIndices[0], bd = Infinity;
+  for(const c of poolIndices){ const d = Math.abs(c-target); if(d<bd){bd=d; best=c;} }
+  return best;
+}
+
+function buildChannelPicker(){
+  const el = document.getElementById("channelPicker");
+  el.innerHTML = "";
+  CHANNELS.forEach(ch => {
+    const chip = document.createElement("div");
+    chip.className = "chip" + (activeChannels.has(ch.key) ? " active" : "");
+    chip.textContent = ch.label;
+    chip.addEventListener("click", () => {
+      if(activeChannels.has(ch.key)) activeChannels.delete(ch.key);
+      else activeChannels.add(ch.key);
+      buildChannelPicker();
+      renderChannelPlots();
+    });
+    el.appendChild(chip);
+  });
+}
+
+function addCycles(ids){
+  for(const raw of ids){
+    const n = parseInt(String(raw).trim(), 10);
+    if(Number.isNaN(n)) continue;
+    const c = nearestPoolCycle(n);
+    if(!selected.includes(c)) selected.push(c);
+  }
+  refreshCompare();
+}
+
+document.getElementById("addIdsBtn").addEventListener("click", () => {
+  const raw = document.getElementById("cycleIdsInput").value;
+  if(!raw.trim()) return;
+  addCycles(raw.split(","));
+  document.getElementById("cycleIdsInput").value = "";
+});
+document.getElementById("clearSelBtn").addEventListener("click", () => {
+  selected = []; hidden.clear(); highlighted = null; refreshCompare();
+});
+document.getElementById("randomBtn").addEventListener("click", () => {
+  const n = Math.max(1, Math.min(200, parseInt(document.getElementById("randomNInput").value, 10) || 1));
+  const pool = [...poolIndices];
+  const picked = [];
+  for(let i=0;i<n && pool.length;i++){
+    const j = Math.floor(Math.random()*pool.length);
+    picked.push(pool.splice(j,1)[0]);
+  }
+  selected = picked.sort((a,b)=>a-b);
+  hidden.clear(); highlighted = null;
+  refreshCompare();
+});
+document.getElementById("pickFirstBtn").addEventListener("click", () => {
+  refCycle = poolIndices[0];
+  document.getElementById("refHint").textContent = `Reference = cycle ${refCycle}`;
+  renderMetricsTable();
+});
+document.getElementById("opacitySlider").addEventListener("input", (e) => {
+  document.getElementById("opacityVal").textContent = e.target.value;
+  renderChannelPlots();
+});
+document.getElementById("resetViewBtn").addEventListener("click", () => {
+  document.querySelectorAll("#channelPlots .channel-plot").forEach(div => Plotly.relayout(div.id, {"xaxis.autorange":true, "yaxis.autorange":true}));
+});
+
+function refreshCompare(){
+  document.getElementById("selCount").textContent = selected.length;
+  document.getElementById("poolSizeHint").textContent = `${META.pool_size.toLocaleString()}`;
+  document.getElementById("refHint").textContent = `Reference = cycle ${refCycle}`;
+  renderLegendList();
+  renderChannelPlots();
+  renderMetricsTable();
+}
+
+function renderLegendList(){
+  const el = document.getElementById("legendList");
+  el.innerHTML = "";
+  selected.forEach((c, i) => {
+    const rec = poolByCycle.get(c);
+    const item = document.createElement("div");
+    item.className = "toggle-item" + (hidden.has(c) ? " dim" : "");
+    const color = colorFor(i);
+    item.innerHTML = `<span class="swatch" style="background:${color}"></span>
+      <span class="cid">#${c}</span>
+      <span style="color:var(--muted); font-size:11px;">${rec ? new Date(rec.t).toISOString().slice(0,10) : ""}</span>`;
+    item.addEventListener("click", (ev) => {
+      if(ev.shiftKey){
+        if(hidden.has(c)) hidden.delete(c); else hidden.add(c);
+      } else {
+        highlighted = highlighted === c ? null : c;
+      }
+      renderLegendList();
+      renderChannelPlots();
+    });
+    el.appendChild(item);
+  });
+  const hint = document.createElement("div");
+  hint.className = "hint";
+  hint.style.marginTop = "6px";
+  hint.textContent = "Click to highlight; shift-click to show/hide.";
+  el.appendChild(hint);
+}
+
+function renderChannelPlots(){
+  const container = document.getElementById("channelPlots");
+  const opacity = parseFloat(document.getElementById("opacitySlider").value);
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  const gridcolor = dark ? "#2b3542" : "#eef1f4";
+  const fontcolor = dark ? "#e6edf3" : "#1b2430";
+
+  const wantedChannels = CHANNELS.filter(ch => activeChannels.has(ch.key));
+  container.innerHTML = "";
+  wantedChannels.forEach(ch => {
+    const div = document.createElement("div");
+    div.className = "channel-plot";
+    div.id = "plot-" + ch.key;
+    div.style.height = "260px";
+    container.appendChild(div);
+  });
+
+  wantedChannels.forEach(ch => {
+    const traces = [];
+    selected.forEach((c, i) => {
+      const rec = poolByCycle.get(c);
+      if(!rec || !rec.wave[ch.key]) return;
+      const isHidden = hidden.has(c);
+      const isHi = highlighted === c;
+      const dim = highlighted !== null && !isHi;
+      traces.push({
+        x: rec.wave[ch.key].t, y: rec.wave[ch.key].v, mode:"lines",
+        name:`#${c}`, line:{color: colorFor(i), width: isHi?3:1.4},
+        opacity: isHidden ? 0 : (isHi ? 1 : (dim ? opacity*0.25 : opacity)),
+        hovertemplate:`cycle ${c}<br>t=%{x:.0f} ms<br>${ch.label}=%{y:.3f} ${ch.unit}<extra></extra>`,
+      });
+    });
+    Plotly.react("plot-" + ch.key, traces, {
+      margin:{t:26,r:16,l:55,b:34},
+      title:{text:`${ch.label} (${ch.unit})`, font:{size:12.5, color:fontcolor}},
+      xaxis:{title: wantedChannels[wantedChannels.length-1]===ch ? "Time within cycle (ms)":"", gridcolor},
+      yaxis:{title:ch.unit, gridcolor},
+      showlegend:false,
+      paper_bgcolor:"rgba(0,0,0,0)", plot_bgcolor:"rgba(0,0,0,0)",
+      font:{color:fontcolor},
+    }, {responsive:true, displaylogo:false, scrollZoom:true,
+        modeBarButtonsToRemove:["lasso2d","select2d"]});
+  });
+}
+
+function renderMetricsTable(){
+  const tbody = document.querySelector("#metricsTable tbody");
+  tbody.innerHTML = "";
+  const ref = poolByCycle.get(refCycle);
+  selected.forEach(c => {
+    const rec = poolByCycle.get(c);
+    if(!rec) return;
+    const dStroke = ref ? (rec.stroke - ref.stroke) : null;
+    const dVel = ref ? (rec.vel_peak - ref.vel_peak) : null;
+    const dCur = ref ? (rec.cur_peak - ref.cur_peak) : null;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>#${c}</td><td>${new Date(rec.t).toISOString().slice(0,10)}</td>
+      <td>${fmt(rec.duration_s,2)}</td><td>${fmt(rec.vel_peak,0)}</td><td>${fmt(rec.stroke,3)}</td>
+      <td>${fmt(rec.cur_peak,2)}</td><td>${fmt(rec.loop_area,4)}</td>
+      <td>${fmt(dStroke,3)}</td><td>${fmt(dVel,0)}</td><td>${fmt(dCur,2)}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+/* ============================================================
+   Init
+   ============================================================ */
+buildStatCards();
+buildTrendPicker();
+renderTrendChart();
+buildChannelPicker();
+document.getElementById("poolSizeHint").textContent = `${META.pool_size.toLocaleString()}`;
+document.getElementById("refHint").textContent = `Reference = cycle ${refCycle}`;
+// seed a default selection so the comparison view isn't empty on first visit
+selected = [poolIndices[0], poolIndices[Math.floor(poolIndices.length/2)], poolIndices[poolIndices.length-1]];
+refreshCompare();
+</script>
+</body>
+</html>
