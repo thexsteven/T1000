@@ -1,31 +1,113 @@
-\chapter{Einleitung}
+\chapter{Introduction}
 \label{kap:Einleitung}
 \renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
 
-% Hinweis: Beispiele zum Einfuegen von Tabellen, Formeln, Bildern, Quellen usw.
-% findest du in content/00_Hilfe_Beispiele.tex (wird nicht mitgedruckt).
+% Note: examples for inserting tables, formulas, images, sources, etc.
+% can be found in content/00_Hilfe_Beispiele.tex (not included in the printed document).
 
-\section{Motivation und Problemstellung}
+\section{Motivation and Problem Statement}
 \label{sec:Einleitung_Motivation_Problemstellung}
-% Warum ist das Thema relevant? Ausgangssituation beim dualen Partner,
-% Bedeutung zuverlaessiger Elektro-Aktuatoren, offene Fragestellung.
-% Jede Aussage mit Quelle belegen, keine unbelegten Floskeln.
+% TODO: back up every key statement in this section with a source (\cite{...}).
 
-\section{Zielsetzung der Arbeit}
+Before an electrical actuator is released for series production, it has to prove that it
+can withstand the number of operating cycles specified for its intended application.
+To verify this, Emerson Laatzen runs endurance tests on a linear spindle-driven
+actuator: a motor turns a spindle (ball screw) that moves a carriage back and forth
+between its two end positions, and this forward-and-back motion is repeated thousands
+of times in a row while one or more sensors continuously record a signal such as motor
+current, carriage position, or force. Over the course of such a test, the recorded
+signal can slowly change: the spindle nut and linear guide wear in, friction increases,
+or backlash develops between the spindle and the carriage. These changes are usually
+small from one cycle to the next, but they can add up to a relevant deviation over the
+full service life of the actuator, and it is exactly this kind of gradual change that an
+endurance test is meant to reveal.
+
+At the moment, the data produced by these tests is stored as one long, continuous time
+series per test run, often covering several thousand cycles and hundreds of thousands
+of data points. Engineers currently inspect this data either as raw numbers in a
+spreadsheet or as a single plot that stretches all cycles out one after another on the
+same time axis. Both approaches make it hard to answer the question that actually
+matters for reliability engineering: has the signal shape changed between the first and
+the last cycle of the test? On a fully stretched-out plot, a slow drift across a few
+thousand cycles is visually compressed into a barely noticeable slope, and a change in
+the shape of a single cycle is completely lost. Comparing individual cycles by hand --
+scrolling back and forth in a spreadsheet -- does not scale to datasets of this size
+either.
+
+A more direct way to make this kind of change visible is to overlay the individual
+cycles of a test on top of each other instead of laying them out in sequence. If every
+cycle is plotted on the same, normalized cycle-time axis, any deviation in amplitude,
+shape, or timing between an early and a late cycle becomes visible at a glance, in the
+same way that overlaying successive waveforms on an oscilloscope reveals a drifting
+signal that a single continuous trace would not. No such visualization currently exists
+for the endurance test data at Emerson Laatzen, which is the starting point for this
+project.
+
+\section{Objective of the Thesis}
 \label{sec:Einleitung_Zielsetzung}
-% Was soll am Ende erreicht sein? Praezises, ueberpruefbares Ziel:
-% z.B. Vergleich ausgewaehlter Lebensdauerversuche und Ableitung von Empfehlungen.
 
-\section{Forschungsfrage}
+The aim of this project is to design and implement a tool that takes the raw signal
+data recorded during a life-cycle (endurance) test and visualizes it as an overlay of
+its individual cycles, so that the recorded signal can be compared directly across the
+service life of the tested actuator. To achieve this, the tool has to (1) read the raw
+time series exported from the test rig, (2) automatically split the continuous signal
+into individual cycles and separate them by motion phase (forward stroke vs.\ return
+stroke), since overlaying cycles that move in opposite directions would make the
+resulting plot meaningless, (3) align cycles of the same phase on a common, normalized
+time axis so that cycles of slightly different duration remain comparable, and (4) plot
+all aligned cycles in a single, interactive chart, complemented by a lifetime trend view
+that aggregates key metrics (e.g.\ peak velocity, stroke length) over the full test
+duration so that gradual drift becomes visible without having to inspect individual
+cycles one by one. The tool is developed and evaluated as a case study against one
+representative endurance test performed at Emerson Laatzen (test run D32/Versuch1,
+comprising roughly 8.6 million recorded cycles over six months); extending it to other
+test rigs, actuator types, or signal formats is discussed as an outlook in Chapter 6 but
+is not part of this work.
+
+\section{Research Question}
 \label{sec:Einleitung_Fragestellung}
-% Eine (oder wenige) klar formulierte Leitfrage(n), die die Arbeit beantwortet.
 
-\section{Abgrenzung}
+The central question guiding this project is: \emph{How can the individual cycles of a
+life-cycle endurance test be automatically segmented, aligned, and overlaid so that
+changes in the underlying signal across the tested product's service life become
+visible?} This raises two more specific, technical sub-questions that have to be
+answered along the way: first, which segmentation and alignment strategy -- for example
+detecting a recurring trigger point in the signal versus resampling each cycle onto a
+fixed-length axis -- keeps cycles of varying duration comparable without distorting the
+signal shape that is supposed to be evaluated? Second, a single endurance-test cycle
+typically contains two opposite motion phases (the actuator moving out and moving back);
+how must these phases be identified and separated so that only cycles of the same phase
+are overlaid, since directly overlaying opposite-direction cycles would suggest a large
+deviation where none actually exists?
+
+\section{Scope}
 \label{sec:Einleitung_Abgrenzung}
-% Was wird betrachtet, was bewusst nicht? (z.B. bestimmte Aktuator-Bauart,
-% ausgewaehlte Versuchsarten, Rahmenbedingungen).
 
-\section{Aufbau der Arbeit}
+This project focuses on the visualization of cyclic endurance test data, not on
+automatically judging whether a given deviation constitutes a pass or a fail; that
+assessment remains with the responsible engineer. Likewise, the project does not aim to
+determine the physical root cause of an observed drift (e.g.\ wear of the spindle nut
+or the linear guide)
+or to build a predictive model that forecasts the remaining service life of an
+actuator -- both are possible follow-up topics but are out of scope here. The
+implementation is developed and evaluated as a case study against a single endurance
+test run available at Emerson Laatzen (D32/Versuch1, a linear spindle-driven actuator);
+it is not built or validated as a generic tool for the full range of test rigs,
+actuator types, and signal formats used across Emerson Laatzen. General applicability
+beyond this one dataset is a plausible direction for future work (see Chapter 6) but is
+not evaluated as part of this thesis.
+
+\section{Structure of the Thesis}
 \label{sec:Einleitung_Aufbau}
-% Kurzer Ueberblick, welches Kapitel was behandelt (roter Faden).
+
+Chapter 2 introduces the theoretical foundations required for the remainder of this
+work, covering life-cycle (endurance) testing, the relevant signal types, and the data
+formats and visualization concepts used to process them. Chapter 3 describes the
+methodology behind the developed tool, from reading and cleaning the raw test data to
+the segmentation, alignment, and overlay of individual cycles. Chapter 4 applies this
+methodology to the D32/Versuch1 endurance test data set and evaluates the resulting
+visualizations. Chapter 5 discusses the results and derives recommendations for using
+the tool in day-to-day test evaluation. Chapter 6 concludes the thesis and gives an
+outlook on possible extensions of the approach, such as generalizing the tool to other
+endurance tests, actuator types, or signal formats.

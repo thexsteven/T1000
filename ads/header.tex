@@ -1,16 +1,16 @@
 %!TEX root = ../main.tex
 
 %%**************************************************************
-%% Vorlage fuer Bachelorarbeiten (o.ä.) der Fakultät Technik an der DHBW Stuttgart/Bad Mergentheim
+%% Template for bachelor theses (etc.) of the Faculty of Technology at DHBW Stuttgart/Bad Mergentheim
 %%
-%% Autor: Tobias Dreher, Yves Fischer
-%% Datum: 06.07.2011
+%% Author: Tobias Dreher, Yves Fischer
+%% Date: 06.07.2011
 %%
-%% Autor: Michael Gruben
-%% Datum: 15.05.2013
+%% Author: Michael Gruben
+%% Date: 15.05.2013
 %%
-%% Autor: Ioanna Theofilou
-%% Datum: 10.02.2026
+%% Author: Ioanna Theofilou
+%% Date: 10.02.2026
 %%**************************************************************
 
 \usepackage{fullpage}
@@ -31,23 +31,23 @@
 
 \usepackage{makeidx}
 
-\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 
-\usepackage[babel,german=quotes]{csquotes}
+\usepackage[babel]{csquotes}
 
-% Deckblatt
+% Cover page
 \usepackage{longtable}
 \setlength{\tabcolsep}{10pt}
-\renewcommand{\arraystretch}{1.5} 
+\renewcommand{\arraystretch}{1.5}
 
-% Grafiken
+% Graphics
 \usepackage{graphicx}
 
-% Mathe
+% Math
 %\usepackage{amsmath}
 %\usepackage{amssymb}
 
-% Seite drehen
+% Rotate page
 %\usepackage{rotating}
 %\usepackage{lscape}
 
@@ -55,28 +55,28 @@
 \definecolor{LinkColor}{rgb}{0,0,0.2}
 \definecolor{ListingBackground}{rgb}{0.92,0.92,0.92}
 
-% Arbeitstitel (6-12 Worte, praezise, ohne Firmennamen/Abkuerzungen) - mit Betreuer final abstimmen
-\newcommand{\pdftitel}{Vergleich verschiedener Lebensdauerversuche von Elektro-Aktuatoren}
+% Working title (6-12 words, precise, without company names/abbreviations) - confirm with supervisor
+\newcommand{\pdftitel}{Cycle-Overlay Visualization of Endurance Test Data for Electro-Actuators}
 \newcommand{\autor}{Steven Braun}
-\newcommand{\arbeit}{Bachelorarbeit}
+\newcommand{\arbeit}{Bachelor's Thesis}
 
-% Für das Deckblatt + Autor auf den Seiten
+% For the cover page + author on the pages
 \title{\titel}
 \author{Steven Braun}
 \date{\datum}
 
-% PDF Einstellungen
+% PDF settings
 \usepackage[%
 	pdftitle={\pdftitel},
 	pdfauthor={\autor},
 	pdfsubject={\arbeit},
 	pdfcreator={pdflatex, LaTeX with KOMA-Script},
-	pdfpagemode=UseOutlines, 
-	pdfdisplaydoctitle=true, 
-	pdflang=de 
-]{hyperref} 
+	pdfpagemode=UseOutlines,
+	pdfdisplaydoctitle=true,
+	pdflang=en-US
+]{hyperref}
 
-% HTML Links
+% HTML links
 \hypersetup{
 	colorlinks=true,
 	linkcolor=LinkColor, 
@@ -87,116 +87,116 @@
 	bookmarksnumbered=true
 }
 
-% % Literaturverweise nach Harvard
+% % Harvard-style citations
 % \usepackage[dcucite]{harvard}
-% \renewcommand{\harvardand}{und}
+% \renewcommand{\harvardand}{and}
 
-% Literaturverweise Biblatex
+% Biblatex citations
 \usepackage[style=authoryear, maxcitenames=1, maxbibnames=99]{biblatex}
 \addbibresource{ArbeitBib.bib}
 
-\DefineBibliographyStrings{ngerman}{
+\DefineBibliographyStrings{english}{
   andothers = {\textit{et al.}}
 }
 
-% Schriftart
+% Font
 %\usepackage{goudysans}
 %\usepackage{lmodern}
 %\usepackage{libertine}
-\usepackage{palatino} 
+\usepackage{palatino}
 
 \clubpenalty=10000
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
-% Listings (Quellcode) hier muss für jede Programmiersprache ein eigenes \lstloadlanguages und \lsset gemacht werden. Siehe unten Beispiel.
+% Listings (source code): a separate \lstloadlanguages and \lstset must be set up for each programming language. See example below.
 \usepackage{listings}
 \lstloadlanguages{Java}
 \lstloadlanguages{python}
 \lstset{%
-	language=PHP,		 	 % Sprache des Quellcodes
-	%numbers=left,           % Zelennummern links
-	stepnumber=1,            % Jede Zeile nummerieren.
-	numbersep=5pt,           % 5pt Abstand zum Quellcode
-	numberstyle=\tiny,       % Zeichengrösse 'tiny' für die Nummern.
-	breaklines=true,         % Zeilen umbrechen wenn notwendig.
-	breakautoindent=true,    % Nach dem Zeilenumbruch Zeile einrücken.
-	postbreak=\space,        % Bei Leerzeichen umbrechen.
-	tabsize=2,               % Tabulatorgrösse 2
-	basicstyle=\ttfamily\footnotesize, % Nichtproportionale Schrift, klein für den Quellcode
-	showspaces=false,        % Leerzeichen nicht anzeigen.
-	showstringspaces=false,  % Leerzeichen auch in Strings ('') nicht anzeigen.
-	extendedchars=true,      % Alle Zeichen vom Latin1 Zeichensatz anzeigen.
+	language=PHP,		 	 % language of the source code
+	%numbers=left,           % line numbers on the left
+	stepnumber=1,            % number every line.
+	numbersep=5pt,           % 5pt spacing to the source code
+	numberstyle=\tiny,       % 'tiny' font size for the numbers.
+	breaklines=true,         % wrap lines if necessary.
+	breakautoindent=true,    % indent the line after a line break.
+	postbreak=\space,        % break at spaces.
+	tabsize=2,               % tab size 2
+	basicstyle=\ttfamily\footnotesize, % non-proportional font, small, for the source code
+	showspaces=false,        % do not display spaces.
+	showstringspaces=false,  % do not display spaces in strings ('') either.
+	extendedchars=true,      % display all characters from the Latin1 character set.
 	captionpos=b,            % sets the caption-position to bottom
-	backgroundcolor=\color{ListingBackground} % Hintergrundfarbe des Quellcodes setzen.
+	backgroundcolor=\color{ListingBackground} % set the background color of the source code.
 }
 
-% Glossar
+% Glossary
 \usepackage[
-	nonumberlist, %keine Seitenzahlen anzeigen
-	%section,     %im Inhaltsverzeichnis auf section-Ebene erscheinen
-	toc,          %Einträge im Inhaltsverzeichnis
+	nonumberlist, %do not display page numbers
+	%section,     %appear at section level in the table of contents
+	toc,          %entries in the table of contents
 ]{glossaries}
 
 \usepackage{tocloft}
 
-%Akronyme
+%Acronyms
 \usepackage[printonlyused]{acronym}
 
-% Symbolverzeichnis
+% List of symbols
 \usepackage{nomencl}
-\renewcommand{\nomname}{Symbolverzeichnis}
+\renewcommand{\nomname}{List of Symbols}
 \makenomenclature
 
-% Formelverzeichnis
+% List of formulas
 \usepackage{tocloft}
-\newlistof{formulas}{for}{Formelverzeichnis}
+\newlistof{formulas}{for}{List of Formulas}
 
-% Algorithmusverzeichnis
+% List of algorithms
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\floatname{algorithm}{Algorithmus}
-\renewcommand{\listalgorithmname}{Algorithmusverzeichnis}
+\floatname{algorithm}{Algorithm}
+\renewcommand{\listalgorithmname}{List of Algorithms}
 
-% Quellcodeverzeichnis
+% List of listings
 \usepackage{listings}
-\renewcommand\lstlistingname{Quellcode}
-\renewcommand\lstlistlistingname{Quellcodeverzeichnis}
+\renewcommand\lstlistingname{Listing}
+\renewcommand\lstlistlistingname{List of Listings}
 
 
-% Fussnoten
+% Footnotes
 \usepackage[perpage, hang, multiple, stable]{footmisc}
 
-%Bildpfad
+%Image path
 \graphicspath{{images/}}
 
-%nur ein latex-Durchlauf für die Aktualisierung von Verzeichnissen nötig
+%only one LaTeX run needed to update the lists
 \usepackage{bookmark}
 
-%Bilder, Tabellen, usw\ldots lassen sich mit H an genau der definierten Stelle platzieren
+%Images, tables, etc. can be placed exactly at the defined position with H
 \usepackage{float}
 
-% für die vertikale Platzierung von Text in Tabellen
+% for vertical placement of text in tables
 \usepackage{array}
 
-% für die Darstellung des Euro-Symbols
+% for displaying the Euro symbol
 \usepackage[right]{eurosym}
 
-% für textumflossene Grafiken
+% for text-wrapped graphics
 \usepackage{wrapfig}
 
-% eine Kommentarumgebung "k" (Handhabe mit \begin{k}<Kommentartext>\end{k},
-% Kommentare werden rot gedruckt). Wird \% vor excludecomment{k} entfernt,
-% werden keine Kommentare mehr gedruckt.
+% a comment environment "k" (use with \begin{k}<comment text>\end{k},
+% comments are printed in red). If the \% before excludecomment{k} is removed,
+% comments are no longer printed.
 \usepackage{comment}
 \specialcomment{k}{\begingroup\color{red}}{\endgroup}
 %\excludecomment{k}
 
-% individuelle Befehle um auf Kapitel, Sections, Abbildungen und Referenzen allgemein zu verweisen.
-\newcommand{\refKap}[1]{Kapitel \ref{#1} auf Seite \pageref{#1} (\nameref{#1})}
-\newcommand{\refSec}[1]{Punkt \ref{#1}}
-\newcommand{\refAbb}[1]{Abbildung \ref{#1}}
-\newcommand{\fullref}[1]{\ref{#1} auf Seite \pageref{#1} (\nameref{#1})}
+% custom commands to reference chapters, sections, figures, and cross-references in general.
+\newcommand{\refKap}[1]{Chapter \ref{#1} on page \pageref{#1} (\nameref{#1})}
+\newcommand{\refSec}[1]{Section \ref{#1}}
+\newcommand{\refAbb}[1]{Figure \ref{#1}}
+\newcommand{\fullref}[1]{\ref{#1} on page \pageref{#1} (\nameref{#1})}
 
 %moves numbers to the right
 \usepackage{fancyhdr}
@@ -216,7 +216,7 @@
     \renewcommand{\footrulewidth}{0.6pt}
 }
 
-% ============= Einstellung für die Größen der verschiedenen Überschriften =============
+% ============= Settings for the sizes of the various headings =============
 \setkomafont{chapter}{\LARGE}
 \setkomafont{section}{\Large}
 \setkomafont{subsection}{\large}
@@ -225,20 +225,20 @@
 \setkomafont{subparagraph}{\small}
 
 
-% Fragebogen
-\usepackage{amssymb}     % Für Kästchen (\square)
-\usepackage{enumitem}    % Für flexible Aufzählungen
+% Questionnaire
+\usepackage{amssymb}     % For checkboxes (\square)
+\usepackage{enumitem}    % For flexible lists
 
 
-% PDF einbinden
-\usepackage{graphicx} 
+% Embed PDF
+\usepackage{graphicx}
 \usepackage{subcaption}
 
 
-% Neues Anhangsverzeichnis definieren
+% Define a new list of appendices
 \newlistof{anhangverzeichnis}{apc}{}
 \newcommand{\anhang}[1]{
   \refstepcounter{chapter}
-  \chapter*{Anhang \thechapter: #1}
-  \addcontentsline{apc}{chapter}{Anhang \thechapter: #1}
+  \chapter*{Appendix \thechapter: #1}
+  \addcontentsline{apc}{chapter}{Appendix \thechapter: #1}
 }

@@ -7,23 +7,23 @@
 	headsepline,
 	footsepline,
 	abstracton,
-	ngerman,
+	english,
 ]{scrreprt}
 \input{ads/header}
 
 
 \newcommand{\titel}{\pdftitel}
-% \newcommand{\titel}{zweite Zeile des Titels} % Wenn der Titel von dem PDF Titel abweicht.
+% \newcommand{\titel}{second line of the title} % If the title differs from the PDF title.
 
-% ---- Angaben fuers Deckblatt: bitte die Platzhalter [ ... ] ausfuellen ----
+% ---- Cover page details: please fill in the placeholders [ ... ] ----
 \newcommand{\martrikelnr}{6850277}
 \newcommand{\kurs}{T-INF25}
 \newcommand{\datumAbgabe}{11.09.2026}
 \newcommand{\firma}{Emerson Electric}
 \newcommand{\firmenort}{Laatzen}
-\newcommand{\abgabeort}{Ort}
+\newcommand{\abgabeort}{Place}
 \newcommand{\abschluss}{Bachelor of Science}
-\newcommand{\studiengang}{Angewandte Informatik}
+\newcommand{\studiengang}{Applied Computer Science}
 \newcommand{\dhbw}{Bad Mergentheim}
 \newcommand{\betreuer}{Jan Edler}
 \newcommand{\gutachter}{Veronika Lesch}
@@ -44,9 +44,6 @@
 
 	\renewcommand{\thepage}{\Roman{page}}
 	\setcounter{page}{1}
-
-        \input{ads/genderdisclaimer}
-        \newpage
 
 	\input{ads/sperrvermerk}
 	\newpage
@@ -80,8 +77,8 @@
     \input{content/06_Fazit}
 
 % =============================================================== !!!!!!!!!!!!!!!!!!!!!!!!!!!! =============================================================== %
-    % WICHTIG: Hier muss die Seitenzahl individuell angepasst werden.
-    % Es muss direkt an die letzte Seitenzahl aus den Verzeichnissen angeknüpft werden. Z.B. wenn die Verzeichnisse auf Seite 8 Enden muss es hier mit 9 weitergehen
+    % IMPORTANT: The page number must be adjusted individually here.
+    % It must continue directly from the last page number of the front matter lists. E.g. if the lists end on page 8, it must continue here with 9.
 	\clearpage
 	\pagenumbering{Roman}
     \setcounter{page}{9}
@@ -89,15 +86,15 @@
 
 	\cleardoublepage
 	\phantomsection \label{listoflit}
-	\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+	\addcontentsline{toc}{chapter}{Bibliography}
 
 	\printbibliography
 
     \appendix
     \renewcommand{\thechapter}{\arabic{chapter}}
 
-    \chapter*{Anhang}
-    \addcontentsline{toc}{chapter}{Anhang}
+    \chapter*{Appendix}
+    \addcontentsline{toc}{chapter}{Appendix}
     \listofanhangverzeichnis
     \newpage
     \input{ads/Anhang/All}
