@@ -44,3 +44,6 @@ _minted*/
 # Kompiliertes PDF (wird neu gebaut). Zeile loeschen/auskommentieren,
 # falls du das fertige main.pdf doch mit im Repo haben willst.
 main.pdf
+
+# Beispieldateien
+examples/
