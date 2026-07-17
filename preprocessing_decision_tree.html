@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preprocessing Decision Tree — Pool of Useful Cycles</title>
+<style>
+:root{
+  --bg:#f5f7fa; --card:#ffffff; --ink:#1a2332; --muted:#5c6b80; --line:#dde4ec;
+  --accent:#0f62fe; --accent-soft:#e8f0fe;
+  --ok:#1a7f37; --ok-bg:#e6f4ea;
+  --warn:#9a6700; --warn-bg:#fff3d6;
+  --prop:#0550ae; --prop-bg:#dbe9ff;
+  --pend:#6f42c1; --pend-bg:#f1e8ff;
+  --rej:#b42318; --rej-bg:#fde8e6;
+  --mono:'Consolas','SF Mono',Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.55;padding-bottom:80px}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:28px 0 20px;margin-bottom:24px}
+header h1{font-size:1.55rem;font-weight:700;letter-spacing:-.01em}
+header .sub{color:var(--muted);margin-top:6px;font-size:.95rem}
+.meta{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:.82rem;color:var(--muted)}
+.meta span b{color:var(--ink);font-weight:600}
+
+.badge{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.02em;white-space:nowrap;vertical-align:middle}
+.b-ok{background:var(--ok-bg);color:var(--ok)}
+.b-warn{background:var(--warn-bg);color:var(--warn)}
+.b-prop{background:var(--prop-bg);color:var(--prop)}
+.b-pend{background:var(--pend-bg);color:var(--pend)}
+
+.legend{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:22px}
+.legend h2{font-size:.95rem;margin-bottom:10px}
+.legend .row{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.85rem;color:var(--muted)}
+.legend .row div{display:flex;align-items:center;gap:8px}
+
+.toolbar{display:flex;justify-content:flex-end;gap:10px;margin-bottom:14px}
+.toolbar button{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 14px;font-size:.83rem;cursor:pointer;color:var(--ink);font-weight:600;transition:all .15s}
+.toolbar button:hover{border-color:var(--accent);color:var(--accent)}
+
+.level{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:0;overflow:hidden}
+.level-head{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px;background:linear-gradient(to right,var(--accent-soft),transparent 60%)}
+.level-head .num{font-family:var(--mono);font-weight:700;color:var(--accent);font-size:.95rem;white-space:nowrap}
+.level-head h2{font-size:1.08rem;font-weight:700}
+.level-head .q{color:var(--muted);font-size:.85rem;margin-left:auto;font-style:italic;text-align:right}
+.nodes{padding:10px 14px 14px}
+
+.node{border:1px solid var(--line);border-radius:10px;margin-top:10px;overflow:hidden;transition:border-color .15s}
+.node.open{border-color:var(--accent)}
+.node-head{display:flex;align-items:center;gap:12px;padding:12px 16px;cursor:pointer;user-select:none;background:#fbfcfe}
+.node-head:hover{background:var(--accent-soft)}
+.node-head .arrow{font-size:.7rem;color:var(--muted);transition:transform .2s;flex-shrink:0}
+.node.open .node-head .arrow{transform:rotate(90deg)}
+.node-head .title{font-weight:600;font-size:.93rem;flex:1}
+.node-head .crit{font-family:var(--mono);font-size:.78rem;color:var(--accent);background:var(--accent-soft);padding:2px 8px;border-radius:6px;white-space:nowrap}
+.node-body{display:none;padding:6px 18px 16px;border-top:1px dashed var(--line);font-size:.89rem}
+.node.open .node-body{display:block}
+
+.field{margin-top:12px}
+.field .lab{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+.field p{color:var(--ink)}
+.src{font-family:var(--mono);font-size:.8rem;background:#f0f3f8;border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;white-space:pre;line-height:1.7;color:#24384f}
+.src b{color:var(--accent)}
+.evid{background:#f6faf7;border:1px solid #d3e8d8;border-radius:8px;padding:10px 12px;font-size:.85rem}
+.evid code{font-family:var(--mono);font-size:.8rem}
+.openq{background:var(--warn-bg);border:1px solid #f0dfad;border-radius:8px;padding:10px 12px;font-size:.85rem;color:#6e4d00}
+
+.reject{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:.8rem;color:var(--rej)}
+.reject .tag{background:var(--rej-bg);color:var(--rej);font-weight:700;font-size:.72rem;padding:2px 9px;border-radius:20px}
+
+.connector{display:flex;flex-direction:column;align-items:center;padding:8px 0;color:var(--muted)}
+.connector .stem{width:2px;height:16px;background:var(--line)}
+.connector .yes{font-size:.72rem;font-weight:700;color:var(--ok);background:var(--ok-bg);padding:1px 10px;border-radius:20px;margin:3px 0}
+
+.pool{background:var(--ok-bg);border:2px solid #bbdec4;border-radius:14px;padding:22px;text-align:center;margin-bottom:26px}
+.pool h2{color:var(--ok);font-size:1.2rem}
+.pool p{color:#2c5e3a;font-size:.88rem;margin-top:6px}
+
+section.extra{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:22px}
+section.extra h2{font-size:1.05rem;margin-bottom:12px}
+table{width:100%;border-collapse:collapse;font-size:.84rem}
+th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding:8px 10px;border-bottom:2px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+td.mono, .mono{font-family:var(--mono);font-size:.8rem}
+tr:last-child td{border-bottom:none}
+
+.note{font-size:.82rem;color:var(--muted);margin-top:12px}
+footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:30px}
+@media(max-width:640px){
+  .level-head{flex-wrap:wrap}.level-head .q{margin-left:0;text-align:left}
+  .node-head{flex-wrap:wrap}.node-head .crit{order:3}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Preprocessing Decision Tree — Pool of Useful Cycles</h1>
+    <div class="sub">Which conditions must a recorded actuator cycle satisfy — and why — before it enters the pool of useful data?</div>
+    <div class="meta">
+      <span><b>Project:</b> T1000 / ZDERA — Electric Rodstyle Actuator</span>
+      <span><b>Author:</b> Steven Braun (building on the preprocessing pipeline by F. Heydari)</span>
+      <span><b>Version:</b> Draft v0.1 — 2026-07-17</span>
+      <span><b>Repo analyzed:</b> <span class="mono">MasterThesisFat/</span> (copy of <span class="mono">/home/ita/MasterThesis</span>)</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="legend" style="background:#e8f0fe;border-color:#c7dafc;">
+  <h2>Hi — before you dive in</h2>
+  <p class="note" style="margin-bottom:8px">This grew out of my thesis work on top of the pipeline you built — no need to read it all in one go. Everything below is <b>collapsed by default</b>; skim the headers first and only open the cards that are actually new or debatable to you. Quick orientation:</p>
+  <p class="note" style="margin-bottom:0"><b>TL;DR:</b> 4 filter levels decide which cycles are "useful". Levels 1–3 mostly already exist in your code (some thresholds are undocumented "magic numbers" I'd like to sanity-check with you). Level 4 is new — proposed thresholds derived from the full-dataset quality profiling I'm running right now. The handful of things I'd genuinely like your input on are marked <span class="badge b-warn">PROVISIONAL</span> or in an "Open point" box — everything else is just for context.</p>
+</div>
+
+<div class="legend">
+  <h2>How to read this document</h2>
+  <div class="row">
+    <div><span class="badge b-ok">IMPLEMENTED · JUSTIFIED</span> exists in code, rationale documented</div>
+    <div><span class="badge b-warn">IMPLEMENTED · PROVISIONAL</span> exists in code, threshold not justified</div>
+    <div><span class="badge b-prop">PROPOSED</span> not in code yet — this work's contribution</div>
+    <div><span class="badge b-pend">AWAITING DATA</span> metric exists, threshold needs Stage-8 distributions</div>
+  </div>
+  <p class="note">Every criterion is a click-to-expand card showing: the rule, <b>why</b> it exists, the <b>empirical evidence</b>, and the <b>exact source file + line</b> in the repository. A cycle must pass all levels top-to-bottom to enter the pool; any "No" removes it with the stated rejection reason. All file paths are relative to the repository root.</p>
+</div>
+
+<div class="toolbar">
+  <button onclick="setAll(true)">Expand all</button>
+  <button onclick="setAll(false)">Collapse all</button>
+</div>
+
+<!-- ============ LEVEL 1 ============ -->
+<div class="level">
+  <div class="level-head">
+    <span class="num">LEVEL 1</span>
+    <h2>Recording Session</h2>
+    <span class="q">Does the cycle belong to a valid, continuous recording?</span>
+  </div>
+  <div class="nodes">
+
+    <div class="node" data-id="n11">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">1.1 &nbsp;Session boundary — gap split</span><span class="crit">gap &gt; 3600 s &rarr; new session</span><span class="badge b-warn">IMPLEMENTED · PROVISIONAL</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule</div><p>If the time gap between two consecutive position samples exceeds <b>3600&nbsp;s (1&nbsp;h)</b>, a new recording session starts. Cycle detection never runs across a session boundary.</p></div>
+        <div class="field"><div class="lab">Why</div><p>Long interruptions (minutes to days were observed) separate independent recording periods — detecting a "cycle" spanning a machine shutdown would be meaningless. Typical sampling interval is ~50&nbsp;ms, so 1&nbsp;h is far outside normal behaviour.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/preprocessing/session_detection.py : line 28   <b>DEFAULT_SESSION_GAP_SECONDS = 3600.0</b>
+src/pipeline.py : line 107                         config field session_gap_seconds
+configs/example_pipeline.yaml                      session_gap_seconds: 3600.0
+docs/architecture_decisions.md                     ADR-006 (status "Accepted")</div></div>
+        <div class="field"><div class="lab">Evidence</div><div class="evid">Run <code>outputs/D63_Nr7_8/Versuch1/20260716_083547/sessions/sessions.csv</code> + <code>cycles/cycles.csv</code>: the full recorded history forms <b>6 recording sessions</b> (Oct 2025 – May 2026) containing <b>4,601,218 candidate cycles</b> in total. Session sizes are very uneven (from ~14k to ~2.28M cycles) — see check 1.2. Gap distribution: <code>outputs/.../timestamp_analysis/time_gap_histogram.png</code>.</div></div>
+        <div class="field"><div class="lab">Open point</div><div class="openq"><b>Documentation inconsistency:</b> ADR-006 marks the 1-h threshold "Accepted", while <code>scripts/analyze_recording_sessions.py:20</code> comments it as "exploratory and must be validated". The value should be re-derived from the gap histogram (natural break between intra-session gaps and interruption gaps) and then fixed in the ADR.</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> cycle candidates never span the boundary; data before/after are treated as separate sessions</div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n12">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">1.2 &nbsp;Minimum session size</span><span class="crit">cycles per session &ge; N (TBD)</span><span class="badge b-prop">PROPOSED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>A session must contain at least <b>N complete cycles</b> (suggestion: N&nbsp;=&nbsp;100, to be agreed with the test engineers) for its cycles to be pool candidates.</p></div>
+        <div class="field"><div class="lab">Why</div><p>Very short sessions are typically commissioning runs, aborted experiments or start-up fragments. Their cycles are not representative of steady operation and would distort baseline statistics used for anomaly detection.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">— not implemented anywhere yet —
+would extend: src/preprocessing/session_detection.py
+session sizes available in: outputs/.../sessions/sessions.csv</div></div>
+        <div class="field"><div class="lab">Open point</div><div class="openq">N is a placeholder. Derive from the observed session-size distribution across all experiments once batch detection has run on the full dataset.</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject session: <i>fragment / non-representative recording</i></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"><div class="stem"></div><div class="yes">YES</div><div class="stem"></div></div>
+
+<!-- ============ LEVEL 2 ============ -->
+<div class="level">
+  <div class="level-head">
+    <span class="num">LEVEL 2</span>
+    <h2>True Cycle — Standstill &amp; Outlier Exclusion</h2>
+    <span class="q">Is this a real, complete actuator stroke — not noise, standstill or a fragment?</span>
+  </div>
+  <div class="nodes">
+
+    <div class="node" data-id="n21">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">2.1 &nbsp;Cycle boundary detection</span><span class="crit">position crosses 1.0</span><span class="badge b-warn">IMPLEMENTED · PROVISIONAL</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule</div><p>A cycle <b>starts</b> when the position signal crosses from &le;&nbsp;1.0 to &gt;&nbsp;1.0 and <b>ends</b> at the first crossing back to &le;&nbsp;1.0. Incomplete cycles at the window edges are discarded.</p></div>
+        <div class="field"><div class="lab">Why</div><p>The industrial supervisors confirmed the actuator is <b>position-controlled</b> and follows a predefined trajectory — position is therefore the most reliable reference signal (ADR-007). The threshold value 1.0 itself, however, is an unjustified magic number, duplicated in three places.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/preprocessing/cycle_detection.py : line 56    <b>movement_threshold: float = 1.0</b> (default)
+src/preprocessing/cycle_detection.py : line 74    is_moving = value &gt; movement_threshold
+src/pipeline.py : line 108                        config field movement_threshold = 1.0
+configs/example_pipeline.yaml                     movement_threshold: 1.0
+docs/architecture_decisions.md                    ADR-007 (position as reference — justified)</div></div>
+        <div class="field"><div class="lab">Evidence</div><div class="evid">Position values at rest: observed <code>minimum_position</code> ranges from -2.49 (sensor noise/overshoot below zero) up to exactly 1.00 (by construction of this check), P99 = 0.97 (4,601,218 cycles, <code>outputs/.../cycles/cycles.csv</code>). 1.0 sits just above the rest band — it works, but the margin is narrow and undocumented, and the negative outliers show real sensor noise exists.</div></div>
+        <div class="field"><div class="lab">Open point</div><div class="openq">Justify the threshold from the position-value distribution at rest (e.g. rest-band P99 + safety margin) and keep it defined in <b>one</b> place. As-is, a noise spike &gt; 1.0 would count as a "cycle" — this is what checks 2.2–2.5 catch.</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> no cycle detected (signal at rest)</div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n22">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">2.2 &nbsp;Plausible cycle duration</span><span class="crit">3.00 s &le; duration &le; 3.20 s</span><span class="badge b-prop">PROPOSED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>Cycle duration must lie within <b>[3.00&nbsp;s, 3.20&nbsp;s]</b> (empirical P1–P99 band ± safety margin).</p></div>
+        <div class="field"><div class="lab">Why</div><p>The actuator follows a fixed trajectory, so valid cycles have a near-constant duration. Deviations indicate partial strokes, merged cycles, standstill within the cycle, or acquisition problems. <b>Currently no duration filter exists</b> — outliers pass unnoticed.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 4,601,218 cycles)</div><div class="evid">From <code>outputs/D63_Nr7_8/Versuch1/cycles/cycles.csv</code>, column <code>duration_seconds</code>:<br>
+median <b>3.103 s</b> &nbsp;|&nbsp; P1 <b>3.067 s</b> &nbsp;|&nbsp; P99 <b>3.153 s</b> &nbsp;|&nbsp; min 0.001 s &nbsp;|&nbsp; <b>max 1551.2 s (25.9&nbsp;min!)</b><br>
+99.96% of all cycles (4,599,230 / 4,601,218) already fall inside [3.00, 3.20] s — but 1,988 don't, including 1,473 cycles longer than 6 s, up to the 25.9-minute maximum. That outlier alone proves the filter is needed.</div></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">— not implemented — would extend src/preprocessing/cycle_detection.py
+   (duration_seconds is already computed there, line 106)
+evidence data: outputs/D63_Nr7_8/Versuch1/cycles/cycles.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>duration outlier (partial / merged / stalled stroke)</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n23">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">2.3 &nbsp;Full stroke reached</span><span class="crit">max_pos &ge; 84.0 &and; min_pos &le; 1.0</span><span class="badge b-prop">PROPOSED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>The cycle must reach the full commanded stroke: <b>maximum_position &ge; 84.0</b> and return to rest: <b>minimum_position &le; 1.0</b>.</p></div>
+        <div class="field"><div class="lab">Why</div><p>A position-controlled actuator that does not reach its target either aborted the stroke or the sensor mis-measured. Both cases must not enter a "normal behaviour" pool.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 4,601,218 cycles)</div><div class="evid"><code>maximum_position</code>: P1 = 85.007, but the true minimum observed is only <b>1.05</b> — some cycles never really move (degenerate/failed strokes). The 84.0 threshold cleanly separates real full strokes (clustered near 85) from these degenerate ones. <code>minimum_position</code>: max observed 1.00 (&le; 1.0 by construction of check 2.1).</div></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">— not implemented — would extend src/preprocessing/cycle_detection.py
+   (minimum_position / maximum_position computed at lines 108–109)
+evidence data: outputs/D63_Nr7_8/Versuch1/cycles/cycles.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>incomplete stroke</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n24">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">2.4 &nbsp;Expected sample count (reference signal)</span><span class="crit">60 &le; samples &le; 66</span><span class="badge b-prop">PROPOSED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>The position signal must contain <b>60–66 samples</b> within the cycle.</p></div>
+        <div class="field"><div class="lab">Why</div><p>At ~50&nbsp;ms sampling and ~3.1&nbsp;s duration, ~62 samples are physically expected. Too few samples ⇒ data loss during the cycle; too many ⇒ duplicated timestamps or merged cycles.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 4,601,218 cycles)</div><div class="evid"><code>number_of_samples</code>: P1 = 62, median 63, P99 = 64 — but the true range is <b>2 to 30,966</b> samples (source: <code>outputs/.../cycles.csv</code>). The 30,966 outlier is almost 500× the normal count — clearly a timestamp/merge artifact, not a real cycle. Band [60, 66] adds tolerance of ±2 samples around the typical value.</div></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">— not implemented — would extend src/preprocessing/cycle_detection.py
+   (number_of_samples computed at line 107)
+evidence data: outputs/D63_Nr7_8/Versuch1/cycles/cycles.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>sampling anomaly in reference signal</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n25">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">2.5 &nbsp;Standstill / frozen-signal check</span><span class="crit">&Delta;pos &gt; &delta; within window T, or |v| &gt; &epsilon;</span><span class="badge b-prop">PROPOSED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed) — the explicit standstill definition</div><p>Within a detected cycle, the actuator must actually be <b>moving</b>: the position must change by more than <b>&delta;</b> within every rolling window of length <b>T</b> (suggestion: &delta;&nbsp;=&nbsp;0.5 position units, T&nbsp;=&nbsp;0.5&nbsp;s), <i>or equivalently</i> the velocity signal must satisfy |v|&nbsp;&gt;&nbsp;&epsilon; during the motion phases. A cycle that stays flat &gt;&nbsp;T is standstill or a frozen sensor.</p></div>
+        <div class="field"><div class="lab">Why</div><p>Standstill <i>between</i> cycles is already excluded by check 2.1 (position at rest &le; 1.0 detects no cycle). The remaining risk is a <b>frozen position signal stuck above 1.0</b> (sensor fault, communication freeze), which would currently be counted as a valid cycle. <b>The velocity signal is extracted but never used anywhere in the current pipeline</b> — this check puts it to use.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">— not implemented — no standstill detection exists in the codebase
+velocity is extracted but unused:
+  configs/example_pipeline.yaml            selected_extraction_signals: velocity
+  src/preprocessing/multi_sensor_cycle_extraction.py
+known limitation "velocity scaling unverified":
+  docs/implementation_log.md               section "Current Limitations"</div></div>
+        <div class="field"><div class="lab">Open point</div><div class="openq">&delta;, T and &epsilon; are placeholders — derive from position/velocity distributions. <b>Blocker for the velocity variant:</b> the physical scaling of the velocity signal is not yet verified (docs/implementation_log.md). Until then, use the position-based variant.</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>standstill / frozen signal</i></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"><div class="stem"></div><div class="yes">YES</div><div class="stem"></div></div>
+
+<!-- ============ LEVEL 3 ============ -->
+<div class="level">
+  <div class="level-head">
+    <span class="num">LEVEL 3</span>
+    <h2>Multi-Sensor Completeness</h2>
+    <span class="q">Are all required sensor signals present with enough samples?</span>
+  </div>
+  <div class="nodes">
+
+    <div class="node" data-id="n31">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">3.1 &nbsp;All required signals present</span><span class="crit">8 / 8 signals exist</span><span class="badge b-ok">IMPLEMENTED · JUSTIFIED</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule</div><p>All configured required signals must exist (non-empty) within the cycle interval: <b>position, velocity, current, pressure, temperature, vibration_x, vibration_y, vibration_z</b>. Missing data is never interpolated or filled.</p></div>
+        <div class="field"><div class="lab">Why</div><p>Each pool cycle becomes one ML training sample containing all sensors (ADR-010). A cycle with missing channels would create an inconsistent feature vector. Sensor availability is known to differ between recording periods, so this check is essential.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/preprocessing/validation_cycle_selection.py : lines 54–61   missing-signal check
+src/preprocessing/validation_cycle_selection.py : lines 67–75   rejection reason
+configs/example_pipeline.yaml                                   required_validation_signals
+docs/architecture_decisions.md                                  ADR-008, ADR-010</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>"missing required signals"</i> (recorded in the quality table)</div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n32">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">3.2 &nbsp;Minimum samples per signal</span><span class="crit">per-signal sample_count &ge; min</span><span class="badge b-warn">IMPLEMENTED · PROVISIONAL</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule</div><p>Each required signal must reach its configured minimum sample count. <b>Current config:</b> position/velocity/current/vibration&nbsp;&ge;&nbsp;20, pressure/temperature&nbsp;&ge;&nbsp;1 — values are configured but nowhere justified.</p></div>
+        <div class="field"><div class="lab">Proposed data-driven update</div><p>Tighten to the observed distributions: <b>position / velocity / current &ge; 60</b> (observed: exactly 63), <b>pressure &ge; 45</b> (observed: 51–52), <b>vibration_x/y/z &ge; 1100</b> (observed: 1251–1269), <b>temperature &ge; 2</b> (observed: 3). The current minimum of 20 would accept a cycle that lost two thirds of its position samples.</p></div>
+        <div class="field"><div class="lab">Evidence</div><div class="evid">Observed per-cycle sample counts from <code>outputs/D63_Nr7_8/Versuch1/20260716_083547/multi_sensor/validation/validation_cycle_quality.parquet</code> (3 validation cycles) and sensor sampling rates in <code>docs/implementation_log.md</code>, Module 6 (Position ≈62, Pressure ≈51, Temperature ≈3, vibration ≈1269 samples per cycle). To be confirmed on the full pool via Stage 8.</div></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/preprocessing/validation_cycle_selection.py : lines 63–65   sample-count check
+configs/example_pipeline.yaml                                   minimum_samples_per_validation_cycle
+evidence: outputs/.../multi_sensor/validation/validation_cycle_quality.parquet</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>"insufficient samples for required signals"</i></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"><div class="stem"></div><div class="yes">YES</div><div class="stem"></div></div>
+
+<!-- ============ LEVEL 4 ============ -->
+<div class="level">
+  <div class="level-head">
+    <span class="num">LEVEL 4</span>
+    <h2>Per-Signal Quality</h2>
+    <span class="q">Is each signal internally healthy within the cycle?</span>
+  </div>
+  <div class="nodes">
+
+    <div class="node" data-id="n41">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.1 &nbsp;Signal coverage of the cycle</span><span class="crit">coverage_ratio &ge; 0.9 (TBD)</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>Each signal's samples must span at least <b>90%</b> of the cycle duration (<code>coverage_ratio = duration_covered / cycle_duration</code>). Threshold to be finalized from Stage-8 distributions.</p></div>
+        <div class="field"><div class="lab">Why</div><p>A signal can pass the sample-count check yet cluster all samples in one half of the cycle, leaving the other half blind. Coverage catches partial signal dropouts within a cycle.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metric <b>coverage_ratio</b> (computed, descriptive only)
+src/storage/cycle_quality_profiler.py : module docstring — "does NOT reject cycles"
+threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>partial signal dropout</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n42">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.2 &nbsp;No large gaps inside the cycle</span><span class="crit">max_time_gap &le; TBD</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>The largest gap between consecutive samples of a signal within the cycle must not exceed a signal-specific threshold (e.g. a multiple of the signal's median sampling interval; position: ~50&nbsp;ms nominal).</p></div>
+        <div class="field"><div class="lab">Why</div><p>Supervisors confirmed small timestamp jitter (43–58&nbsp;ms for position) is normal, but larger intra-cycle gaps mean lost measurements exactly where the dynamics happen.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metrics <b>max_time_gap_seconds</b>, mean_time_gap_seconds
+jitter evidence: docs/implementation_log.md            Module 3 (43–58 ms), supervisor feedback
+threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>intra-cycle data loss</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n43">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.3 &nbsp;No invalid values</span><span class="crit">non_finite_count = 0</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>No signal may contain NaN or ±infinity values within the cycle.</p></div>
+        <div class="field"><div class="lab">Why</div><p>Non-finite values break feature computation (FFT, RMS, correlations) silently or catastrophically. Zero tolerance is the only defensible threshold here — this one needs no distribution to justify.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metric <b>non_finite_value_count</b>
+note: cycle_detection.py lines 39–45 already drops NaN rows for the
+      reference signal — other signals are not yet checked at decision time</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>corrupt values</i></div>
+      </div>
+    </div>
+
+    <div class="node" data-id="n44">
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.4 &nbsp;Signal not frozen / constant</span><span class="crit">std_value &gt; 0 (dynamic signals)</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-body">
+        <div class="field"><div class="lab">Rule (proposed)</div><p>Dynamic signals (position, velocity, current, pressure, vibration) must show variation within the cycle: <b>std_value&nbsp;&gt;&nbsp;0</b> (or above a small signal-specific floor). Temperature is exempt — 3 samples per cycle may legitimately be near-constant.</p></div>
+        <div class="field"><div class="lab">Why</div><p>A perfectly constant "dynamic" signal indicates a frozen sensor or a stuck acquisition buffer — the multi-sensor complement to the standstill check 2.5.</p></div>
+        <div class="field"><div class="lab">Source in repository</div>
+<div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metrics <b>std_value</b>, value_range
+threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+        <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>frozen sensor</i></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="connector"><div class="stem"></div><div class="yes">ALL YES</div><div class="stem"></div></div>
+
+<div class="pool">
+  <h2>&#10003; POOL OF USEFUL CYCLES</h2>
+  <p>The cycle enters the pool, becomes one ML training sample (ADR-010) and is available to the HTML cycle-overlay visualization and the daily data-quality display for the test engineers. Every rejected cycle keeps its rejection reason — nothing is silently dropped.</p>
+</div>
+
+<!-- ============ EVIDENCE ============ -->
+<section class="extra">
+  <h2>Empirical basis — where every number comes from</h2>
+  <table>
+    <thead><tr><th>Statistic (n = 4,601,218 cycles)</th><th>Median</th><th>P1</th><th>P99</th><th>Min</th><th>Max</th></tr></thead>
+    <tbody>
+      <tr><td>duration_seconds</td><td class="mono">3.103</td><td class="mono">3.067</td><td class="mono">3.153</td><td class="mono">0.001</td><td class="mono"><b>1551.224</b></td></tr>
+      <tr><td>number_of_samples (position)</td><td class="mono">63</td><td class="mono">62</td><td class="mono">64</td><td class="mono">2</td><td class="mono"><b>30,966</b></td></tr>
+      <tr><td>maximum_position</td><td class="mono">85.010</td><td class="mono">85.007</td><td class="mono">86.386</td><td class="mono">1.053</td><td class="mono">86.386</td></tr>
+      <tr><td>minimum_position</td><td class="mono">0.159</td><td class="mono">-2.495</td><td class="mono">0.971</td><td class="mono">-2.495</td><td class="mono">1.000</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Computed 2026-07-17 from <span class="mono">outputs/D63_Nr7_8/Versuch1/.../cycles/cycles.csv</span> (6 recording sessions, experiment Versuch1, dataset D63_Nr7_8, full history Oct 2025 – May 2026). Per-signal sample counts from <span class="mono">outputs/.../multi_sensor/validation/validation_cycle_quality.parquet</span> (only 3 example cycles — small sample, to be confirmed at scale).</p>
+  <p class="note"><b>Stage-8 status:</b> the quality-profiling outputs (<span class="mono">signal_quality_metrics.parquet</span>, <span class="mono">cycle_quality_profile.parquet</span>, <span class="mono">quality_metric_distribution_summary.csv</span>) are being generated right now with a full-scale run (previous runs only profiled a 100-cycle test sample). <b>Level-4 thresholds below will be filled in once that run completes.</b></p>
+</section>
+
+<section class="extra">
+  <h2>Threshold summary</h2>
+  <table>
+    <thead><tr><th>#</th><th>Criterion</th><th>Value</th><th>Basis</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">1.1</td><td>Session gap split</td><td class="mono">&gt; 3600 s</td><td>exploratory, in code</td><td><span class="badge b-warn">PROVISIONAL</span></td></tr>
+      <tr><td class="mono">1.2</td><td>Min cycles per session</td><td class="mono">&ge; 100 (TBD)</td><td>placeholder</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">2.1</td><td>Movement threshold</td><td class="mono">position &gt; 1.0</td><td>magic number, in code</td><td><span class="badge b-warn">PROVISIONAL</span></td></tr>
+      <tr><td class="mono">2.2</td><td>Duration band</td><td class="mono">[3.00, 3.20] s</td><td>P1–P99 of 4.6M cycles</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">2.3</td><td>Full stroke</td><td class="mono">max &ge; 84.0, min &le; 1.0</td><td>observed P1 85.007, degenerate min 1.05</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">2.4</td><td>Sample-count band</td><td class="mono">[60, 66]</td><td>observed P1–P99 62–64, outliers up to 30,966</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">2.5</td><td>Standstill / frozen</td><td class="mono">&Delta;pos &gt; &delta; per window T</td><td>placeholder (&delta;, T, &epsilon;)</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">3.1</td><td>Required signals</td><td class="mono">8 / 8 present</td><td>ADR-008 / ADR-010</td><td><span class="badge b-ok">JUSTIFIED</span></td></tr>
+      <tr><td class="mono">3.2</td><td>Min samples per signal</td><td class="mono">60/60/60/45/1100×3/2</td><td>observed counts (proposal)</td><td><span class="badge b-warn">PROVISIONAL</span></td></tr>
+      <tr><td class="mono">4.1</td><td>Coverage ratio</td><td class="mono">&ge; 0.9 (TBD)</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
+      <tr><td class="mono">4.2</td><td>Max intra-cycle gap</td><td class="mono">TBD per signal</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
+      <tr><td class="mono">4.3</td><td>Non-finite values</td><td class="mono">= 0</td><td>zero tolerance</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
+      <tr><td class="mono">4.4</td><td>Frozen-signal std</td><td class="mono">&gt; 0 (dynamic signals)</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  Draft for discussion with the master's-thesis author and the Emerson test engineers · All paths relative to the repository root ·
+  Generated 2026-07-17 · T1000 — "How do we obtain high-quality datasets?"
+</footer>
+
+</div>
+
+<script>
+const KEY='decision_tree_open_nodes_v1';
+function saved(){try{return JSON.parse(localStorage.getItem(KEY))||{}}catch(e){return{}}}
+function persist(s){try{localStorage.setItem(KEY,JSON.stringify(s))}catch(e){}}
+document.querySelectorAll('.node').forEach(node=>{
+  const id=node.dataset.id;
+  if(saved()[id])node.classList.add('open');
+  node.querySelector('.node-head').addEventListener('click',()=>{
+    node.classList.toggle('open');
+    const s=saved();s[id]=node.classList.contains('open');persist(s);
+  });
+});
+function setAll(open){
+  const s={};
+  document.querySelectorAll('.node').forEach(n=>{n.classList.toggle('open',open);s[n.dataset.id]=open;});
+  persist(s);
+}
+</script>
+</body>
+</html>

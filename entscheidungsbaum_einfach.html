@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple decision tree — which measurement data can we use?</title>
+<style>
+:root{
+  --bg:#f6f8fb; --card:#ffffff; --ink:#1c2734; --muted:#5f6f83; --line:#dfe6ee;
+  --blue:#0f62fe; --blue-soft:#e8f0fe;
+  --green:#1a7f37; --green-bg:#e6f4ea;
+  --red:#b42318; --red-bg:#fdecea;
+  --amber-bg:#fff6de; --amber:#8a6100;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.65;padding-bottom:70px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{background:var(--card);border-bottom:1px solid var(--line);padding:30px 0 24px;margin-bottom:26px}
+header h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em}
+header p{color:var(--muted);margin-top:8px;font-size:1rem;max-width:640px}
+
+.intro{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:26px}
+.intro h2{font-size:1.1rem;margin-bottom:10px}
+.intro p{font-size:.98rem;margin-bottom:10px}
+.intro p:last-child{margin-bottom:0}
+.intro .big{font-size:1.05rem;background:var(--blue-soft);border-left:4px solid var(--blue);padding:12px 16px;border-radius:0 10px 10px 0;font-weight:600}
+
+.station{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;margin-bottom:0;overflow:hidden}
+.st-head{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(to right,var(--blue-soft),transparent 65%)}
+.st-head .n{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.15rem;flex-shrink:0}
+.st-head h2{font-size:1.12rem}
+.st-head .frage{color:var(--muted);font-size:.9rem;font-style:italic}
+.st-body{padding:16px 22px 20px}
+.st-body p{font-size:.96rem;margin-bottom:10px}
+.st-body p:last-of-type{margin-bottom:0}
+.beispiel{background:#f8fafc;border:1px dashed var(--line);border-radius:10px;padding:12px 16px;font-size:.92rem;color:#3d4c60;margin-top:10px}
+.beispiel b{color:var(--ink)}
+.raus{display:flex;align-items:flex-start;gap:10px;margin-top:14px;background:var(--red-bg);border-radius:10px;padding:10px 14px;font-size:.9rem;color:var(--red)}
+.raus .x{font-weight:800;flex-shrink:0}
+
+.pfeil{display:flex;flex-direction:column;align-items:center;padding:10px 0}
+.pfeil .stem{width:2px;height:18px;background:#c3cfdd}
+.pfeil .ok{font-size:.78rem;font-weight:700;color:var(--green);background:var(--green-bg);padding:2px 14px;border-radius:20px;margin:4px 0}
+
+.pool{background:var(--green-bg);border:2px solid #b7dcc1;border-radius:16px;padding:26px;text-align:center;margin-bottom:28px}
+.pool .check{font-size:2rem}
+.pool h2{color:var(--green);font-size:1.3rem;margin-top:4px}
+.pool p{color:#2d5e3b;font-size:.95rem;margin-top:8px;max-width:560px;margin-left:auto;margin-right:auto}
+
+.merke{background:var(--amber-bg);border:1px solid #eedfae;border-radius:14px;padding:20px 24px;margin-bottom:26px}
+.merke h2{font-size:1.05rem;color:var(--amber);margin-bottom:10px}
+.merke ul{list-style:none}
+.merke li{padding:6px 0 6px 28px;position:relative;font-size:.95rem}
+.merke li::before{content:"→";position:absolute;left:4px;color:var(--amber);font-weight:700}
+
+footer{color:var(--muted);font-size:.8rem;text-align:center;margin-top:34px}
+@media(max-width:600px){.st-head{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>Which measurement data can we use?</h1>
+    <p>The decision tree in plain language — this explains how our quality control works for the electric actuator test data.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div class="intro">
+  <h2>What is this about?</h2>
+  <p>Our actuator moves back and forth continuously in the experiment. One round trip is called a <b>cycle</b> — it takes about 3 seconds. Eight sensors record data during each cycle: position, velocity, current, pressure, temperature, and vibration in three directions.</p>
+  <p>Later, a dashboard should show the test engineers each day whether the actuator behaves normally. The system must learn what "normal" looks like. <b>If we give it bad data, it learns the wrong thing</b> — and later it will raise false alarms or miss real problems.</p>
+  <p class="big">That is why we check each cycle at 4 stations — like a quality control line. Only cycles that pass all 4 checks enter the usable data pool.</p>
+</div>
+
+<!-- Station 1 -->
+<div class="station">
+  <div class="st-head">
+    <div class="n">1</div>
+    <div><h2>Does the cycle come from a real recording session?</h2><div class="frage">Was the recording continuous?</div></div>
+  </div>
+  <div class="st-body">
+    <p>The system does not record continuously. There are pauses — overnight, on weekends, during maintenance. If more than <b>one hour</b> passes between two recorded values, we treat that as the end of one session and the start of a new one.</p>
+    <p>Also: very short recording sessions with only a few cycles (for example, a quick setup run) are not representative of steady operation.</p>
+    <div class="beispiel"><b>Example:</b> The system stops at 4 pm on Friday and resumes at 8 am on Monday. Without this separation, the system would think one cycle lasted the entire weekend.</div>
+    <div class="raus"><span class="x">✗ Rejected:</span> data from recording gaps and too-short setup runs.</div>
+  </div>
+</div>
+
+<div class="pfeil"><div class="stem"></div><div class="ok">passed ✓</div><div class="stem"></div></div>
+
+<!-- Station 2 -->
+<div class="station">
+  <div class="st-head">
+    <div class="n">2</div>
+    <div><h2>Is this really a complete, proper stroke?</h2><div class="frage">Did the actuator move normally?</div></div>
+  </div>
+  <div class="st-body">
+    <p>Here we filter out everything that only looks like a cycle. From over <b>4.6 million detected raw cycles</b>, we know very well what a normal stroke looks like — and we compare every new cycle against that.</p>
+    <p>A real stroke lasts about <b>3.1 seconds</b> (our tolerance: 3.0 to 3.2). The carriage must <b>reach the front and return completely</b> — no half-strokes. And the sensors must deliver the <b>expected number of samples</b>.</p>
+    <p>We also check for <b>standstill</b>: if the position does not change for a longer time while the cycle is supposed to be moving, the sensor is probably frozen — the values are stuck.</p>
+    <div class="beispiel"><b>Example:</b> In our data we found one "cycle" lasting over 25 minutes (1,551 seconds) — more than 500× longer than normal. That is clearly not a normal stroke and should not be used as an example of "normal".</div>
+    <div class="raus"><span class="x">✗ Rejected:</span> aborted strokes, merged double cycles, standstill, frozen sensors, noisy signals.</div>
+  </div>
+</div>
+
+<div class="pfeil"><div class="stem"></div><div class="ok">passed ✓</div><div class="stem"></div></div>
+
+<!-- Station 3 -->
+<div class="station">
+  <div class="st-head">
+    <div class="n">3</div>
+    <div><h2>Did all 8 sensors record?</h2><div class="frage">Is the data set complete?</div></div>
+  </div>
+  <div class="st-body">
+    <p>For the analysis we need data from <b>all 8 sensors for every cycle</b> — and enough samples from each sensor. From experience we know that some sensors sometimes fail or record incomplete data.</p>
+    <p>A cycle that is missing, for example, vibration data is unusable for comparison — it would be like comparing cars while one of them has no speedometer. Important: <b>we do not invent missing values.</b> If something is missing, it stays missing — and the cycle is rejected.</p>
+    <div class="beispiel"><b>Example:</b> A vibration sensor normally delivers over 1,200 samples per cycle. If only 300 arrive, the recording failed.</div>
+    <div class="raus"><span class="x">✗ Rejected:</span> cycles with missing sensors or too few samples.</div>
+  </div>
+</div>
+
+<div class="pfeil"><div class="stem"></div><div class="ok">passed ✓</div><div class="stem"></div></div>
+
+<!-- Station 4 -->
+<div class="station">
+  <div class="st-head">
+    <div class="n">4</div>
+    <div><h2>Are the measurements themselves okay?</h2><div class="frage">Deep check of each signal</div></div>
+  </div>
+  <div class="st-body">
+    <p>Finally, we look inside each sensor individually. Four things are checked:</p>
+    <p><b>Does the signal cover the whole cycle?</b> Not just the first half. — <b>Are there gaps in the middle of the stroke?</b> That is exactly where the important motion happens. — <b>Are all values valid numbers?</b> No transmission errors. — <b>Is the signal alive?</b> A vibration signal that is a straight line during the stroke is broken.</p>
+    <div class="beispiel"><b>Note:</b> The exact thresholds for this station are being derived from the available measurement data — that requires the full thesis run to complete. The quality metrics themselves are already implemented.</div>
+    <div class="raus"><span class="x">✗ Rejected:</span> cycles with signal dropouts, invalid values, or broken sensors.</div>
+  </div>
+</div>
+
+<div class="pfeil"><div class="stem"></div><div class="ok">all 4 stations passed ✓</div><div class="stem"></div></div>
+
+<div class="pool">
+  <div class="check">✓</div>
+  <h2>The data pool</h2>
+  <p>Only these reviewed cycles are used further: for the visualization where cycles are stacked and compared, and as the training basis for automated anomaly detection. <b>Rejected cycles are not deleted</b> — each one keeps its rejection reason. This is always traceable.</p>
+</div>
+
+<div class="merke">
+  <h2>The three key messages for the discussion</h2>
+  <ul>
+    <li><b>Quality before quantity:</b> Better fewer, reliable cycles in the pool — otherwise the anomaly detector learns "normal" from bad data.</li>
+    <li><b>Nothing is arbitrary:</b> The thresholds (for example 3.0–3.2 seconds) are based on the statistics of over 4.6 million real cycles — not on gut feeling.</li>
+    <li><b>Everything is traceable:</b> Every rejected cycle keeps its rejection reason. Every rule is documented and can be adjusted with the experts.</li>
+  </ul>
+</div>
+
+<footer>
+  Simplified version · Technical version with all thresholds and references: docs/preprocessing_decision_tree.html · Version 17.07.2026
+</footer>
+
+</div>
+</body>
+</html>
