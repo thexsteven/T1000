@@ -1,0 +1,608 @@
+<title>T1000 — Präsentation</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --paper:#eef1f1; --card:#ffffff; --card-2:#f6f8f8;
+    --ink:#101a20; --ink-soft:#33454f; --muted:#6a7c85;
+    --line:#d6dedf; --line-soft:#e6ecec;
+    --accent:#0f9c8d; --accent-ink:#0a5e56; --accent-wash:#dff1ee;
+    --ok:#2f9e6f; --ok-wash:#dcf0e6; --bad:#d94a4a; --bad-wash:#f6dede; --plan:#8a93b8;
+    --m-inkons:#d94a4a; --m-prov:#e08f2e; --m-nichtbeg:#c76a2c; --m-struk:#3f7fc4; --m-beg:#2f9e6f;
+    --shadow:0 1px 2px rgba(16,26,32,.05), 0 12px 40px -20px rgba(16,26,32,.4);
+    --sans:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono:"Cascadia Code","Cascadia Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0b1216; --card:#121e24; --card-2:#16242b; --ink:#e9eff0; --ink-soft:#bccacf;
+      --muted:#8399a1; --line:#24363e; --line-soft:#1b2a31;
+      --accent:#26c6b4; --accent-ink:#8ee9dd; --accent-wash:#12312e;
+      --ok:#48b988; --ok-wash:#12352a; --bad:#e46d6d; --bad-wash:#3a1e1e; --plan:#7f89b0;
+      --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#48b988;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 50px -20px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#eef1f1; --card:#fff; --card-2:#f6f8f8; --ink:#101a20; --ink-soft:#33454f; --muted:#6a7c85;
+    --line:#d6dedf; --line-soft:#e6ecec; --accent:#0f9c8d; --accent-ink:#0a5e56; --accent-wash:#dff1ee;
+    --ok:#2f9e6f; --ok-wash:#dcf0e6; --bad:#d94a4a; --bad-wash:#f6dede; --plan:#8a93b8;
+    --m-inkons:#d94a4a; --m-prov:#e08f2e; --m-nichtbeg:#c76a2c; --m-struk:#3f7fc4; --m-beg:#2f9e6f;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0b1216; --card:#121e24; --card-2:#16242b; --ink:#e9eff0; --ink-soft:#bccacf; --muted:#8399a1;
+    --line:#24363e; --line-soft:#1b2a31; --accent:#26c6b4; --accent-ink:#8ee9dd; --accent-wash:#12312e;
+    --ok:#48b988; --ok-wash:#12352a; --bad:#e46d6d; --bad-wash:#3a1e1e; --plan:#7f89b0;
+    --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#48b988;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--accent); color:#fff; }
+
+  /* ---------- deck framework ---------- */
+  .deck { position: fixed; inset: 0; overflow: hidden; }
+  .track {
+    display: flex; height: 100%; width: 100%;
+    transition: transform .5s cubic-bezier(.6,.02,.2,1);
+    will-change: transform;
+  }
+  .slide {
+    flex: 0 0 100%; height: 100%; width: 100%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: clamp(28px, 5vh, 68px) clamp(22px, 6vw, 110px);
+    overflow-y: auto; position: relative;
+  }
+  .slide-inner { max-width: 1180px; width: 100%; margin: 0 auto; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: clamp(.7rem,1.3vw,.86rem); letter-spacing: .2em;
+    text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .eyebrow .kn {
+    display:inline-grid; place-items:center; min-width:30px; height:30px; padding:0 8px;
+    border:1px solid var(--accent); border-radius:8px; font-weight:700;
+  }
+  h1 { font-size: clamp(2.4rem, 7vw, 5.4rem); line-height: 1.02; letter-spacing: -.025em; margin:.1em 0; font-weight: 800; text-wrap: balance; }
+  h2 { font-size: clamp(1.7rem, 4.4vw, 3.2rem); line-height: 1.06; letter-spacing: -.02em; margin: 0 0 .5em; font-weight: 780; text-wrap: balance; }
+  .big-sub { font-size: clamp(1.05rem, 2.2vw, 1.5rem); color: var(--ink-soft); max-width: 30ch; line-height: 1.45; }
+  .dim { color: var(--muted); }
+  .mono { font-family: var(--mono); }
+  .accent { color: var(--accent); }
+
+  /* number chips row */
+  .metrics { display:grid; gap: clamp(12px,2vw,22px); grid-template-columns: repeat(2,1fr); }
+  @media (min-width:760px){ .metrics.four { grid-template-columns: repeat(4,1fr);} .metrics.three{grid-template-columns:repeat(3,1fr);} }
+  .metric { background: var(--card); border:1px solid var(--line); border-radius:16px; padding: clamp(16px,2.6vw,28px); box-shadow: var(--shadow); }
+  .metric .n { font-family: var(--mono); font-weight:700; font-size: clamp(1.9rem,5vw,3.2rem); color: var(--accent); letter-spacing:-.02em; line-height:1; }
+  .metric .l { margin-top:10px; color: var(--ink-soft); font-size: clamp(.85rem,1.5vw,1.02rem); }
+
+  /* three building blocks */
+  .blocks { display:grid; gap: clamp(14px,2vw,22px); grid-template-columns:1fr; }
+  @media (min-width:820px){ .blocks{ grid-template-columns: repeat(3,1fr);} }
+  .block { background: var(--card); border:1px solid var(--line); border-radius:18px; padding: clamp(20px,2.6vw,30px); box-shadow: var(--shadow); border-top:4px solid var(--accent); }
+  .block .ico { font-size: clamp(1.8rem,3.4vw,2.6rem); line-height:1; }
+  .block h3 { margin:.5em 0 .3em; font-size: clamp(1.1rem,1.9vw,1.4rem); }
+  .block p { margin:0; color: var(--muted); font-size: clamp(.85rem,1.4vw,1rem); line-height:1.5; }
+
+  .card { background: var(--card); border:1px solid var(--line); border-radius:16px; box-shadow: var(--shadow); }
+  .fig { padding: clamp(16px,2.2vw,26px); }
+  .figcap { font-family: var(--mono); font-size: clamp(.72rem,1.3vw,.86rem); color: var(--muted); margin-top: 12px; }
+  svg { display:block; width:100%; height:auto; }
+
+  .two { display:grid; gap: clamp(20px,3vw,44px); align-items:center; grid-template-columns:1fr; }
+  @media (min-width:900px){ .two { grid-template-columns: 1.05fr .95fr; } }
+  .two.rev { grid-template-columns:1fr; }
+  @media (min-width:900px){ .two.rev { grid-template-columns:.95fr 1.05fr; } }
+
+  ul.clean { list-style:none; margin:.4em 0 0; padding:0; display:flex; flex-direction:column; gap: clamp(10px,1.6vw,16px); }
+  ul.clean li { display:grid; grid-template-columns: auto 1fr; gap:14px; align-items:start; font-size: clamp(.95rem,1.6vw,1.15rem); color: var(--ink-soft); line-height:1.4; }
+  ul.clean li .b { font-family: var(--mono); font-weight:700; color: var(--accent); }
+  ul.clean li b { color: var(--ink); }
+
+  /* pipeline strip */
+  .pstrip { display:grid; grid-template-columns: repeat(2,1fr); gap:10px; }
+  @media (min-width:640px){ .pstrip { grid-template-columns: repeat(5,1fr);} }
+  .pstep { background: var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 12px; box-shadow: var(--shadow); position:relative; }
+  .pstep .pn { font-family: var(--mono); font-size:.72rem; color: var(--accent); font-weight:700; }
+  .pstep .pt { font-size: clamp(.78rem,1.3vw,.95rem); font-weight:600; margin-top:3px; letter-spacing:-.01em; }
+  .pstep.plan { border-style:dashed; opacity:.72; background: var(--card-2); }
+  .pstep .ck { position:absolute; top:9px; right:10px; font-size:.8rem; }
+  .pstep .ck.ok { color: var(--ok); }
+  .pstep .ck.pl { color: var(--plan); font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; }
+
+  /* gaps */
+  .gaps { display:grid; gap:12px; grid-template-columns:1fr; }
+  @media (min-width:760px){ .gaps { grid-template-columns:1fr 1fr; } }
+  .gcard { display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-left:3px solid var(--bad); border-radius:12px; padding: clamp(12px,1.8vw,18px); box-shadow:var(--shadow); }
+  .gcard .gi { font-family:var(--mono); font-weight:700; color:var(--bad); font-size: clamp(1.1rem,2vw,1.5rem); }
+  .gcard .gt { font-size: clamp(.9rem,1.5vw,1.1rem); font-weight:600; }
+
+  /* decision tree compact */
+  .tree { display:grid; gap:10px; grid-template-columns:1fr; }
+  .lvl { display:grid; grid-template-columns: 1fr auto; gap:14px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:14px; padding: clamp(13px,1.8vw,20px); box-shadow:var(--shadow); }
+  .lvl .lt { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .lvl .ln { font-family:var(--mono); font-weight:700; color:var(--accent); font-size: clamp(.85rem,1.5vw,1.05rem); white-space:nowrap; }
+  .lvl .lh { font-size: clamp(1rem,1.7vw,1.25rem); font-weight:650; }
+  .lvl .rj { font-family:var(--mono); font-size: clamp(.66rem,1.15vw,.8rem); color:var(--bad); background:var(--bad-wash); border:1px solid color-mix(in srgb,var(--bad) 35%,var(--line)); border-radius:999px; padding:5px 11px; white-space:nowrap; }
+  .passbar { text-align:center; font-family:var(--mono); font-size:.8rem; color:var(--ok); }
+  .poolbox { background: linear-gradient(135deg,var(--accent-wash),var(--card)); border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line)); border-radius:14px; padding: clamp(14px,2vw,22px); display:flex; align-items:center; gap:16px; }
+  .poolbox .pk { font-family:var(--mono); font-weight:800; color:var(--accent); font-size: clamp(1.5rem,3vw,2.2rem); }
+  .poolbox .ph { font-size: clamp(1.05rem,1.8vw,1.35rem); font-weight:700; }
+  .poolbox .pp { color: var(--ink-soft); font-size: clamp(.82rem,1.4vw,1rem); margin-top:2px; }
+
+  /* maturity scale */
+  .mrow { display:grid; gap:12px; grid-template-columns:1fr; }
+  @media (min-width:820px){ .mrow { grid-template-columns: repeat(5,1fr); } }
+  .mcell { border:1px solid var(--line); border-top:5px solid var(--mc); border-radius:14px; padding: clamp(14px,2vw,22px); background:var(--card); box-shadow:var(--shadow); }
+  .mcell .mn { font-family:var(--mono); font-weight:700; color:var(--mc); font-size: clamp(.95rem,1.6vw,1.15rem); }
+  .mcell p { margin:8px 0 0; color:var(--muted); font-size: clamp(.78rem,1.3vw,.92rem); line-height:1.45; }
+  .mscale { display:flex; justify-content:space-between; font-family:var(--mono); font-size: clamp(.7rem,1.2vw,.82rem); color:var(--muted); margin-top:14px; }
+
+  /* funnel */
+  .funnel { display:flex; flex-direction:column; gap:14px; align-items:center; }
+  .fbig { width:100%; max-width:720px; text-align:center; border:1px solid var(--line); border-radius:16px; padding: clamp(18px,2.4vw,28px); background:linear-gradient(135deg,var(--card-2),var(--card)); box-shadow:var(--shadow); }
+  .fbig .ft { font-family:var(--mono); font-size: clamp(.72rem,1.3vw,.85rem); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .fbig .fn { font-size: clamp(1.15rem,2.6vw,1.9rem); font-weight:750; margin-top:4px; letter-spacing:-.01em; }
+  .farrow { font-family:var(--mono); color:var(--muted); font-size: clamp(.82rem,1.5vw,1.05rem); }
+  .fsplit { display:flex; gap:14px; width:100%; max-width:720px; flex-wrap:wrap; }
+  .fout { flex:1; min-width:220px; border-radius:16px; padding: clamp(16px,2.2vw,24px); text-align:center; box-shadow:var(--shadow); border:1px solid var(--line); }
+  .fout.pool { border-color:color-mix(in srgb,var(--accent) 45%,var(--line)); background:var(--accent-wash); }
+  .fout.pool .fn { color:var(--accent-ink); }
+  .fout.rej { border-color:color-mix(in srgb,var(--bad) 40%,var(--line)); background:var(--bad-wash); }
+  .fout .ft { font-family:var(--mono); font-size:.72rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .fout .fn { font-size: clamp(1.05rem,2vw,1.5rem); font-weight:750; margin-top:4px; }
+
+  /* two views */
+  .views { display:grid; gap: clamp(16px,2.4vw,26px); grid-template-columns:1fr; }
+  @media (min-width:820px){ .views { grid-template-columns:1fr 1fr; } }
+  .view { background:var(--card); border:1px solid var(--line); border-radius:18px; padding: clamp(20px,2.8vw,32px); box-shadow:var(--shadow); border-top:4px solid var(--vc); }
+  .view .ico { font-size: clamp(1.7rem,3.2vw,2.4rem); }
+  .view h3 { margin:.4em 0 .3em; font-size: clamp(1.15rem,2vw,1.5rem); }
+  .view p { margin:0; color:var(--muted); font-size: clamp(.88rem,1.5vw,1.05rem); line-height:1.5; }
+
+  /* status two col */
+  .scol { display:grid; gap: clamp(16px,2.6vw,32px); grid-template-columns:1fr; }
+  @media (min-width:820px){ .scol { grid-template-columns:1fr 1fr; } }
+  .slist { display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .sitem { display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; background:var(--card); border:1px solid var(--line); border-radius:12px; padding: clamp(12px,1.8vw,16px); font-size: clamp(.88rem,1.5vw,1.05rem); color:var(--ink-soft); line-height:1.4; }
+  .sitem b { color:var(--ink); }
+  .sitem.d { border-left:3px solid var(--ok); } .sitem.d .k { color:var(--ok); }
+  .sitem.o { border-left:3px solid var(--m-prov); } .sitem.o .k { color:var(--m-prov); }
+  .sitem .k { font-family:var(--mono); font-weight:700; }
+  .shdr { display:flex; align-items:center; gap:12px; font-size: clamp(1.1rem,2vw,1.5rem); font-weight:700; }
+  .pill { font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:5px 11px; border-radius:999px; }
+  .pill.ok { color:var(--ok); background:var(--ok-wash); border:1px solid color-mix(in srgb,var(--ok) 40%,var(--line)); }
+  .pill.op { color:var(--m-prov); background:transparent; border:1px solid color-mix(in srgb,var(--m-prov) 45%,var(--line)); }
+
+  /* hero canvas */
+  #scope { position:absolute; inset:0; width:100%; height:100%; opacity:.5; pointer-events:none; z-index:0; }
+  @media (prefers-color-scheme:dark){ #scope{ opacity:.65; } }
+  #slide-title .slide-inner { position:relative; z-index:1; }
+  .quote { border-left:3px solid var(--accent); padding: 8px 0 8px 22px; margin: clamp(18px,3vh,30px) 0 0; font-size: clamp(1.05rem,2.2vw,1.6rem); line-height:1.35; color:var(--ink); max-width: 24ch; font-weight:500; }
+  .quote .q { color:var(--accent); font-family:var(--mono); }
+  .titlemeta { margin-top: clamp(20px,3vh,34px); font-family:var(--mono); font-size: clamp(.74rem,1.4vw,.92rem); color:var(--muted); display:flex; flex-wrap:wrap; gap:8px 22px; }
+  .titlemeta b { color:var(--ink); }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block; margin-right:8px; }
+
+  /* ---------- controls ---------- */
+  .hud {
+    position: fixed; z-index: 40; bottom: clamp(14px,3vh,26px); left: 50%; transform: translateX(-50%);
+    display: flex; align-items: center; gap: 14px;
+    background: color-mix(in srgb, var(--card) 90%, transparent); backdrop-filter: blur(10px);
+    border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px 7px 16px; box-shadow: var(--shadow);
+  }
+  .hud .count { font-family: var(--mono); font-size: .82rem; color: var(--ink-soft); min-width: 46px; text-align:center; font-variant-numeric: tabular-nums; }
+  .hud button {
+    border:none; background: var(--card-2); color: var(--ink); width: 38px; height: 38px; border-radius: 50%;
+    cursor: pointer; font-size: 1.1rem; display:grid; place-items:center; transition: background .15s, color .15s;
+  }
+  .hud button:hover { background: var(--accent); color:#fff; }
+  .hud button:disabled { opacity:.35; cursor: default; }
+  .hud button:focus-visible, .corner button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .dots { display:flex; gap:7px; align-items:center; }
+  .dots i { width:8px; height:8px; border-radius:50%; background: var(--line); cursor:pointer; transition: background .2s, transform .2s; display:block; }
+  .dots i.on { background: var(--accent); transform: scale(1.35); }
+  @media (max-width:600px){ .dots { display:none; } }
+
+  .corner { position: fixed; z-index: 40; top: clamp(12px,2.5vh,20px); right: clamp(12px,3vw,22px); display:flex; gap:8px; }
+  .corner button {
+    border:1px solid var(--line); background: color-mix(in srgb, var(--card) 88%, transparent); color: var(--ink-soft);
+    border-radius: 9px; padding: 7px 11px; cursor:pointer; font-family: var(--mono); font-size:.72rem; backdrop-filter: blur(8px);
+  }
+  .corner button:hover { border-color: var(--accent); color: var(--accent); }
+  .topbar { position: fixed; top:0; left:0; height:3px; background: var(--accent); z-index:41; transition: width .4s ease; }
+
+  .brand-tag { position: fixed; top: clamp(12px,2.5vh,20px); left: clamp(14px,3vw,26px); z-index:40; font-family:var(--mono); font-weight:700; letter-spacing:.14em; font-size:.8rem; color:var(--ink); }
+  .brand-tag b { color: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce){
+    .track { transition: none; }
+    * { animation: none !important; }
+  }
+</style>
+
+<div class="topbar" id="topbar"></div>
+<div class="brand-tag">T<b>1000</b></div>
+
+<div class="deck">
+  <div class="track" id="track">
+
+    <!-- 1 TITLE -->
+    <section class="slide" id="slide-title">
+      <canvas id="scope" aria-hidden="true"></canvas>
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="dot"></span> Praxissemester · DHBW · Emerson Electric</div>
+        <h1>Vom Rohdatenberg<br>zum geprüften<br><span class="accent">Datensatz</span></h1>
+        <div class="quote"><span class="q">»</span> Wie wird aus riesigen, rohen Prüfstandsdaten ein vertrauenswürdiger Datensatz? <span class="q">«</span></div>
+        <div class="titlemeta">
+          <span><span class="dot"></span><b>3</b> eigene Bausteine</span>
+          <span><span class="dot"></span><b>10</b> Pipeline-Stufen</span>
+          <span><span class="dot"></span><b>4</b> Prüfebenen</span>
+          <span><span class="dot"></span><b>5</b> Reifegrade</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 PROBLEM / SCALE -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">01</span> Das Problem</div>
+        <h2>Die Datenmenge ist riesig — und roh nicht brauchbar</h2>
+        <div class="metrics four" style="margin-top:10px">
+          <div class="metric"><div class="n">Monate</div><div class="l">Dauerlauf, bis zu ½ Jahr</div></div>
+          <div class="metric"><div class="n">Mio.</div><div class="l">Bewegungszyklen pro Versuch</div></div>
+          <div class="metric"><div class="n">100 Mio.+</div><div class="l">Einzelmesswerte</div></div>
+          <div class="metric"><div class="n">6</div><div class="l">Sensorsignale, sehr ungleiche Raten</div></div>
+        </div>
+        <p class="big-sub" style="max-width:60ch; margin-top:26px">
+          Lücken, Sensorausfälle, Prüfstandspausen, unvollständige Zyklen — <b class="accent">Rohdaten sind nicht automatisch nutzbar.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- 3 WHAT I BUILD -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">02</span> Mein Beitrag</div>
+        <h2>Drei Bausteine — auf bestehender Pipeline aufbauend</h2>
+        <div class="blocks" style="margin-top:10px">
+          <div class="block"><div class="ico">🌳</div><h3>Entscheidungsbaum</h3><p>Prüflogik: Welcher Zyklus ist nutzbar — und wenn nicht, warum?</p></div>
+          <div class="block"><div class="ico">🗂️</div><h3>Datenpool</h3><p>Geprüfte Teilmenge + Ablehnungsprotokoll je Zyklus.</p></div>
+          <div class="block"><div class="ico">📊</div><h3>HTML-Overlay</h3><p>Zyklen überlagert im Browser — ganz ohne Server.</p></div>
+        </div>
+        <p class="big-sub dim" style="max-width:64ch; margin-top:24px; font-size:1.05rem">
+          Nicht Teil der Arbeit: die Vorverarbeitungs-Pipeline selbst und die spätere Modellbildung.
+        </p>
+      </div>
+    </section>
+
+    <!-- 4 THE CYCLE -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">03</span> Die Grundeinheit</div>
+        <h2>Alles dreht sich um <span class="accent">einen Bewegungszyklus</span></h2>
+        <div class="two" style="margin-top:6px">
+          <div class="card fig">
+            <svg viewBox="0 0 520 220" role="img" aria-label="Positionssignal: Hin- und Rückbewegung zwischen Ruhelage und vollem Hub">
+              <line x1="46" y1="18" x2="46" y2="182" stroke="var(--line)" stroke-width="1.5"/>
+              <line x1="46" y1="182" x2="500" y2="182" stroke="var(--line)" stroke-width="1.5"/>
+              <text x="10" y="30" font-family="var(--mono)" font-size="11" fill="var(--muted)">Pos.</text>
+              <line x1="46" y1="40" x2="500" y2="40" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" opacity=".6"/>
+              <text x="52" y="34" font-family="var(--mono)" font-size="10.5" fill="var(--accent)">voller Hub</text>
+              <line x1="46" y1="150" x2="500" y2="150" stroke="var(--m-prov)" stroke-width="1" stroke-dasharray="3 3"/>
+              <text x="52" y="144" font-family="var(--mono)" font-size="10.5" fill="var(--m-prov)">Bewegungsschwelle</text>
+              <text x="52" y="176" font-family="var(--mono)" font-size="10.5" fill="var(--muted)">Ruhelage</text>
+              <path d="M46,168 L110,168 C150,168 150,44 210,42 L300,42 C360,42 360,168 410,168 L500,168" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="128" cy="150" r="5" fill="var(--ok)"/><text x="116" y="137" font-family="var(--mono)" font-size="10" fill="var(--ok)">Start</text>
+              <circle cx="392" cy="150" r="5" fill="var(--bad)"/><text x="384" y="137" font-family="var(--mono)" font-size="10" fill="var(--bad)">Ende</text>
+            </svg>
+            <div class="figcap">„out &amp; back" — Start bei Überschreiten, Ende bei Rückkehr unter die Schwelle.</div>
+          </div>
+          <div>
+            <ul class="clean">
+              <li><span class="b">▸</span><span>Der Aktuator ist <b>positionsgeregelt</b> und wiederholt dieselbe Bewegung.</span></li>
+              <li><span class="b">▸</span><span>Ein Zyklus ist die <b>zentrale analytische Einheit</b> — nicht beliebige Zeitfenster.</span></li>
+              <li><span class="b">▸</span><span>Die Zyklusdauer wird <b>empirisch aus den Daten</b> bestimmt, nicht aus der Literatur.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 PIPELINE -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">04</span> Ausgangslage</div>
+        <h2>Bestehende Pipeline: 8 Stufen gebaut, 2 geplant</h2>
+        <div class="pstrip" style="margin-top:8px">
+          <div class="pstep"><div class="pn">1</div><div class="pt">Metadaten-Katalog</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">2</div><div class="pt">Signal-Auswahl</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">3</div><div class="pt">Zeitstempel-Analyse</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">4</div><div class="pt">Sitzungs-Erkennung</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">5</div><div class="pt">Zyklus-Erkennung</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">6</div><div class="pt">Zyklus-Auswahl</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">7</div><div class="pt">Multi-Sensor-Extraktion</div><span class="ck ok">✓</span></div>
+          <div class="pstep"><div class="pn">8</div><div class="pt">Qualitäts-Profilierung</div><span class="ck ok">✓</span></div>
+          <div class="pstep plan"><div class="pn">9</div><div class="pt">Feature-Engineering</div><span class="ck pl">plan</span></div>
+          <div class="pstep plan"><div class="pn">10</div><div class="pt">Finaler Datensatz</div><span class="ck pl">plan</span></div>
+        </div>
+        <div class="poolbox" style="margin-top:26px; background:linear-gradient(135deg,var(--bad-wash),var(--card)); border-color:color-mix(in srgb,var(--bad) 35%,var(--line))">
+          <span class="pk" style="color:var(--bad)">!</span>
+          <div><div class="ph">Am Ende: Kandidaten-Zyklen — aber keine Entscheidung, welche nutzbar sind.</div>
+          <div class="pp">Genau diese Lücke schließt mein Entscheidungsbaum.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 GAPS -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">05</span> Gefundene Lücken</div>
+        <h2>Fünf blinde Flecken der bestehenden Logik</h2>
+        <div class="gaps" style="margin-top:8px">
+          <div class="gcard"><span class="gi">A</span><span class="gt">Keine Stillstandserkennung</span></div>
+          <div class="gcard"><span class="gi">B</span><span class="gt">Kein Mindestdauer-/Bewegungsfilter</span></div>
+          <div class="gcard"><span class="gi">C</span><span class="gt">Geschwindigkeit ungenutzt</span></div>
+          <div class="gcard"><span class="gi">D</span><span class="gt">Keine Plausibilitätsprüfung</span></div>
+          <div class="gcard" style="grid-column:1/-1"><span class="gi">E</span><span class="gt">Vorläufiger, unbegründeter Bewegungsschwellwert</span></div>
+        </div>
+        <p class="big-sub dim" style="max-width:66ch; margin-top:24px; font-size:1.05rem">
+          Jede Lücke wird zu einer neuen Prüfebene — <b class="accent">ergänzend, nicht ersetzend.</b>
+        </p>
+      </div>
+    </section>
+
+    <!-- 7 DECISION TREE -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">06</span> Kernstück</div>
+        <h2>Der Entscheidungsbaum — 4 Ebenen bis zum Pool</h2>
+        <div class="tree" style="margin-top:6px">
+          <div class="lvl"><div class="lt"><span class="ln">Ebene 1</span><span class="lh">Gültige Aufzeichnungssitzung</span></div><span class="rj">✕ zu kurz</span></div>
+          <div class="passbar">↓ besteht ✓</div>
+          <div class="lvl"><div class="lt"><span class="ln">Ebene 2</span><span class="lh">Echter Zyklus — Stillstand &amp; Ausreißer</span></div><span class="rj">✕ Ausreißer · Stillstand</span></div>
+          <div class="passbar">↓ besteht ✓</div>
+          <div class="lvl"><div class="lt"><span class="ln">Ebene 3</span><span class="lh">Alle Sensorsignale vollständig</span></div><span class="rj">✕ fehlende Signale</span></div>
+          <div class="passbar">↓ besteht ✓</div>
+          <div class="lvl"><div class="lt"><span class="ln">Ebene 4</span><span class="lh">Signalqualität je Signal</span></div><span class="rj">✕ Lücke · eingefroren</span></div>
+          <div class="passbar">↓ besteht ✓</div>
+          <div class="poolbox"><span class="pk">✓</span><div><div class="ph">Pool nutzbarer Zyklen</div><div class="pp">Jede Ablehnung bleibt mit Grund dokumentiert — nie stillschweigend verworfen.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 MATURITY -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">07</span> Methodischer Kern</div>
+        <h2>Reifegrade: Wie gut ist jedes Kriterium begründet?</h2>
+        <div class="mrow" style="margin-top:8px">
+          <div class="mcell" style="--mc:var(--m-inkons)"><div class="mn">Inkonsistent</div><p>Doku widerspricht sich selbst.</p></div>
+          <div class="mcell" style="--mc:var(--m-prov)"><div class="mn">Provisorisch</div><p>Bewusster Platzhalter-Wert.</p></div>
+          <div class="mcell" style="--mc:var(--m-nichtbeg)"><div class="mn">Nicht begründet</div><p>Aktiv, aber ohne Herleitung.</p></div>
+          <div class="mcell" style="--mc:var(--m-struk)"><div class="mn">Strukturell</div><p>Nur strukturelle Prüfung.</p></div>
+          <div class="mcell" style="--mc:var(--m-beg)"><div class="mn">Begründet</div><p>Empirisch / fachlich hergeleitet.</p></div>
+        </div>
+        <div class="mscale"><span>weniger belastbar ◄</span><span>► verlässlich · Zielzustand</span></div>
+        <p class="big-sub" style="max-width:66ch; margin-top:22px; font-size:1.05rem">
+          Macht <b>transparent</b>, wie belastbar jede Filterentscheidung ist — und wo noch Abstimmung nötig ist.
+        </p>
+      </div>
+    </section>
+
+    <!-- 9 POOL FUNNEL -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">08</span> Ergebnis der Filterung</div>
+        <h2>Rohdaten → geprüfter Pool + Protokoll</h2>
+        <div class="funnel" style="margin-top:14px">
+          <div class="fbig"><div class="ft">Rohaufzeichnung</div><div class="fn">Millionen Zyklen · 100 Mio.+ Messwerte</div></div>
+          <div class="farrow">▼ Entscheidungsbaum · 4 Ebenen</div>
+          <div class="fsplit">
+            <div class="fout pool"><div class="ft">✓ Datenpool</div><div class="fn">geprüfte, nutzbare Zyklen</div></div>
+            <div class="fout rej"><div class="ft">✕ Ablehnungsprotokoll</div><div class="fn">Ebene + Grund je Zyklus</div></div>
+          </div>
+        </div>
+        <p class="big-sub dim" style="max-width:70ch; margin-top:22px; font-size:1.02rem; text-align:center; margin-left:auto; margin-right:auto">
+          Das Protokoll zeigt <b class="accent">quantitativ</b>, wo Zyklen hängenbleiben — der empirische Beleg, dass der Baum echte Problemfälle findet.
+        </p>
+      </div>
+    </section>
+
+    <!-- 10 TWO VIEWS -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">09</span> Visualisierung</div>
+        <h2>Zwei Sichten — eine HTML-Datei, kein Server</h2>
+        <div class="views" style="margin-top:8px">
+          <div class="view" style="--vc:var(--accent)"><div class="ico">📈</div><h3>Trend-Sicht</h3><p>Alle Pool-Zyklen, in Zeit-Buckets verdichtet: Mittelwert + Perzentile. Ehrlicher Trend über die gesamte Lebensdauer.</p></div>
+          <div class="view" style="--vc:var(--m-struk)"><div class="ico">🔍</div><h3>Vergleichs-Sicht</h3><p>Repräsentative Stichprobe einzelner Zyklen, überlagert im Detail. Klar als Teilmenge gekennzeichnet.</p></div>
+        </div>
+        <p class="big-sub dim" style="max-width:70ch; margin-top:24px; font-size:1.02rem">
+          Prinzip: <b>offline verdichten, kompakt ausliefern</b> — per Doppelklick öffenbar, ohne IT-Infrastruktur.
+        </p>
+      </div>
+    </section>
+
+    <!-- 11 STATUS -->
+    <section class="slide">
+      <div class="slide-inner">
+        <div class="eyebrow"><span class="kn">10</span> Stand</div>
+        <h2>Was steht — und was noch offen ist</h2>
+        <div class="scol" style="margin-top:8px">
+          <div>
+            <div class="shdr"><span class="pill ok">✓ Umgesetzt</span></div>
+            <div class="slist">
+              <div class="sitem d"><span class="k">✓</span><span>Pipeline-Analyse &amp; 5 Lücken dokumentiert</span></div>
+              <div class="sitem d"><span class="k">✓</span><span>Entwurf des <b>4-stufigen Baums</b> mit Reifegraden</span></div>
+              <div class="sitem d"><span class="k">✓</span><span>Qualitäts-Profilierung auf volle Serie ausgeweitet</span></div>
+              <div class="sitem d"><span class="k">✓</span><span>Erste Version des <b>HTML-Dashboards</b> demonstriert</span></div>
+            </div>
+          </div>
+          <div>
+            <div class="shdr"><span class="pill op">◷ Offen</span></div>
+            <div class="slist">
+              <div class="sitem o"><span class="k">◷</span><span>Fachliche <b>Abstimmung</b> zu Kernschwellwerten</span></div>
+              <div class="sitem o"><span class="k">◷</span><span>Ebene-4-Schwellwerte final festlegen</span></div>
+              <div class="sitem o"><span class="k">◷</span><span><b>Pool-Filter-Modul</b> implementieren</span></div>
+              <div class="sitem o"><span class="k">◷</span><span>Voller Lauf → <b>Ablehnungsstatistik</b> als Ergebnis</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 VISION -->
+    <section class="slide">
+      <div class="slide-inner" style="text-align:center">
+        <div class="eyebrow" style="justify-content:center"><span class="dot"></span> Zielbild</div>
+        <h2 style="max-width:20ch; margin-left:auto; margin-right:auto">Ein tägliches Dashboard für Testingenieure</h2>
+        <p class="big-sub" style="max-width:56ch; margin:0 auto; font-size:clamp(1.05rem,2.2vw,1.4rem)">
+          Auf einen Blick erkennen, ob die Datenaufzeichnung <b class="accent">„gesund"</b> ist —
+          statt es erst nach Monaten zu bemerken.
+        </p>
+        <div class="metrics three" style="margin-top:36px; max-width:820px; margin-left:auto; margin-right:auto">
+          <div class="metric"><div class="n" style="font-size:clamp(1.4rem,3vw,2rem)">Baum</div><div class="l">liefert die fachliche Logik</div></div>
+          <div class="metric"><div class="n" style="font-size:clamp(1.4rem,3vw,2rem)">Pool</div><div class="l">liefert die geprüften Daten</div></div>
+          <div class="metric"><div class="n" style="font-size:clamp(1.4rem,3vw,2rem)">Overlay</div><div class="l">liefert das visuelle Element</div></div>
+        </div>
+        <p class="mono dim" style="margin-top:38px; font-size:.82rem; letter-spacing:.1em">T1000 · DANKE — FRAGEN?</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="corner">
+  <button id="themeBtn" type="button">◐ Theme</button>
+  <button id="fsBtn" type="button">⛶ Vollbild</button>
+</div>
+
+<div class="hud">
+  <button id="prev" type="button" aria-label="Zurück">‹</button>
+  <div class="dots" id="dots"></div>
+  <span class="count" id="count">1 / 12</span>
+  <button id="next" type="button" aria-label="Weiter">›</button>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var track  = document.getElementById("track");
+  var slides = Array.prototype.slice.call(track.children);
+  var total  = slides.length;
+  var idx    = 0;
+
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+  var count   = document.getElementById("count");
+  var dotsBox = document.getElementById("dots");
+  var topbar  = document.getElementById("topbar");
+
+  // build dots
+  slides.forEach(function (_, i) {
+    var d = document.createElement("i");
+    d.addEventListener("click", function () { go(i); });
+    dotsBox.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotsBox.children);
+
+  function render() {
+    track.style.transform = "translateX(" + (-idx * 100) + "%)";
+    count.textContent = (idx + 1) + " / " + total;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === total - 1;
+    dots.forEach(function (d, i) { d.classList.toggle("on", i === idx); });
+    topbar.style.width = ((idx) / (total - 1) * 100).toFixed(2) + "%";
+    // reset scroll of current slide
+    slides[idx].scrollTop = 0;
+  }
+  function go(n) { idx = Math.max(0, Math.min(total - 1, n)); render(); }
+  function next() { go(idx + 1); }
+  function prev() { go(idx - 1); }
+
+  nextBtn.addEventListener("click", next);
+  prevBtn.addEventListener("click", prev);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") { e.preventDefault(); next(); }
+    else if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); prev(); }
+    else if (e.key === "Home") { e.preventDefault(); go(0); }
+    else if (e.key === "End") { e.preventDefault(); go(total - 1); }
+  });
+
+  // touch swipe
+  var x0 = null;
+  track.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 55) { dx < 0 ? next() : prev(); }
+    x0 = null;
+  }, { passive: true });
+
+  // theme
+  document.getElementById("themeBtn").addEventListener("click", function () {
+    var root = document.documentElement;
+    var cur = root.getAttribute("data-theme") ||
+      (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+  });
+
+  // fullscreen
+  document.getElementById("fsBtn").addEventListener("click", function () {
+    if (!document.fullscreenElement) {
+      (document.documentElement.requestFullscreen || function(){}).call(document.documentElement);
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  });
+
+  render();
+
+  /* ---- title-slide oscilloscope ---- */
+  var cv = document.getElementById("scope");
+  if (!cv) return;
+  var ctx = cv.getContext("2d");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H;
+  function accent() { return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#12a594"; }
+  function resize() {
+    var host = cv.parentElement;
+    W = host.clientWidth; H = host.clientHeight;
+    cv.width = W * DPR; cv.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize(); window.addEventListener("resize", resize);
+  function ease(x){ return x<0.5 ? 2*x*x : 1-Math.pow(-2*x+2,2)/2; }
+  function cyc(t, skew, h){
+    if (t<0.18) return 0;
+    if (t<0.40) return ease((t-0.18)/0.22)*h;
+    if (t<0.60+skew) return h;
+    if (t<0.82+skew) return (1-ease((t-(0.60+skew))/0.22))*h;
+    return 0;
+  }
+  var tr = [];
+  for (var i=0;i<7;i++) tr.push({ phase:Math.random(), speed:0.00006+Math.random()*0.00006, skew:(Math.random()-.5)*.1, h:0.72+Math.random()*.26, a:0.09+Math.random()*.16 });
+  function hexA(hex,a){ hex=hex.replace("#",""); if(hex.length===3)hex=hex.split("").map(function(c){return c+c;}).join(""); var r=parseInt(hex.substr(0,2),16)||18,g=parseInt(hex.substr(2,2),16)||165,b=parseInt(hex.substr(4,2),16)||148; return "rgba("+r+","+g+","+b+","+a+")"; }
+  function draw(ts){
+    if (!W){ resize(); }
+    ctx.clearRect(0,0,W,H);
+    var col=accent(), baseY=H*0.62, amp=H*0.36;
+    for (var k=0;k<tr.length;k++){
+      var t0=tr[k], off=reduce?t0.phase:(t0.phase+ts*t0.speed)%1;
+      ctx.beginPath(); ctx.lineWidth=1.6; ctx.strokeStyle=hexA(col,t0.a);
+      for (var n=0;n<=220;n++){ var x=n/220, tt=(x+off)%1, v=cyc(tt,t0.skew,t0.h); var px=x*W, py=baseY-v*amp; n===0?ctx.moveTo(px,py):ctx.lineTo(px,py); }
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  if (reduce) draw(0); else requestAnimationFrame(draw);
+})();
+</script>

@@ -1,0 +1,875 @@
+<title>T1000 — Vom Rohdatenberg zum geprüften Datensatz</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    /* neutrals — cool slate with slight blue bias */
+    --paper:      #eef1f1;
+    --card:       #ffffff;
+    --card-2:     #f6f8f8;
+    --ink:        #101a20;
+    --ink-soft:   #33454f;
+    --muted:      #6a7c85;
+    --line:       #d6dedf;
+    --line-soft:  #e6ecec;
+    /* accent — signal teal */
+    --accent:     #0f9c8d;
+    --accent-ink: #0a5e56;
+    --accent-wash:#dff1ee;
+    /* semantics */
+    --ok:         #2f9e6f;
+    --ok-wash:    #dcf0e6;
+    --bad:        #d94a4a;
+    --bad-wash:   #f6dede;
+    --plan:       #8a93b8;
+    /* maturity scale */
+    --m-inkons:   #d94a4a;
+    --m-prov:     #e08f2e;
+    --m-nichtbeg: #c76a2c;
+    --m-struk:    #3f7fc4;
+    --m-beg:      #2f9e6f;
+
+    --maxw: 1120px;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(16,26,32,.05), 0 8px 30px -18px rgba(16,26,32,.35);
+
+    --sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: "Cascadia Code", "Cascadia Mono", ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:    #0c1418;
+      --card:     #121e24;
+      --card-2:   #16242b;
+      --ink:      #e9eff0;
+      --ink-soft: #b9c6cb;
+      --muted:    #8399a1;
+      --line:     #24363e;
+      --line-soft:#1b2a31;
+      --accent:     #24c3b1;
+      --accent-ink: #7fe4d8;
+      --accent-wash:#12312e;
+      --ok:      #45b585;   --ok-wash:  #12352a;
+      --bad:     #e46d6d;   --bad-wash: #3a1e1e;
+      --plan:    #7f89b0;
+      --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#45b585;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 40px -18px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#eef1f1; --card:#fff; --card-2:#f6f8f8; --ink:#101a20; --ink-soft:#33454f;
+    --muted:#6a7c85; --line:#d6dedf; --line-soft:#e6ecec;
+    --accent:#0f9c8d; --accent-ink:#0a5e56; --accent-wash:#dff1ee;
+    --ok:#2f9e6f; --ok-wash:#dcf0e6; --bad:#d94a4a; --bad-wash:#f6dede; --plan:#8a93b8;
+    --m-inkons:#d94a4a; --m-prov:#e08f2e; --m-nichtbeg:#c76a2c; --m-struk:#3f7fc4; --m-beg:#2f9e6f;
+    --shadow: 0 1px 2px rgba(16,26,32,.05), 0 8px 30px -18px rgba(16,26,32,.35);
+  }
+  :root[data-theme="dark"] {
+    --paper:#0c1418; --card:#121e24; --card-2:#16242b; --ink:#e9eff0; --ink-soft:#b9c6cb;
+    --muted:#8399a1; --line:#24363e; --line-soft:#1b2a31;
+    --accent:#24c3b1; --accent-ink:#7fe4d8; --accent-wash:#12312e;
+    --ok:#45b585; --ok-wash:#12352a; --bad:#e46d6d; --bad-wash:#3a1e1e; --plan:#7f89b0;
+    --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#45b585;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 40px -18px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); line-height: 1.6;
+    -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+  }
+  ::selection { background: var(--accent); color: #fff; }
+
+  /* ---------- progress + nav ---------- */
+  #progress {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: var(--accent); z-index: 60; transition: width .1s linear;
+  }
+  nav.top {
+    position: sticky; top: 0; z-index: 50;
+    display: flex; align-items: center; gap: 14px;
+    padding: 10px clamp(16px, 4vw, 40px);
+    background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav.top .brand {
+    font-family: var(--mono); font-weight: 700; letter-spacing: .12em;
+    font-size: .82rem; color: var(--ink); white-space: nowrap;
+  }
+  nav.top .brand b { color: var(--accent); }
+  nav.top ol {
+    display: flex; gap: 2px; list-style: none; margin: 0; padding: 0;
+    overflow-x: auto; scrollbar-width: none; margin-left: auto;
+  }
+  nav.top ol::-webkit-scrollbar { display: none; }
+  nav.top a {
+    display: inline-block; padding: 5px 10px; border-radius: 8px;
+    font-family: var(--mono); font-size: .74rem; letter-spacing: .02em;
+    color: var(--muted); text-decoration: none; white-space: nowrap;
+    transition: color .15s, background .15s;
+  }
+  nav.top a:hover { color: var(--ink); background: var(--line-soft); }
+  nav.top a b { color: var(--accent); margin-right: 5px; }
+  nav.top a:focus-visible, .toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .toggle {
+    border: 1px solid var(--line); background: var(--card); color: var(--ink-soft);
+    border-radius: 8px; padding: 5px 9px; cursor: pointer; font-family: var(--mono);
+    font-size: .72rem; white-space: nowrap;
+  }
+  .toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- layout ---------- */
+  main { display: block; }
+  section { padding: clamp(56px, 8vw, 104px) clamp(16px, 4vw, 40px); border-bottom: 1px solid var(--line-soft); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .narrow { max-width: 760px; }
+
+  .eyebrow {
+    font-family: var(--mono); font-size: .76rem; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--accent); display: flex; align-items: center; gap: 10px;
+  }
+  .eyebrow .num {
+    display: inline-grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px;
+    border: 1px solid var(--accent); border-radius: 7px; color: var(--accent);
+    font-weight: 700; letter-spacing: .05em;
+  }
+  h1 { font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.04; letter-spacing: -.02em; margin: .3em 0; text-wrap: balance; font-weight: 800; }
+  h2 { font-size: clamp(1.6rem, 3.6vw, 2.5rem); line-height: 1.1; letter-spacing: -.015em; margin: .5em 0 .3em; text-wrap: balance; font-weight: 750; }
+  h3 { font-size: 1.12rem; margin: 0 0 .3em; letter-spacing: -.01em; }
+  p { margin: .7em 0; color: var(--ink-soft); max-width: 68ch; }
+  .lead { font-size: 1.16rem; color: var(--ink); }
+  .kicker { color: var(--muted); font-size: 1.02rem; }
+  strong { color: var(--ink); font-weight: 650; }
+  .mono { font-family: var(--mono); }
+
+  .grid { display: grid; gap: 20px; }
+  @media (min-width: 720px) { .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3,1fr);} }
+
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 22px; box-shadow: var(--shadow);
+  }
+  .card h3 { display: flex; align-items: center; gap: 10px; }
+  .tag {
+    font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted);
+    white-space: nowrap;
+  }
+  .tag.ok  { color: var(--ok);  border-color: color-mix(in srgb, var(--ok) 45%, var(--line)); background: var(--ok-wash); }
+  .tag.bad { color: var(--bad); border-color: color-mix(in srgb, var(--bad) 45%, var(--line)); background: var(--bad-wash); }
+  .tag.plan{ color: var(--plan); border-style: dashed; }
+  .tag.acc { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: var(--accent-wash); }
+
+  /* ---------- hero ---------- */
+  #hero {
+    position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(120% 90% at 85% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+      var(--paper);
+  }
+  #scope {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    opacity: .55; pointer-events: none;
+  }
+  @media (prefers-color-scheme: dark) { #scope { opacity: .7; } }
+  #hero .wrap { position: relative; z-index: 2; }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 26px;
+    font-family: var(--mono); font-size: .78rem; color: var(--muted);
+  }
+  .hero-meta span { display: inline-flex; align-items: center; gap: 7px; }
+  .hero-meta b { color: var(--ink); font-weight: 600; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
+
+  .quote {
+    border-left: 3px solid var(--accent); padding: 6px 0 6px 22px; margin: 26px 0;
+    font-size: 1.28rem; line-height: 1.4; color: var(--ink); font-weight: 500; max-width: 60ch;
+  }
+  .quote .q { color: var(--accent); font-family: var(--mono); }
+
+  /* ---------- stat row ---------- */
+  .stats { display: grid; gap: 14px; grid-template-columns: repeat(2,1fr); margin-top: 8px; }
+  @media (min-width: 720px){ .stats { grid-template-columns: repeat(4,1fr);} }
+  .stat { background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+  .stat .n { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
+  .stat .l { font-size: .85rem; color: var(--muted); margin-top: 2px; }
+
+  /* ---------- cycle svg ---------- */
+  .figure { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+  .figcap { font-family: var(--mono); font-size: .74rem; color: var(--muted); margin-top: 10px; letter-spacing: .02em; }
+  svg { display: block; width: 100%; height: auto; }
+
+  /* ---------- signal table ---------- */
+  .signals { display: flex; flex-direction: column; gap: 2px; }
+  .sig {
+    display: grid; grid-template-columns: 150px 1fr auto; gap: 14px; align-items: center;
+    padding: 11px 4px; border-bottom: 1px solid var(--line-soft);
+  }
+  @media (max-width: 620px){ .sig { grid-template-columns: 120px 1fr; } .sig .rate { display:none; } }
+  .sig .name { font-weight: 600; }
+  .sig .name small { display: block; color: var(--muted); font-weight: 400; font-size: .8rem; }
+  .bar { height: 9px; border-radius: 999px; background: var(--line-soft); overflow: hidden; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), color-mix(in srgb,var(--accent) 55%, #fff)); border-radius: 999px; }
+  .rate { font-family: var(--mono); font-size: .78rem; color: var(--muted); white-space: nowrap; text-align: right; }
+
+  /* ---------- pipeline stepper ---------- */
+  .pipe { display: grid; gap: 10px; grid-template-columns: 1fr; }
+  @media (min-width: 640px){ .pipe { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 960px){ .pipe { grid-template-columns: 1fr 1fr 1fr 1fr 1fr; } }
+  .step {
+    position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 14px 14px 14px; box-shadow: var(--shadow);
+  }
+  .step .s-num { font-family: var(--mono); font-size: .72rem; color: var(--accent); font-weight: 700; letter-spacing: .05em; }
+  .step h4 { margin: 4px 0 4px; font-size: .98rem; letter-spacing: -.01em; }
+  .step p { font-size: .84rem; margin: 0; color: var(--muted); max-width: none; }
+  .step.plan { border-style: dashed; opacity: .78; background: var(--card-2); }
+  .step .badge { position: absolute; top: 12px; right: 12px; }
+
+  .gaps { margin-top: 26px; }
+  .gap {
+    display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start;
+    padding: 14px; border: 1px solid var(--line); border-left: 3px solid var(--bad);
+    border-radius: 10px; background: var(--card);
+  }
+  .gap .gi { font-family: var(--mono); font-weight: 700; color: var(--bad); font-size: 1.1rem; }
+  .gap h4 { margin: 0 0 3px; font-size: .98rem; }
+  .gap p { margin: 0; font-size: .86rem; color: var(--muted); max-width: none; }
+
+  /* ---------- decision tree ---------- */
+  .tree { display: flex; flex-direction: column; gap: 0; }
+  .level {
+    display: grid; grid-template-columns: 1fr 210px; gap: 18px; align-items: stretch;
+  }
+  @media (max-width: 680px){ .level { grid-template-columns: 1fr; } }
+  .gate {
+    background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px;
+    box-shadow: var(--shadow); position: relative;
+  }
+  .gate .lv { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+  .gate h4 { margin: 4px 0 6px; font-size: 1.05rem; }
+  .gate p { margin: 0; font-size: .88rem; color: var(--muted); max-width: none; }
+  .reject {
+    background: var(--bad-wash); border: 1px solid color-mix(in srgb, var(--bad) 40%, var(--line));
+    border-radius: 12px; padding: 14px; display: flex; flex-direction: column; justify-content: center;
+  }
+  .reject .rl { font-family: var(--mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--bad); display:flex; align-items:center; gap:6px; }
+  .reject p { margin: 6px 0 0; font-size: .84rem; color: var(--ink-soft); max-width:none;}
+  .connector { display: grid; grid-template-columns: 1fr 210px; gap: 18px; }
+  @media (max-width: 680px){ .connector { grid-template-columns: 1fr; } .connector .cx { display:none; } }
+  .connector .cv {
+    height: 22px; margin-left: calc(50% - 1px); width: 2px; background: var(--ok);
+    position: relative;
+  }
+  .connector .cv::after{
+    content:"besteht ✓"; position:absolute; left: 10px; top: 3px; font-family:var(--mono);
+    font-size:.68rem; color: var(--ok); white-space:nowrap;
+  }
+  .final {
+    margin-top: 22px; background: linear-gradient(135deg, var(--accent-wash), var(--card));
+    border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line));
+    border-radius: 14px; padding: 20px 22px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .final .ico { font-family: var(--mono); font-weight: 800; color: var(--accent); font-size: 1.6rem; }
+  .final h4 { margin: 0; font-size: 1.15rem; }
+  .final p { margin: 2px 0 0; font-size: .9rem; color: var(--ink-soft); max-width:none; }
+
+  /* ---------- maturity scale ---------- */
+  .mat { display: grid; gap: 12px; grid-template-columns: 1fr; margin-top: 8px; }
+  @media (min-width: 780px){ .mat { grid-template-columns: repeat(5,1fr); } }
+  .m {
+    border: 1px solid var(--line); border-top: 4px solid var(--mc); border-radius: 12px;
+    padding: 14px; background: var(--card); box-shadow: var(--shadow);
+  }
+  .m .mh { font-family: var(--mono); font-weight: 700; color: var(--mc); font-size: .92rem; }
+  .m p { font-size: .82rem; margin: 6px 0 0; color: var(--muted); max-width: none; }
+  .scale-hint { font-family: var(--mono); font-size: .72rem; color: var(--muted); display:flex; justify-content: space-between; margin-top: 12px; }
+
+  /* ---------- standstill window ---------- */
+  .win { display: grid; grid-template-columns: 1fr; gap: 18px; align-items: center; }
+  @media (min-width: 820px){ .win { grid-template-columns: 1.1fr .9fr; } }
+
+  /* ---------- funnel ---------- */
+  .funnel { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+  .frow { width: 100%; display: flex; justify-content: center; }
+  .fbox {
+    border-radius: 12px; padding: 16px 20px; text-align: center; border: 1px solid var(--line);
+    box-shadow: var(--shadow); background: var(--card);
+  }
+  .fbox .ft { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .fbox .fn { font-size: 1.15rem; font-weight: 700; margin-top: 2px; letter-spacing: -.01em; }
+  .fbox.big { background: linear-gradient(135deg, var(--card-2), var(--card)); }
+  .fbox.pool { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); background: var(--accent-wash); }
+  .fbox.pool .fn { color: var(--accent-ink); }
+  .fbox.rej { border-color: color-mix(in srgb, var(--bad) 40%, var(--line)); background: var(--bad-wash); }
+  .farrow { color: var(--muted); font-family: var(--mono); font-size: 1.1rem; line-height: 1; }
+  .split { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; width: 100%; }
+
+  /* ---------- views ---------- */
+  .views { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 780px){ .views { grid-template-columns: 1fr 1fr; } }
+
+  /* ---------- status columns ---------- */
+  .status { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 780px){ .status { grid-template-columns: 1fr 1fr; } }
+  .col h3 { display: flex; align-items: center; gap: 10px; }
+  .items { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .item {
+    display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start;
+    background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px;
+  }
+  .item .ci { font-family: var(--mono); font-weight: 700; }
+  .item.done { border-left: 3px solid var(--ok); }
+  .item.done .ci { color: var(--ok); }
+  .item.open { border-left: 3px solid var(--m-prov); }
+  .item.open .ci { color: var(--m-prov); }
+  .item p { margin: 0; font-size: .87rem; color: var(--ink-soft); max-width: none; }
+  .item b { color: var(--ink); }
+
+  /* ---------- footer ---------- */
+  footer {
+    padding: 40px clamp(16px,4vw,40px); text-align: center; color: var(--muted);
+    font-family: var(--mono); font-size: .78rem; line-height: 1.8;
+  }
+  footer b { color: var(--ink-soft); }
+
+  .updot { color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+  }
+  html { scroll-behavior: smooth; }
+</style>
+
+<div id="progress"></div>
+
+<nav class="top">
+  <span class="brand">T<b>1000</b> · DATENQUALITÄT</span>
+  <ol>
+    <li><a href="#hero"><b>00</b>Start</a></li>
+    <li><a href="#k1"><b>01</b>Projektrahmen</a></li>
+    <li><a href="#k2"><b>02</b>Versuch &amp; Daten</a></li>
+    <li><a href="#k3"><b>03</b>Pipeline</a></li>
+    <li><a href="#k4"><b>04</b>Entscheidungsbaum</a></li>
+    <li><a href="#k5"><b>05</b>Pool &amp; Overlay</a></li>
+    <li><a href="#k6"><b>06</b>Stand</a></li>
+  </ol>
+  <button class="toggle" id="themeBtn" type="button" aria-label="Farbschema wechseln">◐ Theme</button>
+</nav>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <canvas id="scope" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dot"></span> Praxissemesterarbeit · DHBW · Emerson Electric (Laatzen)</div>
+    <h1>Vom Rohdaten&shy;berg zum geprüften Datensatz</h1>
+    <p class="lead narrow">
+      Elektrische Linearaktuatoren laufen im Dauertest über Monate. Prüfstände zeichnen dabei
+      Hunderte Millionen Sensormesswerte auf — roh, lückenhaft, teils fehlerhaft. Diese Arbeit
+      entwickelt eine <strong>begründete, nachvollziehbare Prüflogik</strong>, die daraus einen
+      vertrauenswürdigen Datensatz macht.
+    </p>
+    <div class="quote">
+      <span class="q">»</span> Wie kommt man von einer sehr großen Menge automatisch aufgezeichneter
+      Prüfstandsdaten zu einem qualitativ hochwertigen, vertrauenswürdigen Datensatz? <span class="q">«</span>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span> <b>3</b>&nbsp;eigene Bausteine</span>
+      <span><span class="dot"></span> <b>10</b>&nbsp;Pipeline-Stufen</span>
+      <span><span class="dot"></span> <b>4</b>&nbsp;Prüfebenen</span>
+      <span><span class="dot"></span> <b>5</b>&nbsp;Reifegrade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 01 PROJEKTRAHMEN ============ -->
+<section id="k1">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span> Projektrahmen</div>
+    <h2>Was gebaut wird — und was nicht</h2>
+    <p class="lead narrow kicker">
+      Die Arbeit baut auf einer bestehenden Vorverarbeitungs-Pipeline (aus einer früheren Masterarbeit)
+      auf. Diese wird <strong>nicht neu geschrieben</strong>, sondern analysiert, geprüft und um drei
+      eigene Bausteine ergänzt.
+    </p>
+
+    <div class="grid g3" style="margin-top:34px">
+      <div class="card">
+        <h3><span class="tag acc">Baustein 1</span></h3>
+        <h3>Entscheidungsbaum</h3>
+        <p>Eine mehrstufige Prüflogik, die für jeden Bewegungszyklus entscheidet: Kommt er in den
+        „Pool nutzbarer Daten" — oder wird er <em>mit dokumentiertem Grund</em> abgelehnt? Unbegründete
+        Schwellwerte werden hinterfragt und empirisch neu hergeleitet.</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag acc">Baustein 2</span></h3>
+        <h3>Datenpool-Ableitung</h3>
+        <p>Die praktische Umsetzung des Baums als Filterschritt: aus allen Zyklen entsteht der geprüfte
+        Teildatensatz — inklusive <em>Ablehnungsprotokoll</em> (welcher Zyklus wurde warum ausgeschlossen).</p>
+      </div>
+      <div class="card">
+        <h3><span class="tag acc">Baustein 3</span></h3>
+        <h3>HTML-Cycle-Overlay</h3>
+        <p>Eine browserbasierte Visualisierung ganz ohne Server: geprüfte Zyklen werden überlagert
+        dargestellt und machen Trends &amp; Auffälligkeiten über die Lebensdauer eines Prüflings sichtbar.</p>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:22px">
+      <div class="card" style="border-left:3px solid var(--muted)">
+        <h3>🚫 Nicht Teil dieser Arbeit</h3>
+        <p>Die Vorverarbeitungs-Pipeline selbst (Zyklus-Erkennung, Signal-Extraktion) sowie jegliche
+        Modellbildung / Machine Learning auf Basis des fertigen Pools — beides gehört zur
+        referenzierten Masterarbeit bzw. zu Anschlussarbeiten.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--accent)">
+        <h3>🎯 Zielsystem</h3>
+        <p>Ein <strong>täglich aktualisiertes Dashboard für Testingenieure</strong>: Wie viele Zyklen
+        wurden heute aufgezeichnet? Wie viele bestanden die Prüfung? Was wurde warum verworfen? So lässt
+        sich auf einen Blick erkennen, ob die Datenaufzeichnung „gesund" ist — statt es erst nach Monaten
+        zu merken.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 VERSUCH & DATEN ============ -->
+<section id="k2">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span> Versuchsaufbau &amp; Daten</div>
+    <h2>Ein Zyklus ist die kleinste Einheit</h2>
+
+    <div class="win" style="margin-top:30px">
+      <div class="figure">
+        <svg viewBox="0 0 520 220" role="img" aria-label="Positionssignal eines Bewegungszyklus: Hin- und Rückbewegung mit Ruhelage- und Bewegungsschwelle">
+          <!-- axes -->
+          <line x1="46" y1="18" x2="46" y2="182" stroke="var(--line)" stroke-width="1.5"/>
+          <line x1="46" y1="182" x2="500" y2="182" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="10" y="30" font-family="var(--mono)" font-size="10" fill="var(--muted)">Pos.</text>
+          <text x="470" y="200" font-family="var(--mono)" font-size="10" fill="var(--muted)">Zeit</text>
+          <!-- full stroke line -->
+          <line x1="46" y1="40" x2="500" y2="40" stroke="var(--accent)" stroke-width="1" stroke-dasharray="4 4" opacity=".6"/>
+          <text x="52" y="35" font-family="var(--mono)" font-size="9.5" fill="var(--accent)">voller Hub</text>
+          <!-- movement threshold -->
+          <line x1="46" y1="150" x2="500" y2="150" stroke="var(--m-prov)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="52" y="145" font-family="var(--mono)" font-size="9.5" fill="var(--m-prov)">Bewegungsschwelle</text>
+          <!-- rest baseline -->
+          <text x="52" y="176" font-family="var(--mono)" font-size="9.5" fill="var(--muted)">Ruhelage</text>
+          <!-- the out-and-back curve -->
+          <path d="M46,168 L110,168 C150,168 150,44 210,42 L300,42 C360,42 360,168 410,168 L500,168"
+                fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- start / end markers -->
+          <circle cx="128" cy="150" r="4" fill="var(--ok)"/>
+          <text x="118" y="138" font-family="var(--mono)" font-size="9" fill="var(--ok)">Start</text>
+          <circle cx="392" cy="150" r="4" fill="var(--bad)"/>
+          <text x="384" y="138" font-family="var(--mono)" font-size="9" fill="var(--bad)">Ende</text>
+        </svg>
+        <div class="figcap">Abb. — „out &amp; back": Ein Zyklus beginnt beim Überschreiten der Bewegungsschwelle und endet bei der Rückkehr darunter. Typische Dauer: wenige Sekunden.</div>
+      </div>
+      <div>
+        <h3>Positionsgeregelt, wiederholt, monatelang</h3>
+        <p>Der Aktuator fährt fortlaufend dieselbe Trajektorie — eine Hin- und Rückbewegung zwischen
+        Ruhelage und vollem Hub. Ein solcher <strong>Bewegungszyklus</strong> ist die zentrale
+        analytische Grundeinheit: Alle Prüfungen und Visualisierungen beziehen sich auf einzelne Zyklen,
+        nicht auf beliebige Zeitfenster.</p>
+        <p class="kicker" style="font-size:.95rem">
+          Wichtig methodisch: Die Zyklusdauer wird <strong>empirisch aus den Daten</strong> bestimmt,
+          nicht als Literaturwert übernommen. Eine frühe Notiz (~1,8&nbsp;s) stellte sich als veraltet
+          heraus und wurde datengetrieben korrigiert — selbst ein Beispiel dafür, warum begründete
+          Kriterien nötig sind.
+        </p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:40px">Sechs Sensorsignale — stark unterschiedliche Abtastraten</h3>
+    <p class="kicker" style="font-size:.95rem">Die Balken zeigen relative Messwertdichte pro Zyklus (log. Eindruck, nicht maßstabsgetreu).</p>
+    <div class="figure" style="margin-top:14px">
+      <div class="signals">
+        <div class="sig"><div class="name">Position<small>Referenz für Zyklusgrenzen</small></div><div class="bar"><i style="width:34%"></i></div><div class="rate">~ Dutzende / Zyklus</div></div>
+        <div class="sig"><div class="name">Geschwindigkeit<small>bislang ungenutzt für Qualität</small></div><div class="bar"><i style="width:34%"></i></div><div class="rate">~ Dutzende / Zyklus</div></div>
+        <div class="sig"><div class="name">Strom<small>Basis für Hysterese-Näherung</small></div><div class="bar"><i style="width:34%"></i></div><div class="rate">~ Dutzende / Zyklus</div></div>
+        <div class="sig"><div class="name">Druck<small>hydraulisch / pneumatisch</small></div><div class="bar"><i style="width:16%"></i></div><div class="rate">niedrig</div></div>
+        <div class="sig"><div class="name">Temperatur<small>Motor, Spindelmutter, Lager</small></div><div class="bar"><i style="width:10%"></i></div><div class="rate">sehr niedrig</div></div>
+        <div class="sig"><div class="name">Vibration x/y/z<small>dreiachsig</small></div><div class="bar"><i style="width:100%"></i></div><div class="rate">extrem hoch</div></div>
+      </div>
+    </div>
+    <p class="kicker" style="font-size:.92rem">Wegen dieser Heterogenität verzichtet die Pipeline bewusst auf Resampling — jedes Signal bleibt in seiner nativen Auflösung.</p>
+
+    <h3 style="margin-top:40px">Größenordnung des Problems</h3>
+    <div class="stats">
+      <div class="stat"><div class="n">Monate</div><div class="l">Dauer eines Dauerlaufs, bis zu ½ Jahr</div></div>
+      <div class="stat"><div class="n">Mio.</div><div class="l">Bewegungszyklen pro Versuch</div></div>
+      <div class="stat"><div class="n">100 Mio.+</div><div class="l">Einzelmesswerte über alle Signale</div></div>
+      <div class="stat"><div class="n">2+</div><div class="l">Versuchsserien, nicht 1:1 übertragbar</div></div>
+    </div>
+    <p class="kicker" style="font-size:.95rem">Die Rohdaten (hive-partitionierte Parquet-Dateien) sind um Größenordnungen zu groß für den Arbeitsspeicher üblicher Analysewerkzeuge — Verdichtung ist zwingend.</p>
+  </div>
+</section>
+
+<!-- ============ 03 PIPELINE ============ -->
+<section id="k3">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span> Bestehende Pipeline &amp; Lücken</div>
+    <h2>Zehn Stufen — acht gebaut, zwei geplant</h2>
+    <p class="lead narrow kicker">
+      Die geerbte Pipeline wandelt Rohaufzeichnungen schrittweise in strukturierte Zyklen mit
+      Qualitätskennzahlen um. Am Ende stehen Kandidaten-Zyklen — aber <strong>noch keine Entscheidung</strong>,
+      welche davon nutzbar sind. Genau diese Lücke schließt Kapitel&nbsp;04.
+    </p>
+
+    <div class="pipe" style="margin-top:30px">
+      <div class="step"><div class="s-num">STUFE 1</div><h4>Metadaten-Katalog</h4><p>Welche Rohsignale liegen mit welchen Eigenschaften vor?</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 2</div><h4>Signal-Auswahl</h4><p>Relevante Kanäle aus allen verfügbaren auswählen.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 3</div><h4>Zeitstempel-Analyse</h4><p>Lücken-Statistik je Signal als Grundlage für Schwellwerte.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 4</div><h4>Sitzungs-Erkennung</h4><p>Zeitreihe an großen Lücken in Aufzeichnungssitzungen trennen.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 5</div><h4>Zyklus-Erkennung</h4><p>Aus dem Positionssignal einzelne Bewegungszyklen ableiten.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 6</div><h4>Zyklus-Auswahl</h4><p>Repräsentative Teilmenge über Sitzungen &amp; Zeit verteilen.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 7</div><h4>Multi-Sensor-Extraktion</h4><p>Alle Signale je Zyklus herausschneiden — native Rate, kein Resampling.</p><span class="tag ok badge">✓</span></div>
+      <div class="step"><div class="s-num">STUFE 8</div><h4>Qualitäts-Profilierung</h4><p>Beschreibende Kennzahlen je Zyklus/Signal — entscheidet aber nicht.</p><span class="tag ok badge">✓</span></div>
+      <div class="step plan"><div class="s-num">STUFE 9</div><h4>Feature-Engineering</h4><p>Merkmale für Modelle ableiten.</p><span class="tag plan badge">geplant</span></div>
+      <div class="step plan"><div class="s-num">STUFE 10</div><h4>Finaler Datensatz</h4><p>Erzeugung des fertigen Trainingsdatensatzes.</p><span class="tag plan badge">geplant</span></div>
+    </div>
+
+    <h3 style="margin-top:44px">Fünf identifizierte Lücken</h3>
+    <p class="kicker" style="font-size:.95rem">Jede Lücke wird in Kapitel 04 zu einer neuen Prüfebene bzw. einem neu zu begründenden Kriterium — <strong>ergänzend, nicht ersetzend</strong>.</p>
+    <div class="gaps grid g2">
+      <div class="gap"><div class="gi">A</div><div><h4>Keine Stillstandserkennung</h4><p>Ein eingefrorener Sensor kann fälschlich als „aktiver Zyklus" durchgehen — es fehlt die Prüfung, ob innerhalb des Zyklus wirklich Bewegung stattfindet.</p></div></div>
+      <div class="gap"><div class="gi">B</div><div><h4>Kein Mindestdauer-/Bewegungsfilter</h4><p>Dauer &amp; Positionsspanne werden berechnet, aber nie als Ausschlusskriterium genutzt — Rauschausschläge oder verschmolzene Messreihen bleiben unbemerkt.</p></div></div>
+      <div class="gap"><div class="gi">C</div><div><h4>Geschwindigkeit ungenutzt</h4><p>Das Signal wird extrahiert, aber nirgends zur Qualitätsbewertung herangezogen — obwohl es der direktere Stillstands-Indikator wäre.</p></div></div>
+      <div class="gap"><div class="gi">D</div><div><h4>Keine Plausibilitätsprüfung</h4><p>Keine Prüfung, ob der volle Hub erreicht wurde, ob Messwertzahl plausibel ist, oder ob Werte ungültig / „eingefroren" sind.</p></div></div>
+      <div class="gap" style="grid-column:1 / -1"><div class="gi">E</div><div><h4>Vorläufiger Positions-Schwellwert</h4><p>Der zentrale „in Bewegung"-Schwellwert ist im Code dupliziert, als vorläufig markiert und ohne Rückgriff auf die tatsächliche Ruhelage-Verteilung festgelegt — Sicherheitsabstand schmal und nicht begründet.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 ENTSCHEIDUNGSBAUM ============ -->
+<section id="k4">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span> Entscheidungsbaum &amp; Reifegrade</div>
+    <h2>Vier Ebenen — jede Ablehnung bleibt dokumentiert</h2>
+    <p class="lead narrow kicker">
+      Jeder Zyklus durchläuft den Baum von oben nach unten. Er muss <strong>alle vier Ebenen bestehen</strong>,
+      um in den Pool zu kommen. Scheitert er, wird er mit konkretem Grund ausgeschlossen — nie stillschweigend
+      verworfen.
+    </p>
+
+    <div class="tree" style="margin-top:30px">
+      <div class="level">
+        <div class="gate">
+          <div class="lv">Ebene 1</div><h4>Aufzeichnungssitzung</h4>
+          <p>Gehört der Zyklus zu einer gültigen, hinreichend langen Sitzung? Sehr kurze Läufe (Inbetriebnahme, Abbruch) sind nicht repräsentativ und dürfen die Baseline nicht verzerren.</p>
+        </div>
+        <div class="reject"><div class="rl">✕ Ablehnung</div><p>Sitzung zu kurz / nicht repräsentativ</p></div>
+      </div>
+      <div class="connector"><div class="cv"></div><div class="cx"></div></div>
+
+      <div class="level">
+        <div class="gate">
+          <div class="lv">Ebene 2</div><h4>Echter Zyklus — Stillstand &amp; Ausreißer</h4>
+          <p>Ist es ein vollständiger, plausibler Hub? Plausible Dauer (aus Verteilung), voller Hub erreicht &amp; Rückkehr, passende Messwertzahl — und <strong>neu:</strong> explizite Stillstands-/Frozen-Prüfung.</p>
+        </div>
+        <div class="reject"><div class="rl">✕ Ablehnung</div><p>Dauer-Ausreißer · unvollständiger Hub · Stillstand / eingefroren</p></div>
+      </div>
+      <div class="connector"><div class="cv"></div><div class="cx"></div></div>
+
+      <div class="level">
+        <div class="gate">
+          <div class="lv">Ebene 3</div><h4>Multi-Sensor-Vollständigkeit</h4>
+          <p>Sind alle benötigten Signale vorhanden und mit genügend Messwerten belegt, um einen vollständigen Merkmalsvektor zu bilden?</p>
+        </div>
+        <div class="reject"><div class="rl">✕ Ablehnung</div><p>fehlende Signale · zu wenige Messwerte</p></div>
+      </div>
+      <div class="connector"><div class="cv"></div><div class="cx"></div></div>
+
+      <div class="level">
+        <div class="gate">
+          <div class="lv">Ebene 4</div><h4>Signalqualität je Signal</h4>
+          <p>Interne Gesundheit jedes Signals: Abdeckungsgrad, große Zeitlücken im Zyklus, ungültige (nicht-endliche) Werte, eingefrorene (konstante) dynamische Signale.</p>
+        </div>
+        <div class="reject"><div class="rl">✕ Ablehnung</div><p>geringe Abdeckung · Lücke · ungültig · eingefroren</p></div>
+      </div>
+      <div class="connector"><div class="cv"></div><div class="cx"></div></div>
+
+      <div class="final">
+        <span class="ico">✓</span>
+        <div>
+          <h4>Pool nutzbarer Zyklen</h4>
+          <p>Nur wer alle vier Ebenen besteht, wird aufgenommen — jeder enthaltene Zyklus hat alle Kriterien nachweislich erfüllt.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- maturity -->
+    <h3 style="margin-top:52px">Reifegradsystem — wie gut ist jedes Kriterium begründet?</h3>
+    <p class="kicker" style="font-size:.95rem">
+      Das methodische Kernstück: Nicht nur <em>welche</em> Kriterien geprüft werden, sondern wie belastbar
+      jede Entscheidung ist, wird transparent klassifiziert. So wird sichtbar, wo noch Abstimmung nötig ist.
+    </p>
+    <div class="mat">
+      <div class="m" style="--mc:var(--m-inkons)"><div class="mh">Inkonsistent</div><p>Die Doku widerspricht sich selbst über den Status — z.&nbsp;B. an einer Stelle „freigegeben", an anderer „vorläufig".</p></div>
+      <div class="m" style="--mc:var(--m-prov)"><div class="mh">Provisorisch</div><p>Kriterium wird angewendet, der Schwellwert ist aber bewusst als Platzhalter gesetzt — nicht aus Daten hergeleitet.</p></div>
+      <div class="m" style="--mc:var(--m-nichtbeg)"><div class="mh">Nicht begründet</div><p>Wert ist konfiguriert &amp; aktiv, aber ohne jede dokumentierte Herleitung — nicht mal als Platzhalter erkennbar.</p></div>
+      <div class="m" style="--mc:var(--m-struk)"><div class="mh">Strukturell</div><p>Prüft eine rein strukturelle Eigenschaft (z.&nbsp;B. „lückenlos aufeinanderfolgend"), ohne physikalische Aussage.</p></div>
+      <div class="m" style="--mc:var(--m-beg)"><div class="mh">Begründet</div><p>Nachvollziehbar hergeleitet — durch Fachentscheidung oder empirisch aus der Datenverteilung mit Sicherheitsmarge.</p></div>
+    </div>
+    <div class="scale-hint"><span>weniger belastbar ◄</span><span>► verlässlich / Zielzustand</span></div>
+
+    <!-- standstill window -->
+    <h3 style="margin-top:52px">Geplante Stillstandsdefinition über ein Geschwindigkeitsfenster</h3>
+    <div class="win" style="margin-top:14px">
+      <div class="figure">
+        <svg viewBox="0 0 520 210" role="img" aria-label="Gleitendes Zeitfenster prüft, ob sich Position oder Geschwindigkeit ausreichend ändert">
+          <line x1="40" y1="16" x2="40" y2="172" stroke="var(--line)" stroke-width="1.5"/>
+          <line x1="40" y1="172" x2="504" y2="172" stroke="var(--line)" stroke-width="1.5"/>
+          <text x="8" y="26" font-family="var(--mono)" font-size="10" fill="var(--muted)">|v|</text>
+          <!-- min velocity threshold -->
+          <line x1="40" y1="140" x2="504" y2="140" stroke="var(--m-prov)" stroke-width="1" stroke-dasharray="3 3"/>
+          <text x="46" y="135" font-family="var(--mono)" font-size="9.5" fill="var(--m-prov)">Mindest-|v|</text>
+          <!-- moving window box (ok) -->
+          <rect x="70" y="20" width="90" height="152" fill="var(--ok)" opacity=".10"/>
+          <rect x="70" y="20" width="90" height="152" fill="none" stroke="var(--ok)" stroke-dasharray="4 3" stroke-width="1.2"/>
+          <text x="80" y="34" font-family="var(--mono)" font-size="9" fill="var(--ok)">Fenster ✓</text>
+          <!-- standstill window box (bad) -->
+          <rect x="300" y="20" width="90" height="152" fill="var(--bad)" opacity=".10"/>
+          <rect x="300" y="20" width="90" height="152" fill="none" stroke="var(--bad)" stroke-dasharray="4 3" stroke-width="1.2"/>
+          <text x="308" y="34" font-family="var(--mono)" font-size="9" fill="var(--bad)">Stillstand ✕</text>
+          <!-- velocity curve: high on left, flat-low in middle-right -->
+          <path d="M40,150 C90,60 130,70 160,95 C200,120 240,150 300,158 C340,160 370,159 400,160 L504,160"
+                fill="none" stroke="var(--accent)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="415" y="196" font-family="var(--mono)" font-size="10" fill="var(--muted)">Zeit im Zyklus</text>
+        </svg>
+        <div class="figcap">Abb. — In jedem gleitenden Fenster muss sich Position <em>oder</em> Geschwindigkeit ausreichend ändern. Bleibt ein Fenster unter beiden Schwellen → Stillstand → Ablehnung.</div>
+      </div>
+      <div>
+        <p><strong>Geschwindigkeit ist der bessere Indikator.</strong> Eine reine Positionsschwelle
+        unterscheidet „kleine Bewegung" nicht zuverlässig von „keine Bewegung" — |v| nahe null ist ein
+        direkterer physikalischer Hinweis auf echten Stillstand.</p>
+        <p class="kicker" style="font-size:.95rem">
+          <strong>Aber:</strong> Die geschwindigkeitsbasierte Variante setzt voraus, dass die physikalische
+          Kalibrierung des Geschwindigkeitssignals verifiziert ist (bislang offen). Bis dahin dient die
+          positionsbasierte Variante als Übergangslösung, während die v-basierte als überlegene
+          Zielarchitektur dokumentiert wird.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05 POOL & OVERLAY ============ -->
+<section id="k5">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span> Datenpool &amp; HTML-Overlay</div>
+    <h2>Vom Baum zum Pool — und zur Visualisierung</h2>
+
+    <div class="grid g2" style="margin-top:30px; align-items:start">
+      <div class="figure">
+        <div class="funnel">
+          <div class="frow"><div class="fbox big" style="width:100%"><div class="ft">Rohaufzeichnung</div><div class="fn">Millionen Zyklen · 100 Mio.+ Messwerte</div></div></div>
+          <div class="farrow">▼ Entscheidungsbaum (4 Ebenen)</div>
+          <div class="split">
+            <div class="fbox pool" style="flex:1; min-width:180px"><div class="ft">✓ Datenpool</div><div class="fn">geprüfte, nutzbare Zyklen</div></div>
+            <div class="fbox rej" style="flex:1; min-width:180px"><div class="ft">✕ Ablehnungsprotokoll</div><div class="fn">Ebene + Grund je Zyklus</div></div>
+          </div>
+        </div>
+        <div class="figcap">Abb. — Der Pool ist keine willkürliche Stichprobe: Jeder enthaltene Zyklus hat alle Kriterien erfüllt, jeder ausgeschlossene trägt einen dokumentierten Grund.</div>
+      </div>
+      <div>
+        <h3>Das Ablehnungsprotokoll ist selbst ein Ergebnis</h3>
+        <p>Es zeigt <strong>quantitativ, wie viele Zyklen an welcher Stelle hängenbleiben</strong> — und
+        liefert damit den empirischen Beleg, dass der Entscheidungsbaum reale, sonst unbemerkte
+        Problemfälle herausfiltert.</p>
+        <h3 style="margin-top:22px">Warum auf dem Pool visualisieren, nicht auf Rohdaten?</h3>
+        <p><strong>Datenmenge:</strong> Rohdaten sind zu groß für einen interaktiven Browser-Bericht.<br>
+        <strong>Aussagekraft:</strong> Rohe Artefakte (Stillstände, Fehlzyklen) würden optisch gleichwertig
+        neben echten Zyklen liegen — ein Ingenieur könnte einen Sensordefekt für echten Verschleiß halten.<br>
+        <strong>Konsistenz:</strong> Der Pool ist ohnehin die Grundlage für spätere Modelle.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:44px">Zwei komplementäre Sichten — offline verdichtet, im Browser interaktiv</h3>
+    <p class="kicker" style="font-size:.95rem">Prinzip: <strong>einmalig offline verdichten, nur das kompakte Ergebnis ausliefern</strong>, alle Interaktivität im Browser auf der kleinen Ergebnismenge. Ausgeliefert als <em>eine</em> eigenständige HTML-Datei — per Doppelklick öffenbar, ohne Server.</p>
+    <div class="views">
+      <div class="card" style="border-top:4px solid var(--accent)">
+        <h3>📈 Trend-Sicht</h3>
+        <p>Berücksichtigt <strong>alle</strong> aktiven Pool-Zyklen: der Zeitraum wird in feste
+        chronologische „Buckets" unterteilt, pro Bucket &amp; Kenngröße Mittelwert + unteres/oberes
+        Perzentil. Statistisch exakt über die volle Poolmenge — ein ehrlicher Trend über die gesamte
+        Lebensdauer.</p>
+      </div>
+      <div class="card" style="border-top:4px solid var(--m-struk)">
+        <h3>🔍 Vergleichs-Sicht</h3>
+        <p>Eine begrenzte, gleichmäßig verteilte Stichprobe einzelner Zyklen wird vollständig mit
+        Signalverlauf eingebettet und überlagert. In der Oberfläche explizit als
+        <strong>„repräsentative Teilmenge"</strong> gekennzeichnet — kein Missverständnis als
+        Gesamtabbildung.</p>
+      </div>
+    </div>
+    <p class="kicker" style="font-size:.92rem; margin-top:18px">
+      Priorisierung: Die Kriterien-/Entscheidungsbaum-Arbeit (Kap. 03–04) ist der methodisch zentrale,
+      fürs Schreiben vorrangige Teil. Die HTML-Visualisierung läuft zeitlich parallel und blockiert den
+      Schreibbeginn nicht.
+    </p>
+  </div>
+</section>
+
+<!-- ============ 06 STAND ============ -->
+<section id="k6">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">06</span> Stand der Umsetzung</div>
+    <h2>Was steht — und was noch offen ist</h2>
+    <p class="lead narrow kicker">Momentaufnahme zum Zeitpunkt der Kontextdateien — beim Schreiben mit dem aktuellen Projektstand abzugleichen.</p>
+
+    <div class="status" style="margin-top:30px">
+      <div class="col">
+        <h3><span class="tag ok">✓ Bereits umgesetzt</span></h3>
+        <div class="items">
+          <div class="item done"><span class="ci">✓</span><p><b>Pipeline-Analyse:</b> Alle 8 Stufen und ihre Kriterien erfasst und Reifegraden zugeordnet; die 5 Lücken dokumentiert.</p></div>
+          <div class="item done"><span class="ci">✓</span><p><b>Entwurf des 4-stufigen Baums:</b> ausführlich dokumentiert, mit Code-Quellen &amp; Reifegrad je Kriterium und markierten Diskussionspunkten.</p></div>
+          <div class="item done"><span class="ci">✓</span><p><b>Qualitäts-Profilierung (Stufe 8) im vollen Umfang</b> auf eine ganze Versuchsserie ausgeweitet — reale Verteilungen für Ebene-4-Schwellwerte.</p></div>
+          <div class="item done"><span class="ci">✓</span><p><b>Erste Version des HTML-Overlays &amp; Lifetime-Dashboards:</b> dreistufige Offline-Verdichtung funktionsfähig demonstriert.</p></div>
+        </div>
+      </div>
+      <div class="col">
+        <h3><span class="tag" style="color:var(--m-prov);border-color:color-mix(in srgb,var(--m-prov) 45%,var(--line))">◷ Offene Punkte</span></h3>
+        <div class="items">
+          <div class="item open"><span class="ci">◷</span><p><b>Fachliche Abstimmung</b> zu Kernkriterien: Bewegungsschwellwert, Sitzungs-Trenn-Inkonsistenz, v-Kalibrierung, Mindest-Sitzungsgröße.</p></div>
+          <div class="item open"><span class="ci">◷</span><p><b>Ebene-4-Schwellwerte final festlegen:</b> aus den neuen Verteilungen ableiten und von „offen" auf „begründet" überführen.</p></div>
+          <div class="item open"><span class="ci">◷</span><p><b>Pool-Filter-Modul implementieren:</b> die Logik automatisiert auf alle Zyklen anwenden, Pool + Protokoll erzeugen.</p></div>
+          <div class="item open"><span class="ci">◷</span><p><b>Vollständiger Lauf &amp; Ablehnungsstatistik</b> als zentrales empirisches Ergebniskapitel.</p></div>
+          <div class="item open"><span class="ci">◷</span><p><b>Ausweitung</b> auf weitere Serien &amp; Signale (v.&nbsp;a. Vibration); <b>formale Freigabe</b> der Kriteriensammlung.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="final" style="margin-top:34px; background:linear-gradient(135deg,var(--card-2),var(--card)); border-color:var(--line)">
+      <span class="ico" style="color:var(--m-struk)">§</span>
+      <div>
+        <h4>Einordnung für die schriftliche Arbeit</h4>
+        <p>Das Methodik-Kapitel orientiert sich am Entscheidungsbaum (Kap. 04); das Ergebnis-Kapitel baut
+        auf der Ablehnungsstatistik auf, sobald sie vorliegt. Bis dahin: Formulierungen wählen, die den
+        vorläufigen Charakter einzelner Schwellwerte korrekt wiedergeben (Reifegrade „provisorisch",
+        „nicht begründet", „inkonsistent").</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <b>T1000 — Datenqualitäts-Prüflogik für Aktuator-Dauerläufe</b><br>
+  Visuelle Übersicht der Kontextdateien 01–06 · DHBW-Praxissemesterarbeit · Emerson Electric (Laatzen)<br>
+  <span class="updot">●</span> Eigene Darstellung, 2026
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* progress bar */
+  var bar = document.getElementById("progress");
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop || document.body.scrollTop) / max * 100 : 0;
+    bar.style.width = p.toFixed(2) + "%";
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* theme toggle */
+  var btn = document.getElementById("themeBtn");
+  btn.addEventListener("click", function () {
+    var root = document.documentElement;
+    var cur = root.getAttribute("data-theme");
+    if (!cur) {
+      cur = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", cur === "dark" ? "light" : "dark");
+  });
+
+  /* ---- hero oscilloscope: overlaid position cycles ---- */
+  var cv = document.getElementById("scope");
+  if (!cv) return;
+  var ctx = cv.getContext("2d");
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var DPR = Math.min(window.devicePixelRatio || 1, 2);
+  var W, H;
+
+  function accent() {
+    return getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#12a594";
+  }
+
+  function resize() {
+    var host = cv.parentElement;
+    W = host.clientWidth; H = host.clientHeight;
+    cv.width = W * DPR; cv.height = H * DPR;
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  // one out-and-back cycle, normalized 0..1 -> value 0..1
+  function cycle(t, skew, height) {
+    // rest .. rise .. plateau .. fall .. rest
+    var y;
+    if (t < 0.18) y = 0;
+    else if (t < 0.40) { var a = (t - 0.18) / 0.22; y = ease(a) * height; }
+    else if (t < 0.60 + skew) y = height;
+    else if (t < 0.82 + skew) { var b = (t - (0.60 + skew)) / 0.22; y = (1 - ease(b)) * height; }
+    else y = 0;
+    return y;
+  }
+  function ease(x) { return x < 0.5 ? 2*x*x : 1 - Math.pow(-2*x+2,2)/2; }
+
+  var traces = [];
+  for (var i = 0; i < 7; i++) {
+    traces.push({
+      phase: Math.random(),
+      speed: 0.00006 + Math.random() * 0.00006,
+      skew: (Math.random() - 0.5) * 0.10,
+      height: 0.72 + Math.random() * 0.26,
+      alpha: 0.10 + Math.random() * 0.18
+    });
+  }
+
+  function draw(ts) {
+    ctx.clearRect(0, 0, W, H);
+    var col = accent();
+    var baseY = H * 0.60;
+    var amp = H * 0.34;
+    for (var k = 0; k < traces.length; k++) {
+      var tr = traces[k];
+      var off = reduce ? tr.phase : (tr.phase + ts * tr.speed) % 1;
+      ctx.beginPath();
+      ctx.lineWidth = 1.6;
+      ctx.strokeStyle = hexA(col, tr.alpha);
+      var N = 220;
+      for (var n = 0; n <= N; n++) {
+        var x = n / N;
+        var t = (x + off) % 1;
+        var v = cycle(t, tr.skew, tr.height);
+        var px = x * W;
+        var py = baseY - v * amp;
+        if (n === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+
+  function hexA(hex, a) {
+    hex = hex.replace("#", "");
+    if (hex.length === 3) hex = hex.split("").map(function (c){return c+c;}).join("");
+    var r = parseInt(hex.substr(0,2),16) || 18,
+        g = parseInt(hex.substr(2,2),16) || 165,
+        b = parseInt(hex.substr(4,2),16) || 148;
+    return "rgba(" + r + "," + g + "," + b + "," + a + ")";
+  }
+
+  if (reduce) draw(0); else requestAnimationFrame(draw);
+})();
+</script>

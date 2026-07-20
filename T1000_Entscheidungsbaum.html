@@ -1,0 +1,435 @@
+<title>T1000 — Entscheidungsbaum</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --paper:#eef1f1; --card:#ffffff; --card-2:#f6f8f8;
+    --ink:#101a20; --ink-soft:#33454f; --muted:#6a7c85;
+    --line:#d6dedf; --line-soft:#e6ecec;
+    --accent:#0f9c8d; --accent-ink:#0a5e56; --accent-wash:#dff1ee;
+    --ok:#2f9e6f; --ok-wash:#dcf0e6; --bad:#d94a4a; --bad-wash:#f6dede;
+    /* maturity + status */
+    --m-inkons:#d94a4a; --m-prov:#e08f2e; --m-nichtbeg:#c76a2c; --m-struk:#3f7fc4; --m-beg:#2f9e6f; --m-offen:#8a93a0;
+    --shadow:0 1px 2px rgba(16,26,32,.05), 0 12px 40px -22px rgba(16,26,32,.42);
+    --sans:"Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono:"Cascadia Code","Cascadia Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#0b1216; --card:#121e24; --card-2:#16242b; --ink:#e9eff0; --ink-soft:#bccacf;
+      --muted:#8399a1; --line:#24363e; --line-soft:#1b2a31;
+      --accent:#26c6b4; --accent-ink:#8ee9dd; --accent-wash:#12312e;
+      --ok:#48b988; --ok-wash:#12352a; --bad:#e46d6d; --bad-wash:#3a1e1e;
+      --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#48b988; --m-offen:#93a1ad;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 18px 50px -22px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="light"]{
+    --paper:#eef1f1; --card:#fff; --card-2:#f6f8f8; --ink:#101a20; --ink-soft:#33454f; --muted:#6a7c85;
+    --line:#d6dedf; --line-soft:#e6ecec; --accent:#0f9c8d; --accent-ink:#0a5e56; --accent-wash:#dff1ee;
+    --ok:#2f9e6f; --ok-wash:#dcf0e6; --bad:#d94a4a; --bad-wash:#f6dede;
+    --m-inkons:#d94a4a; --m-prov:#e08f2e; --m-nichtbeg:#c76a2c; --m-struk:#3f7fc4; --m-beg:#2f9e6f; --m-offen:#8a93a0;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0b1216; --card:#121e24; --card-2:#16242b; --ink:#e9eff0; --ink-soft:#bccacf; --muted:#8399a1;
+    --line:#24363e; --line-soft:#1b2a31; --accent:#26c6b4; --accent-ink:#8ee9dd; --accent-wash:#12312e;
+    --ok:#48b988; --ok-wash:#12352a; --bad:#e46d6d; --bad-wash:#3a1e1e;
+    --m-inkons:#e46d6d; --m-prov:#e5a24d; --m-nichtbeg:#d98547; --m-struk:#5f9be0; --m-beg:#48b988; --m-offen:#93a1ad;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  ::selection { background:var(--accent); color:#fff; }
+
+  .topbar { position:fixed; top:0; left:0; right:0; height:3px; background:var(--accent); z-index:30; }
+  .corner { position:fixed; top:14px; right:16px; z-index:31; display:flex; gap:8px; }
+  .corner button { border:1px solid var(--line); background:color-mix(in srgb,var(--card) 88%,transparent); color:var(--ink-soft); border-radius:9px; padding:7px 11px; cursor:pointer; font-family:var(--mono); font-size:.72rem; backdrop-filter:blur(8px); }
+  .corner button:hover { border-color:var(--accent); color:var(--accent); }
+  .corner button:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+
+  .wrap { max-width: 980px; margin:0 auto; padding: clamp(40px,7vw,84px) clamp(16px,4vw,32px) 60px; }
+
+  .eyebrow { font-family:var(--mono); font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; color:var(--accent); display:flex; align-items:center; gap:10px; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); display:inline-block; }
+  h1 { font-size:clamp(2rem,5.4vw,3.4rem); line-height:1.05; letter-spacing:-.02em; margin:.25em 0 .2em; font-weight:800; text-wrap:balance; }
+  .sub { font-size:clamp(1.02rem,2vw,1.22rem); color:var(--ink-soft); max-width:60ch; }
+  .accent { color:var(--accent); }
+
+  /* legend */
+  .legend { display:grid; gap:16px; grid-template-columns:1fr; margin:30px 0 8px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding: clamp(16px,2.4vw,22px); box-shadow:var(--shadow); }
+  @media (min-width:720px){ .legend { grid-template-columns:1fr 1fr; } }
+  .legend h4 { margin:0 0 10px; font-size:.82rem; font-family:var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  .legrow { display:flex; flex-wrap:wrap; gap:8px 14px; }
+  .leg { display:inline-flex; align-items:center; gap:8px; font-size:.86rem; color:var(--ink-soft); }
+  .leg i { width:11px; height:11px; border-radius:50%; flex:none; }
+  .leg .flowline { width:22px; height:0; border-top:3px solid var(--ok); border-radius:2px; }
+  .leg .rejline { width:22px; height:0; border-top:3px dashed var(--bad); }
+
+  /* input / output nodes */
+  .node { border-radius:16px; padding: clamp(16px,2.4vw,22px) clamp(18px,3vw,26px); box-shadow:var(--shadow); border:1px solid var(--line); background:var(--card); text-align:center; max-width:560px; margin:0 auto; }
+  .node .nlab { font-family:var(--mono); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
+  .node .ntitle { font-size:clamp(1.05rem,2vw,1.35rem); font-weight:700; margin-top:4px; letter-spacing:-.01em; }
+  .node.start { border-style:dashed; }
+  .node.pool { background:linear-gradient(135deg,var(--accent-wash),var(--card)); border-color:color-mix(in srgb,var(--accent) 42%,var(--line)); }
+  .node.pool .ntitle { color:var(--accent-ink); font-size:clamp(1.2rem,2.4vw,1.6rem); }
+  .node.pool .nlab { color:var(--accent); }
+  .node .pk { font-family:var(--mono); font-weight:800; color:var(--accent); font-size:1.6rem; }
+
+  /* pass connector */
+  .flow { display:flex; flex-direction:column; align-items:center; gap:2px; padding: 8px 0; }
+  .flow .bar { width:3px; height:20px; background:var(--ok); border-radius:2px; }
+  .flow .lab { font-family:var(--mono); font-size:.74rem; color:var(--ok); font-weight:600; letter-spacing:.02em; }
+  .flow .arrow { color:var(--ok); font-size:1.1rem; line-height:1; margin-top:-2px; }
+
+  /* stage: gate + reject */
+  .stage { display:grid; gap:0; grid-template-columns: minmax(0,1fr) 250px; align-items:center; }
+  @media (max-width:700px){ .stage { grid-template-columns:1fr; } }
+  .gate { background:var(--card); border:1px solid var(--line); border-left:4px solid var(--accent); border-radius:14px; padding: clamp(16px,2.4vw,22px); box-shadow:var(--shadow); position:relative; z-index:2; }
+  .ghead { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .ghead .lv { font-family:var(--mono); font-weight:700; color:var(--accent); font-size:.82rem; letter-spacing:.06em; background:var(--accent-wash); border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line)); border-radius:999px; padding:3px 10px; }
+  .gate h3 { margin:.5em 0 .2em; font-size:clamp(1.1rem,2vw,1.35rem); letter-spacing:-.01em; }
+  .gate .gq { margin:0 0 12px; color:var(--muted); font-size:.92rem; }
+  .chks { display:flex; flex-wrap:wrap; gap:8px; }
+  .chk { display:inline-flex; align-items:center; gap:8px; background:var(--card-2); border:1px solid var(--line); border-radius:10px; padding:7px 11px; font-size:.86rem; color:var(--ink-soft); }
+  .chk i { width:10px; height:10px; border-radius:50%; flex:none; }
+  .chk b { color:var(--ink); font-weight:600; }
+  .chk small { color:var(--muted); font-size:.78em; }
+
+  .m-inkons { background:var(--m-inkons);} .m-prov{ background:var(--m-prov);} .m-nichtbeg{ background:var(--m-nichtbeg);} .m-struk{ background:var(--m-struk);} .m-beg{ background:var(--m-beg);} .m-offen{ background:var(--m-offen);}
+
+  /* reject arm */
+  .rejarm { display:flex; align-items:center; }
+  @media (max-width:700px){ .rejarm { margin-top:12px; } }
+  .rejarm .arm { width:26px; height:0; border-top:3px dashed var(--bad); flex:none; }
+  @media (max-width:700px){ .rejarm .arm { display:none; } }
+  .reject { flex:1; background:var(--bad-wash); border:1px solid color-mix(in srgb,var(--bad) 38%,var(--line)); border-radius:12px; padding:12px 14px; }
+  .reject .rl { font-family:var(--mono); font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; color:var(--bad); font-weight:700; }
+  .reject p { margin:5px 0 0; font-size:.85rem; color:var(--ink-soft); }
+
+  .note { margin-top:44px; background:var(--card); border:1px solid var(--line); border-radius:14px; padding: clamp(18px,2.6vw,24px); box-shadow:var(--shadow); }
+  .note h4 { margin:0 0 8px; font-size:1.05rem; display:flex; align-items:center; gap:10px; }
+  .note p { margin:.4em 0; color:var(--ink-soft); font-size:.95rem; }
+  .note code { font-family:var(--mono); font-size:.85em; background:var(--card-2); border:1px solid var(--line); border-radius:6px; padding:1px 6px; }
+
+  footer { text-align:center; color:var(--muted); font-family:var(--mono); font-size:.78rem; margin-top:40px; line-height:1.8; }
+  footer b { color:var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce){ * { animation:none!important; transition:none!important; } }
+
+  /* ---- edit mode ---- */
+  .corner button.on { border-color:var(--accent); color:var(--accent); background:var(--accent-wash); }
+  body.editing [contenteditable] { outline:1.5px dashed color-mix(in srgb,var(--accent) 55%,transparent); outline-offset:3px; border-radius:5px; }
+  body.editing [contenteditable]:hover { background:color-mix(in srgb,var(--accent) 7%,transparent); }
+  body.editing [contenteditable]:focus { outline:2px solid var(--accent); background:color-mix(in srgb,var(--accent) 10%,transparent); }
+  body.editing .chk { position:relative; }
+  body.editing .chk i { cursor:pointer; box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 32%,transparent); }
+  body.editing .chk i:hover { transform:scale(1.35); }
+  .chk-del { appearance:none; border:none; background:var(--bad); color:#fff; width:16px; height:16px; border-radius:50%; font-size:.72rem; line-height:16px; text-align:center; cursor:pointer; margin-left:4px; padding:0; flex:none; }
+  .chk-del:hover { filter:brightness(1.12); }
+  .add-chk { appearance:none; display:inline-flex; align-items:center; gap:6px; background:transparent; border:1px dashed color-mix(in srgb,var(--accent) 55%,var(--line)); color:var(--accent); border-radius:10px; padding:7px 11px; font-size:.82rem; cursor:pointer; font-family:var(--mono); }
+  .add-chk:hover { background:var(--accent-wash); }
+
+  #editHint { position:fixed; left:50%; transform:translateX(-50%); bottom:16px; z-index:31; background:var(--card); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:12px; padding:11px 16px; font-size:.82rem; color:var(--ink-soft); display:none; max-width:min(92vw,760px); text-align:center; line-height:1.7; }
+  body.editing #editHint { display:block; }
+  #editHint b { color:var(--ink); }
+  #editHint kbd { font-family:var(--mono); background:var(--card-2); border:1px solid var(--line); border-radius:5px; padding:1px 6px; font-size:.9em; }
+
+  .saveflash { position:fixed; right:16px; bottom:16px; z-index:32; background:var(--ok); color:#fff; padding:8px 14px; border-radius:10px; font-size:.8rem; box-shadow:var(--shadow); opacity:0; transform:translateY(6px); transition:opacity .2s, transform .2s; font-family:var(--mono); pointer-events:none; }
+  .saveflash.show { opacity:1; transform:translateY(0); }
+</style>
+
+<div class="topbar"></div>
+<div class="corner">
+  <button id="editBtn" type="button">✏️ Bearbeiten</button>
+  <button id="exportBtn" type="button">⬇ Export</button>
+  <button id="resetBtn" type="button">↺ Reset</button>
+  <button id="themeBtn" type="button">◐ Theme</button>
+</div>
+
+<div class="wrap">
+
+  <div class="eyebrow"><span class="dot"></span> T1000 · Datenqualitäts-Prüflogik</div>
+  <h1>Der Entscheidungsbaum</h1>
+  <p class="sub">
+    Jeder aufgezeichnete Bewegungszyklus durchläuft die Prüfung von oben nach unten. Er muss
+    <span class="accent"><b>alle vier Ebenen bestehen</b></span>, um in den Pool nutzbarer Daten zu kommen.
+    Fällt er an einer Ebene durch, wird er mit dokumentiertem Grund abgelehnt — nie stillschweigend verworfen.
+  </p>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div>
+      <h4>So liest du das Diagramm</h4>
+      <div class="legrow" style="flex-direction:column; gap:10px; align-items:flex-start">
+        <span class="leg"><span class="flowline"></span> grüner Pfad nach unten = <b style="color:var(--ink-soft)">&nbsp;besteht → nächste Prüfung</b></span>
+        <span class="leg"><span class="rejline"></span> roter Abzweig = <b style="color:var(--ink-soft)">&nbsp;fällt durch → Ablehnungsgrund</b></span>
+        <span class="leg"><i style="background:var(--muted)"></i> farbiger Punkt = <b style="color:var(--ink-soft)">&nbsp;Reifegrad des Kriteriums</b></span>
+      </div>
+    </div>
+    <div>
+      <h4>Reifegrad — wie gut ist das Kriterium begründet?</h4>
+      <div class="legrow">
+        <span class="leg"><i class="m-beg"></i> begründet</span>
+        <span class="leg"><i class="m-struk"></i> strukturell</span>
+        <span class="leg"><i class="m-prov"></i> provisorisch</span>
+        <span class="leg"><i class="m-nichtbeg"></i> nicht begründet</span>
+        <span class="leg"><i class="m-inkons"></i> inkonsistent</span>
+        <span class="leg"><i class="m-offen"></i> offen (noch abzuleiten)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow" style="padding-top:26px">
+    <div class="node start" style="max-width:600px">
+      <div class="nlab">Eingang</div>
+      <div class="ntitle">Jeder aufgezeichnete Bewegungszyklus</div>
+    </div>
+  </div>
+  <div class="flow"><span class="bar"></span><span class="arrow">▼</span></div>
+
+  <!-- EBENE 1 -->
+  <div class="stage">
+    <div class="gate">
+      <div class="ghead"><span class="lv">Ebene 1</span></div>
+      <h3>Gültige Aufzeichnungssitzung?</h3>
+      <p class="gq">Gehört der Zyklus zu einer hinreichend langen, repräsentativen Sitzung — nicht zu einem Inbetriebnahme- oder Abbruch-Lauf?</p>
+      <div class="chks">
+        <span class="chk"><i class="m-offen"></i> <b>Mindest-Sitzungslänge</b> <small>noch festzulegen</small></span>
+        <span class="chk"><i class="m-inkons"></i> <b>Sitzungs-Trennschwelle</b> <small>Doku widersprüchlich</small></span>
+      </div>
+    </div>
+    <div class="rejarm"><div class="arm"></div><div class="reject"><div class="rl">✕ Ablehnung</div><p>Sitzung zu kurz / nicht repräsentativ</p></div></div>
+  </div>
+  <div class="flow"><span class="bar"></span><span class="lab">besteht ✓</span><span class="arrow">▼</span></div>
+
+  <!-- EBENE 2 -->
+  <div class="stage">
+    <div class="gate">
+      <div class="ghead"><span class="lv">Ebene 2</span></div>
+      <h3>Echter Zyklus — Stillstand &amp; Ausreißer?</h3>
+      <p class="gq">Ist es ein vollständiger, plausibler Bewegungshub — und keine eingefrorene oder unbewegte „Scheinbewegung"?</p>
+      <div class="chks">
+        <span class="chk"><i class="m-beg"></i> <b>Plausible Zyklusdauer</b> <small>aus Verteilung</small></span>
+        <span class="chk"><i class="m-offen"></i> <b>Voller Hub erreicht + Rückkehr</b></span>
+        <span class="chk"><i class="m-struk"></i> <b>Messwertzahl passend</b></span>
+        <span class="chk"><i class="m-prov"></i> <b>Bewegungsschwellwert</b> <small>vorläufig</small></span>
+        <span class="chk"><i class="m-offen"></i> <b>Stillstand / eingefroren</b> <small>neu · geplant</small></span>
+      </div>
+    </div>
+    <div class="rejarm"><div class="arm"></div><div class="reject"><div class="rl">✕ Ablehnung</div><p>Dauer-Ausreißer · unvollständiger Hub · Stillstand / eingefroren</p></div></div>
+  </div>
+  <div class="flow"><span class="bar"></span><span class="lab">besteht ✓</span><span class="arrow">▼</span></div>
+
+  <!-- EBENE 3 -->
+  <div class="stage">
+    <div class="gate">
+      <div class="ghead"><span class="lv">Ebene 3</span></div>
+      <h3>Multi-Sensor-Vollständigkeit?</h3>
+      <p class="gq">Sind alle benötigten Sensorsignale vorhanden und mit genügend Messwerten belegt, um einen vollständigen Merkmalsvektor zu bilden?</p>
+      <div class="chks">
+        <span class="chk"><i class="m-struk"></i> <b>Alle benötigten Signale vorhanden</b></span>
+        <span class="chk"><i class="m-offen"></i> <b>Genügend Messwerte je Signal</b> <small>Schwelle offen</small></span>
+      </div>
+    </div>
+    <div class="rejarm"><div class="arm"></div><div class="reject"><div class="rl">✕ Ablehnung</div><p>fehlende Signale · zu wenige Messwerte</p></div></div>
+  </div>
+  <div class="flow"><span class="bar"></span><span class="lab">besteht ✓</span><span class="arrow">▼</span></div>
+
+  <!-- EBENE 4 -->
+  <div class="stage">
+    <div class="gate">
+      <div class="ghead"><span class="lv">Ebene 4</span></div>
+      <h3>Signalqualität — je Signal geprüft?</h3>
+      <p class="gq">Ist jedes einzelne Signal innerhalb des Zyklus intern „gesund"? (für Position, Geschwindigkeit, Strom, Druck, Temperatur, Vibration)</p>
+      <div class="chks">
+        <span class="chk"><i class="m-offen"></i> <b>Abdeckungsgrad</b> <small>Schwelle offen</small></span>
+        <span class="chk"><i class="m-offen"></i> <b>Max. Zeitlücke im Zyklus</b> <small>Schwelle offen</small></span>
+        <span class="chk"><i class="m-beg"></i> <b>Keine ungültigen Werte</b> <small>nicht-endlich</small></span>
+        <span class="chk"><i class="m-offen"></i> <b>Nicht eingefroren</b> <small>konstantes Signal</small></span>
+      </div>
+    </div>
+    <div class="rejarm"><div class="arm"></div><div class="reject"><div class="rl">✕ Ablehnung</div><p>geringe Abdeckung · große Lücke · ungültig · eingefroren</p></div></div>
+  </div>
+  <div class="flow"><span class="bar"></span><span class="lab">besteht alle 4 Ebenen ✓</span><span class="arrow">▼</span></div>
+
+  <!-- POOL -->
+  <div class="node pool">
+    <div class="nlab">✓ Aufgenommen</div>
+    <div class="ntitle">Pool nutzbarer Zyklen</div>
+    <p style="margin:8px 0 0; color:var(--ink-soft); font-size:.92rem">Grundlage für Visualisierung &amp; spätere Modellbildung — jeder Zyklus hat alle Kriterien nachweislich erfüllt.</p>
+  </div>
+
+  <!-- EDIT NOTE -->
+  <div class="note">
+    <h4>✏️ Direkt im Browser bearbeiten</h4>
+    <p>Oben rechts auf <b>✏️ Bearbeiten</b> klicken — dann lässt sich alles direkt auf der Seite eintragen:
+    jeden <b>Text anklicken und überschreiben</b>, den farbigen <b>Punkt anklicken</b>, um den Reifegrad
+    durchzuschalten, sowie mit <b>+ Kriterium</b> und <b>×</b> Kriterien hinzufügen oder entfernen. Änderungen
+    werden automatisch im Browser gespeichert und bleiben beim nächsten Öffnen erhalten.</p>
+    <p>Mit <b>⬇ Export</b> lässt sich der aktuelle Stand als eigenständige <code>.html</code>-Datei herunterladen
+    (zum Weitergeben oder Sichern); <b>↺ Reset</b> stellt den Originalzustand wieder her.</p>
+    <p style="color:var(--muted); font-size:.88rem">Die roten, orangen und grauen Punkte markieren die Kriterien, die in der Abstimmung mit den Fachverantwortlichen noch zu klären sind — sie sind die natürliche Agenda für das nächste Gespräch.</p>
+  </div>
+
+  <footer>
+    <b>T1000 — Entscheidungsbaum für die Datenqualitätsprüfung</b><br>
+    Eigene Darstellung, 2026 · DHBW-Praxissemesterarbeit · Emerson Electric (Laatzen)
+  </footer>
+</div>
+
+<div id="editHint" class="edit-only">
+  <b>Bearbeiten:</b> Text anklicken &amp; überschreiben · farbigen <b>Punkt</b> klicken = Reifegrad wechseln ·
+  <b>+ Kriterium</b> / <b>×</b> zum Hinzufügen bzw. Entfernen · <kbd>✓ Fertig</kbd> speichert automatisch.
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var KEY="t1000_tree_v1";
+  var MATS=["m-beg","m-struk","m-prov","m-nichtbeg","m-inkons","m-offen"];
+  var MATNAME={
+    "m-beg":"begründet", "m-struk":"strukturell", "m-prov":"provisorisch",
+    "m-nichtbeg":"nicht begründet", "m-inkons":"inkonsistent", "m-offen":"offen (noch abzuleiten)"
+  };
+  // Text elements that become directly editable in edit mode.
+  var EDITABLE="h1, .sub, .gate h3, .gate .gq, .chk b, .chk small, .reject p, .reject .rl, .node .ntitle, .node.pool p, .note h4, .note p, footer";
+
+  var wrap=document.querySelector(".wrap");
+  var editBtn=document.getElementById("editBtn");
+  var editing=false, saveTimer=null, flashEl=null, flashTimer=null;
+
+  // ---------- theme ----------
+  document.getElementById("themeBtn").addEventListener("click", function(){
+    var root=document.documentElement;
+    var cur=root.getAttribute("data-theme")||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");
+    root.setAttribute("data-theme", cur==="dark"?"light":"dark");
+  });
+
+  // ---------- persistence ----------
+  function cleanClone(node){
+    var c=node.cloneNode(true);
+    c.querySelectorAll(".edit-only").forEach(function(n){ n.remove(); });
+    c.querySelectorAll("[contenteditable]").forEach(function(n){ n.removeAttribute("contenteditable"); });
+    c.querySelectorAll(".editing").forEach(function(n){ n.classList.remove("editing"); });
+    return c;
+  }
+  function save(){
+    try{ localStorage.setItem(KEY, cleanClone(wrap).innerHTML); flash("Gespeichert ✓"); }catch(e){}
+  }
+  function scheduleSave(){ clearTimeout(saveTimer); saveTimer=setTimeout(save,600); }
+  function restore(){
+    var s=null; try{ s=localStorage.getItem(KEY); }catch(e){}
+    if(s){ wrap.innerHTML=s; }
+  }
+
+  // ---------- edit mode ----------
+  function setEditableAttrs(on){
+    wrap.querySelectorAll(EDITABLE).forEach(function(n){
+      if(on){ n.setAttribute("contenteditable","true"); }
+      else{ n.removeAttribute("contenteditable"); }
+    });
+  }
+  function addDel(chk){
+    if(chk.querySelector(".chk-del")) return;
+    var d=document.createElement("button");
+    d.type="button"; d.className="chk-del edit-only"; d.textContent="×"; d.title="Kriterium entfernen";
+    chk.appendChild(d);
+  }
+  function injectControls(){
+    wrap.querySelectorAll(".chks").forEach(function(chks){
+      if(!chks.querySelector(".add-chk")){
+        var b=document.createElement("button");
+        b.type="button"; b.className="add-chk edit-only"; b.textContent="+ Kriterium";
+        chks.appendChild(b);
+      }
+    });
+    wrap.querySelectorAll(".chk").forEach(addDel);
+  }
+  function removeControls(){
+    wrap.querySelectorAll(".edit-only").forEach(function(n){ n.remove(); });
+  }
+  function enterEdit(){
+    editing=true;
+    document.body.classList.add("editing");
+    editBtn.classList.add("on"); editBtn.textContent="✓ Fertig";
+    setEditableAttrs(true); injectControls();
+  }
+  function exitEdit(){
+    editing=false;
+    document.body.classList.remove("editing");
+    editBtn.classList.remove("on"); editBtn.textContent="✏️ Bearbeiten";
+    removeControls(); setEditableAttrs(false);
+    save();
+  }
+  editBtn.addEventListener("click", function(){ editing?exitEdit():enterEdit(); });
+
+  // ---------- delegated interactions (edit mode only) ----------
+  document.addEventListener("click", function(e){
+    if(!editing) return;
+    var del=e.target.closest(".chk-del");
+    if(del){ var chk=del.closest(".chk"); if(chk){ chk.remove(); scheduleSave(); } return; }
+    var add=e.target.closest(".add-chk");
+    if(add){ addCrit(add.closest(".chks"), add); scheduleSave(); return; }
+    var dot=e.target.closest("i");
+    if(dot && dot.parentElement && dot.parentElement.classList.contains("chk")){
+      cycleMat(dot); scheduleSave(); return;
+    }
+  });
+  function cycleMat(i){
+    var cur=MATS.filter(function(m){ return i.classList.contains(m); })[0] || "m-offen";
+    var next=MATS[(MATS.indexOf(cur)+1)%MATS.length];
+    i.classList.remove(cur); i.classList.add(next); i.title=MATNAME[next];
+  }
+  function addCrit(chks, before){
+    var chk=document.createElement("span"); chk.className="chk";
+    var i=document.createElement("i"); i.className="m-offen"; i.title=MATNAME["m-offen"];
+    var b=document.createElement("b"); b.textContent="Neues Kriterium"; b.setAttribute("contenteditable","true");
+    var s=document.createElement("small"); s.textContent="Notiz"; s.setAttribute("contenteditable","true");
+    chk.appendChild(i);
+    chk.appendChild(document.createTextNode(" ")); chk.appendChild(b);
+    chk.appendChild(document.createTextNode(" ")); chk.appendChild(s);
+    addDel(chk);
+    chks.insertBefore(chk, before);
+    b.focus();
+    // select placeholder text so the user can just start typing
+    var r=document.createRange(); r.selectNodeContents(b);
+    var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+  }
+
+  wrap.addEventListener("input", function(){ if(editing) scheduleSave(); });
+
+  // ---------- export current state as a standalone .html ----------
+  document.getElementById("exportBtn").addEventListener("click", function(){
+    if(editing) exitEdit();
+    var doc=cleanClone(document.documentElement);
+    var html="<!doctype html>\n"+doc.outerHTML;
+    var blob=new Blob([html], {type:"text/html"});
+    var a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download="T1000_Entscheidungsbaum.html";
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 100);
+  });
+
+  // ---------- reset to original ----------
+  document.getElementById("resetBtn").addEventListener("click", function(){
+    if(!window.confirm("Alle Änderungen verwerfen und den Originalzustand wiederherstellen?")) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  });
+
+  // ---------- toast ----------
+  function flash(msg){
+    if(!flashEl){ flashEl=document.createElement("div"); flashEl.className="saveflash"; document.body.appendChild(flashEl); }
+    flashEl.textContent=msg; flashEl.classList.add("show");
+    clearTimeout(flashTimer); flashTimer=setTimeout(function(){ flashEl.classList.remove("show"); }, 1200);
+  }
+
+  // ---------- init: restore saved edits, then wire up hover titles ----------
+  restore();
+  wrap.querySelectorAll(".chk > i").forEach(function(i){
+    var cur=MATS.filter(function(m){ return i.classList.contains(m); })[0];
+    if(cur) i.title=MATNAME[cur];
+  });
+})();
+</script>

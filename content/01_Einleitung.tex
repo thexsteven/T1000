@@ -5,109 +5,192 @@
 
 % Note: examples for inserting tables, formulas, images, sources, etc.
 % can be found in content/00_Hilfe_Beispiele.tex (not included in the printed document).
+%
+% This introduction is derived strictly from the project context files
+% (context/01_projektrahmen.md ... context/06_stand_ergebnisse.md).
+% Citations marked \cite{TODO-...} are placeholders: a suitable source still
+% has to be added to ArbeitBib.bib. Real keys already present in the bibliography
+% (reliability/endurance testing, actuator wear, time-series visualization) are
+% reused where they genuinely support the claim.
 
-\section{Motivation and Problem Statement}
-\label{sec:Einleitung_Motivation_Problemstellung}
-% TODO: back up every key statement in this section with a source (\cite{...}).
+\section{Motivation}
+\label{sec:Einleitung_Motivation}
 
-Before an electrical actuator is released for series production, it has to prove that it
-can withstand the number of operating cycles specified for its intended application.
-To verify this, Emerson Laatzen runs endurance tests on a linear spindle-driven
-actuator: a motor turns a spindle (ball screw) that moves a carriage back and forth
-between its two end positions, and this forward-and-back motion is repeated thousands
-of times in a row while one or more sensors continuously record a signal such as motor
-current, carriage position, or force. Over the course of such a test, the recorded
-signal can slowly change: the spindle nut and linear guide wear in, friction increases,
-or backlash develops between the spindle and the carriage. These changes are usually
-small from one cycle to the next, but they can add up to a relevant deviation over the
-full service life of the actuator, and it is exactly this kind of gradual change that an
-endurance test is meant to reveal.
+Before an electric linear actuator is released for use in demanding industrial
+applications, its manufacturer has to demonstrate that the actuator withstands the
+mechanical load of its intended service life without failing. The established way to
+provide this evidence is the \emph{endurance test}: a device under test is operated
+continuously for a very long period -- several months, in extreme cases more than half a
+year -- while it repeats a prescribed motion, so that wear and ageing can be observed
+under realistic, sustained load \parencite{oconnor_practical_2012}. For
+electromechanical actuators in particular, such life testing is the standard method for
+uncovering the weak points of a design before the product reaches the
+field \parencite{han_accelerated_2019}. During these endurance tests, the test rig
+continuously records high-frequency sensor data -- position, velocity, current,
+pressure, temperature, and vibration -- so that the mechanical condition of the actuator
+can be traced over its full operating life. Over the course of a single test run, the
+recorded signals may change only gradually, for example as the ball screw and the linear
+guide wear in, which is a known and slow degradation mechanism of this drive
+type \parencite{ma_wear_2024}.
 
-At the moment, the data produced by these tests is stored as one long, continuous time
-series per test run, often covering several thousand cycles and hundreds of thousands
-of data points. Engineers currently inspect this data either as raw numbers in a
-spreadsheet or as a single plot that stretches all cycles out one after another on the
-same time axis. Both approaches make it hard to answer the question that actually
-matters for reliability engineering: has the signal shape changed between the first and
-the last cycle of the test? On a fully stretched-out plot, a slow drift across a few
-thousand cycles is visually compressed into a barely noticeable slope, and a change in
-the shape of a single cycle is completely lost. Comparing individual cycles by hand --
-scrolling back and forth in a spreadsheet -- does not scale to datasets of this size
-either.
+Beyond the immediate release decision, this recorded data has a second, longer-term
+purpose at Emerson Laatzen: it is intended to serve as the training basis for
+data-driven models such as condition monitoring or remaining-useful-life
+estimation \parencite{TODO-condition-monitoring}. However, raw data from an industrial
+test rig is not automatically usable for this purpose. The recordings contain gaps,
+sensor dropouts, test-rig pauses, incomplete motion cycles, and other artefacts that
+would distort any later evaluation if they went unnoticed. The quality of a data-driven
+analysis is bounded by the quality of the underlying data, which is why systematically
+establishing and documenting data quality is a prerequisite for -- not an afterthought
+to -- any data-driven use of these recordings \parencite{TODO-data-quality}. The concrete
+motivation for this work is a planned, daily-updated dashboard for the test engineers at
+the rig: a compact overview that shows, for each test day, how many cycles were
+recorded, how many of them passed the quality check, and how key metrics evolve over
+time. Such a dashboard would let engineers recognise at a glance whether the ongoing
+recording is ``healthy'', instead of discovering data-quality problems only in
+hindsight, at the end of a months-long endurance test.
 
-A more direct way to make this kind of change visible is to overlay the individual
-cycles of a test on top of each other instead of laying them out in sequence. If every
-cycle is plotted on the same, normalized cycle-time axis, any deviation in amplitude,
-shape, or timing between an early and a late cycle becomes visible at a glance, in the
-same way that overlaying successive waveforms on an oscilloscope reveals a drifting
-signal that a single continuous trace would not. No such visualization currently exists
-for the endurance test data at Emerson Laatzen, which is the starting point for this
-project.
+\section{Problem Statement}
+\label{sec:Einleitung_Problemstellung}
 
-\section{Objective of the Thesis}
+A substantial preprocessing pipeline already exists in the same corporate environment,
+originating from a master's thesis (see Section~\ref{sec:Einleitung_Abgrenzung}). This
+pipeline converts the raw, hive-partitioned Parquet recordings of a test rig
+step by step into structured motion cycles and computes descriptive quality metrics for
+each cycle and each sensor signal. It is the data basis on which this work builds. At the
+end of its implemented stages, however, the pipeline yields a set of candidate cycles
+with accompanying quality metrics but makes \emph{no} final decision about which of these
+cycles should be admitted into a trustworthy dataset. The decisive quality logic is
+missing.
+
+Where the existing pipeline does apply thresholds, several of them are not physically
+justified: the central threshold above which the position signal counts as ``in motion''
+is duplicated across the code and explicitly marked as preliminary, without reference to
+the actually observed distribution of position values at rest. In other words, decisive
+quality criteria exist as unfounded ``magic numbers'' rather than as documented, derived
+values \parencite{TODO-data-cleaning}. In addition, a systematic analysis of the pipeline
+(detailed in the methodology chapter) reveals several methodological gaps that are
+relevant for judging whether a recorded cycle may count as usable:
+
+\begin{itemize}
+  \item \textbf{No standstill detection.} There is no dedicated check for whether a
+        signal is actually moving \emph{within} a detected cycle, so a frozen sensor or a
+        communication dropout can pass as an active cycle.
+  \item \textbf{No minimum-duration or minimum-motion filter.} Cycle duration and
+        position range are computed but never used as exclusion criteria, so an extremely
+        short or extremely long ``cycle'' can be accepted unnoticed.
+  \item \textbf{Velocity unused for quality assessment.} The velocity signal is extracted
+        but never used to judge cycle or signal quality, although it is physically the
+        more direct indicator of standstill than a position threshold.
+  \item \textbf{No physical plausibility check.} There is no systematic check of whether a
+        cycle is physically meaningful -- for example whether the full stroke was reached,
+        whether the number of samples lies in the expected range, or whether signal values
+        are invalid (non-finite) or constant (frozen).
+  \item \textbf{Preliminary motion threshold.} The motion threshold works in practice, but
+        its safety margin to the observed rest position is narrow and has never been
+        documented or justified.
+\end{itemize}
+
+These gaps mean that the transition from a very large volume of automatically recorded
+test-rig data to a high-quality, trustworthy dataset is currently neither complete nor
+transparently justified -- which is the problem this work addresses.
+
+\section{Objectives and Research Questions}
 \label{sec:Einleitung_Zielsetzung}
 
-The aim of this project is to design and implement a tool that takes the raw signal
-data recorded during a life-cycle (endurance) test and visualizes it as an overlay of
-its individual cycles, so that the recorded signal can be compared directly across the
-service life of the tested actuator. To achieve this, the tool has to (1) read the raw
-time series exported from the test rig, (2) automatically split the continuous signal
-into individual cycles and separate them by motion phase (forward stroke vs.\ return
-stroke), since overlaying cycles that move in opposite directions would make the
-resulting plot meaningless, (3) align cycles of the same phase on a common, normalized
-time axis so that cycles of slightly different duration remain comparable, and (4) plot
-all aligned cycles in a single, interactive chart, complemented by a lifetime trend view
-that aggregates key metrics (e.g.\ peak velocity, stroke length) over the full test
-duration so that gradual drift becomes visible without having to inspect individual
-cycles one by one. The tool is developed and evaluated as a case study against one
-representative endurance test performed at Emerson Laatzen (test run D32/Versuch1,
-comprising roughly 8.6 million recorded cycles over six months); extending it to other
-test rigs, actuator types, or signal formats is discussed as an outlook in Chapter 6 but
-is not part of this work.
+The central research question guiding this work is:
 
-\section{Research Question}
-\label{sec:Einleitung_Fragestellung}
+\begin{quote}
+\emph{How does one arrive, from a very large volume of automatically recorded test-rig
+data, at a high-quality, trustworthy dataset that is suitable as a basis for further
+analysis and model building?}
+\end{quote}
 
-The central question guiding this project is: \emph{How can the individual cycles of a
-life-cycle endurance test be automatically segmented, aligned, and overlaid so that
-changes in the underlying signal across the tested product's service life become
-visible?} This raises two more specific, technical sub-questions that have to be
-answered along the way: first, which segmentation and alignment strategy -- for example
-detecting a recurring trigger point in the signal versus resampling each cycle onto a
-fixed-length axis -- keeps cycles of varying duration comparable without distorting the
-signal shape that is supposed to be evaluated? Second, a single endurance-test cycle
-typically contains two opposite motion phases (the actuator moving out and moving back);
-how must these phases be identified and separated so that only cycles of the same phase
-are overlaid, since directly overlaying opposite-direction cycles would suggest a large
-deviation where none actually exists?
+Answering this question in full is a broader effort than a single practical-semester
+thesis can cover; this work therefore contributes the \emph{preprocessing} side of the
+answer, that is, the derivation and vetting of the dataset rather than any model built on
+top of it. Concretely, three objectives are pursued:
 
-\section{Scope}
+\begin{enumerate}
+  \item \textbf{A decision tree for data-quality checking.} A systematic, multi-level
+        check logic is developed that decides, for every recorded motion cycle, whether it
+        is admitted into a pool of usable data or rejected with a documented reason. Here,
+        the term \emph{decision tree} denotes this manual, criteria-based filter logic and
+        not a machine-learning classifier. Existing but unfounded thresholds of the prior
+        work are questioned and, where possible, re-derived empirically from the observed
+        data distributions, and missing checks (in particular standstill and outlier
+        detection) are added. To make transparent how well each individual criterion is
+        justified, every criterion is assigned a maturity level \parencite{TODO-data-quality}.
+  \item \textbf{Data pool derivation.} The decision tree is turned into a filter step that
+        produces, from the total set of recorded cycles, the vetted data pool together
+        with a traceable rejection log recording which cycle was excluded at which level
+        and for which reason.
+  \item \textbf{HTML cycle overlay.} A browser-based visualization that runs without server
+        infrastructure overlays motion cycles from the vetted data pool, making trends and
+        anomalies across the service life of a device under test visible. It builds on the
+        vetted pool rather than on raw data, so that genuine operating trends are shown
+        instead of data-quality noise.
+\end{enumerate}
+
+\section{Approach}
+\label{sec:Einleitung_Vorgehen}
+
+The work proceeds along the three objectives above. First, the existing preprocessing
+pipeline is analysed stage by stage, its criteria are catalogued, and the gaps described
+in Section~\ref{sec:Einleitung_Problemstellung} are identified. On this basis, a
+four-level decision tree is designed that does not replace the existing pipeline but adds
+a further filter layer after it: it reuses the metrics the pipeline already computes
+(cycle duration, position range, sample counts, quality metrics) and complements them
+with new, justified thresholds and additional checks, most notably an explicit
+standstill and frozen-signal check. Each criterion is classified by maturity level so
+that it is visible where further data analysis or expert agreement is still required
+before a criterion can be treated as justified. The decision tree is then applied to the
+recorded cycles of a test series to derive the data pool and its rejection log, and the
+resulting rejection statistics serve as an empirical result. Finally, the vetted pool is
+condensed offline into a compact trend view and a representative comparison view, both of
+which are embedded into a single, self-contained HTML file that opens with a double click
+and requires no server or database at runtime. The approach is developed and demonstrated
+as a case study on the test-series data available at Emerson Laatzen.
+
+\section{Scope and Delineation}
 \label{sec:Einleitung_Abgrenzung}
 
-This project focuses on the visualization of cyclic endurance test data, not on
-automatically judging whether a given deviation constitutes a pass or a fail; that
-assessment remains with the responsible engineer. Likewise, the project does not aim to
-determine the physical root cause of an observed drift (e.g.\ wear of the spindle nut
-or the linear guide)
-or to build a predictive model that forecasts the remaining service life of an
-actuator -- both are possible follow-up topics but are out of scope here. The
-implementation is developed and evaluated as a case study against a single endurance
-test run available at Emerson Laatzen (D32/Versuch1, a linear spindle-driven actuator);
-it is not built or validated as a generic tool for the full range of test rigs,
-actuator types, and signal formats used across Emerson Laatzen. General applicability
-beyond this one dataset is a plausible direction for future work (see Chapter 6) but is
-not evaluated as part of this thesis.
+This work is deliberately complementary to the master's thesis carried out in the same
+corporate environment. The preprocessing pipeline of that thesis -- cycle detection,
+multi-sensor signal extraction, and the descriptive quality profiling -- is the starting
+basis of this work; it is analysed, checked, and extended, but not rewritten. The
+contribution of this thesis is confined to the \emph{preprocessing} side of the data
+problem: the quality criteria, the decision tree, the resulting data pool, and its
+visualization. Explicitly out of scope are the preprocessing pipeline itself and any
+model building (machine learning) on top of the finished data pool; both belong to the
+referenced master's thesis and to potential follow-up work.
+
+Two further limitations apply. The criteria and thresholds are derived in a data-driven
+way from the observed distributions of a given test series and do not transfer unchanged
+to other series, because recording conditions, the set of available signals, and the
+physical design of the device under test can vary. Accordingly, the implementation is
+developed and evaluated as a case study on the available test-series data rather than as
+a generic tool for the full range of test rigs, actuator types, and signal formats used
+at Emerson Laatzen; general applicability beyond this data is a plausible direction for
+future work but is not evaluated here.
 
 \section{Structure of the Thesis}
 \label{sec:Einleitung_Aufbau}
 
-Chapter 2 introduces the theoretical foundations required for the remainder of this
-work, covering life-cycle (endurance) testing, the relevant signal types, and the data
-formats and visualization concepts used to process them. Chapter 3 describes the
-methodology behind the developed tool, from reading and cleaning the raw test data to
-the segmentation, alignment, and overlay of individual cycles. Chapter 4 applies this
-methodology to the D32/Versuch1 endurance test data set and evaluates the resulting
-visualizations. Chapter 5 discusses the results and derives recommendations for using
-the tool in day-to-day test evaluation. Chapter 6 concludes the thesis and gives an
-outlook on possible extensions of the approach, such as generalizing the tool to other
-endurance tests, actuator types, or signal formats.
+% TODO: review outline after completion. The chapter stubs currently in main.tex
+% (e.g. "Comparison of the Life-Cycle Tests") predate the data-quality framing of
+% this thesis and do not yet match it; the outline below is the proposed target
+% structure and must be reconciled with main.tex / the chapter files once finalised.
+Chapter~2 introduces the theoretical foundations required for the remainder of this
+work, covering electric linear actuators and their wear and failure mechanisms,
+life-cycle and reliability testing, the concept of data quality in the context of
+condition monitoring, and the visualization of time-oriented data. Chapter~3 describes
+the methodology: the analysis of the existing preprocessing pipeline, the four-level
+decision tree, the maturity-level system for classifying criteria, and the standstill
+definition. Chapter~4 applies this methodology to a test series, derives the data pool
+and the rejection statistics, and presents the HTML cycle overlay. Chapter~5 discusses
+the results and derives recommendations for the day-to-day evaluation of endurance-test
+data, in particular for the planned engineer dashboard. Chapter~6 concludes the thesis,
+revisits the stated objectives, names the limitations, and gives an outlook on
+follow-up work such as the velocity-based standstill definition and the extension to
+further test series and signals.
