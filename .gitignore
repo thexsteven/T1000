@@ -12,3 +12,8 @@ Thumbs.db
 
 # Editor
 .vscode/
+
+# Generated pipeline outputs / large data artifacts
+outputs/
+cycle_overlay/output/
+session-handoffs/monitoring/*.log
