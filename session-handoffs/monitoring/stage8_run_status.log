@@ -772,3 +772,1842 @@ error=None
 [2026-07-18 07:47:28] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
 end_time=2026-07-17T12:38:32.315540
 error=None
+[2026-07-18 07:52:28] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 07:57:28] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:02:28] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:07:28] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:12:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:17:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:22:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:27:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:32:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:37:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:42:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:47:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:52:29] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 08:57:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:02:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:07:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:12:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:17:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:22:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:27:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:32:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:37:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:42:30] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:47:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:52:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 09:57:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:02:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:07:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:12:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:17:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:22:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:27:31] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:32:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:37:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:42:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:47:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:52:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 10:57:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:02:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:07:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:12:32] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:17:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:22:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:27:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:32:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:37:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:42:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:47:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:52:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 11:57:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:02:33] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:07:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:12:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:17:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:22:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:27:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:32:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:37:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:42:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:47:34] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:52:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 12:57:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:02:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:07:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:12:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:17:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:22:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:27:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:32:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:37:35] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:42:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:47:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:52:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 13:57:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:02:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:07:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:12:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:17:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:22:36] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:27:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:32:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:37:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:42:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:47:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:52:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 14:57:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:02:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:07:37] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:12:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:17:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:22:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:27:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:32:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:37:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:42:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:47:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:52:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 15:57:38] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:02:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:07:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:12:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:17:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:22:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:27:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:32:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:37:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:42:39] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:47:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:52:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 16:57:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:02:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:07:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:12:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:17:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:22:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:27:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:32:40] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:37:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:42:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:47:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:52:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 17:57:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:02:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:07:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:12:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:17:41] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:22:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:27:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:32:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:37:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:42:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:47:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:52:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 18:57:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:02:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:07:42] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:12:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:17:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:22:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:27:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:32:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:37:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:42:43] run_dir=20260717_121959 pid=443758 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:47:43] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:52:43] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 19:57:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:02:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:07:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:12:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:17:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:22:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:27:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:32:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:37:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:42:44] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:47:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:52:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 20:57:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:02:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:07:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:12:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:17:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:22:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:27:45] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:32:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:37:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:42:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:47:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:52:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 21:57:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:02:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:07:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:12:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:17:46] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:22:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:27:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:32:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:37:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:42:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:47:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:52:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 22:57:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:02:47] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:07:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:12:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:17:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:22:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:27:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:32:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:37:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:42:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:47:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:52:48] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-18 23:57:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:02:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:07:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:12:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:17:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:22:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:27:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:32:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:37:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:42:49] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:47:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:52:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 00:57:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:02:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:07:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:12:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:17:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:22:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:27:50] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:32:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:37:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:42:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:47:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:52:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 01:57:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:02:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:07:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:12:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:17:51] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:22:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:27:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:32:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:37:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:42:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:47:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:52:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 02:57:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:02:52] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:07:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:12:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:17:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:22:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:27:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:32:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:37:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:42:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:47:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:52:53] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 03:57:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:02:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:07:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:12:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:17:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:22:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:27:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:32:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:37:54] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:42:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:47:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:52:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 04:57:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:02:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:07:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:12:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:17:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:22:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:27:55] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:32:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:37:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:42:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:47:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:52:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 05:57:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:02:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:07:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:12:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:17:56] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:22:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:27:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:32:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:37:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:42:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:47:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:52:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 06:57:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:02:57] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:07:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:12:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:17:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:22:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:27:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:32:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:37:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:42:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:47:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:52:58] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 07:57:59] run_dir=20260717_121959 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-17T12:38:32.315540
+error=None
+[2026-07-19 08:02:59] run_dir=20260719_075849 pid=795251 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 08:07:59] run_dir=20260719_075849 pid=795251 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 08:12:59] run_dir=20260719_075849 pid=795251 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 08:17:59] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:22:59] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:27:59] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:32:59] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:37:59] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:43:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:48:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:53:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 08:58:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:03:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:08:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:13:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:18:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:23:00] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:28:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:33:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:38:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:43:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:48:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:53:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 09:58:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:03:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:08:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:13:01] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:18:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:23:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:28:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:33:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:38:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:43:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:48:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:53:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 10:58:02] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:03:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:08:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:13:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:18:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:23:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:28:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:33:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:38:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:43:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:48:03] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:53:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 11:58:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:03:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:08:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:13:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:18:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:23:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:28:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:33:04] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:38:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:43:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:48:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:53:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 12:58:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:03:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:08:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:13:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:18:05] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:23:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:28:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:33:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:38:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:43:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:48:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:53:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 13:58:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:03:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:08:06] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:13:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:18:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:23:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:28:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:33:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:38:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:43:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:48:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:53:07] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 14:58:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:03:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:08:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:13:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:18:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:23:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:28:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:33:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:38:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:43:08] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:48:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:53:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 15:58:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:03:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:08:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:13:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:18:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:23:09] run_dir=20260719_075849 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection', 'multi_sensor_extraction', 'cycle_quality_profiling', 'validation_rule_generation', 'dataset_validation']
+end_time=2026-07-19T08:17:47.852800
+error=None
+[2026-07-19 16:28:09] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 16:33:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 16:38:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 16:43:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection']
+end_time=None
+error=None
+[2026-07-19 16:48:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 16:53:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 16:58:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:03:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:08:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:13:10] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:18:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:23:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:28:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:33:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:38:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:43:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:48:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:53:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 17:58:11] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:03:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:08:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:13:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:18:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:23:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:28:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:33:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:38:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:43:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:48:12] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:53:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 18:58:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:03:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:08:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:13:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:18:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:23:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:28:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:33:13] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:38:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:43:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:48:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:53:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 19:58:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:03:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:08:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:13:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:18:14] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:23:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:28:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:33:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:38:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:43:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:48:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:53:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 20:58:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:03:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:08:15] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:13:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:18:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:23:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:28:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:33:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:38:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:43:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:48:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:53:16] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 21:58:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:03:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:08:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:13:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:18:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:23:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:28:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:33:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:38:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:43:17] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:48:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:53:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 22:58:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:03:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:08:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:13:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:18:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:23:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:28:18] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:33:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:38:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:43:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:48:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:53:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-19 23:58:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:03:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:08:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:13:19] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:18:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:23:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:28:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:33:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:38:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:43:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:48:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:53:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 00:58:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:03:20] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:08:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:13:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:18:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:23:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:28:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:33:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:38:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:43:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:48:21] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:53:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 01:58:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:03:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:08:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:13:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:18:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:23:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:28:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:33:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:38:22] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:43:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:48:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:53:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 02:58:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:03:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:08:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:13:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:18:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:23:23] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:28:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:33:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:38:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:43:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:48:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:53:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 03:58:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:03:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:08:24] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:13:25] run_dir=20260719_162608 pid=826522 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:18:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:23:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:28:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:33:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:38:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:43:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:48:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:53:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 04:58:25] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:03:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:08:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:13:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:18:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:23:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:28:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:33:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:38:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:43:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:48:26] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:53:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 05:58:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:03:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:08:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:13:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:18:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:23:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:28:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:33:27] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:38:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:43:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:48:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:53:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 06:58:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:03:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:08:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:13:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:18:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:23:28] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:28:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:33:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:38:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:43:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:48:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:53:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 07:58:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:03:29] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:08:29] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:13:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:18:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:23:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:28:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:33:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:38:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:43:30] run_dir=20260719_162608 pid=1045701 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:48:30] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:53:30] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 08:58:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:03:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:08:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:13:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:18:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:23:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:28:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:33:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:38:31] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:43:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:48:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:53:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 09:58:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:03:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:08:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:13:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:18:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:23:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:28:32] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:33:33] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:38:33] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:43:33] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:48:33] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-20 10:53:33] run_dir=20260719_162608 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None

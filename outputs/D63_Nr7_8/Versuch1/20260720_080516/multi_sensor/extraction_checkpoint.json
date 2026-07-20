@@ -1,0 +1,43 @@
+{
+  "batch_summary_rows": [
+    {
+      "batch_id": 1,
+      "cycle_count": 500,
+      "duration_seconds": 425.131078,
+      "first_cycle_id": 1,
+      "last_cycle_id": 500,
+      "output_files": [
+        "outputs/D63_Nr7_8/Versuch1/20260720_080516/multi_sensor/measurements/experiment=Versuch1/session_id=1/batch_000001.parquet"
+      ],
+      "written_rows": 194688
+    },
+    {
+      "batch_id": 2,
+      "cycle_count": 500,
+      "duration_seconds": 449.967331,
+      "first_cycle_id": 501,
+      "last_cycle_id": 1000,
+      "output_files": [
+        "outputs/D63_Nr7_8/Versuch1/20260720_080516/multi_sensor/measurements/experiment=Versuch1/session_id=1/batch_000002.parquet"
+      ],
+      "written_rows": 180380
+    }
+  ],
+  "completed_batch_ids": [
+    1,
+    2
+  ],
+  "configuration_fingerprint": "6cf58f5acfb768a5e76c9c091aa06602719d6ece2878f3bef2ae507715fb1ef7",
+  "dataset": "/data/ERA/D63_Nr7_8",
+  "experiment": "Versuch1",
+  "failed_cycle_ids": [],
+  "latest_update_time": "2026-07-20T08:37:54.299143",
+  "output_file_paths": [
+    "outputs/D63_Nr7_8/Versuch1/20260720_080516/multi_sensor/measurements/experiment=Versuch1/session_id=1/batch_000001.parquet",
+    "outputs/D63_Nr7_8/Versuch1/20260720_080516/multi_sensor/measurements/experiment=Versuch1/session_id=1/batch_000002.parquet"
+  ],
+  "processed_cycle_count": 1000,
+  "processed_cycle_ranges": [],
+  "start_time": "2026-07-20T08:23:19.193789",
+  "status": "running"
+}
