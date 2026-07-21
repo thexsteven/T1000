@@ -1,20 +1,38 @@
 \chapter{Methodology}
 \label{kap:Methodik}
 
-% Justified approach: why are the chosen methods suitable?
+% Justified approach: why the chosen methods are suitable for the preprocessing objective.
 
 \section{Procedure Model}
-% Sequence of steps from the research question to the results.
+\label{sec:Methodik_Vorgehensmodell}
+% Overall research approach; how the work proceeds along the three objectives (decision tree, data pool, HTML overlay) as a case study on the Emerson test-series data.
 
-\section{Selection of the Considered Life-Cycle Tests}
-% Which test procedures are compared, and why exactly these?
+\section{Analysis of the Existing Pipeline and Identified Gaps}
+\label{sec:Methodik_PipelineGaps}
+% Stage-by-stage catalogue of the 11-stage pipeline and the criteria it applies; the gaps from Section 1.2 (no standstill detection, provisional thresholds, velocity unused, no physical plausibility check, no maturity accounting).
 
-\section{Comparison Criteria}
-% According to which criteria is the comparison made? (e.g. informative value, duration, cost,
-% reproducibility, practical relevance, required equipment).
+\section{Criteria Maturity Framework}
+\label{sec:Methodik_MaturityFramework}
+% The maturity-level system for every criterion (Begruendet, Provisorisch, Strukturell, Inkonsistent, Nicht begruendet, "Statistically derived (not health-validated)"); purpose and how a criterion moves between levels.
 
-\section{Data Collection and Test Setup}
-% Where does the data come from? Setup, measured variables, boundary conditions.
+\section{Physical Plausibility Criteria}
+\label{sec:Methodik_PhysicalPlausibility}
+% Domain-knowledge-based checks: full-stroke/minimum-motion, plausible cycle duration, non-finite/constant (frozen) value check, sample-count and coverage ranges; derivation basis and maturity of each; definition of the reference population for statistically derived thresholds; contrast with the statistical (Median+MAD) validation.
 
-\section{Quality Criteria and Limitations}
-% How is quality/reliability ensured? Limits of the approach.
+\section{Standstill Detection and Movement-Threshold Derivation}
+\label{sec:Methodik_Standstill}
+% Velocity-window-based standstill/frozen-signal detection; empirical derivation of the movement threshold from the rest-position distribution; dependency on velocity-signal scaling.
+
+\section{The Four-Level Decision Tree}
+\label{sec:Methodik_DecisionTree}
+% How the criteria are assembled into the multi-level keep/reject logic; note this is a manual, criteria-based filter, not an ML classifier.
+
+\section{Data Pool Derivation and Rejection Logging}
+\label{sec:Methodik_DataPool}
+% Turning the decision tree into a filter step; flag-based approach (raw data never deleted, rejection_reason in a quality log, pool as an index e.g. pool_cycles.parquet); reproducibility and auditability.
+
+\section{HTML Cycle Overlay}
+\label{sec:Methodik_HTMLOverlay}
+% Method for the self-contained, server-less HTML visualization that overlays cycles from the vetted pool; built on the pool, not on raw data.
+
+% Required references: \cite{TODO-heydari-2026}, \cite{TODO-data-quality}, \cite{TODO-data-quality-dimensions}, \cite{TODO-robust-statistics-mad}, \cite{TODO-steady-state-detection}, \cite{TODO-time-series-segmentation}, \cite{TODO-changepoint-detection}, \cite{TODO-data-cleaning}
