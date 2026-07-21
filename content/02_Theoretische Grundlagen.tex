@@ -2,19 +2,281 @@
 \label{kap:Theoretische_Grundlagen}
 
 % Solid foundation: state of the art/research from citable literature
-% (textbooks, journals, standards). Only substantiated statements.
+% (textbooks, journals, standards). Only substantiated statements. High citation
+% density (style guide: ~1-4 references per page). Sections follow the order in which
+% the terms were introduced in Chapter 1: actuators -> data quality -> time-series
+% preprocessing -> the existing pipeline this work builds on.
+% \cite{TODO-...} keys are placeholders for sources still to be added to ArbeitBib.bib.
 
-\section{Electro-Actuators: Structure and Operating Principle}
-% Basic principle, key components, physical operating principles.
+This chapter introduces the concepts on which the remainder of the thesis rests, in the
+order in which they were named in Chapter~\ref{kap:Einleitung}. It first describes the
+device that produces the data -- the electric linear actuator and its wear and failure
+mechanisms (Section~\ref{sec:Grundlagen_Aktuator}). It then defines what is meant by
+\emph{data quality} and why it is a prerequisite for any later data-driven use of the
+recordings (Section~\ref{sec:Grundlagen_Datenqualitaet}). Section~\ref{sec:Grundlagen_TS}
+covers the time-series preprocessing methods on which the quality checks of this work are
+built: cycle detection, standstill detection, and the robust derivation of thresholds from
+observed data distributions. Finally, Section~\ref{sec:Grundlagen_Pipeline} summarises the
+existing preprocessing pipeline that turns the raw recordings into structured motion
+cycles and thereby forms the starting basis of this thesis.
 
-\section{Types and Fields of Application}
-% Relevant actuator types and their typical applications.
+\section{Electric Linear Actuators}
+\label{sec:Grundlagen_Aktuator}
 
-\section{Loads, Wear, and Failure Mechanisms}
-% What leads to failure? Basis for the subsequent endurance tests.
+\subsection{Structure and Operating Principle}
+\label{subsec:Grundlagen_Aufbau}
 
-\section{Fundamentals of Life-Cycle and Reliability Testing}
-% Terms (e.g. service life, MTBF, Weibull), test types, relevant standards.
+An \emph{actuator} is a component that converts an input energy form into a controlled
+mechanical motion. An \emph{electric linear actuator} converts the rotation of an electric
+motor into a linear (straight-line) movement of an output rod \parencite{TODO-actuator-fundamentals}.
+In the rod-style actuators considered here, this conversion is typically realised by a
+\emph{ball screw} drive: the motor turns a threaded spindle, and a nut running on
+recirculating balls translates the rotation into a low-friction axial motion of the rod,
+which is guided by a linear bearing \parencite{ma_wear_2024}. The actuator relevant to
+this work is \emph{position-controlled}: a control loop drives the rod to follow a
+prescribed \emph{motion trajectory} rather than simply being switched on and off.
 
-\section{State of the Art and Research}
-% Overview of existing test procedures and comparison approaches in the literature.
+The trajectory used during an endurance test is, at its core, an ``out-and-back''
+movement between a \emph{rest position} and a defined target position, the \emph{full
+stroke}. One such out-and-back movement is a \emph{motion cycle} and is the central
+analytical unit of this thesis: all quality checks and visualizations refer to individual
+cycles rather than to arbitrary time windows. Because the actuator is position-controlled,
+the position signal is the natural reference for delimiting a cycle -- a cycle begins when
+the position leaves the rest position and ends when it returns to it. During each cycle,
+several physical quantities are recorded in parallel by separate sensors, most importantly
+position, velocity, current, pressure, temperature, and three-axis vibration; these
+signals differ substantially in their native sampling rate, which is relevant for their
+later processing (Section~\ref{sec:Grundlagen_TS}).
+
+\subsection{Types and Fields of Application}
+\label{subsec:Grundlagen_Typen}
+
+Electric linear actuators are used wherever a defined, repeatable linear force or
+positioning movement is required, for example in valve and flow control, industrial
+automation, and process equipment \parencite{TODO-actuator-fundamentals}. Compared with
+hydraulic or pneumatic drives, electric actuators offer precise position control, clean
+operation without a pressure supply, and straightforward integration into digital control
+and monitoring systems -- which is also what makes their internal signals available for
+the kind of data-driven condition monitoring targeted in this work. Because such actuators
+are frequently deployed in demanding or safety-relevant industrial applications, their
+service life and reliability must be demonstrated before deployment, which is the purpose
+of the endurance tests described next.
+
+\subsection{Loads, Wear, and Failure Mechanisms}
+\label{subsec:Grundlagen_Verschleiss}
+
+During operation, an electric linear actuator is subject to mechanical loads that lead to
+gradual wear of its moving parts. In a ball-screw drive, the dominant wear mechanisms
+affect the contact surfaces of the screw, nut, and balls as well as the linear guide;
+this wear accumulates slowly over a very large number of cycles and manifests as a gradual
+change in the drive's behaviour, such as increased friction, altered current draw, or
+changed motion characteristics \parencite{ma_wear_2024}. Because such degradation is slow
+and cumulative, it can only be observed reliably over long operating times rather than in
+a short trial.
+
+This is the rationale for the \emph{endurance test}: to expose the slow wear and ageing of
+a design under realistic, sustained load, a device under test is operated continuously for
+months while it repeats the same motion cycle, and its sensor signals are recorded
+throughout \parencite{oconnor_practical_2012}. Life and accelerated-life testing of
+electromechanical actuators is an established method for uncovering the weak points of a
+design and for estimating its service life before the product reaches the
+field \parencite{han_accelerated_2019}. The long duration and high sampling rate of these
+tests are precisely what make the resulting recordings large and heterogeneous -- and
+therefore what make a systematic preprocessing and quality-assurance step necessary before
+the data can be used.
+
+\section{Data Quality}
+\label{sec:Grundlagen_Datenqualitaet}
+
+\subsection{The Concept and Dimensions of Data Quality}
+\label{subsec:Grundlagen_DQ_Dimensionen}
+
+\emph{Data quality} is commonly defined as the degree to which data is fit for its
+intended use rather than as an absolute, use-independent property of the
+data \parencite{TODO-data-quality}. This ``fitness for use'' view is usually operationalised
+through a set of \emph{quality dimensions}. Widely cited dimensions
+include \emph{completeness} (are all required values present?), \emph{consistency} (are the
+values free of internal contradictions?), \emph{accuracy} (do the values reflect the real
+quantity they represent?), \emph{validity} or \emph{plausibility} (do the values lie in a
+physically possible range?), and \emph{timeliness} \parencite{TODO-data-quality-dimensions}.
+The same idea is codified in the international standard for a data-quality model, which
+organises quality into a comparable set of characteristics
+\parencite{TODO-iso25012}. For the recordings considered here, the most relevant dimensions
+are completeness (are all required sensor signals present in a cycle, with enough
+samples?), plausibility (did the actuator actually perform a full, physically meaningful
+stroke?), and consistency (are the timestamps ordered and free of large gaps?). These
+dimensions provide the vocabulary for the quality criteria developed in
+Chapter~\ref{kap:Methodik}.
+
+\subsection{Data Quality versus Signal Health}
+\label{subsec:Grundlagen_DQ_Gesundheit}
+
+An important conceptual distinction for this work is that between \emph{data quality} and
+\emph{signal health}. A cycle can be of high technical data quality -- complete, correctly
+sampled, with valid values -- and yet exhibit physically unusual behaviour that reflects
+genuine wear or an incipient fault of the actuator. Conversely, a cycle can be technically
+unusable (for example because a sensor was frozen) without saying anything about the health
+of the machine. Data-quality preprocessing and the later detection of degradation must
+therefore remain separate steps: the goal of preprocessing is to remove cycles that are
+\emph{bad data}, while deliberately retaining cycles that are merely \emph{unusual but
+real}, because the latter are exactly the cases a downstream condition-monitoring model is
+meant to learn from \parencite{TODO-condition-monitoring}. Confusing the two -- discarding
+a genuinely degraded cycle as an ``outlier'' -- would remove the very signal that later
+analysis depends on. Keeping this distinction explicit is one of the reasons the quality
+criteria in this thesis are designed to be conservative and physically justified rather
+than purely statistical.
+
+\subsection{Data Quality as a Prerequisite for Data-Driven Analysis}
+\label{subsec:Grundlagen_DQ_Voraussetzung}
+
+The practical importance of data quality follows from a simple observation: the output of a
+data-driven analysis can be no better than the data it is trained on, a principle often
+summarised as ``garbage in, garbage out'' \parencite{TODO-data-quality}. In the context of
+prognostics and health management, the curation of a clean, well-characterised dataset is
+consistently identified as a foundational step that precedes and constrains any modelling
+effort \parencite{TODO-phm}. Undetected artefacts -- frozen sensors, incomplete cycles, or
+recording gaps -- would be silently learned by a model as if they were real machine
+behaviour, degrading its ability to distinguish genuine wear from measurement problems.
+Establishing and documenting data quality before modelling is therefore not an optional
+refinement but a prerequisite, and it is the specific contribution this thesis makes to the
+overall data-processing chain.
+
+\section{Time-Series Preprocessing of Sensor Data}
+\label{sec:Grundlagen_TS}
+
+\subsection{Sensor Time Series and Heterogeneous Sampling}
+\label{subsec:Grundlagen_TS_Abtastung}
+
+Each recorded sensor signal is a \emph{time series}: a sequence of measured values, each
+associated with a timestamp \parencite{aigner_visualization_2023}. The signals in this work
+are discrete and only approximately periodic -- the interval between successive samples
+varies slightly around a nominal value -- so small timestamp variations are expected and
+should not be treated as errors. More importantly, the different sensors operate at very
+different native \emph{sampling rates}: the vibration channels produce, by orders of
+magnitude, the most samples per cycle, while temperature is sampled far more slowly. This
+heterogeneity means that the signals cannot be compared sample by sample without an
+explicit alignment strategy, and it is the reason the existing pipeline deliberately keeps
+every signal at its \emph{native} rate rather than \emph{resampling} or interpolating all
+signals onto a common grid (Section~\ref{sec:Grundlagen_Pipeline}). Preserving the native
+rate avoids introducing interpolation artefacts, but it also makes the number of samples
+per signal an informative quality indicator in its own right.
+
+\subsection{Cycle and Event Detection}
+\label{subsec:Grundlagen_TS_Zyklen}
+
+Extracting individual motion cycles from a continuous recording is an instance of
+\emph{time-series segmentation}: partitioning a signal into meaningful, internally
+homogeneous intervals \parencite{TODO-time-series-segmentation}. The simplest and most
+transparent segmentation approach is \emph{threshold-based}: an event boundary is placed
+wherever the signal crosses a fixed level. This is the approach used for cycle detection
+here, where a cycle is delimited by the position signal crossing a \emph{motion threshold}
+upward (cycle start) and downward again (cycle end). Threshold-based detection is easy to
+justify and to reproduce, but its result depends critically on the chosen threshold, which
+must be separated from sensor noise around the rest position.
+
+More general alternatives exist. \emph{Change-point detection} methods identify points at
+which the statistical properties of a signal change, without requiring a predefined
+level \parencite{TODO-changepoint-detection}; model-based segmentation fits an explicit
+signal model and marks deviations from it. These methods are more flexible than a fixed
+threshold but also more complex and harder to explain to a domain expert. Because the
+actuator is position-controlled and follows a well-defined trajectory, a threshold on the
+position signal is sufficient and preferable for delimiting cycles; the more general
+methods are noted here as the conceptual background against which that design choice is
+made.
+
+\subsection{Standstill and Frozen-Signal Detection}
+\label{subsec:Grundlagen_TS_Stillstand}
+
+Detecting that a signal is \emph{not} moving is a separate problem from detecting cycle
+boundaries. A \emph{standstill} within a supposedly active cycle -- caused for example by a
+\emph{frozen} sensor that repeats its last value, or by a communication dropout -- can
+otherwise pass undetected, because a constant value above the motion threshold still looks
+like an ``active'' cycle. The general idea for detecting standstill is to examine, within a
+sliding time window, whether the signal actually varies: a signal whose values do not
+change by more than a small amount over a window is considered to be at
+standstill \parencite{TODO-steady-state-detection}. Two indicators are available for this
+in the present data. The position signal must change by more than a small minimum amount
+within each window; alternatively -- and physically more directly -- the magnitude of the
+\emph{velocity} signal must differ from zero by more than a small threshold, since a
+velocity near zero is a more direct indication of true standstill than a small position
+change. The velocity-based variant is methodologically preferable but presupposes that the
+physical scaling of the velocity signal has been verified; this dependency is taken up in
+the methodology chapter.
+
+\subsection{Robust Thresholds from Data Distributions}
+\label{subsec:Grundlagen_TS_Schwellwerte}
+
+A recurring requirement in this work is to derive a numerical threshold -- an acceptable
+range for a cycle duration, a sample count, or a coverage ratio -- from observed data
+rather than to set it by hand. The difficulty is that observed distributions contain
+outliers, and estimators such as the arithmetic mean and the standard deviation are
+themselves strongly influenced by exactly those outliers. \emph{Robust} statistics avoid
+this by using estimators that are insensitive to a fraction of extreme values. Two robust
+approaches are relevant here. \emph{Quantile-} or \emph{percentile-based} limits define
+the acceptable range directly through, for example, the 1st and 99th percentile of the
+observed values, so that a fixed fraction of extreme values falls outside the range by
+construction; a closely related idea is the interquartile-range (IQR) ``fence'' rule for
+flagging outliers \parencite{TODO-tukey-eda}. Alternatively, the \emph{median absolute
+deviation} (MAD) provides a robust measure of spread around the median, and a threshold can
+be placed at a fixed number of MAD units from the median \parencite{TODO-robust-statistics-mad}.
+Both approaches yield thresholds that are reproducible and traceable to the data, and both
+underpin the data-driven criteria developed in Chapter~\ref{kap:Methodik}. Whichever is
+used, a threshold learned from a population that mixes healthy and degraded cycles
+describes the spread of the observed data, not a guaranteed boundary of \emph{usable} data
+-- a limitation that is discussed where these methods are applied.
+
+\section{The Existing Preprocessing Pipeline}
+\label{sec:Grundlagen_Pipeline}
+
+The raw recordings do not reach this work as loose measurements but as structured motion
+cycles, produced by a preprocessing pipeline that originates from a parallel master's
+thesis in the same corporate environment \parencite{TODO-heydari-2026}. This pipeline is
+\emph{not} part of the present work; it is its starting basis and is summarised here as
+prior work so that the contribution of this thesis (Chapter~\ref{kap:Methodik}) can be
+located precisely against it. The pipeline is organised as a sequence of eleven stages, of
+which the first nine are implemented and the last two are planned:
+
+\begin{enumerate}
+  \item \textbf{Metadata integration} -- catalogues which raw signals exist and with which
+        properties, and reconstructs the hierarchical signal information.
+  \item \textbf{Signal discovery} -- selects the measurement channels belonging to a given
+        experiment and identifies the position channel used as the cycle reference.
+  \item \textbf{Timestamp analysis} -- computes the sampling-interval and gap statistics of
+        the reference signal, providing the basis for later threshold decisions.
+  \item \textbf{Recording-session detection} -- splits the continuous recording into
+        independent \emph{recording sessions} wherever the time gap between two samples
+        exceeds a configured limit, so that cycle detection never spans a rig interruption.
+  \item \textbf{Position-based cycle detection} -- derives individual motion cycles from
+        the position signal via the motion threshold, discarding incomplete boundary
+        cycles; detection is performed separately within each session.
+  \item \textbf{Multi-sensor cycle extraction} -- extracts every configured sensor signal
+        within each cycle's time window, each at its native sampling rate, without
+        resampling or interpolation.
+  \item \textbf{Cycle quality profiling} -- computes purely descriptive quality metrics per
+        cycle and per signal (sample counts, sampling rate, maximum time gap, coverage
+        ratio, signal presence, and range); this stage deliberately makes \emph{no}
+        keep/reject decision.
+  \item \textbf{Validation rule generation} -- derives statistical validation thresholds
+        from the profiled quality distributions, primarily using a median-plus-MAD rule
+        with a quantile-based fallback.
+  \item \textbf{Dataset validation} -- applies the frozen thresholds to classify each cycle
+        as technically valid or invalid and separates the cycles accordingly.
+  \item \textbf{Feature engineering} \emph{(planned)} -- transformation of valid cycles into
+        machine-learning-ready feature representations.
+  \item \textbf{Dataset generation} \emph{(planned)} -- assembly of the final structured
+        dataset with training/validation/test partitions.
+\end{enumerate}
+
+Two properties of this pipeline matter for the present work. First, to cope with the sheer
+size of the recordings -- hundreds of millions of samples per run -- the pipeline reads
+data through filtered, partition-aware queries (predicate pushdown) that load only the
+requested signal and time window instead of scanning the complete measurement table; this
+shared loading infrastructure is what makes the analysis tractable at all. Second, stages~8
+and~9 already constitute a \emph{statistical} validation layer that does make a keep/reject
+decision. However, as the pipeline's own documentation notes, its central thresholds are
+partly provisional (most notably the motion threshold), and its validation rules are
+learned from a cycle population that mixes healthy and degraded behaviour, so they
+represent technical data-quality boundaries for the observed population rather than
+justified boundaries of usable data. These acknowledged limitations, together with the
+absence of an explicit standstill check and of any account of how well each criterion is
+justified, are the precise gaps that the methodology of the following chapter addresses.
