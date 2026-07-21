@@ -102,7 +102,7 @@ footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:30px}
     <div class="meta">
       <span><b>Project:</b> T1000 / ZDERA — Electric Rodstyle Actuator</span>
       <span><b>Author:</b> Steven Braun (building on the preprocessing pipeline by F. Heydari)</span>
-      <span><b>Version:</b> Draft v0.1 — 2026-07-17</span>
+      <span><b>Version:</b> Draft v0.2 — 2026-07-21 (Level-4 thresholds filled from full-scale profiling; was v0.1 2026-07-17)</span>
       <span><b>Repo analyzed:</b> <span class="mono">MasterThesisFat/</span> (copy of <span class="mono">/home/ita/MasterThesis</span>)</span>
     </div>
   </div>
@@ -113,7 +113,7 @@ footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:30px}
 <div class="legend" style="background:#e8f0fe;border-color:#c7dafc;">
   <h2>Hi — before you dive in</h2>
   <p class="note" style="margin-bottom:8px">This grew out of my thesis work on top of the pipeline you built — no need to read it all in one go. Everything below is <b>collapsed by default</b>; skim the headers first and only open the cards that are actually new or debatable to you. Quick orientation:</p>
-  <p class="note" style="margin-bottom:0"><b>TL;DR:</b> 4 filter levels decide which cycles are "useful". Levels 1–3 mostly already exist in your code (some thresholds are undocumented "magic numbers" I'd like to sanity-check with you). Level 4 is new — proposed thresholds derived from the full-dataset quality profiling I'm running right now. The handful of things I'd genuinely like your input on are marked <span class="badge b-warn">PROVISIONAL</span> or in an "Open point" box — everything else is just for context.</p>
+  <p class="note" style="margin-bottom:0"><b>TL;DR:</b> 4 filter levels decide which cycles are "useful". Levels 1–3 mostly already exist in your code (some thresholds are undocumented "magic numbers" I'd like to sanity-check with you). Level 4 is new — proposed thresholds now derived from the completed full-scale quality profiling (n = 107,555 cycles, run <span class="mono">20260717_101103</span>). The handful of things I'd genuinely like your input on are marked <span class="badge b-warn">PROVISIONAL</span> or in an "Open point" box — everything else is just for context.</p>
 </div>
 
 <div class="legend">
@@ -320,52 +320,58 @@ evidence: outputs/.../multi_sensor/validation/validation_cycle_quality.parquet</
   <div class="nodes">
 
     <div class="node" data-id="n41">
-      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.1 &nbsp;Signal coverage of the cycle</span><span class="crit">coverage_ratio &ge; 0.9 (TBD)</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.1 &nbsp;Signal coverage of the cycle</span><span class="crit">continuous &ge; 0.95; vibration/temp exempt</span><span class="badge b-prop">PROPOSED</span></div>
       <div class="node-body">
-        <div class="field"><div class="lab">Rule (proposed)</div><p>Each signal's samples must span at least <b>90%</b> of the cycle duration (<code>coverage_ratio = duration_covered / cycle_duration</code>). Threshold to be finalized from Stage-8 distributions.</p></div>
-        <div class="field"><div class="lab">Why</div><p>A signal can pass the sample-count check yet cluster all samples in one half of the cycle, leaving the other half blind. Coverage catches partial signal dropouts within a cycle.</p></div>
+        <div class="field"><div class="lab">Rule (proposed)</div><p>Continuously-sampled signals must span most of the cycle: <b>position / velocity / current &ge; 0.95</b>, <b>pressure &ge; 0.90</b> (<code>coverage_ratio = duration_covered / cycle_duration</code>). <b>Vibration (x/y/z) and temperature are exempt</b> — their low coverage is structural, not a defect (see evidence).</p></div>
+        <div class="field"><div class="lab">Why</div><p>A signal can pass the sample-count check yet cluster all samples in one half of the cycle, leaving the other half blind. Coverage catches partial signal dropouts within a cycle. A flat 0.9 rule (v0.1) is <b>wrong for vibration and temperature</b>: the full-scale profile shows they are inherently sparse/duty-cycled, so the threshold must be signal-specific.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 107,555 cycles)</div><div class="evid">From <code>outputs/D63_Nr7_8/Versuch1/20260717_101103/quality_profiling/quality_metric_distribution_summary.csv</code>, column <code>coverage_ratio</code>:<br>
+position / velocity / current P1 = <b>1.0</b> (constant) · pressure P1 = 0.966, min 0.269 · temperature P1 = 0.64, min 0.0 (3 samples/cycle) · <b>vibration_x/y/z P1 = 0.063</b> (ESP32 duty-cycled → coverage bimodal, low by design). A flat &ge;0.9 would reject nearly all vibration and much temperature.</div></div>
         <div class="field"><div class="lab">Source in repository</div>
 <div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metric <b>coverage_ratio</b> (computed, descriptive only)
 src/storage/cycle_quality_profiler.py : module docstring — "does NOT reject cycles"
-threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+distribution source: outputs/D63_Nr7_8/Versuch1/20260717_101103/quality_profiling/quality_metric_distribution_summary.csv</div></div>
         <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>partial signal dropout</i></div>
       </div>
     </div>
 
     <div class="node" data-id="n42">
-      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.2 &nbsp;No large gaps inside the cycle</span><span class="crit">max_time_gap &le; TBD</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.2 &nbsp;No large gaps inside the cycle</span><span class="crit">pos/vel/cur/press &le; 0.15 s · temp &le; 1.5 s · vib &le; 0.10 s</span><span class="badge b-prop">PROPOSED</span></div>
       <div class="node-body">
-        <div class="field"><div class="lab">Rule (proposed)</div><p>The largest gap between consecutive samples of a signal within the cycle must not exceed a signal-specific threshold (e.g. a multiple of the signal's median sampling interval; position: ~50&nbsp;ms nominal).</p></div>
+        <div class="field"><div class="lab">Rule (proposed)</div><p>The largest gap between consecutive samples of a signal within the cycle must not exceed a signal-specific threshold (&approx; 3&times; the nominal interval): <b>position / velocity / current / pressure &le; 0.15 s</b>, <b>vibration &le; 0.10 s</b>, <b>temperature &le; 1.5 s</b>.</p></div>
         <div class="field"><div class="lab">Why</div><p>Supervisors confirmed small timestamp jitter (43–58&nbsp;ms for position) is normal, but larger intra-cycle gaps mean lost measurements exactly where the dynamics happen.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 107,555 cycles)</div><div class="evid"><code>max_time_gap_seconds</code>: position/velocity/current P99 = <b>0.059 s</b> (nominal ~50 ms) but <b>max = 1072.8 s</b> · pressure P99 = 0.07 s, max 1069.9 s · vibration_x/y/z P99 = 0.03 s, max 580.0 s · temperature P99 = 1.02 s (nominal ~1 s), max 8.08 s. The multi-second/1072 s maxima are exactly the intra-cycle dropouts the filter must catch; the proposed bands sit just above P99.</div></div>
         <div class="field"><div class="lab">Source in repository</div>
 <div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metrics <b>max_time_gap_seconds</b>, mean_time_gap_seconds
 jitter evidence: docs/implementation_log.md            Module 3 (43–58 ms), supervisor feedback
-threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+distribution source: outputs/D63_Nr7_8/Versuch1/20260717_101103/quality_profiling/quality_metric_distribution_summary.csv</div></div>
         <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>intra-cycle data loss</i></div>
       </div>
     </div>
 
     <div class="node" data-id="n43">
-      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.3 &nbsp;No invalid values</span><span class="crit">non_finite_count = 0</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.3 &nbsp;No invalid values</span><span class="crit">non_finite_count = 0</span><span class="badge b-prop">PROPOSED</span></div>
       <div class="node-body">
         <div class="field"><div class="lab">Rule (proposed)</div><p>No signal may contain NaN or ±infinity values within the cycle.</p></div>
         <div class="field"><div class="lab">Why</div><p>Non-finite values break feature computation (FFT, RMS, correlations) silently or catastrophically. Zero tolerance is the only defensible threshold here — this one needs no distribution to justify.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 107,555 cycles)</div><div class="evid"><code>non_finite_value_count</code>: <b>max = 0 for all 8 signals</b> across the full-scale run — no NaN/±inf observed anywhere. The rule therefore holds trivially today and is essentially free to enforce as a cheap safety guard against future acquisition faults.</div></div>
         <div class="field"><div class="lab">Source in repository</div>
 <div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metric <b>non_finite_value_count</b>
 note: cycle_detection.py lines 39–45 already drops NaN rows for the
-      reference signal — other signals are not yet checked at decision time</div></div>
+      reference signal — other signals are not yet checked at decision time
+distribution source: outputs/D63_Nr7_8/Versuch1/20260717_101103/quality_profiling/quality_metric_distribution_summary.csv</div></div>
         <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>corrupt values</i></div>
       </div>
     </div>
 
     <div class="node" data-id="n44">
-      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.4 &nbsp;Signal not frozen / constant</span><span class="crit">std_value &gt; 0 (dynamic signals)</span><span class="badge b-pend">AWAITING DATA</span></div>
+      <div class="node-head"><span class="arrow">&#9654;</span><span class="title">4.4 &nbsp;Signal not frozen / constant</span><span class="crit">std_value &gt; 0 (dynamic signals); temp exempt</span><span class="badge b-prop">PROPOSED</span></div>
       <div class="node-body">
         <div class="field"><div class="lab">Rule (proposed)</div><p>Dynamic signals (position, velocity, current, pressure, vibration) must show variation within the cycle: <b>std_value&nbsp;&gt;&nbsp;0</b> (or above a small signal-specific floor). Temperature is exempt — 3 samples per cycle may legitimately be near-constant.</p></div>
         <div class="field"><div class="lab">Why</div><p>A perfectly constant "dynamic" signal indicates a frozen sensor or a stuck acquisition buffer — the multi-sensor complement to the standstill check 2.5.</p></div>
+        <div class="field"><div class="lab">Evidence (n = 107,555 cycles)</div><div class="evid"><code>std_value</code> minimum per signal: position 2.99 · velocity 156.1 · current 0.072 · pressure 3.03 · vibration_x 0.017 · vibration_y 0.015 · vibration_z 0.017 — <b>all dynamic signals &gt; 0</b> across the full run, so a bare <code>std_value &gt; 0</code> test is sufficient. <b>temperature min = 0.0</b> (near-constant by nature) → the exemption is confirmed correct.</div></div>
         <div class="field"><div class="lab">Source in repository</div>
 <div class="src">src/storage/cycle_quality_profiler.py : lines 23–34   metrics <b>std_value</b>, value_range
-threshold source (once generated): quality_metric_distribution_summary.csv</div></div>
+distribution source: outputs/D63_Nr7_8/Versuch1/20260717_101103/quality_profiling/quality_metric_distribution_summary.csv</div></div>
         <div class="reject"><span class="tag">NO &rarr;</span> reject cycle: <i>frozen sensor</i></div>
       </div>
     </div>
@@ -393,7 +399,7 @@ threshold source (once generated): quality_metric_distribution_summary.csv</div>
     </tbody>
   </table>
   <p class="note">Computed 2026-07-17 from <span class="mono">outputs/D63_Nr7_8/Versuch1/.../cycles/cycles.csv</span> (6 recording sessions, experiment Versuch1, dataset D63_Nr7_8, full history Oct 2025 – May 2026). Per-signal sample counts from <span class="mono">outputs/.../multi_sensor/validation/validation_cycle_quality.parquet</span> (only 3 example cycles — small sample, to be confirmed at scale).</p>
-  <p class="note"><b>Stage-8 status:</b> the quality-profiling outputs (<span class="mono">signal_quality_metrics.parquet</span>, <span class="mono">cycle_quality_profile.parquet</span>, <span class="mono">quality_metric_distribution_summary.csv</span>) are being generated right now with a full-scale run (previous runs only profiled a 100-cycle test sample). <b>Level-4 thresholds below will be filled in once that run completes.</b></p>
+  <p class="note"><b>Stage-8 status (updated 2026-07-21):</b> the full-scale quality-profiling run has <b>completed</b>. Outputs <span class="mono">signal_quality_metrics.parquet</span>, <span class="mono">cycle_quality_profile.parquet</span> and <span class="mono">quality_metric_distribution_summary.csv</span> now exist for run <span class="mono">20260717_101103</span> and cover <b>107,555 cycles</b> (earlier runs profiled only a 100-cycle test sample). The <b>Level-4 thresholds above are now filled from these distributions</b> and flipped from <span class="badge b-pend">AWAITING DATA</span> to <span class="badge b-prop">PROPOSED</span>.</p>
 </section>
 
 <section class="extra">
@@ -410,10 +416,10 @@ threshold source (once generated): quality_metric_distribution_summary.csv</div>
       <tr><td class="mono">2.5</td><td>Standstill / frozen</td><td class="mono">&Delta;pos &gt; &delta; per window T</td><td>placeholder (&delta;, T, &epsilon;)</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
       <tr><td class="mono">3.1</td><td>Required signals</td><td class="mono">8 / 8 present</td><td>ADR-008 / ADR-010</td><td><span class="badge b-ok">JUSTIFIED</span></td></tr>
       <tr><td class="mono">3.2</td><td>Min samples per signal</td><td class="mono">60/60/60/45/1100×3/2</td><td>observed counts (proposal)</td><td><span class="badge b-warn">PROVISIONAL</span></td></tr>
-      <tr><td class="mono">4.1</td><td>Coverage ratio</td><td class="mono">&ge; 0.9 (TBD)</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
-      <tr><td class="mono">4.2</td><td>Max intra-cycle gap</td><td class="mono">TBD per signal</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
-      <tr><td class="mono">4.3</td><td>Non-finite values</td><td class="mono">= 0</td><td>zero tolerance</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
-      <tr><td class="mono">4.4</td><td>Frozen-signal std</td><td class="mono">&gt; 0 (dynamic signals)</td><td>needs Stage-8 distributions</td><td><span class="badge b-pend">AWAITING DATA</span></td></tr>
+      <tr><td class="mono">4.1</td><td>Coverage ratio</td><td class="mono">pos/vel/cur &ge; 0.95, press &ge; 0.90; vib/temp exempt</td><td>full-scale P1 (n=107,555)</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">4.2</td><td>Max intra-cycle gap</td><td class="mono">&le; 0.15 s (temp 1.5 s, vib 0.10 s)</td><td>full-scale P99 vs. &le;1072 s outliers</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">4.3</td><td>Non-finite values</td><td class="mono">= 0</td><td>zero tolerance — 0 observed in 107,555</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
+      <tr><td class="mono">4.4</td><td>Frozen-signal std</td><td class="mono">&gt; 0 (dynamic signals)</td><td>all dynamic min&gt;0; temp min=0 exempt</td><td><span class="badge b-prop">PROPOSED</span></td></tr>
     </tbody>
   </table>
 </section>

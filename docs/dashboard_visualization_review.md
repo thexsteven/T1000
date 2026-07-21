@@ -1,7 +1,7 @@
 # Review: Visualization & Comparison Approach — Actuator Lifetime Dashboard
 
 A critical assessment of the visualization/comparison design used in
-`actuator_lifetime_dashboard.html` (built from `t1000/cycle_overlay/`).
+`actuator_lifetime_dashboard.html` (built from `t1000/src/cycle_overlay/`).
 This complements `dashboard_architecture.md` (which explains *how* it
 works) by evaluating *how good* the approach is for the analysis goal:
 spotting wear/drift/degradation across the D32/Versuch1 6-month test.

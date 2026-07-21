@@ -5,7 +5,7 @@ This document explains **how `dashboard_template.html`
 final built artifact: `actuator_lifetime_dashboard.html`) works**, focusing on
 the *principles* behind the design rather than line-by-line code.
 
-Source of truth for the build scripts: `t1000/cycle_overlay/`
+Source of truth for the build scripts: `t1000/src/cycle_overlay/`
 (`extract_cycle_stats.py`, `build_dashboard_data.py`, `build_html.py`).
 
 ---
@@ -217,7 +217,7 @@ Key interaction principles:
 
 ## 8. Regenerating the dashboard
 
-From `t1000/cycle_overlay/` (its own `.venv` with duckdb/pandas/pyarrow):
+From `t1000/src/cycle_overlay/` (its own `.venv` with duckdb/pandas/pyarrow):
 
 ```bash
 .venv/bin/python extract_cycle_stats.py     # ~1 min — Stage 1
@@ -225,6 +225,6 @@ From `t1000/cycle_overlay/` (its own `.venv` with duckdb/pandas/pyarrow):
 .venv/bin/python build_html.py              # instant — Stage 3
 ```
 
-Output: `t1000/cycle_overlay/output/actuator_lifetime_dashboard.html` and
+Output: `t1000/src/cycle_overlay/output/actuator_lifetime_dashboard.html` and
 `/home/ita/ERA-NAS/reports/t1000/dashboard_template.html` (browser-facing
 copy), both ~7 MB, single-file, double-click to open.

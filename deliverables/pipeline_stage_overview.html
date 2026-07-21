@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ERA Preprocessing Pipeline — Visual Stage Reference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Theme */
+    --bg: #0d1117;
+    --bg-elevated: #161b22;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2230;
+    --border: #2b3648;
+    --border-soft: #222b3a;
+    --text: #e6edf3;
+    --text-muted: #9aa7b8;
+    --text-dim: #6b7688;
+    --accent: #58a6ff;
+    --flow-line: #30475e;
+
+    /* Status colors (per prompt) */
+    --status-justified: #3fb950;      /* green  */
+    --status-provisional: #d29922;    /* amber  */
+    --status-structural: #388bfd;     /* blue   */
+    --status-statistical: #2dd4bf;    /* teal   */
+    --status-inconsistent: #db7c3a;   /* orange */
+    --status-unjustified: #f85149;    /* red    */
+    --status-planned: #8b949e;        /* gray   */
+
+    --radius: 12px;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    --sans: 'DM Sans', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ---------- Header ---------- */
+  header.page-head {
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, #131a26 0%, #0f141d 100%);
+    border-radius: var(--radius);
+    padding: 28px 30px;
+    margin-bottom: 26px;
+  }
+  header.page-head .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+  header.page-head h1 {
+    margin: 0 0 6px;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  header.page-head .subtitle {
+    margin: 0 0 14px;
+    color: var(--text-muted);
+    font-size: 15px;
+  }
+  header.page-head .subtitle a { color: var(--accent); text-decoration: none; }
+  header.page-head .subtitle a:hover { text-decoration: underline; }
+  .meta-line {
+    font-family: var(--mono);
+    font-size: 12.5px;
+    color: var(--text-dim);
+    border-top: 1px solid var(--border-soft);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+
+  /* ---------- Summary callout ---------- */
+  .summary {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    background: #101722;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 26px;
+    font-size: 14.5px;
+    color: var(--text-muted);
+  }
+  .summary strong { color: var(--text); }
+  .summary .mono { font-family: var(--mono); color: var(--status-provisional); }
+
+  /* ---------- Legend ---------- */
+  .legend {
+    border: 1px solid var(--border);
+    background: var(--bg-elevated);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+  .legend h2 {
+    margin: 0 0 12px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    font-weight: 600;
+  }
+  .legend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 8px 22px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .legend-item .dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    margin-top: 4px;
+    flex: 0 0 auto;
+  }
+  .legend-item b { color: var(--text); font-weight: 600; }
+
+  /* ---------- Filter bar ---------- */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+    align-items: center;
+  }
+  .filters .flabel {
+    font-size: 12px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    margin-right: 4px;
+  }
+  .filter-btn {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 5px 13px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .filter-btn .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+  .filter-btn.active {
+    background: #1d2635;
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* ---------- Pipeline flow ---------- */
+  .pipeline { position: relative; }
+  .pipeline::before {
+    content: "";
+    position: absolute;
+    left: 27px;
+    top: 12px;
+    bottom: 40px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--flow-line), var(--border-soft));
+    z-index: 0;
+  }
+
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 0;
+    margin-bottom: 14px;
+    z-index: 1;
+    transition: opacity 0.2s ease, filter 0.2s ease;
+  }
+  .stage.dimmed { opacity: 0.24; filter: grayscale(0.5); }
+
+  .stage .node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 6px;
+  }
+  .stage .node .num {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    border: 2px solid var(--flow-line);
+    color: var(--text);
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+  .stage.planned .node .num {
+    border-style: dashed;
+    border-color: var(--status-planned);
+    color: var(--status-planned);
+    background: #12161d;
+  }
+  .arrow {
+    color: var(--flow-line);
+    font-size: 16px;
+    line-height: 1;
+    margin-top: 8px;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px 16px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  .card:hover { background: var(--bg-card-hover); border-color: #35435c; }
+  .stage.planned .card {
+    border-style: dashed;
+    background: #10141b;
+  }
+
+  .card .title-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .card h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .card h3 .snum {
+    font-family: var(--mono);
+    color: var(--text-dim);
+    font-weight: 500;
+    margin-right: 8px;
+  }
+
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    padding: 3px 9px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .badge .bdot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+
+  .badge.justified   { color: var(--status-justified);   background: rgba(63,185,80,0.10);  border-color: rgba(63,185,80,0.35); }
+  .badge.provisional { color: var(--status-provisional); background: rgba(210,153,34,0.10); border-color: rgba(210,153,34,0.38); }
+  .badge.structural  { color: var(--status-structural);  background: rgba(56,139,253,0.10); border-color: rgba(56,139,253,0.38); }
+  .badge.statistical { color: var(--status-statistical); background: rgba(45,212,191,0.10); border-color: rgba(45,212,191,0.38); }
+  .badge.inconsistent{ color: var(--status-inconsistent);background: rgba(219,124,58,0.12); border-color: rgba(219,124,58,0.40); }
+  .badge.unjustified { color: var(--status-unjustified); background: rgba(248,81,73,0.10);  border-color: rgba(248,81,73,0.38); }
+  .badge.planned     { color: var(--status-planned);     background: rgba(139,148,158,0.10);border-color: rgba(139,148,158,0.35); }
+
+  .field { margin: 10px 0 0; }
+  .field .flabel {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--text-dim);
+    margin-bottom: 3px;
+    display: block;
+  }
+  .field .ftext { font-size: 14px; color: var(--text); }
+  .field.just .ftext { color: var(--text-muted); }
+
+  .value-row {
+    margin-top: 12px;
+    padding-top: 11px;
+    border-top: 1px solid var(--border-soft);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 10px;
+    align-items: center;
+    font-size: 12.5px;
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 12px;
+    background: #0e141d;
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .chip.hard   { border-color: rgba(248,81,73,0.4);  color: #ffb3ae; }
+  .chip.config { border-color: rgba(56,139,253,0.4); color: #a9ccff; }
+  .chip.derived{ border-color: rgba(45,212,191,0.4); color: #8ff0e3; }
+  .src {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-dim);
+  }
+  .src b { color: var(--text-muted); font-weight: 500; }
+
+  /* Discrepancy note */
+  .discrepancy {
+    margin-top: 12px;
+    background: rgba(219,124,58,0.08);
+    border: 1px solid rgba(219,124,58,0.40);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+    color: #f0c199;
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+  }
+  .discrepancy .warn { color: var(--status-inconsistent); font-weight: 700; flex: 0 0 auto; }
+  .discrepancy b { color: #ffd7b0; }
+
+  footer.page-foot {
+    margin-top: 40px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-soft);
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--text-dim);
+    text-align: center;
+  }
+
+  @media (max-width: 620px) {
+    .stage { grid-template-columns: 40px 1fr; }
+    .pipeline::before { left: 19px; }
+    .stage .node .num { width: 34px; height: 34px; font-size: 13px; }
+    header.page-head h1 { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <p class="eyebrow">Companion Reference · Read-only Explainer</p>
+    <h1>ERA Preprocessing Pipeline — Visual Stage Reference</h1>
+    <p class="subtitle">
+      Companion to the Confluence page <a href="#" title="Data Preprocessing — Criteria Maturity &amp; Alignment Overview">“Data Preprocessing — Criteria Maturity &amp; Alignment Overview.”</a>
+      Every stage below is cross-checked between Fatemeh’s pipeline code
+      (<code>/home/ita/MasterThesis</code>) and the overview wording. Where they disagree, both are shown and flagged.
+    </p>
+    <div class="meta-line">
+      Last updated: 2026-07-20 · Based on: Fatemeh Heydari, Implementation Log — Preprocessing Pipeline V2.0 (2026-07-19)
+    </div>
+  </header>
+
+  <div class="summary">
+    <strong>Bottom line:</strong> the <strong>mechanisms</strong> — why have a threshold at all, why separate
+    sessions, why use a robust statistic — are consistently well justified. The concrete <strong>numeric values</strong>
+    (<span class="mono">3600&nbsp;s</span>, <span class="mono">Position&nbsp;&gt;&nbsp;1.0</span>,
+    <span class="mono">MAD&nbsp;limit&nbsp;3.5</span>) are the open gap the decision tree is meant to close.
+  </div>
+
+  <section class="legend">
+    <h2>Status tag legend</h2>
+    <div class="legend-grid">
+      <div class="legend-item"><span class="dot" style="background:var(--status-justified)"></span><span><b>Justified</b> — physically or methodologically grounded (e.g. via ADR)</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-provisional)"></span><span><b>Provisional</b> — actively used, but not physically/methodologically derived</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-structural)"></span><span><b>Structural</b> — enforced by pipeline logic, but not physically validated</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-statistical)"></span><span><b>Statistically derived (not health-validated)</b> — threshold generated from the observed data distribution (Median&nbsp;+&nbsp;MAD, quantile fallback), but the reference population has not been confirmed to represent healthy behaviour</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-inconsistent)"></span><span><b>Inconsistent</b> — conflicting sources disagree on status/value</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-unjustified)"></span><span><b>Unjustified</b> — no documented reasoning exists</span></div>
+      <div class="legend-item"><span class="dot" style="background:var(--status-planned)"></span><span><b>Planned / Not implemented</b> — stage does not yet exist in code</span></div>
+    </div>
+  </section>
+
+  <div class="filters">
+    <span class="flabel">FILTER:</span>
+    <button class="filter-btn active" data-filter="all">All stages</button>
+    <button class="filter-btn" data-filter="justified"><span class="dot" style="background:var(--status-justified)"></span>Justified</button>
+    <button class="filter-btn" data-filter="provisional"><span class="dot" style="background:var(--status-provisional)"></span>Provisional</button>
+    <button class="filter-btn" data-filter="structural"><span class="dot" style="background:var(--status-structural)"></span>Structural</button>
+    <button class="filter-btn" data-filter="statistical"><span class="dot" style="background:var(--status-statistical)"></span>Statistical</button>
+    <button class="filter-btn" data-filter="inconsistent"><span class="dot" style="background:var(--status-inconsistent)"></span>Inconsistent</button>
+    <button class="filter-btn" data-filter="unjustified"><span class="dot" style="background:var(--status-unjustified)"></span>Unjustified</button>
+    <button class="filter-btn" data-filter="planned"><span class="dot" style="background:var(--status-planned)"></span>Planned</button>
+  </div>
+
+  <div class="pipeline">
+
+    <!-- STAGE 1 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">1</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 01</span>Metadata Integration</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Attaches recording metadata (experiment, signal descriptors, unit codes, paths) to the raw signal tables so later stages can resolve signals by logical name.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Purely technical prerequisite; no methodological justification required.</span></div>
+        <div class="value-row">
+          <span class="src"><b>Source:</b> Implementation Log §3 (Stage 1)</span>
+          <span class="chip">— no threshold —</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">2</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 02</span>Signal Discovery</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Selects the single Position reference signal for the experiment; discovery logic errors out if zero or more than one Position match is found.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Enforces exactly one Position reference signal (errors on 0 or &gt;1 matches); ensures an unambiguous reference for cycle detection.</span></div>
+        <div class="value-row">
+          <span class="chip config">reference_signal: position</span>
+          <span class="src"><b>Source:</b> ADR-007 · <code>docs/architecture_decisions.md</code> · Log §8 (Stage 2)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">3</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 03</span>Timestamp Analysis</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Analyses per-signal sampling intervals and gaps; characterises normal jitter vs. large interruptions that indicate separate recording periods.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Small sampling variation (~43–58&nbsp;ms) is deliberately not treated as an error; large gaps are used downstream to separate sessions.</span></div>
+        <div class="value-row">
+          <span class="chip">~43–58&nbsp;ms typical interval</span>
+          <span class="src"><b>Source:</b> Log §3 (Stage 3, Timestamp Analysis)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage" data-tags="justified inconsistent">
+      <div class="node"><div class="num">4</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 04</span>Recording Session Detection</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified (mechanism)</span>
+            <span class="badge inconsistent"><span class="bdot"></span>Inconsistent (value)</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Scans the signal incrementally in record batches and splits the full recording history into sessions wherever the gap between consecutive timestamps exceeds the threshold.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The mechanism prevents joining data across shutdowns/maintenance — but the concrete 3600&nbsp;s value is not justified, only the approach.</span></div>
+        <div class="value-row">
+          <span class="chip config">session_gap_seconds: 3600.0 s (1 h)</span>
+          <span class="chip hard">code default DEFAULT_SESSION_GAP_SECONDS = 3600.0</span>
+          <span class="src"><b>Source:</b> <code>session_detection.py</code> · ADR-006 · Log §15 “Session-Gap Threshold”</span>
+        </div>
+        <div class="discrepancy">
+          <span class="warn">⚠ discrepancy</span>
+          <span><b>Mechanism vs. value:</b> code hard-codes the 3600&nbsp;s default (config-overridable via <code>session_gap_seconds</code>), and ADR-006 accepts the <i>1-hour</i> approach “based on the empirical timestamp analysis” — but neither the ADR nor the code derives <b>why 3600&nbsp;s specifically</b>. Mechanism is justified; the numeric value is flagged inconsistent.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 5 -->
+    <div class="stage" data-tags="justified provisional inconsistent">
+      <div class="node"><div class="num">5</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 05</span>Position-Based Cycle Detection</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified (signal)</span>
+            <span class="badge provisional"><span class="bdot"></span>Provisional (threshold)</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Detects candidate cycles on the Position signal: a cycle starts when the value crosses from ≤&nbsp;threshold to &gt;&nbsp;threshold and ends on the reverse crossing; incomplete cycles at the window edges are dropped.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The actuator is position-controlled, so the reference-signal choice is justified (ADR-007) — but the threshold 1.0 is explicitly provisional, with no physical derivation.</span></div>
+        <div class="value-row">
+          <span class="chip config">movement_threshold: 1.0 → Position &gt; 1.0</span>
+          <span class="chip hard">code default movement_threshold = 1.0</span>
+          <span class="src"><b>Source:</b> <code>cycle_detection.py</code> · Log §8 &amp; §15 “Movement Threshold”</span>
+        </div>
+        <div class="discrepancy">
+          <span class="warn">⚠ discrepancy</span>
+          <span><b>Typical cycle duration:</b> the Implementation Log §8 reports a typical cycle duration of <b>~3.1&nbsp;s</b>, whereas the project context assumes a <b>1.81&nbsp;s</b> round-trip. Both are shown; this reference explicitly does not resolve which is correct.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 6 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">6</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 06</span>Multi-Sensor Cycle Extraction</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">For each detected cycle interval, slices every available experiment signal (position, velocity, current, pressure, temperature, vibration x/y/z) into per-cycle windows at their native sampling rates.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">No resampling/interpolation is applied because sensors have different native sampling frequencies — extracting raw windows avoids introducing artificial artifacts.</span></div>
+        <div class="value-row">
+          <span class="chip">native rate · no resampling</span>
+          <span class="src"><b>Source:</b> Log §9, §12 (Stage 6, Multi-Sensor Extraction)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 7 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">7</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 07</span>Cycle Quality Profiling</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Computes purely descriptive per-cycle quality metrics (sample counts, stroke-range / min–max Position, sampling-interval statistics). It records but does <b>not</b> reject any cycle.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Deliberately non-rejecting — this prevents arbitrary early filtering and keeps the later rule generation fully traceable to the observed population.</span></div>
+        <div class="value-row">
+          <span class="chip">descriptive only · no pass/fail</span>
+          <span class="src"><b>Source:</b> <code>cycle_quality_profiler.py</code> · Log §7 (stroke-range metrics)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 8 -->
+    <div class="stage" data-tags="statistical">
+      <div class="node"><div class="num">8</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 08</span>Validation Rule Generation</h3>
+          <div class="badges">
+            <span class="badge statistical"><span class="bdot"></span>Statistically derived (not health-validated)</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Learns per-signal validation bounds from the profiled cycle population: robust Median&nbsp;+&nbsp;MAD z-score bounds by default (<code>robust_z = 0.6745·(x−median)/MAD</code>), falling back to quantile bounds when MAD is zero or degenerate.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Median&nbsp;+&nbsp;MAD is a robust statistic and the quantile fallback covers instability — statistically justified, but the reference population is not verified as healthy.</span></div>
+        <div class="value-row">
+          <span class="chip derived">default_method: median_mad</span>
+          <span class="chip config">mad_z_limit: 3.5</span>
+          <span class="chip config">fallback: quantile 0.01 / 0.99</span>
+          <span class="chip config">reference_population: all_profiled_cycles</span>
+        </div>
+        <div class="value-row" style="border-top:none; padding-top:2px; margin-top:4px;">
+          <span class="src"><b>Source:</b> <code>validation_rule_generation.py</code> (mad_z_limit=3.5, lower/upper_quantile=0.01/0.99) · Log §11 · <code>validation_thresholds.json</code></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 9 -->
+    <div class="stage" data-tags="justified structural unjustified">
+      <div class="node"><div class="num">9</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 09</span>Dataset Validation</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified (core logic)</span>
+            <span class="badge structural"><span class="bdot"></span>Structural (vibration)</span>
+            <span class="badge unjustified"><span class="bdot"></span>Unjustified (reference pop.)</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Applies the learned rules to every cycle. Core signals (position, velocity, current, pressure, temperature) must pass; the vibration signal is treated as optional — its absence alone never invalidates a core cycle because ESP32 vibration acquisition is duty-cycled.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Vibration is treated as optional not mandatory (core vs. supplementary signals) — cleanly justified. But rules are applied against <code>all_profiled_cycles</code>, with no explicit healthy-subset selection.</span></div>
+        <div class="value-row">
+          <span class="chip config">core_required vs. optional_duty_cycled (vibration x/y/z)</span>
+          <span class="chip config">reference_population: all_profiled_cycles</span>
+        </div>
+        <div class="value-row" style="border-top:none; padding-top:2px; margin-top:4px;">
+          <span class="src"><b>Source:</b> <code>dataset_validation.py</code> · Log §11, §12, §15</span>
+        </div>
+        <div class="discrepancy">
+          <span class="warn">⚠ open gap</span>
+          <span><b>Reference population:</b> validation runs against <code>all_profiled_cycles</code> with no documented healthy-subset selection — so the population underlying the learned thresholds is <b>unjustified</b> as a health baseline, even though the core validation logic and optional-vibration handling are sound.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 10 -->
+    <div class="stage planned" data-tags="planned">
+      <div class="node"><div class="num">10</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 10</span>Feature Engineering</h3>
+          <div class="badges">
+            <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — derive per-cycle features from the validated cycles for the downstream predictive-maintenance model.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, not implemented.</span></div>
+        <div class="value-row">
+          <span class="chip">— not in code —</span>
+          <span class="src"><b>Source:</b> Reference overview (planned stage)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 11 -->
+    <div class="stage planned" data-tags="planned">
+      <div class="node"><div class="num">11</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 11</span>Dataset Generation</h3>
+          <div class="badges">
+            <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — assemble the final feature dataset (train/validation splits) for model training.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, not implemented.</span></div>
+        <div class="value-row">
+          <span class="chip">— not in code —</span>
+          <span class="src"><b>Source:</b> Reference overview (planned stage)</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /pipeline -->
+
+  <footer class="page-foot">
+    11 stages · 9 implemented, 2 planned · V2.0 numbering (3 stages inserted before the old start — old “Stage 2/3” are now Stage 4/5).<br />
+    Read-only companion to the Confluence overview · verified against Fatemeh’s pipeline code in <code>/home/ita/MasterThesis</code>.
+  </footer>
+
+</div><!-- /wrap -->
+
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.filter-btn');
+    var stages = document.querySelectorAll('.stage');
+
+    function applyFilter(filter) {
+      stages.forEach(function (stage) {
+        var tags = (stage.getAttribute('data-tags') || '').split(/\s+/);
+        var match = filter === 'all' || tags.indexOf(filter) !== -1;
+        stage.classList.toggle('dimmed', !match);
+      });
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        applyFilter(btn.getAttribute('data-filter'));
+      });
+    });
+  })();
+</script>
+</body>
+</html>

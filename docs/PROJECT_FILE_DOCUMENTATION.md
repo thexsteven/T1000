@@ -12,7 +12,7 @@ Dieses Repository ist der Datenanalyse-Teil einer Praxissemesterarbeit
 (DHBW, bei Emerson) im Kontext "ERA" – der Analyse von Prüfstands-
 Aufzeichnungsdaten (Parquet, hive-partitioniert) zu Zyklus-Timing und
 Datenqualität. Konkret enthält der aktuelle Stand des Repos ein einzelnes
-Unterprojekt, `cycle_overlay/`, das aus rohen Sensordaten eines
+Unterprojekt, `src/cycle_overlay/`, das aus rohen Sensordaten eines
 Dauerlauf-Versuchs (D32/Versuch1, ~6 Monate Betrieb, ~8,66 Mio.
 Aktuator-Zyklen) zwei HTML-Reports erzeugt: einen einfachen
 Cycle-Overlay-Report und ein interaktives "Actuator Lifetime Dashboard".
@@ -83,7 +83,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 **Aufgabe:** Ältester Handoff; dokumentiert die erste Version des Cycle-Overlay-Reports (`build_report.py` / `cycle_overlay_report.html`).
 **Inhalt:** Entscheidungen zur Zyklusdefinition (Magnetschalter_Counter), fünf Report-Ansichten, verwendete Signal-IDs, offene Punkte.
 **Warum benötigt:** Historischer Kontext, warum `build_report.py` so aufgebaut ist wie es ist (z. B. Pausenerkennung, Zeitfenster-Auswahl).
-**Abhängigkeiten:** Bezieht sich auf `cycle_overlay/build_report.py` und dessen Output-Dateien.
+**Abhängigkeiten:** Bezieht sich auf `src/cycle_overlay/build_report.py` und dessen Output-Dateien.
 **Hinweise:** Nicht mehr der aktuelle Stand – für den neuesten Stand gilt `LATEST.md`.
 
 ---
@@ -107,12 +107,12 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 **Aufgabe:** Aktuellster Handoff (Ziel von `LATEST.md`). Beschreibt vollständig den Bau des "Actuator Lifetime Dashboard".
 **Inhalt:** Aufbau der 3-stufigen Pipeline (`extract_cycle_stats.py` → `build_dashboard_data.py` → `build_html.py`), Datenfakten (8.658.098 Zyklen, Einheiten, Sampling-Raten), Scope-Entscheidung (nur Versuch1), implementierte Dashboard-Features, Validierungsvorgehen (Playwright/Chromium headless), offene nächste Schritte (Versuch2/Versuch3, Vibrationssignale).
 **Warum benötigt:** Zentrale Referenz, um die aktuelle Pipeline und das Dashboard ohne erneutes Reverse-Engineering zu verstehen und fortzusetzen.
-**Abhängigkeiten:** Beschreibt direkt `cycle_overlay/extract_cycle_stats.py`, `build_dashboard_data.py`, `build_html.py`, `dashboard_template.html` und deren Outputs.
+**Abhängigkeiten:** Beschreibt direkt `src/cycle_overlay/extract_cycle_stats.py`, `build_dashboard_data.py`, `build_html.py`, `dashboard_template.html` und deren Outputs.
 **Hinweise:** Enthält wichtige Warnungen (z. B. Einheiten "wie in `units.parquet`" trotz physikalisch ungewöhnlicher Größenordnungen – nicht eigenmächtig umskalieren).
 
 ---
 
-### `cycle_overlay/build_report.py`
+### `src/cycle_overlay/build_report.py`
 
 **Dateityp:** Python-Quellcode
 **Kategorie:** Quellcode
@@ -124,7 +124,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/extract_cycle_stats.py`
+### `src/cycle_overlay/extract_cycle_stats.py`
 
 **Dateityp:** Python-Quellcode
 **Kategorie:** Quellcode
@@ -136,7 +136,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/build_dashboard_data.py`
+### `src/cycle_overlay/build_dashboard_data.py`
 
 **Dateityp:** Python-Quellcode
 **Kategorie:** Quellcode
@@ -148,7 +148,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/build_html.py`
+### `src/cycle_overlay/build_html.py`
 
 **Dateityp:** Python-Quellcode
 **Kategorie:** Quellcode / Build-Skript
@@ -160,7 +160,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/dashboard_template.html`
+### `src/cycle_overlay/dashboard_template.html`
 
 **Dateityp:** HTML mit eingebettetem CSS und JavaScript
 **Kategorie:** Quellcode (Template)
@@ -172,7 +172,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/actuator_lifetime_dashboard.html`
+### `src/cycle_overlay/output/actuator_lifetime_dashboard.html`
 
 **Dateityp:** HTML (generiert, ~6,9 MB)
 **Kategorie:** Build-Artefakt / finales Deliverable
@@ -184,7 +184,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/cycle_overlay_report.html`
+### `src/cycle_overlay/output/cycle_overlay_report.html`
 
 **Dateityp:** HTML (generiert, ~1,2 MB)
 **Kategorie:** Build-Artefakt
@@ -196,7 +196,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/meta.json`
+### `src/cycle_overlay/output/meta.json`
 
 **Dateityp:** JSON (generiert, ~4 KB)
 **Kategorie:** Daten
@@ -208,7 +208,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/trend.json`
+### `src/cycle_overlay/output/trend.json`
 
 **Dateityp:** JSON (generiert, ~2,3 MB)
 **Kategorie:** Daten
@@ -220,7 +220,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/pool.json`
+### `src/cycle_overlay/output/pool.json`
 
 **Dateityp:** JSON (generiert, ~4,6 MB)
 **Kategorie:** Daten
@@ -232,7 +232,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/counter_v1.parquet` und `counter_v1_annot.parquet`
+### `src/cycle_overlay/output/counter_v1.parquet` und `counter_v1_annot.parquet`
 
 **Dateityp:** Parquet (Cache, ~86 MB bzw. ~109 MB)
 **Kategorie:** Daten (Cache)
@@ -244,7 +244,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/cycle_stats_full.parquet`
+### `src/cycle_overlay/output/cycle_stats_full.parquet`
 
 **Dateityp:** Parquet (generiert, ~472 MB – größte Datei im Projekt)
 **Kategorie:** Daten (Build-Zwischenartefakt)
@@ -256,7 +256,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/{vel,pos}_{single,consec,spread,random}.parquet` (8 Dateien)
+### `src/cycle_overlay/output/{vel,pos}_{single,consec,spread,random}.parquet` (8 Dateien)
 
 **Dateityp:** Parquet (klein, je 4 KB–64 KB)
 **Kategorie:** Daten (Eingabe für `build_report.py`)
@@ -268,7 +268,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/output/{single,consec,spread,random}_boundaries_v1.pkl` (4 Dateien)
+### `src/cycle_overlay/output/{single,consec,spread,random}_boundaries_v1.pkl` (4 Dateien)
 
 **Dateityp:** Python-Pickle (klein, 4–8 KB)
 **Kategorie:** Daten (Cache)
@@ -280,7 +280,7 @@ JavaScript und CSS existieren nur **inline** innerhalb der `.html`-Dateien
 
 ---
 
-### `cycle_overlay/.venv/` (generiert, nicht einzeln dokumentiert)
+### `src/cycle_overlay/.venv/` (generiert, nicht einzeln dokumentiert)
 
 **Kategorie:** Generiert / externe Abhängigkeiten
 Enthält eine Python-3.12-virtuelle-Umgebung mit den für die Pipeline nötigen Paketen: `duckdb`, `pandas`, `numpy`, `pyarrow`, `plotly`, `packaging`, `dateutil` u. a. Wird laut Vorgabe von der detaillierten Dokumentation ausgeschlossen, da automatisch generiert/installiert. **Wichtig:** Es existiert aktuell keine `requirements.txt`, die diese Abhängigkeiten für Dritte reproduzierbar macht (siehe Abschnitt 8).
@@ -301,19 +301,19 @@ Enthält eine Python-3.12-virtuelle-Umgebung mit den für die Pipeline nötigen 
 **Wichtige Dateien:** `LATEST.md` (Symlink), sowie drei chronologisch benannte `handoff-*.md`-Dateien.
 **Warum benötigt:** Ersetzt fehlende Chat-Historie zwischen Sitzungen; macht Entscheidungen, Datenfakten und offene Punkte nachvollziehbar, ohne den Code erneut reverse-engineeren zu müssen.
 
-### `cycle_overlay/`
+### `src/cycle_overlay/`
 
 **Zweck:** Das eigentliche Analyse-Unterprojekt: Python-Pipeline + Templates + generierte Reports für den D32/Versuch1-Dauerlauf.
 **Wichtige Dateien:** `build_report.py` (alter Report), `extract_cycle_stats.py` → `build_dashboard_data.py` → `build_html.py` (neue Dashboard-Pipeline, in dieser Reihenfolge auszuführen), `dashboard_template.html` (UI-Template).
 **Warum benötigt:** Zentraler Ort der gesamten fachlichen Logik und aller Build-Ergebnisse dieses Repo-Stands.
 
-### `cycle_overlay/output/`
+### `src/cycle_overlay/output/`
 
 **Zweck:** Ablage aller generierten und zwischengespeicherten Daten- und HTML-Artefakte der Pipeline.
 **Wichtige Dateien:** `actuator_lifetime_dashboard.html` (finales Deliverable), `cycle_stats_full.parquet` (größtes Zwischenartefakt), `meta.json`/`trend.json`/`pool.json` (Dashboard-Daten), diverse kleinere `.parquet`/`.pkl`-Dateien für den alten Report.
 **Warum benötigt:** Trennt generierte/reproduzierbare Ausgaben klar vom eigentlichen Quellcode; kann bei Bedarf komplett gelöscht und aus den Skripten neu erzeugt werden (mit Ausnahme von `counter_v1_annot.parquet`, das bewusst aus einer früheren Session wiederverwendet wird).
 
-### `cycle_overlay/.venv/` (generiert)
+### `src/cycle_overlay/.venv/` (generiert)
 
 **Zweck:** Isolierte Python-Umgebung mit den für die Pipeline benötigten Paketen (duckdb, pandas, pyarrow, plotly, numpy).
 **Warum benötigt:** Stellt sicher, dass die Pipeline mit den richtigen Paketversionen läuft, unabhängig vom System-Python (das laut `AGENTS.md` ohnehin keine passenden Pakete hat).
@@ -325,11 +325,11 @@ Enthält eine Python-3.12-virtuelle-Umgebung mit den für die Pipeline nötigen 
 - **Kein klassischer "Einstiegspunkt"** wie `main.py`/`index.js` – dies ist
   eine Batch-Pipeline aus drei aufeinander aufbauenden Skripten, die
   manuell in Reihenfolge ausgeführt werden:
-  1. `cycle_overlay/extract_cycle_stats.py`
-  2. `cycle_overlay/build_dashboard_data.py`
-  3. `cycle_overlay/build_html.py`
+  1. `src/cycle_overlay/extract_cycle_stats.py`
+  2. `src/cycle_overlay/build_dashboard_data.py`
+  3. `src/cycle_overlay/build_html.py`
 
-  Das ältere `cycle_overlay/build_report.py` ist ein separater, davon
+  Das ältere `src/cycle_overlay/build_report.py` ist ein separater, davon
   unabhängiger Pfad, der einen einfacheren Report erzeugt und bereits
   vorbereitete `.parquet`/`.pkl`-Dateien voraussetzt.
 
@@ -367,7 +367,7 @@ Enthält eine Python-3.12-virtuelle-Umgebung mit den für die Pipeline nötigen 
 
 - **Am wichtigsten zum Verständnis:** `AGENTS.md` (Regeln),
   `session-handoffs/LATEST.md` (aktueller Stand),
-  `cycle_overlay/build_dashboard_data.py` (enthält die meiste fachliche
+  `src/cycle_overlay/build_dashboard_data.py` (enthält die meiste fachliche
   Logik: Bucketing, Pool-Sampling, abgeleitete Kennwerte) und
   `dashboard_template.html` (definiert, was der Nutzer tatsächlich sieht
   und tun kann).
@@ -378,31 +378,31 @@ Enthält eine Python-3.12-virtuelle-Umgebung mit den für die Pipeline nötigen 
 
 - `AGENTS.md`: Betriebsregeln und Umgebungsbeschreibung – ohne dies fehlt der Kontext, wie überhaupt zu arbeiten ist.
 - `session-handoffs/LATEST.md`: Aktueller Projektstand, Entscheidungen und offene Punkte.
-- `cycle_overlay/extract_cycle_stats.py`: Erste Aggregationsstufe – bestimmt, welche Rohsignale/Metriken überhaupt verfügbar sind.
-- `cycle_overlay/build_dashboard_data.py`: Fachlich dichteste Datei – Bucketing-Logik, Pool-Sampling, abgeleitete Kennwerte (u. a. `loop_area()`).
-- `cycle_overlay/build_html.py`: Verbindet Daten und Template zum finalen Ergebnis.
-- `cycle_overlay/dashboard_template.html`: Definiert die gesamte Nutzerinteraktion mit den Daten.
-- `cycle_overlay/output/actuator_lifetime_dashboard.html`: Das eigentliche Endergebnis/Deliverable für Betrachter ohne Entwicklerhintergrund.
+- `src/cycle_overlay/extract_cycle_stats.py`: Erste Aggregationsstufe – bestimmt, welche Rohsignale/Metriken überhaupt verfügbar sind.
+- `src/cycle_overlay/build_dashboard_data.py`: Fachlich dichteste Datei – Bucketing-Logik, Pool-Sampling, abgeleitete Kennwerte (u. a. `loop_area()`).
+- `src/cycle_overlay/build_html.py`: Verbindet Daten und Template zum finalen Ergebnis.
+- `src/cycle_overlay/dashboard_template.html`: Definiert die gesamte Nutzerinteraktion mit den Daten.
+- `src/cycle_overlay/output/actuator_lifetime_dashboard.html`: Das eigentliche Endergebnis/Deliverable für Betrachter ohne Entwicklerhintergrund.
 
 ---
 
 ## 6. Dateien, die vorsichtig geändert werden sollten
 
-- **`cycle_overlay/extract_cycle_stats.py`** – Änderungen an `SIGNALS`
+- **`src/cycle_overlay/extract_cycle_stats.py`** – Änderungen an `SIGNALS`
   (Signal-IDs) oder der ASOF-JOIN-Logik wirken sich auf **alle**
   nachgelagerten Artefakte aus (`cycle_stats_full.parquet`, `trend.json`,
   `pool.json`, das gesamte Dashboard). Falsche Signal-IDs führen zu
   stillschweigend falschen/leeren Metriken.
-- **`cycle_overlay/build_dashboard_data.py`** – Änderungen an `METRICS`,
+- **`src/cycle_overlay/build_dashboard_data.py`** – Änderungen an `METRICS`,
   `N_BUCKETS` oder `POOL_SIZE` verändern die JSON-Struktur; das Template
   (`dashboard_template.html`) muss dann parallel angepasst werden, sonst
   brechen `buildTrendPicker()`/`renderTrendChart()`/`renderChannelPlots()`.
-- **`cycle_overlay/dashboard_template.html`**: Die Platzhalter-Strings
+- **`src/cycle_overlay/dashboard_template.html`**: Die Platzhalter-Strings
   `__META_JSON__`, `__TREND_JSON__`, `__POOL_JSON__` dürfen nicht
   verändert/umbenannt werden, ohne `build_html.py` entsprechend
   anzupassen – sonst schlägt die Injektion fehl oder das Dashboard bleibt
   leer.
-- **`cycle_overlay/output/counter_v1_annot.parquet`**: Wird bewusst aus
+- **`src/cycle_overlay/output/counter_v1_annot.parquet`**: Wird bewusst aus
   einer früheren Session wiederverwendet; ein versehentliches Löschen
   oder Überschreiben mit anderer Pausenerkennungslogik ändert stillschweigend
   die Zyklusdefinition für die gesamte Pipeline.
@@ -421,7 +421,7 @@ Im aktuellen Repo-Stand fehlen einige häufig erwartete Dateien:
 | Fehlende Datei | Empfehlung |
 |---|---|
 | `README.md` | Fehlt komplett auf Repo-Ebene. Empfehlung: kurze README mit Projektbeschreibung, Pipeline-Ausführungsreihenfolge (siehe Abschnitt 4) und Link auf `AGENTS.md`/`session-handoffs/LATEST.md`. |
-| `.gitignore` | Fehlt; zudem ist das Verzeichnis aktuell **kein** Git-Repository. Falls Versionskontrolle eingeführt wird, sollten `cycle_overlay/.venv/` und die großen generierten Dateien in `cycle_overlay/output/` (insbesondere `cycle_stats_full.parquet`, `*.html`, `*.json`) ausgeschlossen werden. |
+| `.gitignore` | Fehlt; zudem ist das Verzeichnis aktuell **kein** Git-Repository. Falls Versionskontrolle eingeführt wird, sollten `src/cycle_overlay/.venv/` und die großen generierten Dateien in `src/cycle_overlay/output/` (insbesondere `cycle_stats_full.parquet`, `*.html`, `*.json`) ausgeschlossen werden. |
 | `requirements.txt` (oder `pyproject.toml`) | Fehlt; die `.venv` existiert nur lokal und ist nicht reproduzierbar dokumentiert. Empfehlung: `pip freeze > requirements.txt` aus dem vorhandenen `.venv` exportieren (mindestens `duckdb`, `pandas`, `numpy`, `pyarrow`, `plotly`). |
 | `LICENSE` | Fehlt; für eine Abschlussarbeit ggf. nicht zwingend nötig, aber bei Weitergabe/Veröffentlichung des Codes empfehlenswert zu klären. |
 | `tests/` | Keine automatisierten Tests vorhanden. Angesichts der Datenkritikalität (z. B. `loop_area()`, Bucket-Aggregation) wären zumindest einfache Unit-Tests für die reinen Berechnungsfunktionen (`loop_area`, `build_trend`) sinnvoll. |

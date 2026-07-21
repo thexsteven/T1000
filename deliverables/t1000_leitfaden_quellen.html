@@ -191,7 +191,7 @@ const DATA = [
     keywords: ["Praxissemesterarbeit", "Data Preprocessing", "Predictive Maintenance", "Motivation"],
     internal: [
       {tag:"Projektkontext", path:"t1000/AGENTS.md"},
-      {tag:"Zeitplan/Meilensteine", path:"t1000/t1000_wochenplan.md"},
+      {tag:"Zeitplan/Meilensteine", path:"t1000/notes/t1000_wochenplan.md"},
     ],
     sources: [
       {kind:"Berichtsleitfaden", title:"DHBW-Leitfaden für Praxissemester-/Projektarbeiten", meta:"Studiengangsordnung / Modulhandbuch DHBW — für formale Vorgaben (Umfang, Gliederung, Zitierstil)", verify:true, gscholar:false, note:"Intern bei der DHBW anfordern, nicht über Scholar auffindbar."},
@@ -211,8 +211,8 @@ const DATA = [
     ],
     keywords: ["Zeitreihenanalyse", "Datenqualität", "Change-Point Detection", "Stillstandserkennung", "Sensorik"],
     internal: [
-      {tag:"Kriterienanalyse (DE)", path:"t1000/MasterThesis_usefulness_criteria_analysis_de.md"},
-      {tag:"Kriterienanalyse (EN)", path:"t1000/MasterThesis_usefulness_criteria_analysis.md"},
+      {tag:"Kriterienanalyse (DE)", path:"t1000/docs/MasterThesis_usefulness_criteria_analysis_de.md"},
+      {tag:"Kriterienanalyse (EN)", path:"t1000/docs/MasterThesis_usefulness_criteria_analysis.md"},
     ],
     sources: [
       {kind:"Klassiker Datenqualität", title:"Wang, R. Y.; Strong, D. M. — Beyond Accuracy: What Data Quality Means to Data Consumers", meta:"Journal of Management Information Systems, 1996", verify:true, query:"Wang Strong beyond accuracy data quality means data consumers 1996"},
@@ -236,7 +236,7 @@ const DATA = [
       {tag:"Umgebung/Datenpfade", path:"t1000/AGENTS.md"},
       {tag:"Datenvergleich V1/V2", path:"ERA/V1_V2_DATA_COMPARISON.md"},
       {tag:"Lazy-Loading-Muster", path:"ERA/lazy_load_example.md"},
-      {tag:"Dashboard-Architektur", path:"t1000/dashboard_architecture.md"},
+      {tag:"Dashboard-Architektur", path:"t1000/docs/dashboard_architecture.md"},
     ],
     sources: [
       {kind:"Systempaper", title:"Raasveldt, M.; Mühleisen, H. — DuckDB: An Embeddable Analytical Database", meta:"SIGMOD 2019 (Demo Track)", verify:true, query:"Raasveldt Muhleisen DuckDB embeddable analytical database SIGMOD 2019"},
@@ -257,14 +257,14 @@ const DATA = [
     ],
     keywords: ["Architecture Decision Records", "Schwellwertherleitung", "Zyklusdetektion", "Perzentilanalyse", "Datengetriebene Methodik"],
     internal: [
-      {tag:"Pipeline-Struktur (10 Stufen)", path:"t1000/pipeline_structure.md"},
-      {tag:"Kriterienanalyse", path:"t1000/MasterThesis_usefulness_criteria_analysis_de.md"},
+      {tag:"Pipeline-Struktur (10 Stufen)", path:"t1000/docs/pipeline_structure.md"},
+      {tag:"Kriterienanalyse", path:"t1000/docs/MasterThesis_usefulness_criteria_analysis_de.md"},
       {tag:"Architekturentscheidungen (ADRs)", path:"MasterThesis/docs/architecture_decisions.md"},
       {tag:"Thesis-Pipeline-Doku", path:"MasterThesis/docs/thesis_pipeline.md"},
       {tag:"Implementierungslog", path:"MasterThesis/docs/implementation_log.md"},
-      {tag:"Entscheidungsbaum (technisch)", path:"MasterThesis/docs/preprocessing_decision_tree.html (bzw. t1000/preprocessing_decision_tree.html)"},
-      {tag:"Entscheidungsbaum (einfach)", path:"t1000/entscheidungsbaum_einfach.html"},
-      {tag:"Wochenplan/offene Fragen", path:"t1000/t1000_wochenplan.md"},
+      {tag:"Entscheidungsbaum (technisch)", path:"MasterThesis/docs/preprocessing_decision_tree.html (bzw. t1000/deliverables/preprocessing_decision_tree.html)"},
+      {tag:"Entscheidungsbaum (einfach)", path:"t1000/deliverables/entscheidungsbaum_einfach.html"},
+      {tag:"Wochenplan/offene Fragen", path:"t1000/notes/t1000_wochenplan.md"},
     ],
     sources: [
       {kind:"Grundlagentext ADR", title:"Nygard, M. — Documenting Architecture Decisions", meta:"Blogpost, 2011 — Ursprung des ADR-Konzepts, in Software-Engineering-Literatur breit zitiert", verify:true, query:"Michael Nygard documenting architecture decisions 2011"},
@@ -285,17 +285,17 @@ const DATA = [
     ],
     keywords: ["ETL-Pipeline", "DuckDB ASOF Join", "Datenreduktion", "Single-File-Dashboard", "Software-Architektur"],
     internal: [
-      {tag:"Dashboard-Architektur", path:"t1000/dashboard_architecture.md"},
-      {tag:"Cycle-Overlay-Skripte", path:"t1000/cycle_overlay/extract_cycle_stats.py, build_dashboard_data.py, build_html.py"},
-      {tag:"Beispiel-Pipeline-Konfig", path:"t1000/example_pipeline_stage8.yaml"},
-      {tag:"Projektdateidokumentation", path:"t1000/PROJECT_FILE_DOCUMENTATION.md"},
+      {tag:"Dashboard-Architektur", path:"t1000/docs/dashboard_architecture.md"},
+      {tag:"Cycle-Overlay-Skripte", path:"t1000/src/cycle_overlay/extract_cycle_stats.py, build_dashboard_data.py, build_html.py"},
+      {tag:"Beispiel-Pipeline-Konfig", path:"t1000/config/example_pipeline_stage8.yaml"},
+      {tag:"Projektdateidokumentation", path:"t1000/docs/PROJECT_FILE_DOCUMENTATION.md"},
       {tag:"Handoff Dashboard-Build", path:"t1000/session-handoffs/handoff-20260716-083520-actuator-lifetime-dashboard.md"},
     ],
     sources: [
       {kind:"Systempaper", title:"Raasveldt, M.; Mühleisen, H. — DuckDB (siehe Kap. Systemkontext)", meta:"Für den ASOF-Join-Mechanismus technisch referenzieren", verify:true, query:"DuckDB ASOF join documentation"},
       {kind:"Best Practice", title:"Datenreduktionsstrategien für Web-Dashboards mit sehr großen Zeitreihen (Aggregation/Sampling vor Visualisierung)", meta:"Suchbegriff für Paper/Blogposts zu \"large-scale time series visualization aggregation\"", verify:true, query:"large scale time series dashboard aggregation sampling visualization technique"},
       {kind:"Bibliothek/Werkzeug", title:"Plotly.js — offizielle Dokumentation", meta:"plotly.com/javascript — technische Referenz, kein Scholar-Eintrag nötig", verify:false, url:"https://plotly.com/javascript/"},
-      {kind:"Interne Quelle", title:"Eigener Quellcode als Implementierungsbeleg", meta:"cycle_overlay/*.py — direkt im Methodik-/Implementierungskapitel referenzieren (Listing/Anhang)", verify:false, note:"Kein externer Beleg nötig, aber im Anhang vollständig dokumentieren."},
+      {kind:"Interne Quelle", title:"Eigener Quellcode als Implementierungsbeleg", meta:"src/cycle_overlay/*.py — direkt im Methodik-/Implementierungskapitel referenzieren (Listing/Anhang)", verify:false, note:"Kein externer Beleg nötig, aber im Anhang vollständig dokumentieren."},
     ]
   },
   {
@@ -310,8 +310,8 @@ const DATA = [
     ],
     keywords: ["Datenvisualisierung", "Farbenblindheit", "Perzentilbänder", "Anomalieerkennung", "Human-Computer Interaction"],
     internal: [
-      {tag:"Visualisierungsreview", path:"t1000/dashboard_visualization_review.md"},
-      {tag:"Dashboard-Architektur", path:"t1000/dashboard_architecture.md"},
+      {tag:"Visualisierungsreview", path:"t1000/docs/dashboard_visualization_review.md"},
+      {tag:"Dashboard-Architektur", path:"t1000/docs/dashboard_architecture.md"},
     ],
     sources: [
       {kind:"Klassiker Farbwahl", title:"Okabe, M.; Ito, K. — Color Universal Design (CUD)", meta:"2008 — Ursprung der farbenblindsicheren Palette, in Visualisierungsliteratur Standardreferenz", verify:true, query:"Okabe Ito color universal design colorblind palette 2008"},
@@ -332,10 +332,10 @@ const DATA = [
     ],
     keywords: ["Reject-Statistik", "Schwellwertvalidierung", "Ergebnisdarstellung", "Ausreißeranalyse"],
     internal: [
-      {tag:"Wochenplan (Zielbild Ergebnisse)", path:"t1000/t1000_wochenplan.md"},
+      {tag:"Wochenplan (Zielbild Ergebnisse)", path:"t1000/notes/t1000_wochenplan.md"},
       {tag:"Ergebnisdaten Zyklen", path:"MasterThesis/outputs/D63_Nr7_8/Versuch1/20260716_083547/cycles/cycles.csv"},
-      {tag:"Dashboard-Output", path:"t1000/cycle_overlay/output/actuator_lifetime_dashboard.html"},
-      {tag:"Cycle-Stats (voll)", path:"t1000/cycle_overlay/output/cycle_stats_full.parquet"},
+      {tag:"Dashboard-Output", path:"t1000/src/cycle_overlay/output/actuator_lifetime_dashboard.html"},
+      {tag:"Cycle-Stats (voll)", path:"t1000/src/cycle_overlay/output/cycle_stats_full.parquet"},
     ],
     sources: [
       {kind:"Methodik Ergebnisdarstellung", title:"Statistische Berichtsstandards für deskriptive Ausschluss-/Reject-Statistiken (Prozentangaben, Konfidenzintervalle)", meta:"Suchbegriff: \"reporting standards descriptive statistics data cleaning exclusion rates\"", verify:true, query:"reporting standards data cleaning exclusion rate percentage descriptive statistics"},
@@ -354,9 +354,9 @@ const DATA = [
     ],
     keywords: ["Methodenkritik", "Generalisierbarkeit", "Validität", "Limitationen"],
     internal: [
-      {tag:"Kriterienanalyse (Lücken & Verbesserungen)", path:"t1000/MasterThesis_usefulness_criteria_analysis_de.md"},
-      {tag:"Visualisierungsreview (Schwächen)", path:"t1000/dashboard_visualization_review.md"},
-      {tag:"Pipeline-Struktur (offene Fragen)", path:"t1000/pipeline_structure.md"},
+      {tag:"Kriterienanalyse (Lücken & Verbesserungen)", path:"t1000/docs/MasterThesis_usefulness_criteria_analysis_de.md"},
+      {tag:"Visualisierungsreview (Schwächen)", path:"t1000/docs/dashboard_visualization_review.md"},
+      {tag:"Pipeline-Struktur (offene Fragen)", path:"t1000/docs/pipeline_structure.md"},
     ],
     sources: [
       {kind:"Methodik Validität", title:"Diskussion interner/externer Validität empirischer Softwareentwicklungs-/Datenstudien", meta:"z. B. Wohlin, C. et al. — Experimentation in Software Engineering, Springer (Standardwerk zu Validitätsbetrachtungen)", verify:true, query:"Wohlin Experimentation in Software Engineering validity threats"},
@@ -374,7 +374,7 @@ const DATA = [
     ],
     keywords: ["Zusammenfassung", "Weiterführende Arbeiten", "Feature Engineering", "Praxistransfer"],
     internal: [
-      {tag:"Pipeline-Struktur (geplante Stufen 9–10)", path:"t1000/pipeline_structure.md"},
+      {tag:"Pipeline-Struktur (geplante Stufen 9–10)", path:"t1000/docs/pipeline_structure.md"},
       {tag:"Dashboard-Handoff (nächste Schritte)", path:"t1000/session-handoffs/handoff-20260716-083520-actuator-lifetime-dashboard.md"},
     ],
     sources: [

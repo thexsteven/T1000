@@ -15,7 +15,7 @@
 - **Warum:** Ohne diese Verteilungen bleiben die Ebene-4-Schwellwerte Platzhalter. „Datengetrieben" ist das zentrale Begründungsargument der Arbeit.
 - Erwartete Outputs: `signal_quality_metrics.parquet`, `cycle_quality_profile.parquet`, `quality_metric_distribution_summary.csv`
 
-### 2. Gespräch mit der Masterstudentin (anhand `docs/preprocessing_decision_tree.html`)
+### 2. Gespräch mit der Masterstudentin (anhand `deliverables/preprocessing_decision_tree.html`)
 Zu klären:
 - [ ] Herleitung `movement_threshold = 1.0` (Magic Number, 3× dupliziert)
 - [ ] Session-Gap 3600 s — ADR-006 sagt „Accepted", Code-Kommentar sagt „exploratory"
@@ -76,4 +76,4 @@ Methodik-Kapitel = Entscheidungsbaum, Ergebnis-Kapitel = Reject-Statistik.
 
 ---
 
-*Referenzen: `docs/preprocessing_decision_tree.html` (technische Version mit Quellenangaben), `docs/entscheidungsbaum_einfach.html` (einfache Version für Vorgesetzte), Datenbasis `outputs/D63_Nr7_8/Versuch1/20260716_083547/cycles/cycles.csv`*
+*Referenzen: `deliverables/preprocessing_decision_tree.html` (technische Version mit Quellenangaben), `deliverables/entscheidungsbaum_einfach.html` (einfache Version für Vorgesetzte), Datenbasis `outputs/D63_Nr7_8/Versuch1/20260716_083547/cycles/cycles.csv`*
