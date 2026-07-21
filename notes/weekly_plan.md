@@ -76,4 +76,4 @@ Methodik-Kapitel = Entscheidungsbaum, Ergebnis-Kapitel = Reject-Statistik.
 
 ---
 
-*Referenzen: `deliverables/preprocessing_decision_tree.html` (technische Version mit Quellenangaben), `deliverables/entscheidungsbaum_einfach.html` (einfache Version für Vorgesetzte), Datenbasis `outputs/D63_Nr7_8/Versuch1/20260716_083547/cycles/cycles.csv`*
+*Referenzen: `deliverables/preprocessing_decision_tree.html` (technische Version mit Quellenangaben), `deliverables/decision_tree_simple.html` (einfache Version für Vorgesetzte), Datenbasis `outputs/D63_Nr7_8/Versuch1/20260716_083547/cycles/cycles.csv`*

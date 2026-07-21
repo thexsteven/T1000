@@ -95,7 +95,7 @@ earlier draft numbering.
 | 7 | Consecutive-cycle block | Only consecutive "good" cycles accepted | **Structural only** - checks structural consistency, not physical signal quality | `validation_cycle_selection.py` |
 | 8 | Quality metrics (missing channels, sampling rate, coverage ratio, time gaps) | Computed, not thresholded | **Exploratory / non-rejecting** - this is the data the Level-4 decision-tree thresholds must be derived from | `cycle_quality_profiler.py` |
 
-## 3. Open questions still to clarify (see `t1000_wochenplan.md`)
+## 3. Open questions still to clarify (see `weekly_plan.md`)
 
 - [ ] Derivation of `movement_threshold = 1.0` (duplicated 3x in code, no documented justification)
 - [ ] Session-gap 3600 s: ADR-006 "Accepted" vs. code comment "exploratory" - which is current?

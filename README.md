@@ -12,7 +12,7 @@ logic, data selection, and visual results that support the thesis.
   usable and why):
   - `deliverables/preprocessing_decision_tree.html` — technical version, with all
     thresholds and source references
-  - `deliverables/entscheidungsbaum_einfach.html` — simplified version for
+  - `deliverables/decision_tree_simple.html` — simplified version for
     supervisors
   - Reasoning: `docs/MasterThesis_usefulness_criteria_analysis.md` (EN) /
     `..._de.md` (DE), `docs/pipeline_structure.md`,
