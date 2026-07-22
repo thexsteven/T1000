@@ -2,88 +2,127 @@
 
 ## Grundidee
 
-Um die in Kapitel 3 beschriebenen Lücken zu schließen und gleichzeitig
-die bestehenden, teils unbegründeten Kriterien der Vorarbeit
-transparent zu machen, wird ein **mehrstufiger Entscheidungsbaum**
-entwickelt. Er beantwortet für jeden aufgezeichneten Bewegungszyklus die
-Frage: „Gehört dieser Zyklus in den Pool nutzbarer Daten — und wenn
-nicht, warum nicht?“ Ein Zyklus muss dabei alle Ebenen des Baums von
-oben nach unten bestehen; scheitert er an einer Ebene, wird er mit
-einem dokumentierten Ablehnungsgrund aus dem Pool ausgeschlossen, aber
-nicht stillschweigend verworfen — jede Ablehnung bleibt nachvollziehbar
-protokolliert.
+Die bestehende Pipeline validiert und verwirft Zyklen seit V2.1 bereits
+selbst — datengetrieben und statistisch (Kapitel 3, Stufen 9–10). Was sie
+**nicht** leistet, ist eine absolute, populationsunabhängige
+**physikalische** Beurteilung der Brauchbarkeit, die
+In-Zyklus-Stillstandsprüfung und eine transparente Aussage darüber, *wie
+belastbar* jedes einzelne Qualitätskriterium — auch die der Pipeline —
+überhaupt begründet ist. Um genau diese verbleibenden Lücken (Kapitel 3)
+zu schließen, wird ein **mehrstufiger Entscheidungsbaum** entwickelt.
+
+Er beantwortet für jeden bereits statistisch validierten Bewegungszyklus
+die ergänzende Frage: „Ist dieser Zyklus *physikalisch* überhaupt
+brauchbar — voller Hub, tatsächlich in Bewegung, plausibel — und wenn
+nicht, warum nicht?“ Ein Zyklus muss dabei alle Ebenen des Baums von oben
+nach unten bestehen; scheitert er an einer Ebene, wird er mit einem
+dokumentierten Ablehnungsgrund aus dem Pool ausgeschlossen, aber nicht
+stillschweigend verworfen — jede Ablehnung bleibt nachvollziehbar
+protokolliert (vgl. ADR-T07).
 
 Der Baum ist bewusst so aufgebaut, dass er die bestehende Pipeline aus
-Kapitel 3 **nicht ersetzt**, sondern als zusätzliche Filterschicht
-*danach* ansetzt: Er nutzt die von der bestehenden Pipeline bereits
-berechneten Kennzahlen (Zyklusdauer, Positionsspanne, Anzahl Messwerte
-je Signal, diverse Qualitätsmetriken) und ergänzt sie um neue,
-begründete Schwellwerte sowie neu einzuführende Prüfschritte.
+Kapitel 3 **weder ersetzt noch ihre statistische Validierung
+wiederholt**, sondern als physikalischer Querschnitt *auf* ihr ansetzt:
+Er nutzt die von der Pipeline bereits berechneten Kennzahlen (Zyklusdauer,
+Positionsspanne, Anzahl Messwerte je Signal, diverse Qualitätsmetriken)
+sowie deren validierte Zyklusklassen und ergänzt sie um (a) einen
+**absoluten physikalischen** Boden dort, wo die Pipeline nur *relativ zur
+Population* prüft, (b) die beiden Prüfungen, die der Pipeline ganz fehlen
+(In-Zyklus-Stillstand, Mindest-Sitzungsgröße), und (c) eine
+**Reifegrad-Bewertung** jedes Kriteriums — der pipeline-eigenen
+eingeschlossen.
 
 ## Die vier Ebenen des Entscheidungsbaums
 
+Die Kriterien sind in vier Ebenen organisiert. Viele der numerischen
+Grenzen werden inzwischen von der statistischen Validierung der Pipeline
+(Stufen 9–10) durchgesetzt; der Baum ergänzt an diesen Stellen den
+absoluten physikalischen Querschnitt und fügt die fehlenden Prüfungen
+hinzu.
+
 1. **Ebene 1 — Aufzeichnungssitzung.** Prüft, ob ein Zyklus zu einer
-   gültigen, hinreichend langen Aufzeichnungssitzung gehört. Sehr kurze
-   Sitzungen (z. B. Inbetriebnahme-Läufe oder abgebrochene Versuche)
-   sind nicht repräsentativ für den Normalbetrieb und sollen die
-   Baseline-Statistik nicht verzerren.
+   gültigen, hinreichend langen Aufzeichnungssitzung gehört. Die
+   Sitzungsgrenze selbst ist ein Segmentierungs-Parameter der Pipeline
+   (diese Arbeit leitet nur den Wert neu her); die **Mindest-Sitzungsgröße**
+   ist eine genuin neue Prüfung: Sehr kurze Sitzungen (z. B.
+   Inbetriebnahme-Läufe oder abgebrochene Versuche) sind nicht
+   repräsentativ für den Normalbetrieb und sollen die Baseline-Statistik
+   nicht verzerren.
 2. **Ebene 2 — Echter Zyklus: Stillstand- und Ausreißer-Ausschluss.**
    Prüft, ob ein erkannter Zyklus tatsächlich ein vollständiger,
-   plausibler Bewegungshub ist: plausible Zyklusdauer innerhalb einer
-   aus der Datenverteilung abgeleiteten Bandbreite, tatsächliches
-   Erreichen des vollen Hubs und Rückkehr in die Ruhelage, eine zur
-   erwarteten Abtastrate passende Anzahl an Messwerten des
-   Referenzsignals, sowie — als zentrale neue Ergänzung — die explizite
-   Stillstands-/Frozen-Signal-Prüfung (siehe unten).
-3. **Ebene 3 — Multi-Sensor-Vollständigkeit.** Prüft, ob alle
-   benötigten Sensorsignale im Zyklus überhaupt vorhanden sind und
-   jeweils genügend Messwerte enthalten, um als vollständiger
-   Merkmalsvektor für spätere Analysen/Modelle zu taugen.
+   plausibler Bewegungshub ist. Die numerischen Bandbreiten für
+   Zyklusdauer, vollen Hub und Messwertzahl werden von der Pipeline
+   **statistisch** durchgesetzt; diese Arbeit ergänzt sie um eine
+   **absolute physikalische** Untergrenze, die nicht mit der Population
+   mitwandert, sowie — als zentrale genuin neue Ergänzung — die explizite
+   **In-Zyklus-Stillstands-/Frozen-Signal-Prüfung** (siehe unten).
+3. **Ebene 3 — Multi-Sensor-Vollständigkeit.** Prüft, ob alle benötigten
+   Sensorsignale im Zyklus überhaupt vorhanden sind und jeweils genügend
+   Messwerte enthalten, um als vollständiger Merkmalsvektor für spätere
+   Analysen/Modelle zu taugen. Diese Prüfungen werden inzwischen von der
+   Pipeline abgedeckt (`valid_core_cycle`); der Baum bildet sie als Ebene
+   ab, um sie mit einem Reifegrad zu versehen und lückenlos in die
+   Ablehnungslogik einzuordnen.
 4. **Ebene 4 — Signalqualität je Signal.** Prüft für jedes einzelne
-   Signal innerhalb des Zyklus dessen interne Gesundheit: Wie groß ist
-   der zeitliche Abdeckungsgrad des Signals über den Zyklus hinweg? Gibt
-   es innerhalb des Zyklus ungewöhnlich große Zeitlücken? Enthält das
-   Signal ungültige (nicht endliche) Werte? Zeigt ein eigentlich
-   dynamisches Signal (z. B. Position, Geschwindigkeit, Strom) über den
-   gesamten Zyklus hinweg überhaupt eine Veränderung, oder deutet ein
-   konstanter Wert auf einen eingefrorenen Sensor hin?
+   Signal innerhalb des Zyklus dessen interne Gesundheit: Wie groß ist der
+   zeitliche Abdeckungsgrad des Signals über den Zyklus hinweg? Gibt es
+   ungewöhnlich große Intra-Zyklus-Zeitlücken? Enthält das Signal
+   ungültige (nicht endliche) Werte? Zeigt ein eigentlich dynamisches
+   Signal (Position, Geschwindigkeit, Strom) über den *gesamten* Zyklus
+   überhaupt eine Veränderung? Auch diese Prüfungen liegen als
+   statistische bzw. harte Regeln bei der Pipeline; der dort nicht
+   erfassbare Fall eines nur *abschnittsweise* eingefrorenen Signals wird
+   durch die In-Zyklus-Prüfung in Ebene 2 abgedeckt.
 
-Nur ein Zyklus, der alle vier Ebenen besteht, wird Teil des
-„Pools nutzbarer Zyklen“ (siehe Kapitel 5).
+Ein Zyklus wird Teil des „Pools nutzbarer Zyklen“ (siehe Kapitel 5),
+wenn er **sowohl** die statistische Validierung der Pipeline **als auch**
+den physikalischen Boden dieser Arbeit besteht.
 
-## Abgrenzung: Segmentierungs-Parameter (Pipeline) vs. Prüfschritte der Zusatzschicht
+## Abgrenzung: Wer prüft was (Segmentierung · Statistik · Physik · Neu)
 
 Für die Beitragsabgrenzung ist entscheidend, dass nicht jedes der oben
-genannten Kriterien Teil der neu entwickelten Filterschicht ist. Zwei
-Kriterien — die Sitzungsgrenze (große Zeitlücke) und die Zyklusgrenze
-(Positionsschwelle) — sind keine nachgelagerten Prüfungen, sondern
-**Segmentierungs-Parameter**: Sie erzeugen die Aufzeichnungssitzungen
-bzw. Bewegungszyklen überhaupt erst. Eine Änderung dieser Schwellwerte
-bedeutet ein Neu-Segmentieren der Rohdaten und liegt damit in der
-bestehenden Pipeline, nicht in der nachgelagerten Schicht (vgl. ADR-T01:
-keine Reimplementierung der Pipeline).
+genannten Kriterien Teil des Beitrags dieser Arbeit ist. Seit V2.1
+verteilen sich die Kriterien auf vier Eigentümer-Kategorien:
 
-Die Zusatzschicht enthält daher ausschließlich **Prüfschritte**, die
-einen bereits geschnittenen Zyklus bewerten, ohne ihn neu zu
-segmentieren. Für die beiden Segmentierungs-Parameter beschränkt sich der
-Beitrag dieser Arbeit auf die datenbasierte **Neuherleitung** des
-Schwellwerts samt Sicherheitsmarge (ADR-T06); die Anwendung des neuen
-Werts erfolgt an der Quelle in der bestehenden Pipeline.
+- **Pipeline · Segmentierung** — ein Schwellwert, der Sitzungen/Zyklen
+  überhaupt erst *erzeugt*; er liegt oberhalb der Regelgenerierung
+  (Stufe 9) in der Pipeline. Eine Änderung bedeutet ein Neu-Segmentieren
+  der Rohdaten; diese Arbeit leitet nur den Wert datenbasiert neu her
+  (ADR-T06) und reimplementiert die Segmentierung nicht (ADR-T01).
+- **Pipeline · statistisch** — inzwischen durch die datengetriebenen
+  Regeln der Pipeline (Stufen 9–10) relativ zur Population durchgesetzt.
+- **Diese Arbeit · physikalisch** — ein *absoluter* physikalischer
+  Querschnitt zusätzlich zur statistischen Regel (ADR-T02).
+- **Diese Arbeit · neu** — eine Prüfung, die die Pipeline gar nicht
+  besitzt.
 
-| Ebene | Segmentierungs-Parameter (Pipeline, geerbt) | Prüfschritt der Zusatzschicht (Beitrag dieser Arbeit) |
+| Ebene | Kriterium | Eigentümer |
 |---|---|---|
-| 1 — Aufzeichnungssitzung | 1.1 Sitzungsgrenze bei großer Zeitlücke (`Lücke > 3600 s`) — Beitrag: Neuherleitung des Werts | 1.2 Mindest-Sitzungsgröße |
-| 2 — Echter Zyklus | 2.1 Zyklusgrenze über Positionsschwelle (`Position > 1.0`) — Beitrag: Neuherleitung des Werts | 2.2 Plausible Zyklusdauer · 2.3 Voller Hub erreicht · 2.4 Erwartete Messwertzahl · 2.5 Stillstand-/Frozen-Signal-Prüfung |
-| 3 — Multi-Sensor-Vollständigkeit | Definition der Core-/Optional-Signale (ADR-014, begründet) | 3.1 Präsenz-Gate (alle erforderlichen Signale vorhanden) · 3.2 Mindest-Messwerte je Signal |
-| 4 — Signalqualität je Signal | — | 4.1 Abdeckungsgrad · 4.2 Keine großen Intra-Zyklus-Lücken · 4.3 Keine ungültigen Werte · 4.4 Kein eingefrorenes/konstantes Signal |
+| 1 | 1.1 Sitzungsgrenze bei großer Zeitlücke (`Lücke > 3600 s`) | Pipeline · Segmentierung (Wert neu hergeleitet) |
+| 1 | 1.2 Mindest-Sitzungsgröße | Diese Arbeit · neu |
+| 2 | 2.1 Zyklusgrenze über Positionsschwelle (`Position > 1.0`) | Pipeline · Segmentierung (Wert neu hergeleitet) |
+| 2 | 2.2 Plausible Zyklusdauer | Pipeline · statistisch + Diese Arbeit · physikalisch |
+| 2 | 2.3 Voller Hub erreicht | Pipeline · statistisch + Diese Arbeit · physikalisch |
+| 2 | 2.4 Erwartete Messwertzahl | Pipeline · statistisch + Diese Arbeit · physikalisch |
+| 2 | 2.5 In-Zyklus-Stillstand-/Frozen-Signal-Prüfung | Diese Arbeit · neu |
+| 3 | 3.1 Alle erforderlichen Signale vorhanden | Pipeline · statistisch (`valid_core_cycle`) |
+| 3 | 3.2 Mindest-Messwerte je Signal | Pipeline · statistisch |
+| 4 | 4.1 Abdeckungsgrad des Zyklus | Pipeline · statistisch |
+| 4 | 4.2 Keine großen Intra-Zyklus-Lücken | Pipeline · statistisch |
+| 4 | 4.3 Keine ungültigen (nicht endlichen) Werte | Pipeline · statistisch (harte Regel) |
+| 4 | 4.4 Kein über den ganzen Zyklus eingefrorenes/konstantes Signal | Pipeline · statistisch (ganzer Zyklus) · abschnittsweise → 2.5 |
 
-Auf jeder Ebene besitzt die Zusatzschicht somit ein eigenes
-Bewertungs-Gegenstück zum jeweiligen Schnitt-Parameter: Der reine
-Schnitt-Schwellwert verbleibt in der Pipeline, während die inhaltliche
-Prüfung, ob der geschnittene Zyklus tatsächlich brauchbar ist, in der
-Zusatzschicht erfolgt (z. B. Ebene 2: die Positionsschwelle schneidet den
-Zyklus, aber ob der volle Hub tatsächlich erreicht wurde, prüft erst
-Kriterium 2.3).
+Der genuine Beitrag dieser Arbeit sind damit die **neuen** Prüfungen
+(In-Zyklus-Stillstand 2.5, Mindest-Sitzungsgröße 1.2), die **absoluten
+physikalischen** Querschnitte in Ebene 2, die **Neuherleitung** der beiden
+Segmentierungs-Schwellwerte (1.1, 2.1) sowie die Reifegrad-Bewertung über
+*alle* Kriterien. Der reine Schnitt-Schwellwert verbleibt in der Pipeline,
+ebenso die statistische Validierung; die Frage, ob der geschnittene Zyklus
+*physikalisch* brauchbar ist, beantwortet erst der Baum (z. B. Ebene 2:
+die Positionsschwelle schneidet den Zyklus, aber ob der volle Hub
+tatsächlich erreicht wurde, prüft physikalisch erst Kriterium 2.3 —
+während die Pipeline dieselbe Größe nur statistisch gegen die Population
+prüft).
 
 ## Reifegradsystem für Kriterien
 
@@ -124,13 +163,21 @@ und macht sichtbar, an welchen Stellen noch fachliche Abstimmung oder
 weitere Datenanalyse nötig ist, bevor ein Kriterium von einem niedrigeren
 in einen höheren Reifegrad überführt werden kann.
 
+Es gilt ausdrücklich **auch für die inzwischen implementierten
+statistischen Regeln der Pipeline** — einschließlich ihres eigenen
+`provisional`-Flags aus der Regelgenerierung (Stufe 9) — und liefert so
+eine einheitliche Vertrauensbewertung über beide Arbeiten hinweg
+(vgl. ADR-T04).
+
 ## Geplante Stillstandsdefinition über ein Geschwindigkeitsfenster
 
 Eine der wichtigsten neu eingeführten Prüfungen in Ebene 2 ist die
-explizite **Stillstands-/Frozen-Signal-Erkennung**. Sie schließt die in
-Kapitel 3 beschriebene Lücke, dass ein eingefrorenes oder de facto
-unbewegtes Signal oberhalb des Bewegungsschwellwerts fälschlich als
-gültiger, aktiver Zyklus gezählt werden könnte.
+explizite **In-Zyklus-Stillstands-/Frozen-Signal-Erkennung**. Sie
+schließt die in Kapitel 3 beschriebene Lücke, dass ein eingefrorenes oder
+de facto unbewegtes Signal oberhalb des Bewegungsschwellwerts
+fälschlich als gültiger, aktiver Zyklus gezählt werden könnte — ein Fall,
+den die `constant_signal`-Prüfung der Pipeline nicht erfasst, weil sie
+nur über den *gesamten* Zyklus konstante Signale erkennt.
 
 Der geplante Ansatz definiert Stillstand über ein gleitendes
 Zeitfenster: Innerhalb jedes Fensters einer bestimmten Länge muss sich
@@ -152,4 +199,4 @@ bestehenden Pipeline bislang nicht abschließend geprüft wurde. Bis diese
 Verifikation vorliegt, wird die positionsbasierte Variante als
 Übergangslösung verwendet, während die geschwindigkeitsbasierte Variante
 als methodisch überlegene Zielarchitektur dokumentiert und vorbereitet
-wird.
+wird (vgl. ADR-T05).
