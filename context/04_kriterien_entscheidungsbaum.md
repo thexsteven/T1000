@@ -51,6 +51,40 @@ begründete Schwellwerte sowie neu einzuführende Prüfschritte.
 Nur ein Zyklus, der alle vier Ebenen besteht, wird Teil des
 „Pools nutzbarer Zyklen“ (siehe Kapitel 5).
 
+## Abgrenzung: Segmentierungs-Parameter (Pipeline) vs. Prüfschritte der Zusatzschicht
+
+Für die Beitragsabgrenzung ist entscheidend, dass nicht jedes der oben
+genannten Kriterien Teil der neu entwickelten Filterschicht ist. Zwei
+Kriterien — die Sitzungsgrenze (große Zeitlücke) und die Zyklusgrenze
+(Positionsschwelle) — sind keine nachgelagerten Prüfungen, sondern
+**Segmentierungs-Parameter**: Sie erzeugen die Aufzeichnungssitzungen
+bzw. Bewegungszyklen überhaupt erst. Eine Änderung dieser Schwellwerte
+bedeutet ein Neu-Segmentieren der Rohdaten und liegt damit in der
+bestehenden Pipeline, nicht in der nachgelagerten Schicht (vgl. ADR-T01:
+keine Reimplementierung der Pipeline).
+
+Die Zusatzschicht enthält daher ausschließlich **Prüfschritte**, die
+einen bereits geschnittenen Zyklus bewerten, ohne ihn neu zu
+segmentieren. Für die beiden Segmentierungs-Parameter beschränkt sich der
+Beitrag dieser Arbeit auf die datenbasierte **Neuherleitung** des
+Schwellwerts samt Sicherheitsmarge (ADR-T06); die Anwendung des neuen
+Werts erfolgt an der Quelle in der bestehenden Pipeline.
+
+| Ebene | Segmentierungs-Parameter (Pipeline, geerbt) | Prüfschritt der Zusatzschicht (Beitrag dieser Arbeit) |
+|---|---|---|
+| 1 — Aufzeichnungssitzung | 1.1 Sitzungsgrenze bei großer Zeitlücke (`Lücke > 3600 s`) — Beitrag: Neuherleitung des Werts | 1.2 Mindest-Sitzungsgröße |
+| 2 — Echter Zyklus | 2.1 Zyklusgrenze über Positionsschwelle (`Position > 1.0`) — Beitrag: Neuherleitung des Werts | 2.2 Plausible Zyklusdauer · 2.3 Voller Hub erreicht · 2.4 Erwartete Messwertzahl · 2.5 Stillstand-/Frozen-Signal-Prüfung |
+| 3 — Multi-Sensor-Vollständigkeit | Definition der Core-/Optional-Signale (ADR-014, begründet) | 3.1 Präsenz-Gate (alle erforderlichen Signale vorhanden) · 3.2 Mindest-Messwerte je Signal |
+| 4 — Signalqualität je Signal | — | 4.1 Abdeckungsgrad · 4.2 Keine großen Intra-Zyklus-Lücken · 4.3 Keine ungültigen Werte · 4.4 Kein eingefrorenes/konstantes Signal |
+
+Auf jeder Ebene besitzt die Zusatzschicht somit ein eigenes
+Bewertungs-Gegenstück zum jeweiligen Schnitt-Parameter: Der reine
+Schnitt-Schwellwert verbleibt in der Pipeline, während die inhaltliche
+Prüfung, ob der geschnittene Zyklus tatsächlich brauchbar ist, in der
+Zusatzschicht erfolgt (z. B. Ebene 2: die Positionsschwelle schneidet den
+Zyklus, aber ob der volle Hub tatsächlich erreicht wurde, prüft erst
+Kriterium 2.3).
+
 ## Reifegradsystem für Kriterien
 
 Ein zentrales methodisches Element dieser Arbeit ist, dass nicht nur

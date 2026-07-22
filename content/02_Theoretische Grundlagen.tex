@@ -233,14 +233,17 @@ cycles, produced by a preprocessing pipeline that originates from a parallel mas
 thesis in the same corporate environment \parencite{TODO-heydari-2026}. This pipeline is
 \emph{not} part of the present work; it is its starting basis and is summarised here as
 prior work so that the contribution of this thesis (Chapter~\ref{kap:Methodik}) can be
-located precisely against it. The pipeline is organised as a sequence of eleven stages, of
-which the first nine are implemented and the last two are planned:
+located precisely against it. The pipeline is organised as a sequence of thirteen stages, of
+which the first ten are implemented and the last three are planned:
 
 \begin{enumerate}
   \item \textbf{Metadata integration} -- catalogues which raw signals exist and with which
         properties, and reconstructs the hierarchical signal information.
   \item \textbf{Signal discovery} -- selects the measurement channels belonging to a given
         experiment and identifies the position channel used as the cycle reference.
+  \item \textbf{Efficient measurement loading} -- reads only the required signal and time
+        window from the partitioned raw data via predicate pushdown and partition pruning,
+        so that the enormous recordings never have to be loaded in full.
   \item \textbf{Timestamp analysis} -- computes the sampling-interval and gap statistics of
         the reference signal, providing the basis for later threshold decisions.
   \item \textbf{Recording-session detection} -- splits the continuous recording into
@@ -265,14 +268,17 @@ which the first nine are implemented and the last two are planned:
         machine-learning-ready feature representations.
   \item \textbf{Dataset generation} \emph{(planned)} -- assembly of the final structured
         dataset with training/validation/test partitions.
+  \item \textbf{Machine learning and anomaly detection} \emph{(planned)} -- training and
+        application of models that learn the actuator's normal behaviour so that new cycles
+        can be flagged as anomalous.
 \end{enumerate}
 
 Two properties of this pipeline matter for the present work. First, to cope with the sheer
 size of the recordings -- hundreds of millions of samples per run -- the pipeline reads
 data through filtered, partition-aware queries (predicate pushdown) that load only the
 requested signal and time window instead of scanning the complete measurement table; this
-shared loading infrastructure is what makes the analysis tractable at all. Second, stages~8
-and~9 already constitute a \emph{statistical} validation layer that does make a keep/reject
+shared loading infrastructure is what makes the analysis tractable at all. Second, stages~9
+and~10 already constitute a \emph{statistical} validation layer that does make a keep/reject
 decision. However, as the pipeline's own documentation notes, its central thresholds are
 partly provisional (most notably the motion threshold), and its validation rules are
 learned from a cycle population that mixes healthy and degraded behaviour, so they

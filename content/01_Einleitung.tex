@@ -86,8 +86,10 @@ provisional, without reference to the actually observed distribution of position
 rest; the validation thresholds themselves are learned purely statistically from a cycle
 population that mixes healthy and already degraded behaviour, so they characterise the
 technical spread of the observed data rather than a justified boundary of usable
-data \parencite{TODO-data-cleaning}. In other words, decisive quality criteria exist as
-unfounded ``magic numbers'' rather than as documented, derived values. In addition, a
+data \parencite{TODO-data-cleaning}. In other words, the pipeline's decisive criteria are
+either provisional ``magic numbers'' (most notably the motion threshold) or purely
+statistical limits derived from a mixed population, rather than documented, physically
+justified values. In addition, a
 systematic analysis of the pipeline (detailed in the methodology chapter) reveals several
 methodological gaps that are relevant for judging whether a recorded cycle may count as
 usable:
@@ -96,17 +98,18 @@ usable:
   \item \textbf{No standstill detection.} There is no dedicated check for whether a
         signal is actually moving \emph{within} a detected cycle, so a frozen sensor or a
         communication dropout can pass as an active cycle.
-  \item \textbf{No minimum-duration or minimum-motion filter.} Cycle duration and
-        position range are computed, but they are not used as physically justified
-        exclusion criteria, so an extremely short or extremely long ``cycle'' can be
-        accepted unnoticed.
-  \item \textbf{Velocity unused for quality assessment.} The velocity signal is extracted
-        but never used to judge cycle or signal quality, although it is physically the
-        more direct indicator of standstill than a position threshold.
-  \item \textbf{No physical plausibility check.} There is no systematic check of whether a
-        cycle is physically meaningful -- for example whether the full stroke was reached,
-        whether the number of samples lies in the expected range, or whether signal values
-        are invalid (non-finite) or constant (frozen).
+  \item \textbf{No physically grounded duration or motion bound.} Cycle duration and
+        position range are now checked by the pipeline's statistical validation, but only
+        against limits learned relative to the observed cycle population, not against an
+        absolute, physically justified bound.
+  \item \textbf{Velocity not used as a motion indicator.} The velocity signal is extracted
+        and profiled but is not used as a direct physical indicator of motion or
+        standstill, although a velocity near zero is physically the more direct indicator
+        of standstill than a position threshold.
+  \item \textbf{No absolute physical plausibility check.} The pipeline does test the full
+        stroke, the sample count, and non-finite or whole-cycle-constant values -- but as
+        statistical, population-relative limits or as hard logical rules, not against
+        absolute physical values that hold independently of the observed population.
   \item \textbf{No account of how well each criterion is justified.} The pipeline applies
         its thresholds without making transparent which of them are empirically derived,
         which are provisional placeholders, and which are even internally inconsistent, so
