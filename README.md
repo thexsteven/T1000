@@ -1,10 +1,21 @@
 # T1000 — ERA Watch Data Analysis
 
 This workspace is the data-analysis component of a DHBW Praxissemesterarbeit
-(T1000) at Emerson. It adds a **data-quality preprocessing layer** on top of the
-existing ERA recording pipeline: it analyses hive-partitioned parquet recordings
-to determine cycle timing and data fluency/quality, and documents the decision
-logic, data selection, and visual results that support the thesis.
+(T1000) at Emerson. It adds a **physical-plausibility data-quality layer** on top
+of the existing ERA recording pipeline (Fatemeh Heydari's preprocessing pipeline,
+V2.1). That pipeline already performs **statistical** validation and cycle
+rejection itself — Stage&nbsp;9 (Validation Rule Generation, robust Median/MAD) and
+Stage&nbsp;10 (Dataset Validation, the only rejecting stage). This thesis does **not**
+rebuild that. Instead it contributes a complementary **physical floor** that runs
+*first*: it checks full mechanical stroke, physically-plausible duration, expected
+sample count, per-signal sanity and **in-cycle standstill** against *absolute
+physical* values (not the learned population range), then hands the cleaned pool to
+the pipeline's statistics. Physics answers *"are these data usable at all?"*;
+statistics answers *"is this cycle unusual vs. its neighbours?"* (see
+`docs/approach_comparison.md`). It also re-derives the two provisional segmentation
+thresholds (session gap `3600 s`, `Position > 1.0`) from data for the pipeline to
+apply at the source, and documents the decision logic, data selection, and visual
+results that support the thesis.
 
 ## Where to look — the three contributions
 

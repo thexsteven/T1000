@@ -381,15 +381,18 @@
       (<code>/home/ita/MasterThesis</code>) and the overview wording. Where they disagree, both are shown and flagged.
     </p>
     <div class="meta-line">
-      Last updated: 2026-07-20 · Based on: Fatemeh Heydari, Implementation Log — Preprocessing Pipeline V2.0 (2026-07-19)
+      Last updated: 2026-07-22 · Based on: Fatemeh Heydari, <code>docs/thesis_pipeline.md</code> — Preprocessing Pipeline V2.1 (2026-07-22)
     </div>
   </header>
 
   <div class="summary">
     <strong>Bottom line:</strong> the <strong>mechanisms</strong> — why have a threshold at all, why separate
-    sessions, why use a robust statistic — are consistently well justified. The concrete <strong>numeric values</strong>
-    (<span class="mono">3600&nbsp;s</span>, <span class="mono">Position&nbsp;&gt;&nbsp;1.0</span>,
-    <span class="mono">MAD&nbsp;limit&nbsp;3.5</span>) are the open gap the decision tree is meant to close.
+    sessions, why use a robust statistic — are consistently well justified. The pipeline now performs
+    statistical validation <em>and</em> cycle rejection itself (Stage&nbsp;10). The two <strong>segmentation
+    values</strong> that remain provisional (<span class="mono">3600&nbsp;s</span>,
+    <span class="mono">Position&nbsp;&gt;&nbsp;1.0</span>) are what the t1000 physical-plausibility layer
+    re-derives from data; the learned statistical bounds (<span class="mono">MAD&nbsp;limit&nbsp;3.5</span>)
+    belong to Fatemeh's Stage&nbsp;9.
   </div>
 
   <section class="legend">
@@ -432,7 +435,7 @@
         <div class="field"><span class="flabel">What it does</span><span class="ftext">Attaches recording metadata (experiment, signal descriptors, unit codes, paths) to the raw signal tables so later stages can resolve signals by logical name.</span></div>
         <div class="field just"><span class="flabel">Justification</span><span class="ftext">Purely technical prerequisite; no methodological justification required.</span></div>
         <div class="value-row">
-          <span class="src"><b>Source:</b> Implementation Log §3 (Stage 1)</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 1 (Metadata Integration)</span>
           <span class="chip">— no threshold —</span>
         </div>
       </div>
@@ -443,16 +446,16 @@
       <div class="node"><div class="num">2</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 02</span>Signal Discovery</h3>
+          <h3><span class="snum">Stage 02</span>Automatic Signal Discovery</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified</span>
           </div>
         </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Selects the single Position reference signal for the experiment; discovery logic errors out if zero or more than one Position match is found.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Enforces exactly one Position reference signal (errors on 0 or &gt;1 matches); ensures an unambiguous reference for cycle detection.</span></div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Resolves the required sensor automatically from experiment name + semantic signal type (e.g. Versuch1 + Position → UUID), instead of hard-coding signal UUIDs. Position discovery errors out if zero or more than one match is found.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Scalable and reusable; enforces exactly one Position reference signal, ensuring an unambiguous reference for cycle detection.</span></div>
         <div class="value-row">
           <span class="chip config">reference_signal: position</span>
-          <span class="src"><b>Source:</b> ADR-007 · <code>docs/architecture_decisions.md</code> · Log §8 (Stage 2)</span>
+          <span class="src"><b>Source:</b> ADR-007 · <code>docs/architecture_decisions.md</code> · <code>thesis_pipeline.md</code> Stage 2</span>
         </div>
       </div>
     </div>
@@ -462,7 +465,26 @@
       <div class="node"><div class="num">3</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 03</span>Timestamp Analysis</h3>
+          <h3><span class="snum">Stage 03</span>Efficient Measurement Loading</h3>
+          <div class="badges">
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Loads only the required signal and time interval from the billions-of-rows dataset using a PyArrow Dataset with predicate pushdown and partition pruning, returning one tidy timestamp/value/signal DataFrame.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Loading the full industrial dataset into memory is infeasible; predicate pushdown / partition pruning is the standard memory-efficient access pattern.</span></div>
+        <div class="value-row">
+          <span class="chip">predicate pushdown · partition pruning</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 3 (Efficient Measurement Loading)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage" data-tags="justified">
+      <div class="node"><div class="num">4</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 04</span>Timestamp Analysis</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified</span>
           </div>
@@ -471,28 +493,28 @@
         <div class="field just"><span class="flabel">Justification</span><span class="ftext">Small sampling variation (~43–58&nbsp;ms) is deliberately not treated as an error; large gaps are used downstream to separate sessions.</span></div>
         <div class="value-row">
           <span class="chip">~43–58&nbsp;ms typical interval</span>
-          <span class="src"><b>Source:</b> Log §3 (Stage 3, Timestamp Analysis)</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 4 (Timestamp Analysis)</span>
         </div>
       </div>
     </div>
 
-    <!-- STAGE 4 -->
+    <!-- STAGE 5 -->
     <div class="stage" data-tags="justified inconsistent">
-      <div class="node"><div class="num">4</div><div class="arrow">▼</div></div>
+      <div class="node"><div class="num">5</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 04</span>Recording Session Detection</h3>
+          <h3><span class="snum">Stage 05</span>Recording Session Detection</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified (mechanism)</span>
             <span class="badge inconsistent"><span class="bdot"></span>Inconsistent (value)</span>
           </div>
         </div>
         <div class="field"><span class="flabel">What it does</span><span class="ftext">Scans the signal incrementally in record batches and splits the full recording history into sessions wherever the gap between consecutive timestamps exceeds the threshold.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The mechanism prevents joining data across shutdowns/maintenance — but the concrete 3600&nbsp;s value is not justified, only the approach.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The mechanism prevents joining data across shutdowns/maintenance — but the concrete 3600&nbsp;s value is not justified, only the approach. Re-derived from data by the t1000 layer.</span></div>
         <div class="value-row">
           <span class="chip config">session_gap_seconds: 3600.0 s (1 h)</span>
           <span class="chip hard">code default DEFAULT_SESSION_GAP_SECONDS = 3600.0</span>
-          <span class="src"><b>Source:</b> <code>session_detection.py</code> · ADR-006 · Log §15 “Session-Gap Threshold”</span>
+          <span class="src"><b>Source:</b> <code>session_detection.py</code> · ADR-006 · <code>thesis_pipeline.md</code> Stage 5</span>
         </div>
         <div class="discrepancy">
           <span class="warn">⚠ discrepancy</span>
@@ -501,46 +523,27 @@
       </div>
     </div>
 
-    <!-- STAGE 5 -->
+    <!-- STAGE 6 -->
     <div class="stage" data-tags="justified provisional inconsistent">
-      <div class="node"><div class="num">5</div><div class="arrow">▼</div></div>
+      <div class="node"><div class="num">6</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 05</span>Position-Based Cycle Detection</h3>
+          <h3><span class="snum">Stage 06</span>Position-Based Cycle Detection</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified (signal)</span>
             <span class="badge provisional"><span class="bdot"></span>Provisional (threshold)</span>
           </div>
         </div>
         <div class="field"><span class="flabel">What it does</span><span class="ftext">Detects candidate cycles on the Position signal: a cycle starts when the value crosses from ≤&nbsp;threshold to &gt;&nbsp;threshold and ends on the reverse crossing; incomplete cycles at the window edges are dropped.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The actuator is position-controlled, so the reference-signal choice is justified (ADR-007) — but the threshold 1.0 is explicitly provisional, with no physical derivation.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">The actuator is position-controlled, so the reference-signal choice is justified (ADR-007) — but the threshold 1.0 is explicitly provisional, with no physical derivation. Re-derived from data by the t1000 layer.</span></div>
         <div class="value-row">
           <span class="chip config">movement_threshold: 1.0 → Position &gt; 1.0</span>
           <span class="chip hard">code default movement_threshold = 1.0</span>
-          <span class="src"><b>Source:</b> <code>cycle_detection.py</code> · Log §8 &amp; §15 “Movement Threshold”</span>
+          <span class="src"><b>Source:</b> <code>cycle_detection.py</code> · <code>thesis_pipeline.md</code> Stage 6</span>
         </div>
         <div class="discrepancy">
           <span class="warn">⚠ discrepancy</span>
-          <span><b>Typical cycle duration:</b> the Implementation Log §8 reports a typical cycle duration of <b>~3.1&nbsp;s</b>, whereas the project context assumes a <b>1.81&nbsp;s</b> round-trip. Both are shown; this reference explicitly does not resolve which is correct.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- STAGE 6 -->
-    <div class="stage" data-tags="justified">
-      <div class="node"><div class="num">6</div><div class="arrow">▼</div></div>
-      <div class="card">
-        <div class="title-row">
-          <h3><span class="snum">Stage 06</span>Multi-Sensor Cycle Extraction</h3>
-          <div class="badges">
-            <span class="badge justified"><span class="bdot"></span>Justified</span>
-          </div>
-        </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">For each detected cycle interval, slices every available experiment signal (position, velocity, current, pressure, temperature, vibration x/y/z) into per-cycle windows at their native sampling rates.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">No resampling/interpolation is applied because sensors have different native sampling frequencies — extracting raw windows avoids introducing artificial artifacts.</span></div>
-        <div class="value-row">
-          <span class="chip">native rate · no resampling</span>
-          <span class="src"><b>Source:</b> Log §9, §12 (Stage 6, Multi-Sensor Extraction)</span>
+          <span><b>Typical cycle duration:</b> the Implementation Log §8 reports a typical cycle duration of <b>~3.1&nbsp;s</b>, whereas an older project-context figure assumed a <b>1.81&nbsp;s</b> round-trip. Both are shown; this reference explicitly does not resolve which is correct.</span>
         </div>
       </div>
     </div>
@@ -550,106 +553,144 @@
       <div class="node"><div class="num">7</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 07</span>Cycle Quality Profiling</h3>
+          <h3><span class="snum">Stage 07</span>Multi-Sensor Cycle Extraction</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified</span>
           </div>
         </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Computes purely descriptive per-cycle quality metrics (sample counts, stroke-range / min–max Position, sampling-interval statistics). It records but does <b>not</b> reject any cycle.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Deliberately non-rejecting — this prevents arbitrary early filtering and keeps the later rule generation fully traceable to the observed population.</span></div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">For each detected cycle interval, slices every available experiment signal (position, velocity, current, pressure, temperature, vibration x/y/z) into per-cycle windows at their native sampling rates, using a session-level signal cache. Never rejects a cycle because an optional signal (vibration) is absent.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">No resampling/interpolation is applied because sensors have different native sampling frequencies (ADR-008). Duty-cycled ESP32 vibration is legitimately absent from most cycles — an absent optional signal never fails extraction.</span></div>
         <div class="value-row">
-          <span class="chip">descriptive only · no pass/fail</span>
-          <span class="src"><b>Source:</b> <code>cycle_quality_profiler.py</code> · Log §7 (stroke-range metrics)</span>
+          <span class="chip">native rate · no resampling</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 7 (Multi-Sensor Extraction) · ADR-008</span>
         </div>
       </div>
     </div>
 
     <!-- STAGE 8 -->
-    <div class="stage" data-tags="statistical">
+    <div class="stage" data-tags="justified">
       <div class="node"><div class="num">8</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 08</span>Validation Rule Generation</h3>
+          <h3><span class="snum">Stage 08</span>Cycle Quality Profiling</h3>
           <div class="badges">
-            <span class="badge statistical"><span class="bdot"></span>Statistically derived (not health-validated)</span>
+            <span class="badge justified"><span class="bdot"></span>Justified</span>
           </div>
         </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Learns per-signal validation bounds from the profiled cycle population: robust Median&nbsp;+&nbsp;MAD z-score bounds by default (<code>robust_z = 0.6745·(x−median)/MAD</code>), falling back to quantile bounds when MAD is zero or degenerate.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Median&nbsp;+&nbsp;MAD is a robust statistic and the quantile fallback covers instability — statistically justified, but the reference population is not verified as healthy.</span></div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Computes purely descriptive per-cycle and per-signal quality metrics (sample counts, coverage ratio, stroke range, sampling-interval statistics, constant-signal / non-finite counts). It records but does <b>not</b> reject any cycle.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Deliberately non-rejecting — this prevents arbitrary early filtering and keeps the later rule generation fully traceable to the observed population.</span></div>
         <div class="value-row">
-          <span class="chip derived">default_method: median_mad</span>
-          <span class="chip config">mad_z_limit: 3.5</span>
-          <span class="chip config">fallback: quantile 0.01 / 0.99</span>
-          <span class="chip config">reference_population: all_profiled_cycles</span>
-        </div>
-        <div class="value-row" style="border-top:none; padding-top:2px; margin-top:4px;">
-          <span class="src"><b>Source:</b> <code>validation_rule_generation.py</code> (mad_z_limit=3.5, lower/upper_quantile=0.01/0.99) · Log §11 · <code>validation_thresholds.json</code></span>
+          <span class="chip">descriptive only · no pass/fail</span>
+          <span class="src"><b>Source:</b> <code>cycle_quality_profiler.py</code> · <code>thesis_pipeline.md</code> Stage 8</span>
         </div>
       </div>
     </div>
 
     <!-- STAGE 9 -->
-    <div class="stage" data-tags="justified structural unjustified">
+    <div class="stage" data-tags="statistical">
       <div class="node"><div class="num">9</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 09</span>Dataset Validation</h3>
+          <h3><span class="snum">Stage 09</span>Validation Rule Generation</h3>
+          <div class="badges">
+            <span class="badge statistical"><span class="bdot"></span>Statistically derived (not health-validated)</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Learns per-signal validation bounds from the profiled cycle population <b>before</b> any rejection: robust Median&nbsp;+&nbsp;MAD z-score bounds by default (<code>robust_z = 0.6745·(x−median)/MAD</code>), falling back to quantile bounds when MAD is zero or degenerate. Separates hard rules (logical/domain) from learned rules; marks rules <code>provisional</code> when the reference population is limited.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Median&nbsp;+&nbsp;MAD is a robust statistic and the quantile fallback covers instability — statistically justified, but the reference population is not verified as healthy.</span></div>
+        <div class="value-row">
+          <span class="chip derived">default_method: median_mad</span>
+          <span class="chip config">mad_z_limit: 3.5</span>
+          <span class="chip config">fallback: quantile 0.01 / 0.99</span>
+          <span class="chip config">reference: all_profiled_cycles (vibration: vibration_complete subset)</span>
+        </div>
+        <div class="value-row" style="border-top:none; padding-top:2px; margin-top:4px;">
+          <span class="src"><b>Source:</b> <code>validation_rule_generation.py</code> · <code>validation_thresholds.json</code> · <code>thesis_pipeline.md</code> Stage 9</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 10 -->
+    <div class="stage" data-tags="justified structural unjustified">
+      <div class="node"><div class="num">10</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 10</span>Dataset Validation</h3>
           <div class="badges">
             <span class="badge justified"><span class="bdot"></span>Justified (core logic)</span>
             <span class="badge structural"><span class="bdot"></span>Structural (vibration)</span>
             <span class="badge unjustified"><span class="bdot"></span>Unjustified (reference pop.)</span>
           </div>
         </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Applies the learned rules to every cycle. Core signals (position, velocity, current, pressure, temperature) must pass; the vibration signal is treated as optional — its absence alone never invalidates a core cycle because ESP32 vibration acquisition is duty-cycled.</span></div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext"><b>The only pipeline stage that rejects cycles.</b> Applies the frozen Stage-9 rules to every profiled cycle and assigns a final class — <code>valid_core_cycle</code>, <code>valid_complete_multisensor_cycle</code> or <code>invalid_cycle</code> — with reason codes. Absence of duty-cycled vibration alone never invalidates a core cycle.</span></div>
         <div class="field just"><span class="flabel">Justification</span><span class="ftext">Vibration is treated as optional not mandatory (core vs. supplementary signals) — cleanly justified. But rules are applied against <code>all_profiled_cycles</code>, with no explicit healthy-subset selection.</span></div>
         <div class="value-row">
           <span class="chip config">core_required vs. optional_duty_cycled (vibration x/y/z)</span>
           <span class="chip config">reference_population: all_profiled_cycles</span>
         </div>
         <div class="value-row" style="border-top:none; padding-top:2px; margin-top:4px;">
-          <span class="src"><b>Source:</b> <code>dataset_validation.py</code> · Log §11, §12, §15</span>
+          <span class="src"><b>Source:</b> <code>dataset_validation.py</code> · <code>thesis_pipeline.md</code> Stage 10</span>
         </div>
         <div class="discrepancy">
           <span class="warn">⚠ open gap</span>
-          <span><b>Reference population:</b> validation runs against <code>all_profiled_cycles</code> with no documented healthy-subset selection — so the population underlying the learned thresholds is <b>unjustified</b> as a health baseline, even though the core validation logic and optional-vibration handling are sound.</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- STAGE 10 -->
-    <div class="stage planned" data-tags="planned">
-      <div class="node"><div class="num">10</div><div class="arrow">▼</div></div>
-      <div class="card">
-        <div class="title-row">
-          <h3><span class="snum">Stage 10</span>Feature Engineering</h3>
-          <div class="badges">
-            <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
-          </div>
-        </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — derive per-cycle features from the validated cycles for the downstream predictive-maintenance model.</span></div>
-        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, not implemented.</span></div>
-        <div class="value-row">
-          <span class="chip">— not in code —</span>
-          <span class="src"><b>Source:</b> Reference overview (planned stage)</span>
+          <span><b>Reference population:</b> validation runs against <code>all_profiled_cycles</code> with no documented healthy-subset selection — so the population underlying the learned thresholds is <b>unjustified</b> as a health baseline, even though the core validation logic and optional-vibration handling are sound. This is exactly the gap the t1000 <b>physical floor</b> (absolute values, no healthy reference needed) is designed to cover.</span>
         </div>
       </div>
     </div>
 
     <!-- STAGE 11 -->
     <div class="stage planned" data-tags="planned">
-      <div class="node"><div class="num">11</div></div>
+      <div class="node"><div class="num">11</div><div class="arrow">▼</div></div>
       <div class="card">
         <div class="title-row">
-          <h3><span class="snum">Stage 11</span>Dataset Generation</h3>
+          <h3><span class="snum">Stage 11</span>Feature Engineering</h3>
           <div class="badges">
             <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
           </div>
         </div>
-        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — assemble the final feature dataset (train/validation splits) for model training.</span></div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — derive per-cycle features from the validated cycles for the downstream predictive-maintenance model. A partial time-domain descriptive-statistics utility exists but is not the formal stage.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, partially prototyped.</span></div>
+        <div class="value-row">
+          <span class="chip">— partial utility only —</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 11 (planned)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 12 -->
+    <div class="stage planned" data-tags="planned">
+      <div class="node"><div class="num">12</div><div class="arrow">▼</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 12</span>Dataset Generation</h3>
+          <div class="badges">
+            <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — assemble the final machine-learning-ready dataset (feature vectors, cycle metadata, validation results, sensor-availability indicators) for model training.</span></div>
         <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, not implemented.</span></div>
         <div class="value-row">
           <span class="chip">— not in code —</span>
-          <span class="src"><b>Source:</b> Reference overview (planned stage)</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 12 (planned)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 13 -->
+    <div class="stage planned" data-tags="planned">
+      <div class="node"><div class="num">13</div></div>
+      <div class="card">
+        <div class="title-row">
+          <h3><span class="snum">Stage 13</span>Machine Learning &amp; Anomaly Detection</h3>
+          <div class="badges">
+            <span class="badge planned"><span class="bdot"></span>Planned / Not implemented</span>
+          </div>
+        </div>
+        <div class="field"><span class="flabel">What it does</span><span class="ftext">Planned — train anomaly-detection models on the validated dataset to learn normal actuator behaviour; every new cycle passes the same preprocessing before inference.</span></div>
+        <div class="field just"><span class="flabel">Justification</span><span class="ftext">Planned, not implemented.</span></div>
+        <div class="value-row">
+          <span class="chip">— not in code —</span>
+          <span class="src"><b>Source:</b> <code>thesis_pipeline.md</code> Stage 13 (planned)</span>
         </div>
       </div>
     </div>
@@ -657,7 +698,7 @@
   </div><!-- /pipeline -->
 
   <footer class="page-foot">
-    11 stages · 9 implemented, 2 planned · V2.0 numbering (3 stages inserted before the old start — old “Stage 2/3” are now Stage 4/5).<br />
+    13 stages · 10 implemented, 3 planned · V2.1 numbering (Stages 1–3 precede the old start; Cycle Quality Profiling = Stage 8, Validation Rule Generation = Stage 9, Dataset Validation = Stage 10 — the only rejecting stage).<br />
     Read-only companion to the Confluence overview · verified against Fatemeh’s pipeline code in <code>/home/ita/MasterThesis</code>.
   </footer>
 

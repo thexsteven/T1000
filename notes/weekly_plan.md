@@ -5,6 +5,20 @@
 **Deadline:** Schreibbeginn der wissenschaftlichen T1000-Arbeit in spätestens einer Woche
 **Prinzip:** Erst Entscheidungen absichern, dann implementieren, dann Ergebnisse produzieren — für die Arbeit zählen begründete Entscheidungen und Ergebniszahlen.
 
+> **Update (2026-07-22) — Pipeline V2.1.** Fatemehs Pipeline implementiert
+> inzwischen **Stufe 8 (Cycle Quality Profiling)**, **Stufe 9 (Validation Rule
+> Generation)** und **Stufe 10 (Dataset Validation, einzige ablehnende Stufe)** —
+> die statistische Validierung und Zyklus-Ablehnung liegt also bereits in der
+> Pipeline. Das unten geplante „Pool-Filter-Modul" ist damit **nicht** die
+> fehlende Entscheidungsschicht, sondern ein **physikalischer Plausibilitäts-Boden**
+> (absolute physikalische Werte, keine gesunde Referenzpopulation nötig) plus
+> In-Zyklus-Stillstandserkennung, der **vor** der Pipeline-Statistik läuft. „Ebene 4"
+> (per-Signal statistische Schwellwerte) überschneidet sich mit Stufe 9 — vor der
+> Implementierung mit Fatemeh abgleichen (siehe `docs/pipeline_structure.md` §5 und
+> `docs/approach_comparison.md`). Die beiden provisorischen Segmentierungs-Schwellwerte
+> (`3600 s`, `Position > 1.0`) bleiben der eigenständige, aus Daten neu herzuleitende
+> t1000-Beitrag.
+
 ---
 
 ## Tag 1–2: Entscheidungen absichern (kritischer Pfad)

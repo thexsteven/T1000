@@ -102,7 +102,7 @@ footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:30px}
     <div class="meta">
       <span><b>Project:</b> T1000 / ZDERA — Electric Rodstyle Actuator</span>
       <span><b>Author:</b> Steven Braun (building on the preprocessing pipeline by F. Heydari)</span>
-      <span><b>Version:</b> Draft v0.2 — 2026-07-21 (Level-4 thresholds filled from full-scale profiling; was v0.1 2026-07-17)</span>
+      <span><b>Version:</b> Draft v0.3 — 2026-07-22 (repositioned as the physical floor under pipeline V2.1, which now validates + rejects in Stages 9–10; Level-4 thresholds filled from full-scale profiling; was v0.2 2026-07-21)</span>
       <span><b>Repo analyzed:</b> <span class="mono">MasterThesisFat/</span> (copy of <span class="mono">/home/ita/MasterThesis</span>)</span>
     </div>
   </div>
@@ -113,7 +113,8 @@ footer{color:var(--muted);font-size:.78rem;text-align:center;margin-top:30px}
 <div class="legend" style="background:#e8f0fe;border-color:#c7dafc;">
   <h2>Hi — before you dive in</h2>
   <p class="note" style="margin-bottom:8px">This grew out of my thesis work on top of the pipeline you built — no need to read it all in one go. Everything below is <b>collapsed by default</b>; skim the headers first and only open the cards that are actually new or debatable to you. Quick orientation:</p>
-  <p class="note" style="margin-bottom:0"><b>TL;DR:</b> 4 filter levels decide which cycles are "useful". Levels 1–3 mostly already exist in your code (some thresholds are undocumented "magic numbers" I'd like to sanity-check with you). Level 4 is new — proposed thresholds now derived from the completed full-scale quality profiling (n = 107,555 cycles, run <span class="mono">20260717_101103</span>). The handful of things I'd genuinely like your input on are marked <span class="badge b-warn">PROVISIONAL</span> or in an "Open point" box — everything else is just for context.</p>
+  <p class="note" style="margin-bottom:8px"><b>How this fits the pipeline (V2.1).</b> Your pipeline now performs the statistical validation and cycle rejection itself — <b>Stage&nbsp;9 Validation Rule Generation</b> (robust Median/MAD + quantile fallback) and <b>Stage&nbsp;10 Dataset Validation</b> (the only stage that rejects, into <span class="mono">valid_core_cycle</span> / <span class="mono">valid_complete_multisensor_cycle</span> / <span class="mono">invalid_cycle</span>). So this decision tree is <b>not</b> a missing decision layer. It is a <b>physical-plausibility floor</b> meant to run <b>first</b>: it checks full mechanical stroke, physically-plausible duration, expected sample count and in-cycle standstill against <b>absolute physical</b> values — not the learned population range — because statistical "normal" is learned from a population that mixes healthy and degraded cycles and can mask whole-batch faults, whereas physics needs no healthy reference population. The two layers are complementary (physical floor first, then your statistics on the cleaned pool), see <span class="mono">docs/approach_comparison.md</span>.</p>
+  <p class="note" style="margin-bottom:0"><b>TL;DR:</b> 4 filter levels form the physical floor for the "useful" pool. Levels 1–3 mostly already exist in your code (some thresholds are undocumented "magic numbers" I'd like to sanity-check with you). The genuinely new pieces vs. the pipeline are the <b>in-cycle standstill / frozen-segment check (2.5)</b> and re-deriving the two provisional segmentation thresholds (<span class="mono">3600&nbsp;s</span>, <span class="mono">Position&nbsp;&gt;&nbsp;1.0</span>). Level&nbsp;4's per-signal statistical bounds overlap with your Stage&nbsp;9 — see the note at Level&nbsp;4. The handful of things I'd genuinely like your input on are marked <span class="badge b-warn">PROVISIONAL</span> or in an "Open point" box — everything else is just for context.</p>
 </div>
 
 <div class="legend">
@@ -282,6 +283,7 @@ known limitation "velocity scaling unverified":
       <div class="node-body">
         <div class="field"><div class="lab">Rule</div><p>All configured required signals must exist (non-empty) within the cycle interval: <b>position, velocity, current, pressure, temperature, vibration_x, vibration_y, vibration_z</b>. Missing data is never interpolated or filled.</p></div>
         <div class="field"><div class="lab">Why</div><p>Each pool cycle becomes one ML training sample containing all sensors (ADR-010). A cycle with missing channels would create an inconsistent feature vector. Sensor availability is known to differ between recording periods, so this check is essential.</p></div>
+        <div class="field"><div class="lab">Open point — vibration is optional in the pipeline (TODO confirm)</div><div class="openq">Pipeline V2.1 treats <b>ESP32 vibration as duty-cycled and optional</b>: Stage&nbsp;10 keeps <span class="mono">valid_core_cycle</span> even when vibration is absent, and most cycles legitimately have <b>no</b> vibration samples. Requiring all 8 signals here therefore means this pool deliberately selects only the <b>complete-multisensor</b> subset (equivalent to <span class="mono">valid_complete_multisensor_cycle</span>) — it does <b>not</b> mean absent vibration is a recording failure. Confirm with the supervisors whether the pool should require vibration or also admit valid core cycles without it.</div></div>
         <div class="field"><div class="lab">Source in repository</div>
 <div class="src">src/preprocessing/validation_cycle_selection.py : lines 54–61   missing-signal check
 src/preprocessing/validation_cycle_selection.py : lines 67–75   rejection reason
@@ -317,6 +319,7 @@ evidence: outputs/.../multi_sensor/validation/validation_cycle_quality.parquet</
     <h2>Per-Signal Quality</h2>
     <span class="q">Is each signal internally healthy within the cycle?</span>
   </div>
+  <div class="openq" style="margin:0 0 12px 0"><b>Overlap with pipeline Stage&nbsp;9 (TODO confirm).</b> These per-signal statistical bounds are close in spirit to what your pipeline's <b>Stage&nbsp;9 Validation Rule Generation</b> now derives (Median/MAD + quantile fallback) and <b>Stage&nbsp;10</b> applies. To avoid duplicating your work, Level&nbsp;4 should either (a) defer these purely statistical bounds to Stage&nbsp;9, or (b) be re-expressed as <b>absolute physical</b> guards (e.g. non-finite = 0, hard coverage floors) that do not depend on the learned population. The distinctly physical items — full stroke (2.3), plausible duration (2.2) and in-cycle standstill (2.5) — stay in this floor. To be agreed with Fatemeh.</div>
   <div class="nodes">
 
     <div class="node" data-id="n41">

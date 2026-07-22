@@ -3,8 +3,27 @@
 Analysiertes Quell-Repository: `/home/ita/MasterThesis`
 Autorin des analysierten Thesis-Codes: Fatemeh Heydari
 
+> **Update — Pipeline V2.1 (2026-07-22).** Diese Analyse entstand gegen einen
+> früheren Pipeline-Stand. Seither implementiert Fatemehs Pipeline
+> **Stufe 8 Cycle Quality Profiling** (beschreibend, nicht ablehnend),
+> **Stufe 9 Validation Rule Generation** (robuste Median/MAD- +
+> Quantil-Fallback-Schwellwerte) und **Stufe 10 Dataset Validation** (die
+> *einzige* Stufe, die Zyklen ablehnt — in `valid_core_cycle` /
+> `valid_complete_multisensor_cycle` / `invalid_cycle`). Die Pipeline führt
+> also inzwischen **sehr wohl** eine statistische Validierung und
+> Zyklus-Ablehnung durch. Aussagen weiter unten, die Pipeline sei "noch kein
+> Usefulness-Klassifikator", habe "keinen Usefulness-Score" oder Stufe 8 sei
+> "nicht implementiert", spiegeln den früheren Stand und sind **überholt**; sie
+> bleiben zur historischen Einordnung erhalten und werden inline markiert. Der
+> genuin neue t1000-Beitrag wird neu verortet als **physikalischer
+> Plausibilitäts-Boden** (absolute physikalische Werte, keine gesunde
+> Referenzpopulation nötig) plus **In-Zyklus-Stillstandserkennung**, ausgeführt
+> *vor* der Statistik der Pipeline — siehe `docs/pipeline_structure.md` §5 und
+> `docs/approach_comparison.md`.
+
 **Hinweis:** Es existiert kein repository-weiter Begriff "standstill" (Stillstand). Es handelt
-sich um eine Vorverarbeitungs-/Zyklus-Extraktions-Pipeline (noch kein ML-"Usefulness"-Klassifikator),
+sich um eine Vorverarbeitungs-/Zyklus-Extraktions-Pipeline, die (ab V2.1) zusätzlich
+datengetriebene Validierungsregeln erzeugt und Zyklen ablehnt (Stufen 8-10),
 verfasst von Fatemeh Heydari. Im Folgenden die evidenzbasierte Aufschlüsselung, gegliedert nach
 den 5 angeforderten Punkten.
 
@@ -84,19 +103,25 @@ nie für eine Stillstands-/Ruhezustandserkennung verwendet.
   — d. h. ein unvalidierter Schwellwert hat sich in die "akzeptierte" Pipeline fortgepflanzt
   (ADR-006 markiert ihn als "Accepted", während der Skript-Kommentar ihn "exploratory" nennt —
   Widerspruch zwischen ADR-Status und Formulierung im Skript).
-- **Kein "Usefulness"-Score für Zyklen über die strukturelle Vollständigkeit hinaus** — ein
-  Zyklus wird aktuell nur nach *Signalvorhandensein/Sample-Anzahl* als "bereit" beurteilt
+- **Kein "Usefulness"-Score für Zyklen über die strukturelle Vollständigkeit hinaus** —
+  *[in V2.1 überholt: Stufe 10 Dataset Validation klassifiziert nun jeden Zyklus als
+  `valid_core_cycle` / `valid_complete_multisensor_cycle` / `invalid_cycle` anhand der
+  Stufe-9-Regeln.]* Zum Analysezeitpunkt wurde ein
+  Zyklus nur nach *Signalvorhandensein/Sample-Anzahl* als "bereit" beurteilt
   (`validation_cycle_selection.py`), nicht nach physikalischer Plausibilität (z. B. ändert
   sich die Position tatsächlich, liegt die Dauer in einem sinnvollen Bereich, gibt es
   Sensorsättigung/Ausreißerwerte). Zyklusdauer-/Positionsspannen-Statistiken werden berechnet
-  (Spalten in `cycle_detection.py`), aber nie als Filter verwendet — sie sind rein
-  beschreibend.
+  (Spalten in `cycle_detection.py`), wurden aber noch nicht als Filter verwendet.
+  Physikalische Plausibilitäts-Gates gegen *absolute* Werte (nicht die gelernte
+  Populationsspanne) bleiben der eigenständige t1000-Beitrag.
 - **Stillstands-/Ruhephasen werden nicht von gültigen kurzen Zyklen unterschieden** — ein
   "Zyklus" von nur einem einzigen Sample oberhalb des Schwellwerts würde akzeptiert; es
   existiert kein Mindestdauer- oder Mindestverschiebungsfilter.
-- **Die Stufe "Signal Quality Assessment" ist "In Progress"/undefiniert** —
-  `docs/thesis_pipeline.md:366-384` (Stufe 8) listet vorgesehene Prüfungen (fehlende Kanäle,
-  Zeitstempel-Konsistenz, Abtastverhalten) auf, aber es existiert noch keine Implementierung
+- **Die Stufe "Signal Quality Assessment"** — *[in V2.1 überholt: Stufe 8 Cycle Quality
+  Profiling ist nun implementiert (nicht ablehnend) und speist Stufe 9 Validation Rule
+  Generation und Stufe 10 Dataset Validation.]* Zum Analysezeitpunkt listete diese Stufe
+  (`docs/thesis_pipeline.md`, Stufe 8) vorgesehene Prüfungen (fehlende Kanäle,
+  Zeitstempel-Konsistenz, Abtastverhalten) auf, aber es existierte noch keine Implementierung
   in `src/` für diese Stufe über die Sample-Anzahl-Prüfung der Validierungsauswahl hinaus.
 - **Inkonsistente Einheiten-/Schwellwertsemantik**: `movement_threshold` vergleicht den
   rohen Positionswert mit einer absoluten Zahl, ohne Bezug zum dynamischen Wertebereich des
@@ -134,7 +159,12 @@ Besonderer Fokus auf das Problem "laufende" vs. "stillstehende" Daten:
   1-Stunden-Lücke, während das Skript sie weiterhin "exploratory" nennt — eine
   einheitliche Quelle der Wahrheit festlegen und die empirische Grundlage dokumentieren
   (z. B. das tatsächliche Lücken-Histogramm/die zitierten Perzentilzahlen anfügen).
-- **Signal Quality Assessment (Stufe 8) zu einem konkreten Filter ausbauen**, der
+- **Signal Quality Assessment (Stufe 8) zu einem konkreten Filter ausbauen** — *[in V2.1
+  weitgehend durch die Pipeline selbst realisiert: Stufe 9 leitet je-Metrik-Regeln aus den
+  Stufe-8-Verteilungen ab, Stufe 10 wendet sie zur Zyklus-Ablehnung an. Der t1000-Zusatz ist
+  der komplementäre **physikalische** Boden — dieselben Aspekte gegen *absolute* physikalische
+  Grenzen statt gegen die gelernte Populationsspanne geprüft, plus explizite
+  In-Zyklus-Stillstandserkennung.]* der
   kombiniert: Ausreichende Sample-Anzahl (bereits vorhanden), Plausibilität des
   Signalwertebereichs (z. B. Zyklen ablehnen, bei denen Position `movement_threshold` nie
   nennenswert überschreitet — ein Reststillstandsartefakt), und Dauergrenzen, abgeleitet aus

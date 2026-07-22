@@ -117,8 +117,9 @@ footer{color:var(--muted);font-size:.8rem;text-align:center;margin-top:34px}
   <div class="st-body">
     <p>For the analysis we need data from <b>all 8 sensors for every cycle</b> — and enough samples from each sensor. From experience we know that some sensors sometimes fail or record incomplete data.</p>
     <p>A cycle that is missing, for example, vibration data is unusable for comparison — it would be like comparing cars while one of them has no speedometer. Important: <b>we do not invent missing values.</b> If something is missing, it stays missing — and the cycle is rejected.</p>
-    <div class="beispiel"><b>Example:</b> A vibration sensor normally delivers over 1,200 samples per cycle. If only 300 arrive, the recording failed.</div>
-    <div class="raus"><span class="x">✗ Rejected:</span> cycles with missing sensors or too few samples.</div>
+    <p><b>One caveat about vibration:</b> the vibration sensor records in short bursts, not continuously (it is "duty-cycled"), so <b>most cycles have no vibration data at all — by design, not because of a fault</b>. Requiring all 8 sensors here simply means this pool intentionally keeps only the cycles that happen to have complete vibration too. The main pipeline still counts a cycle as valid without vibration; this is a stricter choice for the training pool. <i>(To confirm with the team: must the pool have vibration, or are complete non-vibration cycles also acceptable?)</i></p>
+    <div class="beispiel"><b>Example:</b> A vibration sensor, <i>when it is recording</i>, normally delivers over 1,200 samples per cycle. If only 300 arrive during a burst, that recording is incomplete.</div>
+    <div class="raus"><span class="x">✗ Rejected:</span> cycles with missing sensors or too few samples (vibration bursts excepted — see caveat).</div>
   </div>
 </div>
 

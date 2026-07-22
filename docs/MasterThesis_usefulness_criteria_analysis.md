@@ -3,9 +3,26 @@
 Source repository analyzed: `/home/ita/MasterThesis`
 Author of analyzed thesis code: Fatemeh Heydari
 
+> **Update — pipeline V2.1 (2026-07-22).** This analysis was written against an
+> earlier pipeline state. Since then Fatemeh's pipeline has implemented
+> **Stage 8 Cycle Quality Profiling** (descriptive, non-rejecting),
+> **Stage 9 Validation Rule Generation** (robust median/MAD + quantile-fallback
+> thresholds) and **Stage 10 Dataset Validation** (the *only* stage that
+> rejects cycles, into `valid_core_cycle` / `valid_complete_multisensor_cycle`
+> / `invalid_cycle`). The pipeline therefore now **does** perform statistical
+> validation and cycle rejection. Statements below that the pipeline is "not
+> yet a usefulness classifier", has "no usefulness score" or that Stage 8 is
+> "not implemented" reflect the earlier state and are **superseded**; they are
+> kept for historical context and flagged inline. The genuinely-new t1000
+> contribution is repositioned as a **physical-plausibility floor** (absolute
+> physical values, no healthy reference population needed) plus **in-cycle
+> standstill detection**, running *before* the pipeline's statistics — see
+> `docs/pipeline_structure.md` §5 and `docs/approach_comparison.md`.
+
 **Note:** No repo-wide term "standstill" exists. This is a preprocessing/cycle-extraction
-pipeline (not yet an ML "usefulness" classifier), authored by Fatemeh Heydari. Below is the
-evidence-based breakdown, structured by the 5 requested points.
+pipeline that (as of V2.1) also generates data-driven validation rules and rejects cycles
+(Stages 8-10), authored by Fatemeh Heydari. Below is the evidence-based breakdown,
+structured by the 5 requested points.
 
 ---
 
@@ -76,19 +93,22 @@ segments as "useless." Velocity and Current signals exist and are extracted
   unvalidated threshold has propagated into the "accepted" pipeline (ADR-006 marks it
   "Accepted" while the script comment calls it exploratory — inconsistency between ADR
   status and script wording).
-- **No "usefulness" score for cycles beyond structural completeness** — a cycle is
-  currently judged "ready" only by *signal presence/sample count*
+- **No "usefulness" score for cycles beyond structural completeness** — *[superseded in V2.1: Stage 10 Dataset Validation now classifies every cycle as `valid_core_cycle` / `valid_complete_multisensor_cycle` / `invalid_cycle` using the Stage-9 rules.]* At the time of analysis a cycle was
+  judged "ready" only by *signal presence/sample count*
   (`validation_cycle_selection.py`), not by physical plausibility (e.g., does position
   actually change, is duration in a sane range, are there sensor saturation/outlier
   values). Cycle duration/position-range statistics are computed (`cycle_detection.py`
-  columns) but never used as a filter — they're descriptive only.
+  columns) but were not yet used as a filter. Physical-plausibility gates against
+  *absolute* values (not the learned population range) remain the distinct t1000 contribution.
 - **Standstill/idle phases are not distinguished from valid short cycles** — a "cycle" as
   short as one sample above threshold would be accepted; no minimum-duration or
   minimum-displacement filter exists.
-- **Signal Quality Assessment stage is "In Progress"/undefined** —
-  `docs/thesis_pipeline.md:366-384` (Stage 8) lists intended checks (missing channels,
-  timestamp consistency, sampling behaviour) but no implementation exists yet in `src/` for
-  this stage beyond the validation-selection sample-count check.
+- **Signal Quality Assessment stage** — *[superseded in V2.1: Stage 8 Cycle Quality
+  Profiling is now implemented (non-rejecting), feeding Stage 9 Validation Rule
+  Generation and Stage 10 Dataset Validation.]* At the time of analysis this stage
+  (`docs/thesis_pipeline.md` Stage 8) listed intended checks (missing channels,
+  timestamp consistency, sampling behaviour) but no implementation existed yet in `src/`
+  beyond the validation-selection sample-count check.
 - **Inconsistent unit/threshold semantics**: `movement_threshold` compares raw Position
   value to an absolute number without reference to the signal's dynamic range
   (`implementation_log.md` reports peak Position ≈85), so "moving" vs "not moving" is a
@@ -120,7 +140,12 @@ Special focus on the "running" vs. "standstill" data problem:
 - **Reconcile ADR status with code comments**: ADR-006 says "Accepted" for the 1-hour gap
   while the script still calls it "exploratory" — pick one source of truth and document
   the empirical basis (e.g., attach the actual gap histogram/percentile numbers cited).
-- **Extend Signal Quality Assessment (Stage 8) into a concrete filter** combining:
+- **Extend Signal Quality Assessment (Stage 8) into a concrete filter** — *[largely
+  realised in V2.1 by the pipeline itself: Stage 9 derives per-metric rules from the
+  Stage-8 distributions and Stage 10 applies them to reject cycles. The t1000 addition is
+  the complementary **physical** floor — checking these same aspects against *absolute*
+  physical bounds rather than the learned population range, plus explicit in-cycle
+  standstill.]* combining:
   sample-count sufficiency (existing), signal-range sanity (e.g., reject cycles where
   Position never exceeds `movement_threshold` meaningfully — a residual standstill
   artifact), and duration bounds derived from the reported typical cycle duration

@@ -1,1 +1,1 @@
-handoff-20260716-083520-actuator-lifetime-dashboard.md
+handoff-20260722-093756-wayfinder-t1000-contribution.md
