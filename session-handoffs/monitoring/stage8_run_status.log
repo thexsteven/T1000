@@ -4339,3 +4339,978 @@ error=None
 [2026-07-22 10:59:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
 end_time=None
 error=None
+[2026-07-22 11:04:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:09:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:14:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:19:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:24:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:29:34] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:34:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:39:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:44:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:49:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:54:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 11:59:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:04:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:09:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:14:35] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:19:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:24:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:29:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:34:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:39:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:44:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:49:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:54:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 12:59:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:04:36] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:09:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:14:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:19:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:24:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:29:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:34:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:39:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:44:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:49:37] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:54:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 13:59:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:04:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:09:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:14:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:19:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:24:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:29:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:34:38] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:39:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:44:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:49:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:54:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 14:59:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:04:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:09:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:14:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:19:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:24:39] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:29:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:34:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:39:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:44:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:49:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:54:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 15:59:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:04:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:09:40] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:14:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:19:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:24:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:29:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:34:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:39:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:44:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:49:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:54:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 16:59:41] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:04:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:09:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:14:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:19:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:24:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:29:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:34:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:39:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:44:42] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:49:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:54:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 17:59:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:04:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:09:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:14:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:19:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:24:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:29:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:34:43] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:39:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:44:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:49:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:54:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 18:59:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:04:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:09:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:14:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:19:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:24:44] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:29:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:34:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:39:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:44:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:49:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:54:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 19:59:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:04:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:09:45] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:14:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:19:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:24:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:29:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:34:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:39:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:44:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:49:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:54:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 20:59:46] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:04:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:09:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:14:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:19:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:24:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:29:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:34:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:39:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:44:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:49:47] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:54:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 21:59:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:04:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:09:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:14:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:19:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:24:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:29:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:34:48] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:39:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:44:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:49:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:54:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 22:59:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:04:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:09:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:14:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:19:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:24:49] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:29:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:34:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:39:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:44:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:49:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:54:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-22 23:59:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:04:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:09:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:14:50] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:19:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:24:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:29:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:34:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:39:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:44:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:49:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:54:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 00:59:51] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:04:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:09:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:14:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:19:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:24:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:29:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:34:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:39:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:44:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:49:52] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:54:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 01:59:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:04:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:09:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:14:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:19:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:24:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:29:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:34:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:39:53] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:44:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:49:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:54:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 02:59:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:04:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:09:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:14:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:19:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:24:54] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:29:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:34:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:39:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:44:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:49:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:54:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 03:59:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:04:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:09:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:14:55] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:19:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:24:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:29:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:34:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:39:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:44:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:49:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:54:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 04:59:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:04:56] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:09:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:14:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:19:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:24:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:29:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:34:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:39:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:44:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:49:57] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:54:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 05:59:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:04:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:09:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:14:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:19:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:24:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:29:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:34:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:39:58] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:44:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:49:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:54:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 06:59:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:04:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:09:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:14:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:19:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:24:59] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:30:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:35:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:40:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:45:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:50:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 07:55:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:00:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:05:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:10:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:15:00] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:20:01] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:25:01] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:30:01] run_dir=20260720_140114 pid=1530138 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:35:01] run_dir=20260720_140114 pid=1530138 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:40:01] run_dir=20260720_140114 pid=1530138 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:45:01] run_dir=20260720_140114 pid=1530138 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:50:01] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 08:55:01] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:00:01] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:05:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:10:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:15:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:20:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:25:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:30:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:35:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:40:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:45:02] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:50:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 09:55:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:00:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:05:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:10:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:15:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:20:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:25:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:30:03] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:35:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:40:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:45:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:50:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 10:55:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:00:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:05:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:10:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:15:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:20:04] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:25:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:30:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:35:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:40:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:45:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:50:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 11:55:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:00:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:05:05] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:10:06] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:15:06] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:20:06] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:25:06] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:30:06] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:35:06] run_dir=20260720_140114 pid=1583584 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:40:06] run_dir=20260720_140114 pid=1583584 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:45:06] run_dir=20260720_140114 pid=1583584 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:50:06] run_dir=20260720_140114 pid=1583584 completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 12:55:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:00:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:05:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:10:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:15:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:20:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:25:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:30:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:35:07] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:40:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:45:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:50:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 13:55:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 14:00:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None
+[2026-07-23 14:05:08] run_dir=20260720_140114 pid=none completed_stages=['metadata', 'signal_discovery', 'timestamp_analysis', 'session_detection', 'cycle_detection']
+end_time=None
+error=None

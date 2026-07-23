@@ -59,6 +59,10 @@ and does the re-derivation/integration work.
   the seam and the additive-value evidence are settled.
 - **Prototype of the integrated pre-stage** — a rough stub of the seam to react
   to. Only specifiable after the seam contract and threshold strategy land.
+- **[Post-hoc physical-limits audit layer vs. the pre-stage seam](issues/09-post-hoc-physical-audit-vs-prestage.md)**
+  — a second placement idea (after Fatemeh's Stage 10, not yet implemented)
+  surfaced 2026-07-23; unresolved tension with the locked ticket 02 seam
+  decision, open for `/grilling`.
 
 ## Out of scope
 

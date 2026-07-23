@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ERA data-quality criteria catalogue</title>
+  <style>
+    :root{--bg:#0d1117;--panel:#161b22;--panel2:#1c2230;--line:#2b3648;--text:#e6edf3;--muted:#9aa7b8;--dim:#6b7688;--blue:#58a6ff;--green:#3fb950;--amber:#d29922;--orange:#db7c3a;--red:#f85149;--teal:#2dd4bf;--grey:#8b949e;--focus:#f2cc60;--sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;--mono:ui-monospace,SFMono-Regular,Consolas,monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 var(--sans)}.wrap{max-width:1540px;margin:auto;padding:32px 20px 72px}.eyebrow{color:var(--blue);font:600 12px var(--mono);letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px}h1{font-size:clamp(1.75rem,4vw,2.6rem);margin:0 0 10px;line-height:1.13}h2{font-size:1.2rem;margin:0 0 10px}.lead{max-width:900px;color:var(--muted);margin:0}.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:22px}.notice{border-left:4px solid var(--blue);background:#101722}.legend,.facts{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:13px;color:var(--muted)}.role,.badge,.fact{border:1px solid var(--line);border-radius:999px;padding:2px 8px;white-space:nowrap}.role{font:600 11px var(--mono);padding:2px 6px}.measure{border-color:var(--teal);color:var(--teal)}.segment{border-color:var(--blue);color:var(--blue)}.threshold{border-color:var(--amber);color:var(--amber)}.enforce{border-color:var(--green);color:var(--green)}.physical,.new{border-color:var(--orange);color:var(--orange)}.controls{display:grid;grid-template-columns:minmax(220px,2fr) repeat(4,minmax(125px,1fr));gap:10px}.control label{display:block;font:600 11px var(--mono);color:var(--dim);letter-spacing:.05em;text-transform:uppercase;margin:0 0 4px}input,select{width:100%;min-height:38px;padding:7px 9px;background:#0f141d;border:1px solid var(--line);border-radius:7px;color:var(--text);font:inherit}input:focus,select:focus,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}.result-count{font:13px var(--mono);color:var(--muted);margin:14px 0 0}.matrix-scroller{overflow:auto;border:1px solid var(--line);border-radius:10px}.matrix{min-width:1260px}.grid{display:grid;grid-template-columns:300px repeat(13,55px) 82px}.head{position:sticky;top:0;z-index:4;background:#131a26;border-bottom:1px solid var(--line)}.phase{height:29px;display:flex;align-items:center;justify-content:center;border-right:1px solid var(--line);font:600 10px var(--mono);color:var(--dim);letter-spacing:.04em;text-transform:uppercase}.phase:first-child{justify-content:flex-start;padding-left:12px}.stage-head{height:53px;display:flex;justify-content:center;align-items:center;border-right:1px solid var(--line);font:600 11px var(--mono);color:var(--muted);text-align:center}.stage-head.t1000{color:var(--orange)}.group{grid-column:1/-1;padding:8px 12px;background:#111721;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font:600 12px var(--mono);color:var(--blue);letter-spacing:.06em;text-transform:uppercase}.criterion-row{grid-column:1/-1;display:grid;grid-template-columns:inherit;padding:0;border:0;border-bottom:1px solid #222b3a;background:var(--panel);color:var(--text);text-align:left;cursor:pointer;font:inherit}.criterion-row:hover{background:var(--panel2)}.criterion-name{min-height:52px;padding:8px 10px;display:flex;align-items:center;gap:7px;border-right:1px solid #222b3a}.criterion-name b{font-size:13px;line-height:1.2}.id{font:600 11px var(--mono);color:var(--blue);min-width:27px}.badge{font:600 10px var(--mono);padding:1px 5px}.badge.inconsistent{color:#ffb86b;border-color:var(--orange)}.badge.proposed{color:var(--grey);border-color:var(--grey);border-style:dashed}.badge.code-only{color:var(--teal);border-color:var(--teal)}.cell{min-height:52px;border-right:1px solid #222b3a;display:flex;align-items:center;justify-content:center;padding:3px}.effect{width:45px;min-height:33px;padding:2px;border-radius:5px;text-align:center;font:600 9px/1.1 var(--mono);display:flex;align-items:center;justify-content:center}.effect.measure{background:#123b3b}.effect.segment{background:#122d4c}.effect.threshold{background:#493710}.effect.enforce{background:#153b25}.effect.physical,.effect.new{background:#4a2c17}.effect.planned{background:transparent;border:1px dashed var(--grey);color:var(--grey)}.effect.inactive{background:#222831;border:1px dashed var(--grey);color:var(--grey);text-decoration:line-through}.detail{grid-column:1/-1;background:#101722;border-bottom:1px solid var(--line);padding:18px 22px;display:none}.criterion.open .detail{display:block}.detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px}.detail h3{font-size:12px;color:var(--blue);font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;margin:0 0 4px}.detail p{margin:0;color:var(--muted)}.detail .wide{grid-column:1/-1}.fact{border-radius:6px;padding:6px 8px}.fact b{color:var(--text)}.sources{display:grid;gap:7px}.source{padding:7px 9px;background:#0d1117;border:1px solid var(--line);border-radius:6px;color:var(--muted);font-size:12px}.source code{font-family:var(--mono);color:var(--text);overflow-wrap:anywhere}.example-button{border:1px solid var(--grey);background:#222831;color:var(--grey);border-radius:6px;padding:8px 10px;font:600 13px var(--sans);cursor:not-allowed}.no-results{padding:26px;text-align:center;color:var(--muted)}.footer{color:var(--dim);font-size:13px;margin-top:18px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:850px){.wrap{padding:22px 12px 52px}.panel{padding:15px}.controls{grid-template-columns:1fr 1fr}.control:first-child{grid-column:1/-1}.detail-grid{grid-template-columns:1fr}.detail .wide{grid-column:auto}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+  </style>
+</head>
+<body>
+<main class="wrap">
+<header><p class="eyebrow">ERA preprocessing &middot; evidence-first catalogue</p><h1>Data-quality criteria: where each check takes effect</h1><p class="lead">The implementation is authoritative. Proposed T1000 physical checks are shown as planned rather than as pipeline behaviour.</p></header>
+<section class="panel notice"><strong>Read the matrix left to right.</strong> A cell says where a criterion measures, segments, generates a threshold, or rejects data. Dashed T1000 cells are planned only; struck-through Stage 10 cells are generated but never applied.</section>
+<section class="panel"><h2>Cell legend</h2><div class="legend"><span><b class="role measure">M measure</b> metric computed</span><span><b class="role segment">S segment</b> creates a cut</span><span><b class="role threshold">T threshold</b> rule generated</span><span><b class="role enforce">E enforce</b> rejection applied</span><span><b class="role physical">P physical</b> T1000 physical check</span><span><b class="role new">N new</b> proposed T1000 check</span><span><b class="role" style="border-style:dashed;color:var(--grey)">planned</b> not implemented</span><span><b class="role" style="color:var(--grey);text-decoration:line-through">dead</b> generated, not applied</span></div></section>
+<section class="panel"><h2>Find a criterion</h2><div class="controls"><div class="control"><label for="search">Search name, rule, or failure</label><input id="search" type="search" placeholder="e.g. duration, vibration, gap"></div><div class="control"><label for="level">Decision-tree level</label><select id="level"><option value="">All levels</option><option value="1">Level 1</option><option value="2">Level 2</option><option value="3">Level 3</option><option value="4">Level 4</option><option value="code-only">Code-only</option></select></div><div class="control"><label for="owner">Owner</label><select id="owner"><option value="">All owners</option><option value="pipeline-segmentation">Pipeline: segmentation</option><option value="pipeline-statistical">Pipeline: statistical</option><option value="this-work-physical">This work: physical</option><option value="this-work-new">This work: new</option></select></div><div class="control"><label for="maturity">Maturity</label><select id="maturity"><option value="">All grades</option><option value="justified">Justified</option><option value="structural">Structural</option><option value="provisional">Provisional</option><option value="inconsistent">Inconsistent</option><option value="unjustified">Unjustified</option></select></div><div class="control"><label for="status">Status</label><select id="status"><option value="">All statuses</option><option value="implemented">Implemented</option><option value="proposed">Proposed</option><option value="code-only">Code-only</option><option value="inconsistent">Inconsistent</option></select></div></div><p class="result-count" id="result-count" aria-live="polite"></p></section>
+<section class="panel"><h2>Criteria &times; pipeline stage matrix</h2><p class="lead" style="margin-bottom:14px">Select a row to read it in plain language. Every cell carries a text label and tooltip; colour is supplementary.</p><div class="matrix-scroller" tabindex="0" aria-label="Horizontally scrollable criteria by pipeline-stage matrix"><div class="matrix" id="matrix"></div></div></section>
+<p class="footer">Source data is embedded in this single offline file from <code>deliverables/criteria_catalogue.json</code>. No external fonts, scripts, or data are loaded.</p>
+</main>
+<script id="catalogue-data" type="application/json">[
+  {
+    "id": "1.1",
+    "level": 1,
+    "name": "Session boundary gap split",
+    "checks": "Whether consecutive position timestamps belong to one continuous recording session.",
+    "rule": "A gap strictly greater than 3600.0 seconds starts a new session.",
+    "why": "Prevents a shutdown or recording interruption from being treated as continuous motion and from joining unrelated cycle candidates.",
+    "owner": "pipeline-segmentation",
+    "justification": "empirical-derivation",
+    "maturity": "inconsistent",
+    "implemented": "session_detection.py:28; session_detection.py:118; session_detection.py:147-149; pipeline.py:129-130; configs/example_pipeline.yaml:5",
+    "discrepancy": "No code mismatch. The decision-tree HTML calls the threshold provisional; the current code comment calls it empirically determined. The missing decision-tree Markdown was not present under t1000.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 5, "role": "segment"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": "1.2",
+    "level": 1,
+    "name": "Minimum session size",
+    "checks": "Whether a recording session contains enough complete cycles to represent steady operation.",
+    "rule": "Proposed N >= 100 complete cycles; N is a placeholder.",
+    "why": "Would exclude commissioning, aborted, or start-up fragments from a baseline pool.",
+    "owner": "this-work-new",
+    "justification": "provisional-placeholder",
+    "maturity": "provisional",
+    "implemented": "planned / not yet implemented",
+    "discrepancy": "Documented as a proposed rejection rule, but no corresponding pipeline check was found.",
+    "status": "proposed",
+    "stage_effects": [{"stage": "t1000", "role": "physical", "planned": true}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": "2.1",
+    "level": 2,
+    "name": "Position-based cycle boundary",
+    "checks": "Whether the position reference signal transitions into and out of the moving state.",
+    "rule": "moving = position > 1.0; start on <= 1.0 to > 1.0; end on > 1.0 to <= 1.0. Unpaired edge starts are discarded.",
+    "why": "Segments candidate strokes and avoids emitting incomplete cycles at the end of a detection window.",
+    "owner": "pipeline-segmentation",
+    "justification": "provisional-placeholder",
+    "maturity": "provisional",
+    "implemented": "cycle_detection.py:48-60; cycle_detection.py:74-92; pipeline.py:130; configs/example_pipeline.yaml:6",
+    "discrepancy": "No threshold mismatch. Both sources use 1.0, but the decision tree presents this as a physical-floor criterion whereas code uses it only for segmentation.",
+    "status": "implemented",
+    "stage_effects": [{"stage": 6, "role": "segment"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": "2.2",
+    "level": 2,
+    "name": "Fixed physical duration band",
+    "checks": "Whether a detected stroke has the expected absolute duration.",
+    "rule": "Documented proposal: 3.00 <= duration <= 3.20 seconds. Implemented pipeline rule: duration must be > 0 and, when generated, within a run-specific learned median/MAD or 0.01/0.99-quantile bound.",
+    "why": "Targets partial strokes, merged cycles, standstill, and acquisition failures.",
+    "owner": "this-work-physical",
+    "justification": "empirical-derivation",
+    "maturity": "inconsistent",
+    "implemented": "validation_rule_generation.py:89-92; validation_rule_generation.py:297-358; validation_rule_generation.py:382-398; dataset_validation.py:174-192",
+    "discrepancy": "The documented fixed [3.00, 3.20] s physical band is NOT FOUND IN CODE. Code applies positivity plus a learned, dataset-run-specific duration band.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}, {"stage": "t1000", "role": "physical", "planned": true}],
+    "rejection_reason_codes": ["duration_below_lower_bound", "duration_above_upper_bound"]
+  },
+  {
+    "id": "2.3",
+    "level": 2,
+    "name": "Full stroke reached",
+    "checks": "Whether position traverses the expected full mechanical range.",
+    "rule": "Documented proposal: maximum_position >= 84.0 AND minimum_position <= 1.0. Implemented pipeline rule: position_stroke_range, if generated, must be within a learned median/MAD or 0.01/0.99-quantile bound.",
+    "why": "Would exclude incomplete, aborted, or degenerate strokes from a normal-behaviour pool.",
+    "owner": "this-work-physical",
+    "justification": "empirical-derivation",
+    "maturity": "inconsistent",
+    "implemented": "cycle_quality_profiler.py:297-302; validation_rule_generation.py:89-92; validation_rule_generation.py:566-571; dataset_validation.py:194-202",
+    "discrepancy": "The absolute max >= 84.0 and min <= 1.0 rule is NOT FOUND IN CODE. Code validates only learned position_stroke_range bounds, not documented absolute endpoints.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 8, "role": "measure"}, {"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}, {"stage": "t1000", "role": "physical", "planned": true}],
+    "rejection_reason_codes": ["position_stroke_out_of_range"]
+  },
+  {
+    "id": "2.4",
+    "level": 2,
+    "name": "Fixed reference-signal sample-count band",
+    "checks": "Whether the position signal has the expected number of samples within a cycle.",
+    "rule": "Documented proposal: 60 <= position samples <= 66. Implemented pipeline rule: sample_count and finite_sample_count, when generated, must be within learned median/MAD or 0.01/0.99-quantile bounds.",
+    "why": "Would flag data loss, duplicated timestamps, or merged cycles.",
+    "owner": "this-work-physical",
+    "justification": "empirical-derivation",
+    "maturity": "inconsistent",
+    "implemented": "validation_rule_generation.py:77-86; validation_rule_generation.py:537-545; dataset_validation.py:129-159",
+    "discrepancy": "The fixed 60-66 position-sample band is NOT FOUND IN CODE. Code uses learned bounds for every core signal's sample metrics.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}, {"stage": "t1000", "role": "physical", "planned": true}],
+    "rejection_reason_codes": ["sample_count_below_lower_bound", "sample_count_above_upper_bound"]
+  },
+  {
+    "id": "2.5",
+    "level": 2,
+    "name": "In-cycle standstill / frozen segment",
+    "checks": "Whether motion stops or the position sensor freezes inside an otherwise detected cycle.",
+    "rule": "Documented proposal: every rolling T window must have position change > delta (suggested delta = 0.5, T = 0.5 s), or motion-phase |velocity| > epsilon. No implemented rolling-window rule exists.",
+    "why": "Targets a position signal stuck above the segmentation threshold, which can otherwise be emitted as a candidate cycle.",
+    "owner": "this-work-new",
+    "justification": "provisional-placeholder",
+    "maturity": "provisional",
+    "implemented": "planned / not yet implemented",
+    "discrepancy": "The pipeline computes a whole-cycle constant_signal flag (cycle_quality_profiler.py:120; 135; 142) but does not implement the documented in-cycle rolling standstill rule or reject on that flag.",
+    "status": "proposed",
+    "stage_effects": [{"stage": "t1000", "role": "new", "planned": true}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": "3.1",
+    "level": 3,
+    "name": "Required signal presence",
+    "checks": "Whether every signal required for a validation mode is present and non-empty in the cycle interval.",
+    "rule": "Standalone validation selection checks its configured required_signals for non-empty extraction. Default pipeline dataset validation requires five core signals: position, velocity, current, pressure, temperature. Vibration x/y/z are optional duty-cycled signals; a complete vibration burst yields valid_complete_multisensor_cycle, while absent/partial vibration yields valid_core_cycle if core rules pass.",
+    "why": "Missing required channels prevent a consistent core record; vibration absence is structurally expected and must not masquerade as a core failure.",
+    "owner": "pipeline-statistical",
+    "justification": "logical-hard-rule",
+    "maturity": "inconsistent",
+    "implemented": "validation_cycle_selection.py:38-72; validation_rule_generation.py:56-60; dataset_validation.py:119-127; dataset_validation.py:266-358; configs/example_pipeline.yaml:36-41; configs/example_pipeline.yaml:60-70",
+    "discrepancy": "The decision tree says 8/8 signals are required. Current pipeline validation requires five core signals and explicitly treats vibration as optional; the stricter 8/8 interpretation maps only to valid_complete_multisensor_cycle.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 7, "role": "measure"}, {"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["missing_required_signal"]
+  },
+  {
+    "id": "3.2",
+    "level": 3,
+    "name": "Configured minimum samples per signal",
+    "checks": "Whether a signal window has at least its configured minimum sample count for the standalone validation subset.",
+    "rule": "Configured minima: position 20, velocity 20, current 20, pressure 1, vibration_x/y/z 20, temperature 1. The check applies only to names supplied in required_signals; the example required list contains the five non-vibration core signals.",
+    "why": "Avoids using almost-empty signal windows as interactive validation examples.",
+    "owner": "pipeline-segmentation",
+    "justification": "unjustified",
+    "maturity": "unjustified",
+    "implemented": "validation_cycle_selection.py:51-72; validation_cycle_selection.py:145-151; configs/example_pipeline.yaml:36-51",
+    "discrepancy": "The decision tree describes all eight signals as required. In the example configuration, vibration minima exist but vibration is not in required_validation_signals; this selection utility is not the Stage-10 validation rule.",
+    "status": "implemented",
+    "stage_effects": [{"stage": 7, "role": "enforce"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": "4.1",
+    "level": 4,
+    "name": "Signal coverage ratio",
+    "checks": "Whether a signal's first-to-last observed timestamps cover enough of the detected cycle duration.",
+    "rule": "Documented proposal: position/velocity/current >= 0.95 and pressure >= 0.90; temperature and vibration exempt. Implemented pipeline rule: coverage_ratio is learned per signal from all profiled core cycles, or vibration_complete cycles, using median +/- (3.5 / 0.6745) * MAD; if MAD = 0, use 0.01/0.99 quantiles. Validation enforces only the generated lower bound.",
+    "why": "Detects a signal clustered in only part of the cycle, leaving a partial dropout hidden by a raw sample count.",
+    "owner": "pipeline-statistical",
+    "justification": "statistical",
+    "maturity": "inconsistent",
+    "implemented": "cycle_quality_profiler.py:99-102; cycle_quality_profiler.py:241-247; validation_rule_generation.py:62-72; validation_rule_generation.py:77-86; validation_rule_generation.py:297-358; validation_rule_generation.py:537-564; dataset_validation.py:136-159",
+    "discrepancy": "The fixed 0.95/0.90 thresholds and stated exemptions are NOT FOUND IN CODE. Code derives per-run learned bounds; optional vibration is handled through availability classes rather than a fixed coverage exemption.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 8, "role": "measure"}, {"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["coverage_below_lower_bound"]
+  },
+  {
+    "id": "4.2",
+    "level": 4,
+    "name": "Maximum intra-cycle timestamp gap",
+    "checks": "Whether a signal has an unusually large gap between consecutive samples inside a cycle.",
+    "rule": "Documented proposal: position/velocity/current/pressure <= 0.15 s, vibration <= 0.10 s, temperature <= 1.5 s. Implemented pipeline rule: maximum_timestamp_gap is learned per signal with median/MAD or 0.01/0.99 quantiles; validation enforces only the generated upper bound.",
+    "why": "Detects lost measurements during the stroke.",
+    "owner": "pipeline-statistical",
+    "justification": "statistical",
+    "maturity": "inconsistent",
+    "implemented": "cycle_quality_profiler.py:60-66; cycle_quality_profiler.py:127; cycle_quality_profiler.py:154; validation_rule_generation.py:77-86; validation_rule_generation.py:297-358; dataset_validation.py:137-159",
+    "discrepancy": "None of the documented fixed per-signal gap limits is implemented. Code applies learned upper bounds under the downstream metric name maximum_timestamp_gap.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 8, "role": "measure"}, {"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["maximum_gap_above_upper_bound"]
+  },
+  {
+    "id": "4.3",
+    "level": 4,
+    "name": "Finite values",
+    "checks": "Whether a required signal has at least one finite numeric value; profiling also counts non-finite samples.",
+    "rule": "For each core-required signal, finite_sample_count must be > 0. The code does not reject a core signal solely because it contains some non-finite values when at least one finite value remains.",
+    "why": "Prevents wholly unusable numeric input from reaching validation and feature work.",
+    "owner": "pipeline-statistical",
+    "justification": "logical-hard-rule",
+    "maturity": "inconsistent",
+    "implemented": "cycle_quality_profiler.py:94-97; cycle_quality_profiler.py:123-140; validation_rule_generation.py:417-435; dataset_validation.py:124-127; dataset_validation.py:266-284",
+    "discrepancy": "The decision tree says no signal may contain any NaN or +/- infinity. Code only requires at least one finite value for core signals and does not apply this hard rule to optional vibration.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 8, "role": "measure"}, {"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["no_finite_values"]
+  },
+  {
+    "id": "4.4",
+    "level": 4,
+    "name": "Whole-cycle constant signal",
+    "checks": "Whether all finite samples in a signal are identical over the complete cycle.",
+    "rule": "Profiler sets is_constant_signal when finite_value_count > 1 AND std_value == 0.0. It is descriptive only; no direct rejection rule uses this flag. Learned signal_range and standard_deviation rules may be generated, but dataset validation currently evaluates signal_range, not standard_deviation.",
+    "why": "A constant dynamic signal can indicate a frozen sensor or stuck acquisition buffer.",
+    "owner": "pipeline-statistical",
+    "justification": "statistical",
+    "maturity": "inconsistent",
+    "implemented": "cycle_quality_profiler.py:104-120; cycle_quality_profiler.py:135-155; validation_rule_generation.py:77-86; dataset_validation.py:129-161",
+    "discrepancy": "The decision tree proposes std_value > 0 for dynamic signals as a rejection rule. Code computes the flag, but there is no direct std_value/constant_signal rejection; it only may reject a learned signal_range bound.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 8, "role": "measure"}, {"stage": 9, "role": "threshold"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Invalid position rows removed before segmentation",
+    "checks": "Whether the position reference row has both a timestamp and a value before candidate-cycle detection.",
+    "rule": "Drop rows with missing time or value, then sort by time and reset the index.",
+    "why": "Avoids invalid values corrupting timestamp ordering and movement-edge detection.",
+    "owner": "pipeline-segmentation",
+    "justification": "logical-hard-rule",
+    "maturity": "structural",
+    "implemented": "cycle_detection.py:29-45",
+    "discrepancy": "Code-only criterion: it is absent from the decision-tree documentation. It is row cleaning, not a per-cycle rejection reason.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 6, "role": "segment"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Cycle interval order",
+    "checks": "Whether a cycle start timestamp precedes its end timestamp.",
+    "rule": "Reject when start_time >= end_time or either comparison cannot be parsed.",
+    "why": "A non-positive or malformed interval cannot represent a real cycle.",
+    "owner": "pipeline-statistical",
+    "justification": "logical-hard-rule",
+    "maturity": "structural",
+    "implemented": "validation_rule_generation.py:364-381; dataset_validation.py:164-177",
+    "discrepancy": "Code-only hard rule; the decision tree documents a much stricter fixed duration band instead.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["invalid_cycle_interval"]
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Positive cycle duration",
+    "checks": "Whether the profile reports a strictly positive cycle duration.",
+    "rule": "Reject when cycle_duration_seconds <= 0; the generated hard-rule record has lower_bound = 0.0.",
+    "why": "Eliminates zero or negative durations before statistical validation.",
+    "owner": "pipeline-statistical",
+    "justification": "logical-hard-rule",
+    "maturity": "structural",
+    "implemented": "validation_rule_generation.py:382-398; dataset_validation.py:174-177",
+    "discrepancy": "Code-only hard minimum. It does not implement the decision tree's 3.00-3.20 s band.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": ["duration_below_lower_bound"]
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Vibration availability class",
+    "checks": "Whether duty-cycled vibration x/y/z is unavailable, partial, or a complete burst.",
+    "rule": "Unavailable if total vibration samples = 0. Complete only if every axis exists, has sample_count > 0 and finite_sample_count > 0, and each count is at least 50% of that axis's median non-zero count (minimum 1); otherwise partial.",
+    "why": "Prevents zero-sample duty-cycled vibration from contaminating vibration thresholds or invalidating otherwise valid core cycles.",
+    "owner": "pipeline-statistical",
+    "justification": "statistical",
+    "maturity": "justified",
+    "implemented": "validation_rule_generation.py:209-229; validation_rule_generation.py:232-288; dataset_validation.py:297-358",
+    "discrepancy": "Code-only explicit classification. It contradicts the simple decision tree's general statement that missing vibration is rejected; absent/partial vibration produces valid_core_cycle when all core checks pass.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Learned signal sampling rate and interval bounds",
+    "checks": "Whether estimated sampling rate and median sampling interval are typical for a signal in the profiled population.",
+    "rule": "Rules are generated with median +/- (3.5 / 0.6745) * MAD, or 0.01/0.99 quantiles when MAD = 0, with at least 20 finite reference values. Dataset validation does not currently evaluate these two generated metrics.",
+    "why": "Would characterize abnormal acquisition cadence, but is not presently an enforced rejection path.",
+    "owner": "pipeline-statistical",
+    "justification": "statistical",
+    "maturity": "inconsistent",
+    "implemented": "validation_rule_generation.py:62-86; validation_rule_generation.py:297-358; validation_rule_generation.py:537-545; dataset_validation.py:129-161",
+    "discrepancy": "Code generates these rules but the validator's metric loop omits estimated_sampling_rate and median_sampling_interval, so they are not applied. No corresponding decision-tree criterion exists.",
+    "status": "inconsistent",
+    "stage_effects": [{"stage": 9, "role": "threshold"}, {"stage": 10, "role": "enforce", "inactive": true}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Consecutive validation-subset block",
+    "checks": "Whether the optional interactive validation subset consists of adjacent passing cycles within the same session.",
+    "rule": "When require_consecutive is true, any failed cycle or session change resets the candidate block; selection stops once validation_cycle_count cycles have accumulated. Example config: true, count 3, scan at most 10000.",
+    "why": "Produces a coherent small subset for interactive validation rather than disconnected passing examples.",
+    "owner": "pipeline-segmentation",
+    "justification": "logical-hard-rule",
+    "maturity": "structural",
+    "implemented": "validation_cycle_selection.py:101-107; validation_cycle_selection.py:154-186; configs/example_pipeline.yaml:18-20",
+    "discrepancy": "Code-only selection policy. It is not part of the default Stage-9/10 dataset-validation path and is absent from the decision tree.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 7, "role": "enforce"}],
+    "rejection_reason_codes": []
+  },
+  {
+    "id": null,
+    "level": null,
+    "name": "Time-gap analysis reporting thresholds",
+    "checks": "How many consecutive timestamp gaps exceed predefined reporting cutoffs.",
+    "rule": "Counts gaps strictly greater than 1, 5, 10, 30 seconds; 1, 5, 10, 30 minutes; 1, 6, 24 hours. No cycle/session rejection is made by this module.",
+    "why": "Provides empirical evidence for selecting and reviewing a session-gap threshold.",
+    "owner": "pipeline-segmentation",
+    "justification": "empirical-derivation",
+    "maturity": "structural",
+    "implemented": "time_gap_analysis.py:21-33; time_gap_analysis.py:175-200",
+    "discrepancy": "Code-only diagnostic criteria. The decision tree states the 3600 s session split but does not document this full reporting threshold set.",
+    "status": "code-only",
+    "stage_effects": [{"stage": 4, "role": "measure"}],
+    "rejection_reason_codes": []
+  }
+]
+</script>
+<script>
+(()=>{'use strict';const data=JSON.parse(document.querySelector('#catalogue-data').textContent),roles={measure:['M','measure'],segment:['S','segment'],threshold:['T','threshold'],enforce:['E','enforce'],physical:['P','physical'],new:['N','new']},stages=[...Array(13)].map((_,i)=>i+1).concat('t1000'),groups=[[1,'Level 1'],[2,'Level 2'],[3,'Level 3'],[4,'Level 4'],['code-only','Code-only']],matrix=document.querySelector('#matrix'),inputs=['search','level','owner','maturity','status'].map(id=>document.querySelector('#'+id)),esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),stage=s=>s==='t1000'?'T1000 layer':'Stage '+s,label=s=>s.replaceAll('-',' ');function cell(e){if(!e)return'<div class="cell" aria-hidden="true"></div>';const[i,n]=roles[e.role],state=e.planned?' planned':e.inactive?' inactive':'',d=e.inactive?stage(e.stage)+': '+n+'; generated but not applied':e.planned?stage(e.stage)+': planned '+n+' check; not implemented':stage(e.stage)+': '+n;return'<div class="cell"><span class="effect '+e.role+state+'" title="'+esc(d)+'" aria-label="'+esc(d)+'">'+(e.inactive?'X dead':i+' '+n)+'</span></div>'}function detail(c){const sources=c.stage_effects.map(e=>{const[,r]=roles[e.role],s=e.inactive?' (generated, not applied)':e.planned?' (planned only)':'';return'<div class="source"><b>'+esc(stage(e.stage))+' - '+esc(r)+s+'</b><br><code>'+esc(c.implemented)+'</code></div>'}).join(''),link=c.rejection_reason_codes.length&&c.stage_effects.some(e=>e.stage===10&&!e.inactive)?'<button class="example-button" disabled title="Disabled: verified Stage-10 reason codes exist, but the available cycle-validation HTML has no URL parameter or fragment that selects a cycle ID or rejection reason.">See rejected example cycles (addressing unavailable)</button>':'<span class="fact"><b>Examples:</b> '+(c.status==='proposed'?'Not yet implemented - no rejected cycles exist.':'No grounded Stage-10 rejection link for this criterion.')+'</span>';return'<div class="detail" id="detail-'+c.key+'"><div class="detail-grid"><div><h3>What it checks</h3><p>'+esc(c.checks)+'</p></div><div><h3>What goes wrong without it</h3><p>'+esc(c.why)+'</p></div><div class="wide"><h3>Actual rule / threshold</h3><p>'+esc(c.rule)+'</p></div><div><h3>Accountability</h3><div class="facts"><span class="fact"><b>Owner:</b> '+esc(label(c.owner))+'</span><span class="fact"><b>Justification:</b> '+esc(label(c.justification))+'</span><span class="fact"><b>Maturity:</b> '+esc(c.maturity)+'</span><span class="fact"><b>Status:</b> '+esc(c.status)+'</span></div></div><div><h3>Example cycles</h3>'+link+'</div><div class="wide"><h3>Source locations by effect</h3><div class="sources">'+sources+'</div></div><div class="wide"><h3>Discrepancy / limitation</h3><p>'+esc(c.discrepancy)+'</p></div></div></div>'}function head(){return'<div class="grid head"><div class="phase" style="grid-column:1">Criterion</div><div class="phase" style="grid-column:2 / span 3">Ingest (1-3)</div><div class="phase" style="grid-column:5 / span 3">Segment (4-6)</div><div class="phase" style="grid-column:8 / span 4">Profile &amp; validate (7-10)</div><div class="phase" style="grid-column:12 / span 3">Planned (11-13)</div><div class="phase" style="grid-column:15">T1000</div><div class="stage-head">criterion</div>'+[...Array(13)].map((_,i)=>'<div class="stage-head">'+(i+1)+'</div>').join('')+'<div class="stage-head t1000">T1000<br>layer</div></div>'}function filtered(){const[s,l,o,m,t]=inputs.map(x=>x.value.trim().toLowerCase());return data.filter(c=>{const b=[c.name,c.checks,c.rule,c.why,c.discrepancy].join(' ').toLowerCase();return(!s||b.includes(s))&&(!l||(l==='code-only'?c.status==='code-only':String(c.level)===l))&&(!o||c.owner===o)&&(!m||c.maturity===m)&&(!t||c.status===t)})}function render(){const items=filtered().map((c,key)=>({...c,key}));let h=head();for(const[g,n]of groups){const rows=items.filter(c=>g==='code-only'?c.status==='code-only':c.level===g);if(!rows.length)continue;h+='<div class="grid"><div class="group">'+n+' <span style="color:var(--dim)">('+rows.length+')</span></div>';for(const c of rows){const es=new Map(c.stage_effects.map(e=>[String(e.stage),e])),id=c.id||'code';h+='<section class="criterion"><button class="criterion-row" type="button" aria-expanded="false" aria-controls="detail-'+c.key+'" title="Open details for '+esc(c.name)+'"><span class="criterion-name"><span class="id">'+esc(id)+'</span><b>'+esc(c.name)+'</b>'+(c.status!=='implemented'?'<span class="badge '+esc(c.status)+'">'+esc(c.status)+'</span>':'')+'</span>'+stages.map(s=>cell(es.get(String(s)))).join('')+'</button>'+detail(c)+'</section>'}h+='</div>'}matrix.innerHTML=h||'<div class="no-results">No criteria match the current filters.</div>';document.querySelector('#result-count').textContent=items.length+' of '+data.length+' criteria shown';matrix.querySelectorAll('.criterion-row').forEach(b=>b.addEventListener('click',()=>{const s=b.closest('.criterion'),o=s.classList.toggle('open');b.setAttribute('aria-expanded',String(o))}))}inputs.forEach(i=>i.addEventListener('input',render));render()})();
+</script>
+</body>
+</html>
