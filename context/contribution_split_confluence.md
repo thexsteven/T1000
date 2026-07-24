@@ -2,7 +2,7 @@
 
 ## In one sentence
 
-The master's thesis (Fatemeh) builds the **pipeline that turns raw recordings into structured motion cycles and validates them with data-driven, statistical thresholds** (Stages 9–10: automatic rule generation + cycle rejection). This bachelor's thesis (Steven) adds a **physically grounded cross-check on top of that validation, one check the pipeline does not yet have (in-cycle standstill), and a transparent maturity rating of every criterion**. The two are complementary: statistical validity vs. physical plausibility.
+The master's thesis (Fatemeh) builds the **pipeline that turns raw recordings into structured motion cycles and validates them with data-driven, statistical thresholds** (Stages 9–10: automatic rule generation + cycle rejection). This T1000 practical project (Steven) adds a **physically grounded cross-check on top of that validation, one check the pipeline does not yet have (in-cycle standstill), and a transparent maturity rating of every criterion**. The two are complementary: statistical validity vs. physical plausibility.
 
 ---
 
