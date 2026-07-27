@@ -253,6 +253,13 @@ def main():
                  "but not adjacent in real time \u2014 hover for the exact date/time of each cycle.",
     )
 
+plotly_js = Path(__file__).with_name("plotly-2.35.2.min.js").read_text()
+    html_parts = [
+        "<html><head><meta charset='utf-8'>"
+        "<title>D32 Versuch1 - Drive cycle overlay</title>"
+        f"<script>{plotly_js}</script>"
+        "<style>body{font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:20px auto;}"
+
     html_parts = [
         "<html><head><meta charset='utf-8'>"
         "<title>D32 Versuch1 - Drive cycle overlay</title>"
@@ -267,7 +274,7 @@ def main():
         "(gaps &gt; a few cycle-lengths were excluded).</p>"
     ]
     for fig in (fig1, fig2, fig3, fig4, fig5):
-        html_parts.append(fig.to_html(full_html=False, include_plotlyjs="cdn"))
+        html_parts.append(fig.to_html(full_html=False, include_plotlyjs=False))
     html_parts.append("</body></html>")
 
     with open(f"{OUT}/cycle_overlay_report.html", "w") as f:
