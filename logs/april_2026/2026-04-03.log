@@ -1,0 +1,36 @@
+Chunk 2026-04-03 failed
+Traceback (most recent call last):
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 149, in run_day
+    slice_dir, source_rows = make_slice(args.dataset, slice_start, slice_end)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 98, in make_slice
+    copy_metadata(source, temporary)
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 74, in copy_metadata
+    shutil.copy2(path, target / path.name)
+  File "/usr/lib/python3.12/shutil.py", line 475, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/usr/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+IsADirectoryError: [Errno 21] Is a directory: '/home/ita/data/ERA/D63_Nr7_8/signal_data_point.parquet'
+Chunk 2026-04-03 failed
+Traceback (most recent call last):
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 151, in run_day
+    slice_dir, source_rows = make_slice(args.dataset, slice_start, slice_end)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 102, in make_slice
+    rows += write_filtered_dataset(source, temporary, start, end, "vibration.parquet")
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ita/t1000/scripts/run_april_2026.py", line 85, in write_filtered_dataset
+    dataset = ds.dataset(source, format="parquet", partitioning="hive")
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ita/ERA-NAS/.venv/lib/python3.12/site-packages/pyarrow/dataset.py", line 790, in dataset
+    return _filesystem_dataset(source, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ita/ERA-NAS/.venv/lib/python3.12/site-packages/pyarrow/dataset.py", line 482, in _filesystem_dataset
+    return factory.finish(schema)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_dataset.pyx", line 3226, in pyarrow._dataset.DatasetFactory.finish
+  File "pyarrow/error.pxi", line 155, in pyarrow.lib.pyarrow_internal_check_status
+  File "pyarrow/error.pxi", line 92, in pyarrow.lib.check_status
+pyarrow.lib.ArrowTypeError: Unable to merge: Field signal_id has incompatible types: string vs int32

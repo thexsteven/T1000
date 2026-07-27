@@ -1,0 +1,8 @@
+[
+  {"ts_start":"2026-03-30T14:34:00","ts_end":null,"type":"parameter_change","scope":"Versuch1","label":"Weg +0,2 mm bei Nr 7 (max. Druck erreichen)"},
+  {"ts_start":"2026-04-02T07:13:00","ts_end":null,"type":"sync","scope":"all","label":"Sync"},
+  {"ts_start":"2026-04-08T07:11:00","ts_end":"2026-04-08T07:34:00","type":"maintenance_stop","scope":"all","label":"Stopp aller Versuche, Nachschmieren Antrieb Nr 9"},
+  {"ts_start":"2026-04-17T09:28:00","ts_end":null,"type":"sync","scope":"all","label":"Sync"},
+  {"ts_start":"2026-04-24T07:30:00","ts_end":null,"type":"sync","scope":"all","label":"Sync"},
+  {"ts_start":"2026-04-30T13:39:00","ts_end":null,"type":"sync","scope":"all","label":"Sync"}
+]
